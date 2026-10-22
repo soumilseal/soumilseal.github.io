@@ -1,0 +1,60 @@
+---
+layout: layouts/page.njk
+title: Writing & Insights
+description: Technical articles, system design explorations, and engineering notes on modern software development and cloud systems.
+permalink: /blog/
+---
+{% import "components/icons.njk" as icons %}
+
+<!-- Filter & Search Bar -->
+<div class="mb-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+  <!-- Topic Tags -->
+  <div class="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+    <a href="/blog/" class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-accent-600 dark:text-white transition-colors">
+      All ({{ collections.posts.length }})
+    </a>
+    {% for tag in collections.tagList %}
+      <a href="/tags/{{ tag | slugify }}/" class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-colors shrink-0">
+        {{ tag }}
+      </a>
+    {% endfor %}
+  </div>
+
+  <!-- Quick Search Trigger -->
+  <button type="button" 
+          class="inline-flex items-center justify-between gap-3 px-3 py-1.5 text-xs text-neutral-500 hover:text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-200/90 rounded-xl transition-all shadow-2xs dark:bg-neutral-900/80 dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 focus:outline-none focus:ring-2 focus:ring-accent-500 shrink-0" 
+          data-hs-overlay="#search-modal">
+    <span class="flex items-center gap-2">
+      {{ icons.icon("search", "w-3.5 h-3.5 text-accent-500") }}
+      <span>Search articles...</span>
+    </span>
+    <kbd class="px-1.5 py-0.5 text-[10px] font-mono bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-400">Ctrl+K</kbd>
+  </button>
+</div>
+
+<!-- Posts Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {% for post in collections.posts %}
+    {% include "components/post-card.njk" %}
+  {% else %}
+    <div class="col-span-2 text-center py-16 bg-neutral-100/50 dark:bg-neutral-900/40 rounded-2xl border border-dashed border-neutral-200 dark:border-neutral-800">
+      <p class="text-neutral-500 dark:text-neutral-400 text-sm font-mono">No posts published yet. Check back soon!</p>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- RSS Subscribe Banner -->
+<div class="mt-16 p-6 rounded-2xl bg-neutral-100/70 border border-neutral-200/80 dark:bg-neutral-900/50 dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div class="space-y-1">
+    <h3 class="text-sm font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+      {{ icons.icon("rss", "w-4 h-4 text-amber-500") }}
+      <span>Stay updated via RSS</span>
+    </h3>
+    <p class="text-xs text-neutral-600 dark:text-neutral-400">
+      Subscribe to the feed in your favorite feed reader to get technical writeups as soon as they drop.
+    </p>
+  </div>
+  <a href="/feed.xml" class="px-3.5 py-2 rounded-lg bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-accent-600 dark:hover:bg-accent-500 text-xs font-mono font-medium transition-colors shrink-0">
+    Open RSS Feed
+  </a>
+</div>

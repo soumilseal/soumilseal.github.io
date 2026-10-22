@@ -1,0 +1,30 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+layout: layouts/page.njk
+eleventyComputed:
+  title: "Articles tagged #{{ tag }}"
+  description: "Browse all articles, notes, and tutorials filed under the {{ tag }} topic."
+permalink: /tags/{{ tag | slugify }}/
+---
+{% import "components/icons.njk" as icons %}
+
+<div class="mb-8">
+  <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-neutral-500 hover:text-accent-600 dark:text-neutral-400 dark:hover:text-accent-400 transition-colors">
+    {{ icons.icon("arrow-left", "w-3.5 h-3.5") }}
+    <span>View all topics & articles</span>
+  </a>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {% set taglist = collections[tag] %}
+  {% for post in taglist | reverse %}
+    {% include "components/post-card.njk" %}
+  {% else %}
+    <div class="col-span-2 text-center py-16 bg-neutral-100/50 dark:bg-neutral-900/40 rounded-2xl border border-dashed border-neutral-200 dark:border-neutral-800">
+      <p class="text-neutral-500 dark:text-neutral-400 text-sm font-mono">No posts found with this tag.</p>
+    </div>
+  {% endfor %}
+</div>

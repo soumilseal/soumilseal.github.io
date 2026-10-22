@@ -1,0 +1,127 @@
+---
+layout: layouts/base.njk
+---
+{% import "components/icons.njk" as icons %}
+
+<article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16" data-pagefind-body>
+  <!-- Navigation Back Link -->
+  <div class="mb-8">
+    <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-neutral-500 hover:text-accent-600 dark:text-neutral-400 dark:hover:text-accent-400 transition-colors">
+      {{ icons.icon("arrow-left", "w-3.5 h-3.5") }}
+      <span>Back to all posts</span>
+    </a>
+  </div>
+
+  <!-- Post Header -->
+  <header class="mb-10 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80">
+    <!-- Meta Details -->
+    <div class="flex flex-wrap items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400 mb-4 font-mono">
+      <span class="flex items-center gap-1.5">
+        {{ icons.icon("calendar", "w-3.5 h-3.5 text-neutral-400") }}
+        <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+      </span>
+      {% if updated %}
+        <span>•</span>
+        <span class="italic text-neutral-400 dark:text-neutral-500">Updated: {{ updated | readableDate }}</span>
+      {% endif %}
+      <span>•</span>
+      <span class="flex items-center gap-1">
+        {{ icons.icon("clock", "w-3.5 h-3.5 text-neutral-400") }}
+        <span>{{ content | readingTime }}</span>
+      </span>
+    </div>
+
+    <!-- Title & Description -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-4 leading-tight">
+      {{ title }}
+    </h1>
+
+    {% if description %}
+      <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal">
+        {{ description }}
+      </p>
+    {% endif %}
+
+    <!-- Tags -->
+    {% if tags %}
+      <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-neutral-100 dark:border-neutral-800/60">
+        {% for tag in tags | filterTagList %}
+          <a href="/tags/{{ tag | slugify }}/" class="inline-flex items-center gap-1 text-xs font-mono px-2.5 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-colors">
+            {{ icons.icon("tag", "w-3 h-3 text-neutral-400") }}
+            <span>{{ tag }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <!-- Post Body Content -->
+  <div class="prose prose-neutral dark:prose-invert max-w-none text-[16px] sm:text-[17px] leading-relaxed">
+    {{ content | safe }}
+  </div>
+
+  <!-- Post Author Card & Footer -->
+  <footer class="mt-16 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 space-y-10">
+    
+    <!-- Author Box -->
+    <div class="p-6 rounded-2xl bg-neutral-100/70 border border-neutral-200/80 dark:bg-neutral-900/60 dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="w-14 h-14 rounded-full bg-neutral-900 text-white dark:bg-accent-600 dark:text-white flex items-center justify-center font-mono font-bold text-lg shrink-0">
+        SS
+      </div>
+      <div class="space-y-1">
+        <h3 class="font-bold text-neutral-900 dark:text-neutral-100 text-base">Soumil Seal</h3>
+        <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Developer and BCA student focused on scalable web architecture, systems programming, and cloud technologies. Writing to simplify technical concepts and document engineering experiments.
+        </p>
+        <div class="flex items-center gap-3 pt-1">
+          <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white flex items-center gap-1 font-mono">
+            {{ icons.icon("github", "w-3.5 h-3.5") }}
+            <span>GitHub</span>
+          </a>
+          <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white flex items-center gap-1 font-mono">
+            {{ icons.icon("twitter", "w-3.5 h-3.5") }}
+            <span>Twitter/X</span>
+          </a>
+          <a href="/contact/" class="text-xs text-accent-600 hover:text-accent-700 dark:text-accent-400 font-mono">
+            Get in touch →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prev / Next Post Navigation -->
+    {% set previousPost = collections.posts | getPreviousCollectionItem %}
+    {% set nextPost = collections.posts | getNextCollectionItem %}
+    {% if previousPost or nextPost %}
+      <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-neutral-200/60 dark:border-neutral-800/60" aria-label="Adjacent Articles">
+        <div>
+          {% if previousPost %}
+            <a href="{{ previousPost.url }}" class="group block p-4 rounded-xl border border-neutral-200/80 hover:border-neutral-300 dark:border-neutral-800 dark:hover:border-neutral-700 transition-all bg-white dark:bg-neutral-900/40">
+              <span class="flex items-center gap-1 text-[11px] font-mono text-neutral-500 dark:text-neutral-400 mb-1 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                {{ icons.icon("arrow-left", "w-3 h-3") }}
+                <span>Previous Post</span>
+              </span>
+              <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-1 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+                {{ previousPost.data.title }}
+              </span>
+            </a>
+          {% endif %}
+        </div>
+        <div>
+          {% if nextPost %}
+            <a href="{{ nextPost.url }}" class="group block p-4 rounded-xl border border-neutral-200/80 hover:border-neutral-300 dark:border-neutral-800 dark:hover:border-neutral-700 transition-all bg-white dark:bg-neutral-900/40 text-right">
+              <span class="flex items-center justify-end gap-1 text-[11px] font-mono text-neutral-500 dark:text-neutral-400 mb-1 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                <span>Next Post</span>
+                {{ icons.icon("arrow-right", "w-3 h-3") }}
+              </span>
+              <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-1 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+                {{ nextPost.data.title }}
+              </span>
+            </a>
+          {% endif %}
+        </div>
+      </nav>
+    {% endif %}
+
+  </footer>
+</article>
