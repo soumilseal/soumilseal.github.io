@@ -1,0 +1,19 @@
+{
+  "title": "Soumil Seal — Developer & BCA Student",
+  "name": "Soumil Seal",
+  "role": "Developer & BCA Student",
+  "bio": "Building fast, reliable software across web engineering, distributed systems, and cloud infrastructure.",
+  "description": "Portfolio and technical blog of Soumil Seal. Writing on software engineering, cloud architecture, modern web development, and computer science fundamentals.",
+  "url": "https://soumilseal.dev",
+  "email": "soumilseal@gmail.com",
+  "github": "https://github.com/soumilseal",
+  "linkedin": "https://linkedin.com/in/soumilseal",
+  "twitter": "https://x.com/soumilseal",
+  "nav": [
+    { "text": "Home", "url": "/" },
+    { "text": "Projects", "url": "/projects/" },
+    { "text": "Blog", "url": "/blog/" },
+    { "text": "About", "url": "/about/" },
+    { "text": "Contact", "url": "/contact/" }
+  ]
+}
