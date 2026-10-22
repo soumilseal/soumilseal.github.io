@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { DateTime } = require('luxon');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
@@ -8,6 +10,17 @@ module.exports = function (eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  // Bootstrap Icons Shortcode
+  eleventyConfig.addShortcode('bootstrapIcon', function (name, className = 'w-5 h-5') {
+    const iconPath = path.join(__dirname, 'node_modules', 'bootstrap-icons', 'icons', `${name}.svg`);
+    if (fs.existsSync(iconPath)) {
+      let content = fs.readFileSync(iconPath, 'utf8');
+      content = content.replace(/width="16"\s*height="16"/, `class="${className}" aria-hidden="true"`);
+      return content;
+    }
+    return '';
+  });
 
   // Passthrough File Copy
   eleventyConfig.addPassthroughCopy({ 'src/assets/js': 'assets/js' });

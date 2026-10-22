@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- FOUC Prevention Script for Instant Dark Mode Support -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('hs_theme') || localStorage.getItem('color-scheme');
+        const isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          const meta = document.querySelector('meta[name="color-scheme"]');
+          if (meta) meta.content = 'dark';
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>{% if title and title != site.name %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="author" content="{{ site.author }}">
+
+  <!-- Canonical and Feeds -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }} Feed" href="/feed.xml">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="{% if title and title != site.name %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if title and title != site.name %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+
+  <!-- Typography: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS (Tailwind v4 + Preline UI) -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body class="flex flex-col min-h-screen">
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-accent-600 text-white rounded-lg shadow-lg font-medium text-sm focus:outline-none">
+    Skip to main content
+  </a>
+
+  <!-- Global Header -->
+  {% include "components/header.njk" %}
+
+  <!-- Main Content Container -->
+  <main id="main-content" class="flex-grow">
+    {{ content | safe }}
+  </main>
+
+  <!-- Global Footer -->
+  {% include "components/footer.njk" %}
+
+  <!-- Search Modal (Pagefind Integration) -->
+  {% include "components/search-modal.njk" %}
+
+  <!-- Scripts -->
+  <script src="/assets/js/preline.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/search.js"></script>
+</body>
+</html>

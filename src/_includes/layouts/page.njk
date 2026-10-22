@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+  {% if title %}
+    <header class="mb-10 pb-6 border-b border-neutral-200/80 dark:border-neutral-800/80">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-3">
+        {{ title }}
+      </h1>
+      {% if description %}
+        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+          {{ description }}
+        </p>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="page-content">
+    {{ content | safe }}
+  </div>
+</div>

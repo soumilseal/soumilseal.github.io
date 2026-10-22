@@ -1,0 +1,97 @@
+{% import "components/icons.njk" as icons %}
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-neutral-50/90 dark:bg-[#0b0f19]/90 border-b border-neutral-200/80 dark:border-neutral-800/80 transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Brand Logo / Name -->
+      <a href="/" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-accent-500 rounded-lg p-1" aria-label="Soumil Seal homepage">
+        <div class="w-8 h-8 rounded-lg bg-neutral-900 text-white dark:bg-accent-600 dark:text-white flex items-center justify-center font-mono font-bold text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+          SS
+        </div>
+        <div class="flex flex-col">
+          <span class="font-semibold text-neutral-900 dark:text-neutral-100 text-sm tracking-tight group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+            Soumil Seal
+          </span>
+          <span class="text-[11px] text-neutral-500 dark:text-neutral-400 font-mono hidden sm:inline">
+            developer & student
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Primary Navigation">
+        {% for item in site.nav %}
+          {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
+          <a href="{{ item.url }}" 
+             class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 {% if isActive %}text-accent-600 dark:text-accent-400 bg-accent-50/60 dark:bg-accent-950/40 font-semibold{% else %}text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/60{% endif %}"
+             {% if isActive %}aria-current="page"{% endif %}>
+            {{ item.text }}
+          </a>
+        {% endfor %}
+      </nav>
+
+      <!-- Desktop Utility Actions (Search, Theme Toggle) -->
+      <div class="flex items-center gap-2">
+        <!-- Search Button -->
+        <button type="button" 
+                class="inline-flex items-center gap-2 px-2.5 py-1.5 text-xs text-neutral-500 hover:text-neutral-900 bg-neutral-100/80 hover:bg-neutral-200/70 border border-neutral-200/80 rounded-lg transition-colors dark:bg-neutral-800/60 dark:border-neutral-700/60 dark:text-neutral-400 dark:hover:text-neutral-200 focus:outline-none focus:ring-2 focus:ring-accent-500" 
+                aria-haspopup="dialog" 
+                aria-expanded="false" 
+                aria-controls="search-modal" 
+                data-hs-overlay="#search-modal"
+                title="Search portfolio and blog (Ctrl+K)">
+          {{ icons.icon("search", "w-3.5 h-3.5") }}
+          <span class="hidden sm:inline">Search</span>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono text-neutral-400 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded shadow-2xs">⌘K</kbd>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button type="button" 
+                class="theme-toggle-btn p-2 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-colors" 
+                aria-label="Toggle theme">
+          <span class="dark:hidden">
+            {{ icons.icon("moon", "w-4 h-4") }}
+          </span>
+          <span class="hidden dark:inline">
+            {{ icons.icon("sun", "w-4 h-4") }}
+          </span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button (Preline Collapse) -->
+        <div class="md:hidden">
+          <button type="button" 
+                  class="hs-collapse-toggle p-2 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-colors" 
+                  id="hs-navbar-collapse" 
+                  aria-expanded="false" 
+                  aria-controls="mobile-nav" 
+                  aria-label="Toggle mobile menu" 
+                  data-hs-collapse="#mobile-nav">
+            <span class="hs-collapse-open:hidden">
+              {{ icons.icon("menu", "w-5 h-5") }}
+            </span>
+            <span class="hs-collapse-open:block hidden">
+              {{ icons.icon("x", "w-5 h-5") }}
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-300 md:hidden border-t border-neutral-200/80 dark:border-neutral-800/80 py-3" aria-labelledby="hs-navbar-collapse">
+      <nav class="flex flex-col gap-1 px-1" aria-label="Mobile Navigation">
+        {% for item in site.nav %}
+          {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
+          <a href="{{ item.url }}" 
+             class="px-3 py-2 rounded-lg text-sm font-medium transition-colors {% if isActive %}text-accent-600 dark:text-accent-400 bg-accent-50/70 dark:bg-accent-950/50 font-semibold{% else %}text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/60{% endif %}"
+             {% if isActive %}aria-current="page"{% endif %}>
+            {{ item.text }}
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+
+  </div>
+</header>

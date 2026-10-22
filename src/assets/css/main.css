@@ -5,6 +5,8 @@
 @source "../../../node_modules/preline/dist/*.js";
 @source "../../**/*.{html,njk,md,js}";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-accent-50: #eef2ff;
   --color-accent-100: #e0e7ff;
@@ -20,4 +22,168 @@
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+html.dark {
+  scrollbar-color: #334155 transparent;
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: #334155;
+  }
+}
+
+body {
+  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#0b0f19] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Overrides */
+.prose {
+  max-width: 68ch;
+}
+
+.prose pre {
+  @apply bg-neutral-900 text-neutral-100 border border-neutral-800 rounded-xl overflow-x-auto shadow-sm my-6 p-4 text-[13.5px] leading-relaxed dark:bg-[#0e1424] dark:border-neutral-800/80;
+}
+
+.prose code:not(pre code) {
+  @apply font-mono text-[0.875em] bg-neutral-200/60 text-accent-700 px-1.5 py-0.5 rounded border border-neutral-200/80 dark:bg-neutral-800/80 dark:text-accent-300 dark:border-neutral-700/60 font-medium;
+}
+
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: "" !important;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 6rem;
+}
+
+.header-anchor {
+  @apply text-neutral-400 no-underline opacity-0 transition-opacity hover:opacity-100 ml-2 font-normal text-sm dark:text-neutral-500;
+}
+
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor {
+  opacity: 1;
+}
+
+/* Syntax Highlighting (PrismJS Theme) */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-neutral-500 italic;
+}
+
+.token.punctuation {
+  @apply text-neutral-400;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-amber-500 dark:text-amber-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-emerald-600 dark:text-emerald-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-accent-500 dark:text-accent-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-indigo-500 dark:text-indigo-400 font-semibold;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-sky-500 dark:text-sky-400;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-rose-500 dark:text-rose-400;
+}
+
+/* Pagefind Custom Styling */
+.pagefind-ui {
+  --pagefind-ui-scale: 0.95;
+  --pagefind-ui-primary: #6366f1;
+  --pagefind-ui-text: #171717;
+  --pagefind-ui-background: #ffffff;
+  --pagefind-ui-border: #e5e5e5;
+  --pagefind-ui-tag: #f5f5f5;
+  --pagefind-ui-border-radius: 0.75rem;
+  --pagefind-ui-font: 'Inter', sans-serif;
+}
+
+.dark .pagefind-ui {
+  --pagefind-ui-primary: #818cf8;
+  --pagefind-ui-text: #f3f4f6;
+  --pagefind-ui-background: #111827;
+  --pagefind-ui-border: #1f2937;
+  --pagefind-ui-tag: #1f2937;
+}
+
+.pagefind-ui .pagefind-ui__search-input {
+  @apply focus:ring-2 focus:ring-accent-500 focus:outline-none transition-shadow duration-150;
+}
+
+.pagefind-ui .pagefind-ui__result-link {
+  @apply text-accent-600 dark:text-accent-400 hover:underline font-semibold;
+}
+
+.pagefind-ui .pagefind-ui__result-excerpt mark {
+  @apply bg-accent-100 text-accent-900 rounded px-1 dark:bg-accent-950 dark:text-accent-200;
 }
