@@ -1,0 +1,191 @@
+---
+layout: layouts/base.njk
+title: Soumil Seal — Developer & BCA Student
+description: Personal portfolio and technical blog of Soumil Seal. Focused on software development, cloud infrastructure, and modern web engineering.
+---
+{% import "components/icons.njk" as icons %}
+
+<div class="space-y-20 md:space-y-28 py-10 md:py-16">
+  
+  <!-- Hero Section -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Left Column: Intro & CTAs -->
+      <div class="lg:col-span-8 space-y-6">
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-50 text-emerald-800 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/60 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>BCA Student &bull; Open to internships & projects</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-[1.12]">
+          Hi, I'm <span class="text-accent-600 dark:text-accent-400">Soumil Seal</span>. <br class="hidden sm:inline">
+          I build resilient software and cloud systems.
+        </h1>
+
+        <!-- Biography / Role Summary -->
+        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed">
+          Undergraduate student pursuing a <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Bachelor of Computer Applications (BCA)</strong>. Driven by a deep interest in software engineering, backend systems, and cloud infrastructure. I focus on writing clean code, understanding runtime mechanics, and shipping dependable tools.
+        </p>
+
+        <!-- CTA Buttons & Social Links -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="/projects/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-accent-600 dark:hover:bg-accent-500 text-sm font-semibold transition-all shadow-xs hover:shadow-md">
+            <span>Explore Projects</span>
+            {{ icons.icon("arrow-right", "w-4 h-4") }}
+          </a>
+
+          <a href="/blog/" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-200/90 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-700 text-sm font-semibold transition-all shadow-2xs">
+            <span>Read Technical Blog</span>
+          </a>
+
+          <!-- Social Shortcuts -->
+          <div class="flex items-center gap-2.5 sm:ml-2 pt-2 sm:pt-0">
+            <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 transition-colors" aria-label="GitHub profile">
+              {{ icons.icon("github", "w-4 h-4") }}
+            </a>
+            <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 transition-colors" aria-label="LinkedIn profile">
+              {{ icons.icon("linkedin", "w-4 h-4") }}
+            </a>
+            <a href="mailto:{{ site.email }}" class="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 transition-colors" aria-label="Send Email">
+              {{ icons.icon("mail", "w-4 h-4") }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Terminal Identity Widget -->
+      <div class="lg:col-span-4">
+        <div class="rounded-2xl bg-neutral-900 text-neutral-200 p-5 font-mono text-xs border border-neutral-800 shadow-xl space-y-3 dark:bg-[#070b12] dark:border-neutral-800/80">
+          <div class="flex items-center gap-2 pb-2 border-b border-neutral-800">
+            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+            <span class="text-[11px] text-neutral-500 ml-auto font-sans">soumil@machine:~</span>
+          </div>
+
+          <div class="space-y-1.5 leading-relaxed">
+            <p class="text-neutral-400"><span class="text-emerald-400">$</span> whoami</p>
+            <p class="text-white font-semibold">Soumil Seal (Developer & BCA Student)</p>
+            
+            <p class="text-neutral-400 pt-2"><span class="text-emerald-400">$</span> cat interests.json</p>
+            <pre class="text-neutral-300 text-[11px] bg-transparent p-0 border-0 my-0 whitespace-pre-wrap">{
+  "primary": ["Software Engineering", "Cloud Computing"],
+  "runtimes": ["Node.js", "Docker", "Linux"],
+  "languages": ["Python", "TypeScript", "Go", "Java"],
+  "status": "Learning & building daily"
+}</pre>
+
+            <p class="text-neutral-400 pt-2"><span class="text-emerald-400">$</span> ping -c 1 cloud-infrastructure</p>
+            <p class="text-emerald-400 text-[11px]">64 bytes from cloud: 0% packet loss (healthy)</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800/80 pb-4">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Featured Projects
+        </h2>
+        <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-mono mt-1">
+          Hand-picked tools, daemons, and full-stack software.
+        </p>
+      </div>
+
+      <a href="/projects/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 transition-colors">
+        <span>View all {{ projects.length }} projects</span>
+        {{ icons.icon("arrow-right", "w-3.5 h-3.5") }}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for project in projects %}
+        {% if project.featured %}
+          {% include "components/project-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts Section -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800/80 pb-4">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Latest Articles
+        </h2>
+        <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-mono mt-1">
+          Deep-dives into systems architecture, performance, and computer science.
+        </p>
+      </div>
+
+      <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 transition-colors">
+        <span>Read all posts</span>
+        {{ icons.icon("arrow-right", "w-3.5 h-3.5") }}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for post in collections.posts | head(3) %}
+        {% include "components/post-card.njk" %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- About & Technical Interests Preview -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="p-8 sm:p-10 rounded-2xl bg-white border border-neutral-200/80 dark:bg-neutral-900/60 dark:border-neutral-800 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-2 space-y-3">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+          About My Background & Philosophy
+        </h2>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+          I balance formal academic coursework in university with self-directed software development. I believe in writing readable code, avoiding framework churn for content-driven web pages, and thoroughly understanding the systems that run underneath our abstractions.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-neutral-600 dark:text-neutral-400">
+          <span class="px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">#CloudComputing</span>
+          <span class="px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">#DistributedQueues</span>
+          <span class="px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">#V8Internals</span>
+          <span class="px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800">#ModernWeb</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 justify-center items-start md:items-end">
+        <a href="/about/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-accent-600 dark:hover:bg-accent-500 text-xs font-mono font-medium transition-colors">
+          <span>Read Full Bio & Skills</span>
+          {{ icons.icon("arrow-right", "w-3.5 h-3.5") }}
+        </a>
+        <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
+          {{ icons.icon("github", "w-4 h-4") }}
+          <span>Follow on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect Banner -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="p-8 sm:p-10 rounded-2xl bg-neutral-100/70 border border-neutral-200/80 dark:bg-neutral-900/40 dark:border-neutral-800 text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        Have a project in mind or want to collaborate?
+      </h2>
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto leading-relaxed">
+        I am currently seeking software engineering internships and open-source collaborations. Feel free to reach out via email or social channels.
+      </p>
+      <div class="pt-2">
+        <a href="/contact/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-accent-600 dark:hover:bg-accent-500 text-sm font-semibold transition-all shadow-sm">
+          {{ icons.icon("mail", "w-4 h-4") }}
+          <span>Start a Conversation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
