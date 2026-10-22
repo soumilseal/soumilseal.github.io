@@ -1,0 +1,57 @@
+{% import "components/icons.njk" as icons %}
+
+<div class="project-item group flex flex-col p-6 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs hover:shadow-md hover:border-neutral-300 dark:bg-neutral-900/60 dark:border-neutral-800 dark:hover:border-neutral-700 transition-all duration-200" data-category="{{ project.category }}">
+  
+  <!-- Header: Category & Links -->
+  <div class="flex items-center justify-between gap-2 mb-3">
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-neutral-100 text-neutral-700 border border-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:border-neutral-700">
+      {{ project.category }}
+    </span>
+
+    <div class="flex items-center gap-2">
+      {% if project.github %}
+        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 transition-colors" aria-label="View source code on GitHub for {{ project.title }}" title="GitHub Repository">
+          {{ icons.icon("github", "w-4 h-4") }}
+        </a>
+      {% endif %}
+      {% if project.demo %}
+        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg text-neutral-500 hover:text-accent-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-accent-400 dark:hover:bg-neutral-800 transition-colors" aria-label="View project demo for {{ project.title }}" title="Live Demo / Details">
+          {{ icons.icon("external-link", "w-4 h-4") }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Title & Description -->
+  <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors mb-2 tracking-tight">
+    <a href="{{ project.demo or project.github }}" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
+      {{ project.title }}
+    </a>
+  </h3>
+
+  <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 flex-grow">
+    {{ project.description }}
+  </p>
+
+  <!-- Key Highlights -->
+  {% if project.highlights %}
+    <ul class="space-y-1.5 mb-5 text-xs text-neutral-600 dark:text-neutral-400 border-t border-neutral-100 dark:border-neutral-800/80 pt-3">
+      {% for highlight in project.highlights %}
+        <li class="flex items-start gap-2">
+          <span class="text-accent-500 dark:text-accent-400 font-bold shrink-0 mt-0.5">•</span>
+          <span>{{ highlight }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Tech Badges -->
+  <div class="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-neutral-100 dark:border-neutral-800/80">
+    {% for tag in project.tags %}
+      <span class="inline-flex items-center text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-600 dark:bg-neutral-800/80 dark:text-neutral-300">
+        {{ tag }}
+      </span>
+    {% endfor %}
+  </div>
+
+</div>

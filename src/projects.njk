@@ -1,0 +1,94 @@
+---
+layout: layouts/page.njk
+title: Featured Projects & Systems
+description: A curated catalog of software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
+permalink: /projects/
+---
+{% import "components/icons.njk" as icons %}
+
+<!-- Interactive Category Tabs -->
+<div class="mb-10 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="project-filters" role="tablist">
+  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-accent-600 dark:text-white transition-all shadow-2xs" data-category="all" role="tab" aria-selected="true">
+    All ({{ projects.length }})
+  </button>
+  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Cloud & Infrastructure" role="tab" aria-selected="false">
+    Cloud & Infrastructure
+  </button>
+  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Developer Tools" role="tab" aria-selected="false">
+    Developer Tools
+  </button>
+  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Web & Fullstack" role="tab" aria-selected="false">
+    Web & Fullstack
+  </button>
+  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Systems" role="tab" aria-selected="false">
+    Systems
+  </button>
+</div>
+
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
+  {% for project in projects %}
+    {% include "components/project-card.njk" %}
+  {% endfor %}
+</div>
+
+<!-- Engineering Principles Callout -->
+<div class="mt-16 p-8 rounded-2xl bg-neutral-100/70 border border-neutral-200/80 dark:bg-neutral-900/50 dark:border-neutral-800">
+  <div class="max-w-3xl">
+    <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 tracking-tight flex items-center gap-2">
+      {{ icons.icon("cpu", "w-5 h-5 text-accent-500") }}
+      <span>My Engineering Principles</span>
+    </h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+      Whether creating a standalone CLI utility or deploying a multi-tier cloud workflow, I adhere to a core set of technical values:
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-neutral-600 dark:text-neutral-400">
+      <div class="space-y-1.5">
+        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">1. Dependency Restraint</h3>
+        <p class="leading-relaxed">Prioritizing standard libraries, native language primitives, and minimal runtimes over bloated dependency trees.</p>
+      </div>
+      <div class="space-y-1.5">
+        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">2. Observable by Design</h3>
+        <p class="leading-relaxed">Embedding structured logging, health probes, and metric reporting directly into every service from day one.</p>
+      </div>
+      <div class="space-y-1.5">
+        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">3. Failure Recovery</h3>
+        <p class="leading-relaxed">Designing idempotent consumers, graceful shutdowns, and dead-letter queues to handle transient disruptions gracefully.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script for Category Filtering -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.project-filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Update active button state
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-accent-600', 'shadow-2xs');
+          b.classList.add('bg-neutral-100', 'text-neutral-600', 'dark:bg-neutral-800', 'dark:text-neutral-300');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-accent-600', 'shadow-2xs');
+        btn.classList.remove('bg-neutral-100', 'text-neutral-600', 'dark:bg-neutral-800', 'dark:text-neutral-300');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Filter cards
+        projectItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

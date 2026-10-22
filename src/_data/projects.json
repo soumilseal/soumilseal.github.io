@@ -1,0 +1,92 @@
+[
+  {
+    "id": "cloudpulse",
+    "title": "CloudPulse: Lightweight Server Health Daemon",
+    "description": "A low-footprint background telemetry daemon monitoring host CPU, memory, disk I/O, and network throughput with zero external dependencies.",
+    "category": "Cloud & Infrastructure",
+    "featured": true,
+    "tags": ["Go", "Docker", "Prometheus", "Linux", "Telemetry"],
+    "github": "https://github.com/soumilseal/cloudpulse",
+    "demo": "https://github.com/soumilseal/cloudpulse#readme",
+    "highlights": [
+      "Sub-15MB RAM footprint with ultra-fast 100ms sampling ticks",
+      "Native Prometheus `/metrics` endpoint export",
+      "Automated alerting to webhook destinations on resource starvation"
+    ]
+  },
+  {
+    "id": "devvault",
+    "title": "DevVault: Offline-First Developer Snippet CLI",
+    "description": "Terminal-based knowledge vault and code snippet manager featuring local AES-256 GCM encryption, fuzzy search, and syntax highlighting.",
+    "category": "Developer Tools",
+    "featured": true,
+    "tags": ["TypeScript", "Node.js", "SQLite", "CLI", "Cryptography"],
+    "github": "https://github.com/soumilseal/devvault",
+    "demo": "https://github.com/soumilseal/devvault#readme",
+    "highlights": [
+      "Zero-latency fuzzy search powered by SQLite FTS5",
+      "Client-side encrypted vault keys with Argon2id password hashing",
+      "Seamless terminal clipboard copy and multi-language syntax formatting"
+    ]
+  },
+  {
+    "id": "alumniconnect",
+    "title": "AlumniConnect: Student Mentorship Platform",
+    "description": "Full-stack university web platform connecting BCA undergraduate students with industry alumni for career mentorship, code reviews, and mock interviews.",
+    "category": "Web & Fullstack",
+    "featured": true,
+    "tags": ["TypeScript", "Tailwind CSS", "PostgreSQL", "Node.js", "REST API"],
+    "github": "https://github.com/soumilseal/alumniconnect",
+    "demo": "https://alumniconnect-demo.soumilseal.dev",
+    "highlights": [
+      "Role-based authentication with session tokens and university email validation",
+      "Real-time calendar booking and timezone-aware schedule matching",
+      "Responsive accessibility-first UI tested across mobile and desktop"
+    ]
+  },
+  {
+    "id": "microdeploy",
+    "title": "MicroDeploy: Containerized Deployment Pipeline",
+    "description": "An automated CI/CD automation pipeline orchestrating blue-green container deployments, health checking, and automatic rollback triggers.",
+    "category": "Cloud & Infrastructure",
+    "featured": false,
+    "tags": ["Python", "Docker", "GitHub Actions", "AWS", "Bash"],
+    "github": "https://github.com/soumilseal/microdeploy",
+    "demo": "https://github.com/soumilseal/microdeploy#readme",
+    "highlights": [
+      "Zero-downtime blue-green container cutover with reverse proxy reload",
+      "Automated smoke test suite validating HTTP endpoints before traffic routing",
+      "Automated rollback triggered if 5xx error rate exceeds 1% threshold"
+    ]
+  },
+  {
+    "id": "echomq",
+    "title": "EchoMQ: Minimal In-Memory Publish-Subscribe Broker",
+    "description": "A high-throughput in-memory message broker implementing topic subscription, wildcard channel matching, and durable message persistence.",
+    "category": "Systems",
+    "featured": false,
+    "tags": ["Java", "TCP Sockets", "Concurrency", "Data Structures"],
+    "github": "https://github.com/soumilseal/echomq",
+    "demo": "https://github.com/soumilseal/echomq#readme",
+    "highlights": [
+      "Lock-free ring buffer queue supporting 85,000+ msgs/sec",
+      "Custom binary TCP framing protocol minimizing network overhead",
+      "Trie-based wildcard topic routing supporting multi-tier wildcard channels"
+    ]
+  },
+  {
+    "id": "quickquery",
+    "title": "QuickQuery: WebAssembly SQL Query Explorer",
+    "description": "Browser-based interactive relational database playground compiling SQLite to WebAssembly with visual query execution plan diagrams.",
+    "category": "Developer Tools",
+    "featured": false,
+    "tags": ["JavaScript", "WebAssembly", "SQLite", "Canvas", "Tailwind CSS"],
+    "github": "https://github.com/soumilseal/quickquery",
+    "demo": "https://quickquery.soumilseal.dev",
+    "highlights": [
+      "Runs 100% client-side in the browser via SQLite WebAssembly",
+      "Interactive SVG visual graph rendering query explain plan costs",
+      "Exportable CSV/JSON result tables and shareable query URLs"
+    ]
+  }
+]
