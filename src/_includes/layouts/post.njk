@@ -5,7 +5,7 @@ layout: layouts/base.njk
 {% import "components/icons.njk" as icons %}
 
 <article
-  class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950"
+  class="max-w-[950px] w-full mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950 grow flex flex-col"
   data-pagefind-body
 >
   <!-- Back Navigation Bar: Contiguous Grid Row -->
@@ -64,11 +64,11 @@ layout: layouts/base.njk
         <span>schematic // technical_exhibit_01</span>
         <span class="text-neutral-400 dark:text-neutral-500">figure.arch</span>
       </div>
-      <div class="max-h-[460px] overflow-hidden flex items-center justify-center bg-neutral-950">
+      <div class="max-h-115 overflow-hidden flex items-center justify-center bg-neutral-950">
         <img
           src="{{ image }}"
           alt="{{ title }}"
-          class="w-full h-auto object-cover max-h-[460px]"
+          class="w-full h-auto object-cover max-h-115"
         />
       </div>
     </div>

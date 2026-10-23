@@ -4,9 +4,9 @@ layout: layouts/base.njk
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950">
+<div class="max-w-[950px] w-full mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950 grow flex flex-col">
   {% if title %}
-    <header class="relative px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-3 bg-white dark:bg-neutral-950">
+    <header class="relative px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-3 bg-white dark:bg-neutral-950 shrink-0">
       <div class="font-mono text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
         section // {{ title | lower }}/
       </div>
@@ -21,7 +21,7 @@ layout: layouts/base.njk
     </header>
   {% endif %}
 
-  <div class="page-content">
+  <div class="page-content grow flex flex-col">
     {{ content | safe }}
   </div>
 </div>

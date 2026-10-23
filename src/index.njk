@@ -6,78 +6,75 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950">
+<div class="max-w-[950px] w-full mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950 grow flex flex-col">
   <!-- Hero Section: Compact Minimalist Bento Grid -->
   <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
     <!-- Micro Header Bar (Status & Metadata) -->
     <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400">
       <div class="flex items-center gap-2 shrink-0">
-        <span class="whitespace-nowrap">soumilseal // portfolio '26</span>
+        <span class="whitespace-nowrap">{{ home.status.portfolioTag or "soumilseal // portfolio '26" }}</span>
       </div>
+      {% if home.status.available != false %}
       <div class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-medium shrink-0">
         <span
           class="w-2 h-2 rounded-full bg-blue-500 inline-block animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"
         ></span>
-        <span class="whitespace-nowrap">open for opportunities</span>
+        <span class="whitespace-nowrap">{{ home.status.availabilityText or "open for opportunities" }}</span>
       </div>
+      {% endif %}
     </div>
 
     <!-- 3-Cell Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-12">
       <!-- CELL 1: Primary Profile & Bio Anchor Cell (7 Columns on MD) -->
-      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 bg-white dark:bg-neutral-950">
+      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 lg:p-10 bg-white dark:bg-neutral-950">
         <div>
           <!-- Name + Subtitle Row -->
           <div>
             <span
-              class="font-mono text-[25px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest block mb-1"
+              class="font-mono text-xs sm:text-sm text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.2em] block mb-3 sm:mb-4"
             >
-              developer & systems builder
+              {{ home.hero.eyebrow or "developer & systems builder" }}
             </span>
-            <h1 class="font-heading font-bold text-[clamp(2.75rem,18.5vw,4.75rem)] md:text-7xl lg:text-[7rem] xl:text-[7.75rem] tracking-tight uppercase leading-none md:leading-[0.82] select-none my-2 whitespace-nowrap md:whitespace-normal">
+            <h1 class="font-heading font-bold text-[clamp(2.75rem,18.5vw,4.75rem)] md:text-7xl lg:text-[6.5rem] xl:text-[7.25rem] tracking-tight uppercase leading-none md:leading-[0.88] select-none my-3 sm:my-4 whitespace-nowrap md:whitespace-normal">
               <span
                 class="inline md:block text-neutral-900 dark:text-neutral-100"
-              >SOUMIL SEAL</span>
+              >{{ home.hero.name or "SOUMIL SEAL" }}</span>
               <span
                 class="inline md:block text-primary-600 dark:text-primary-400 ml-2 md:ml-0"
               ></span>
             </h1>
-            <div class="flex text-[22px] flex-wrap items-center gap-2 mt-2 text-xs font-mono text-neutral-500 dark:text-neutral-400">
-              <span>india</span>
-              <span>&bull;</span>
-              <span>bca undergrad</span>
-              <span>&bull;</span>
+            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-3 sm:mt-4 text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400 tracking-wide">
+              <span>{{ home.hero.location or "India // remote-friendly" }}</span>
+              <span class="text-neutral-300 dark:text-neutral-700">&bull;</span>
               <span class="text-primary-600 dark:text-primary-400 font-medium"
-              >systems & web</span>
+              >{{ home.hero.role or "BCA Undergraduate • Developer • Systems Builder" }}</span>
             </div>
           </div>
 
           <!-- Editorial Bio -->
-          <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans mt-4">
-            I engineer software across distributed backend systems, cloud
-            infrastructure, and modern web applications. Passionate about
-            runtime internals, concurrency mechanics, clean architectural
-            boundaries, and delivering reliable developer tools.
+          <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed sm:leading-[1.8] font-sans mt-6 sm:mt-8 max-w-xl">
+            {{ home.hero.bio or "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools." }}
           </p>
         </div>
 
         <!-- Integrated Dual Action Buttons -->
-        <div class="pt-6 mt-6 border-t border-neutral-200 dark:border-neutral-800/80 flex flex-wrap items-center gap-3">
+        <div class="pt-6 sm:pt-8 mt-8 sm:mt-10 border-t border-neutral-200 dark:border-neutral-800/80 flex flex-wrap items-center gap-3.5">
           <a
-            href="/resume/"
+            href="{{ home.hero.primaryCta.url or '/resume/' }}"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:hover:bg-white dark:text-neutral-900 font-mono text-xs font-semibold tracking-tight transition-all shadow-sm group"
           >
-            <span>View Resume & Credentials</span>
+            <span>{{ home.hero.primaryCta.text or 'View Resume & Credentials' }}</span>
             <span
               class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex items-center"
             >{{ icons.icon("arrow-up-right", "w-3.5 h-3.5") }}</span>
           </a>
 
           <a
-            href="/projects/"
+            href="{{ home.hero.secondaryCta.url or '/projects/' }}"
             class="inline-flex items-center gap-2 px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/60 font-mono text-xs font-medium tracking-tight transition-all group"
           >
-            <span>Explore Projects ({{ projects.length }})</span>
+            <span>{{ home.hero.secondaryCta.text or 'Explore Projects' }} ({{ projects.length }})</span>
             <span
               class="group-hover:translate-x-1 transition-transform flex items-center"
             >{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
@@ -89,12 +86,12 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       <div class="md:col-span-5 relative bg-neutral-950 overflow-hidden flex items-stretch border-t md:border-t-0 min-h-85 sm:min-h-100 md:min-h-full">
         <div class="relative w-full h-full flex-1 overflow-hidden group">
           <img
-            src="/assets/images/me.jpg"
-            alt="Soumil Seal"
-            class="w-full h-full object-cover object-top filter brightness-[0.98] contrast-[1.02]"
+            src="{{ home.hero.image or '/assets/images/me.jpg' }}"
+            alt="{{ home.hero.name or 'Soumil Seal' }}"
+            class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]"
             loading="eager"
             width="800"
-            height="1000"
+            height="800"
           />
           <div class="absolute inset-0 bg-linear-to-t from-neutral-950/70 via-transparent to-transparent pointer-events-none md:hidden">
           </div>
@@ -111,12 +108,12 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <!-- Section Header Bar -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-        languages-and-tooling/
+        {{ home.marquee.title or "languages-and-tooling/" }}
       </h2>
       <span
         class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
       >
-        active-stack // infinite scroll
+        {{ home.marquee.subtitle or "active-stack // infinite scroll" }}
       </span>
     </div>
 
@@ -127,94 +124,68 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     >
       <div
         id="languages-ticker-track"
+        data-speed="{{ home.marquee.speed or 32 }}"
         class="flex items-stretch whitespace-nowrap w-max will-change-transform"
       >
+        {% set marqueeItems = home.marquee.items %}
+        {% if not marqueeItems or marqueeItems.length == 0 %}
+          {% set marqueeItems = [
+            { "name": "Python", "category": "01/", "url": "https://www.python.org" },
+            { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org" },
+            { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+            { "name": "Go", "category": "04/", "url": "https://go.dev" },
+            { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org" },
+            { "name": "C++", "category": "06/", "url": "https://isocpp.org" },
+            { "name": "C", "category": "07/", "url": "" },
+            { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/" },
+            { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org" },
+            { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/" },
+            { "name": "Docker", "category": "11/", "url": "https://www.docker.com" },
+            { "name": "Linux", "category": "12/", "url": "https://www.kernel.org" },
+            { "name": "Node.js", "category": "13/", "url": "https://nodejs.org" },
+            { "name": "Redis", "category": "14/", "url": "https://redis.io" }
+          ] %}
+        {% endif %}
+
         <!-- Group A -->
         <div class="languages-ticker-group flex items-stretch shrink-0">
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >01/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Python</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >02/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >TypeScript</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >03/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >JavaScript</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >04/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Go</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >05/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Rust</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >06/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >C++</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >07/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >C</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >08/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Java</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >09/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >PostgreSQL</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >10/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Bash / Shell</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >11/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Docker</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >12/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Linux</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >13/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Node.js</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >14/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Redis</span>
-          </div>
+          {% for item in marqueeItems %}
+            {% set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/") %}
+            {% if item.url %}
+              <a
+                href="{{ item.url }}"
+                {% if item.url.startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+                class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
+              >
+                {% if item.image or item.icon %}
+                  <img
+                    src="{{ item.image or item.icon }}"
+                    alt="{{ item.name }}"
+                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                    loading="lazy"
+                  />
+                {% endif %}
+                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
+                <span class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">{{ item.name }}</span>
+                {% if item.url.startsWith('http') %}
+                  {{ icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity") }}
+                {% endif %}
+              </a>
+            {% else %}
+              <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors shrink-0">
+                {% if item.image or item.icon %}
+                  <img
+                    src="{{ item.image or item.icon }}"
+                    alt="{{ item.name }}"
+                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                    loading="lazy"
+                  />
+                {% endif %}
+                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
+                <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.name }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
 
         <!-- Group B (Identical Clone for Seamless Infinite Loop) -->
@@ -222,90 +193,44 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
           class="languages-ticker-group flex items-stretch shrink-0"
           aria-hidden="true"
         >
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >01/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Python</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >02/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >TypeScript</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >03/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >JavaScript</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >04/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Go</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >05/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Rust</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >06/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >C++</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >07/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >C</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >08/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Java</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >09/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >PostgreSQL</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >10/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Bash / Shell</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >11/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Docker</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >12/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Linux</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >13/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Node.js</span>
-          </div>
-          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
-            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-            >14/</span>
-            <span class="font-semibold text-neutral-900 dark:text-neutral-100"
-            >Redis</span>
-          </div>
+          {% for item in marqueeItems %}
+            {% set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/") %}
+            {% if item.url %}
+              <a
+                href="{{ item.url }}"
+                {% if item.url.startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+                tabindex="-1"
+                class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
+              >
+                {% if item.image or item.icon %}
+                  <img
+                    src="{{ item.image or item.icon }}"
+                    alt=""
+                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                    loading="lazy"
+                  />
+                {% endif %}
+                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
+                <span class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">{{ item.name }}</span>
+                {% if item.url.startsWith('http') %}
+                  {{ icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity") }}
+                {% endif %}
+              </a>
+            {% else %}
+              <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors shrink-0">
+                {% if item.image or item.icon %}
+                  <img
+                    src="{{ item.image or item.icon }}"
+                    alt=""
+                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                    loading="lazy"
+                  />
+                {% endif %}
+                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
+                <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.name }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -317,7 +242,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          featured-projects/
+          {{ home.sections.featuredProjectsTitle or "featured-projects/" }}
         </h2>
       </div>
       <a
@@ -345,7 +270,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          writing-and-notes/
+          {{ home.sections.writingTitle or "writing-and-notes/" }}
         </h2>
       </div>
       <a
@@ -371,23 +296,19 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          get-in-touch/
+          {{ home.sections.contactTitle or "get-in-touch/" }}
         </h2>
       </div>
       <span
         class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
       >
-        dispatch direct messages
+        {{ home.sections.contactSubtitle or "dispatch direct messages" }}
       </span>
     </div>
 
     <div class="p-6 sm:p-8 space-y-4">
       <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans max-w-xl">
-        I'm currently looking for software engineering internships and
-        open-source collaborations. Feel free to send an email at <a
-          href="mailto:{{ site.email }}"
-          class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4 font-medium"
-        >{{ site.email }}</a> or reach out via any channel below.
+        {{ home.sections.contactText or "I'm currently looking for software engineering internships and open-source collaborations. Feel free to send an email or reach out via any channel below." }}
       </p>
     </div>
 

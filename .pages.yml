@@ -1,4 +1,5 @@
 # Pages CMS configuration (https://pagescms.org)
+# Comprehensive Content Management Schema for Soumil Seal Portfolio
 
 media:
   input: "src/assets/images"
@@ -6,7 +7,7 @@ media:
 
 content:
   # ---------------------------------------------------------------------------
-  # COLLECTION: Blog Posts (Markdown files with frontmatter)
+  # COLLECTION: Blog Posts
   # ---------------------------------------------------------------------------
   - name: posts
     label: "Blog Posts"
@@ -56,11 +57,11 @@ content:
         default: "layouts/post.njk"
         hidden: true
       - name: body
-        label: "Article Body Content"
+        label: "Article Body Content (Markdown)"
         type: rich-text
 
   # ---------------------------------------------------------------------------
-  # FILE: Featured Projects (JSON array data file)
+  # FILE: Featured Projects (JSON Array)
   # ---------------------------------------------------------------------------
   - name: projects
     label: "Projects Showcase"
@@ -94,6 +95,9 @@ content:
         label: "Showcase on Homepage"
         type: boolean
         default: false
+      - name: image
+        label: "Project Card Preview Image"
+        type: image
       - name: tags
         label: "Technology Badges"
         type: string
@@ -110,7 +114,516 @@ content:
         list: true
 
   # ---------------------------------------------------------------------------
-  # FILE: Global Site Settings & Navigation (JSON object data file)
+  # FILE: Home Page Content & Bento Cells
+  # ---------------------------------------------------------------------------
+  - name: home
+    label: "Home Page"
+    type: file
+    path: "src/_data/home.json"
+    format: json
+    fields:
+      - name: status
+        label: "Status & Availability Micro-Bar"
+        type: object
+        fields:
+          - name: portfolioTag
+            label: "Left Blueprint Tag"
+            type: string
+            default: "soumilseal // portfolio '26"
+          - name: availabilityText
+            label: "Availability Pill Text"
+            type: string
+            default: "open for opportunities"
+          - name: available
+            label: "Show Open Status Indicator"
+            type: boolean
+            default: true
+
+      - name: hero
+        label: "Hero Section Bento Cell"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Eyebrow Subtitle"
+            type: string
+            default: "developer & systems builder"
+          - name: name
+            label: "Full Name (Main Heading)"
+            type: string
+            default: "SOUMIL SEAL"
+          - name: role
+            label: "Academic & Professional Role"
+            type: string
+            default: "BCA Undergraduate • Developer • Systems Builder"
+          - name: bio
+            label: "Editorial Narrative Bio"
+            type: text
+          - name: image
+            label: "Hero Portrait Photo"
+            type: image
+            default: "/assets/images/me.jpg"
+          - name: primaryCta
+            label: "Primary Action Button"
+            type: object
+            fields:
+              - name: text
+                label: "Button Text"
+                type: string
+                default: "view projects"
+              - name: url
+                label: "Target Link"
+                type: string
+                default: "/projects/"
+          - name: secondaryCta
+            label: "Secondary Action Button"
+            type: object
+            fields:
+              - name: text
+                label: "Button Text"
+                type: string
+                default: "resume"
+              - name: url
+                label: "Target Link"
+                type: string
+                default: "/resume/"
+          - name: terminalBadge
+            label: "Terminal Status Badge"
+            type: string
+            default: "terminal // ready"
+          - name: location
+            label: "Location Label"
+            type: string
+            default: "India // remote-friendly"
+
+      - name: stats
+        label: "Live Architecture Metrics Bento Grid"
+        type: object
+        list: true
+        fields:
+          - name: value
+            label: "Metric Value (e.g. 4+, 100%, 24/7)"
+            type: string
+            required: true
+          - name: label
+            label: "Metric Label"
+            type: string
+            required: true
+          - name: detail
+            label: "Descriptive Subtitle"
+            type: string
+
+      - name: architecture
+        label: "Systems Architecture Principles Bento Cell"
+        type: object
+        fields:
+          - name: title
+            label: "Header Bar Title"
+            type: string
+            default: "systems-architecture // core principles"
+          - name: subtitle
+            label: "Header Bar Subtitle"
+            type: string
+            default: "engineering-standard"
+          - name: principles
+            label: "Guiding Principles"
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: "Principle Title"
+                type: string
+              - name: description
+                label: "Principle Summary"
+                type: text
+
+      - name: marquee
+        label: "Languages & Tooling Infinite Scroll Marquee"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "languages-and-tooling/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "active-stack // infinite scroll"
+          - name: speed
+            label: "Scroll Animation Duration in Seconds (Lower is faster, default: 32)"
+            type: number
+            default: 32
+          - name: items
+            label: "Infinite Scroll Items (Text, Badges, Links & Images)"
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: "Technology / Tool Name"
+                type: string
+                required: true
+              - name: category
+                label: "Category / Index Badge (e.g. 01/ or Systems)"
+                type: string
+              - name: url
+                label: "Target Link URL (External https://... or Internal /projects/..., leave blank for unlinked)"
+                type: string
+              - name: image
+                label: "Icon / Logo Image (Uploaded Image or /assets/... path)"
+                type: image
+
+      - name: sections
+        label: "Section Header Titles & Descriptions"
+        type: object
+        fields:
+          - name: featuredProjectsTitle
+            label: "Featured Projects Title"
+            type: string
+            default: "featured-projects/"
+          - name: writingTitle
+            label: "Writing & Notes Title"
+            type: string
+            default: "writing-and-notes/"
+          - name: contactTitle
+            label: "Contact Section Title"
+            type: string
+            default: "get-in-touch/"
+          - name: contactSubtitle
+            label: "Contact Section Subtitle"
+            type: string
+            default: "dispatch direct messages"
+          - name: contactText
+            label: "Contact Invitation Text"
+            type: text
+
+  # ---------------------------------------------------------------------------
+  # FILE: About Page
+  # ---------------------------------------------------------------------------
+  - name: about
+    label: "About Page"
+    type: file
+    path: "src/_data/about.json"
+    format: json
+    fields:
+      - name: header
+        label: "Page Header"
+        type: object
+        fields:
+          - name: title
+            label: "Page Title"
+            type: string
+            default: "About"
+          - name: section
+            label: "Section Eyebrow"
+            type: string
+            default: "section // about/"
+          - name: description
+            label: "Header Description"
+            type: text
+
+      - name: avatar
+        label: "Profile Portrait Image"
+        type: image
+
+      - name: narrative
+        label: "Narrative Profile & Backstory"
+        type: object
+        fields:
+          - name: heading
+            label: "Story Subtitle"
+            type: string
+            default: "developer-profile // narrative"
+          - name: paragraphs
+            label: "Story Paragraphs"
+            type: text
+            list: true
+
+      - name: skillsSection
+        label: "Technical Skills & Technologies"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "skills-and-technologies/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "core stack"
+          - name: categories
+            label: "Skill Categories"
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: "Category Name"
+                type: string
+                required: true
+              - name: description
+                label: "List of Technologies"
+                type: text
+                required: true
+
+      - name: education
+        label: "Academic Background"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "academic-background/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "university studies"
+          - name: degree
+            label: "Degree Name"
+            type: string
+            default: "Bachelor of Computer Applications (BCA)"
+          - name: status
+            label: "Graduation Status"
+            type: string
+            default: "Present"
+          - name: major
+            label: "Major / Field of Study"
+            type: string
+            default: "Major in Computer Science & Applications"
+          - name: coursework
+            label: "Core Coursework & Studies"
+            type: text
+
+      - name: connect
+        label: "Network & Channels Section"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "network-and-channels/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "connect"
+
+  # ---------------------------------------------------------------------------
+  # FILE: Resume Page
+  # ---------------------------------------------------------------------------
+  - name: resume
+    label: "Resume Page"
+    type: file
+    path: "src/_data/resume.json"
+    format: json
+    fields:
+      - name: topBar
+        label: "Top Action Bar"
+        type: object
+        fields:
+          - name: indexLabel
+            label: "Index Label"
+            type: string
+            default: "cv-index // 2026"
+          - name: location
+            label: "Location / Work Availability"
+            type: string
+            default: "India • Remote"
+          - name: printButtonText
+            label: "Print Button Text"
+            type: string
+            default: "Print / Save PDF"
+          - name: emailButtonText
+            label: "Email Action Text"
+            type: string
+            default: "Email Direct"
+
+      - name: summary
+        label: "Executive Focus Profile Summary"
+        type: object
+        fields:
+          - name: label
+            label: "Eyebrow Label"
+            type: string
+            default: "summary // focus-profile"
+          - name: focus
+            label: "Focus Areas"
+            type: string
+            default: "systems-engineering // cloud-infrastructure"
+          - name: content
+            label: "Professional Summary"
+            type: text
+
+      - name: proficienciesSection
+        label: "Technical Proficiencies Bento"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "skills-and-proficiencies/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "technical stack"
+          - name: categories
+            label: "Proficiency Categories"
+            type: object
+            list: true
+            fields:
+              - name: title
+                label: "Category Title"
+                type: string
+                required: true
+              - name: badge
+                label: "Badge Label (e.g. core, devops, systems)"
+                type: string
+              - name: skills
+                label: "Technologies & Competencies"
+                type: text
+                required: true
+
+      - name: educationSection
+        label: "Academic Credentials"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "academic-credentials/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "education"
+          - name: degree
+            label: "Degree"
+            type: string
+            default: "Bachelor of Computer Applications (BCA)"
+          - name: status
+            label: "Degree Status"
+            type: string
+            default: "Undergraduate • Present"
+          - name: institution
+            label: "Institution / Major"
+            type: string
+            default: "Major in Computer Science & Applications • India"
+          - name: coursework
+            label: "Coursework Curriculum"
+            type: text
+
+      - name: writingSection
+        label: "Technical Publications Section"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "technical-writing-and-notes/"
+          - name: linkText
+            label: "Link Text"
+            type: string
+            default: "view blog"
+
+      - name: channelsSection
+        label: "Verification Channels Section"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "channels-and-verification/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "direct-links"
+
+  # ---------------------------------------------------------------------------
+  # FILE: Contact Page
+  # ---------------------------------------------------------------------------
+  - name: contact
+    label: "Contact Page"
+    type: file
+    path: "src/_data/contact.json"
+    format: json
+    fields:
+      - name: header
+        label: "Page Header"
+        type: object
+        fields:
+          - name: title
+            label: "Page Title"
+            type: string
+            default: "Contact"
+          - name: description
+            label: "Header Description"
+            type: text
+
+      - name: channels
+        label: "Direct Communication Channels"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "direct-channels/"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "primary communication"
+          - name: prompt
+            label: "Invitation Prompt"
+            type: string
+            default: "The easiest way to reach me is directly by email:"
+          - name: email
+            label: "Display Email"
+            type: string
+          - name: copyButtonText
+            label: "Copy Button Text"
+            type: string
+            default: "Copy"
+
+      - name: form
+        label: "Message Dispatch Form"
+        type: object
+        fields:
+          - name: title
+            label: "Form Section Title"
+            type: string
+            default: "dispatch-message/"
+          - name: subtitle
+            label: "Form Subtitle"
+            type: string
+            default: "interactive form"
+          - name: action
+            label: "Form Endpoint URL (e.g. Formspree/Formspark/custom webhook)"
+            type: string
+          - name: nameLabel
+            label: "Name Field Label"
+            type: string
+            default: "name/"
+          - name: namePlaceholder
+            label: "Name Field Placeholder"
+            type: string
+            default: "Jane Doe"
+          - name: emailLabel
+            label: "Email Field Label"
+            type: string
+            default: "email-address/"
+          - name: emailPlaceholder
+            label: "Email Field Placeholder"
+            type: string
+            default: "jane@example.com"
+          - name: messageLabel
+            label: "Message Field Label"
+            type: string
+            default: "message-payload/"
+          - name: messagePlaceholder
+            label: "Message Field Placeholder"
+            type: string
+            default: "Your message..."
+          - name: submitButtonText
+            label: "Submit Button Text"
+            type: string
+            default: "Send message"
+
+  # ---------------------------------------------------------------------------
+  # FILE: Global Site Settings & Navigation
   # ---------------------------------------------------------------------------
   - name: site
     label: "Site Settings & Navigation"
@@ -119,7 +632,7 @@ content:
     format: json
     fields:
       - name: title
-        label: "Site Title"
+        label: "Site Title (Browser Tab & SEO)"
         type: string
         required: true
       - name: name
@@ -139,7 +652,7 @@ content:
         label: "Canonical Website URL"
         type: string
       - name: email
-        label: "Contact Email"
+        label: "Primary Contact Email"
         type: string
       - name: github
         label: "GitHub Profile URL"
@@ -150,8 +663,47 @@ content:
       - name: twitter
         label: "Twitter / X Profile URL"
         type: string
+
+      - name: ticker
+        label: "Top System Status Ticker Banner"
+        type: object
+        fields:
+          - name: enabled
+            label: "Enable Top Banner"
+            type: boolean
+            default: true
+          - name: text
+            label: "Status Indicator Text"
+            type: string
+            default: "soumilseal2026-systems-in/"
+          - name: runtime
+            label: "Runtime Subtitle"
+            type: string
+            default: "runtime: node • bca student • india"
+
+      - name: footer
+        label: "Footer Branding & Metadata"
+        type: object
+        fields:
+          - name: summary
+            label: "Footer Role Summary"
+            type: string
+            default: "Developer & BCA Student • India"
+          - name: description
+            label: "Technical Description"
+            type: string
+            default: "systems architecture, cloud pipelines & modern web engineering"
+          - name: copyright
+            label: "Copyright Line"
+            type: string
+            default: "Soumil Seal. All rights reserved."
+          - name: techNote
+            label: "Technology Credits Note"
+            type: string
+            default: "Eleventy • Tailwind CSS • Pagefind"
+
       - name: nav
-        label: "Navigation Links"
+        label: "Primary Header Navigation Links"
         type: object
         list: true
         fields:

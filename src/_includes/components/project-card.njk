@@ -1,15 +1,35 @@
 {% import "components/icons.njk" as icons %}
 <article
-  class="project-item group relative bg-white dark:bg-neutral-950 hover:bg-neutral-50/90 dark:hover:bg-neutral-900/50 transition-colors cursor-pointer flex flex-col justify-between h-full before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200"
+  class="project-item group relative overflow-hidden bg-white dark:bg-neutral-950 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200 before:z-30"
   data-category="{{ project.category }}"
 >
-  <div class="p-4 sm:p-5 flex flex-col justify-between h-full">
+  {% if project.image %}
+  <!-- Frosted Glass Background Image Layer (revealed only on hover) -->
+  <div
+    class="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out overflow-hidden"
+    aria-hidden="true"
+  >
+    <!-- Background Project Image -->
+    <img
+      src="{{ project.image }}"
+      alt=""
+      class="w-full h-full object-cover object-top filter brightness-[0.95] dark:brightness-[0.72] contrast-[1.05] scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+      loading="lazy"
+    />
+    <!-- Frosted Glass Gradient Overlay: High transparency at top -> Low transparency at bottom -->
+    <div
+      class="absolute inset-0 backdrop-blur-sm bg-linear-to-b from-white/20 via-white/70 to-white/95 dark:from-neutral-950/25 dark:via-neutral-950/75 dark:to-neutral-950/98 transition-all duration-500"
+    ></div>
+  </div>
+  {% endif %}
+
+  <div class="p-4 sm:p-5 flex flex-col justify-between h-full relative z-10">
     <div>
       <div class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-2">
         <span class="uppercase tracking-wider">{{ project.category }}</span>
       </div>
 
-      <h3 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight mb-2">
+      <h3 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight mb-2 line-clamp-2 min-h-[2.5rem] sm:min-h-[2.75rem] flex items-center">
         <a
           href="{{ project.demo or project.github }}"
           target="_blank"
@@ -20,14 +40,14 @@
         </a>
       </h3>
 
-      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans line-clamp-3 mb-4">
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 leading-relaxed font-sans line-clamp-3 min-h-[3.75rem] mb-4 transition-colors">
         {{ project.description }}
       </p>
 
       {% if project.tags %}
         <div class="flex flex-wrap gap-1.5 mb-4 text-[10px] font-mono text-neutral-400 dark:text-neutral-500">
           {% for tag in project.tags | head(3) %}
-            <span class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">#{{ tag }}</span>
+            <span class="px-1.5 py-0.5 bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-xs border border-neutral-200/80 dark:border-neutral-800/80 transition-colors">#{{ tag }}</span>
           {% endfor %}
         </div>
       {% endif %}

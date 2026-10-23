@@ -189,10 +189,11 @@
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) return;
 
+      const duration = parseFloat(tickerTrack.dataset.speed) || 32;
       const loopTween = window.gsap.to(tickerTrack, {
         xPercent: -50,
         repeat: -1,
-        duration: 32,
+        duration: duration,
         ease: 'none',
       });
 

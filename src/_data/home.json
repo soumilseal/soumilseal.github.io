@@ -8,14 +8,15 @@
     "eyebrow": "developer & systems builder",
     "name": "SOUMIL SEAL",
     "role": "BCA Undergraduate • Developer • Systems Builder",
-    "bio": "Building robust backend services, telemetry daemons, and modern web architectures with Go, TypeScript, Node.js, and Python. Undergraduate BCA student focused on scalable cloud infrastructure and clean systems engineering.",
+    "bio": "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools.",
+    "image": "/assets/images/me.jpg",
     "primaryCta": {
-      "text": "view projects",
-      "url": "/projects/"
+      "text": "View Resume & Credentials",
+      "url": "/resume/"
     },
     "secondaryCta": {
-      "text": "resume",
-      "url": "/resume/"
+      "text": "Explore Projects",
+      "url": "/projects/"
     },
     "terminalBadge": "terminal // ready",
     "location": "India // remote-friendly"
@@ -63,20 +64,22 @@
   "marquee": {
     "title": "languages-and-tooling/",
     "subtitle": "active-stack // infinite scroll",
+    "speed": 32,
     "items": [
-      { "name": "Go (Golang)", "category": "systems" },
-      { "name": "Python 3", "category": "backend/automation" },
-      { "name": "TypeScript", "category": "fullstack" },
-      { "name": "Node.js", "category": "runtime" },
-      { "name": "Docker", "category": "containers" },
-      { "name": "Linux / Bash", "category": "operating-systems" },
-      { "name": "PostgreSQL", "category": "relational-db" },
-      { "name": "SQLite", "category": "embedded-db" },
-      { "name": "Redis", "category": "cache/queue" },
-      { "name": "AWS Cloud", "category": "infrastructure" },
-      { "name": "Tailwind CSS", "category": "design-system" },
-      { "name": "Eleventy", "category": "ssg" },
-      { "name": "Git / GitHub", "category": "vcs/ci-cd" }
+      { "name": "Python", "category": "01/", "url": "https://www.python.org", "image": "/assets/images/icons/python.svg" },
+      { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org", "image": "/assets/images/icons/typescript.svg" },
+      { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "image": "" },
+      { "name": "Go", "category": "04/", "url": "https://go.dev", "image": "/assets/images/icons/go.svg" },
+      { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org", "image": "" },
+      { "name": "C++", "category": "06/", "url": "https://isocpp.org", "image": "" },
+      { "name": "C", "category": "07/", "url": "", "image": "" },
+      { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/", "image": "" },
+      { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org", "image": "" },
+      { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/", "image": "" },
+      { "name": "Docker", "category": "11/", "url": "https://www.docker.com", "image": "/assets/images/icons/docker.svg" },
+      { "name": "Linux", "category": "12/", "url": "https://www.kernel.org", "image": "" },
+      { "name": "Node.js", "category": "13/", "url": "https://nodejs.org", "image": "" },
+      { "name": "Redis", "category": "14/", "url": "https://redis.io", "image": "" }
     ]
   },
   "sections": {

@@ -7,30 +7,30 @@ permalink: /contact/
 ---
 {% import "components/icons.njk" as icons %}
 
-<div>
+<div class="grow flex flex-col justify-between">
   <!-- Direct Channels Section (Contiguous Grid Cell) -->
   <section class="border-b border-neutral-300 dark:border-neutral-800">
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          direct-channels/
+          {{ contact.channels.title or "direct-channels/" }}
         </h2>
       </div>
       <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
-      >primary communication</span>
+      >{{ contact.channels.subtitle or "primary communication" }}</span>
     </div>
 
     <div class="p-6 sm:p-8 space-y-4 bg-white dark:bg-neutral-950">
       <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
-        The easiest way to reach me is directly by email:
+        {{ contact.channels.prompt or "The easiest way to reach me is directly by email:" }}
       </p>
       <div class="flex items-center gap-3">
         <a
-          href="mailto:{{ site.email }}"
+          href="mailto:{{ contact.channels.email or site.email }}"
           class="text-base sm:text-lg font-mono font-medium text-neutral-900 dark:text-neutral-100 underline underline-offset-4"
           id="contact-email"
         >
-          {{ site.email }}
+          {{ contact.channels.email or site.email }}
         </a>
         <button
           type="button"
@@ -38,7 +38,7 @@ permalink: /contact/
           class="px-2.5 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-neutral-300 dark:border-neutral-700 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors"
           aria-label="Copy email address"
         >
-          <span id="copy-text">Copy</span>
+          <span id="copy-text">{{ contact.channels.copyButtonText or "Copy" }}</span>
         </button>
       </div>
     </div>
@@ -80,28 +80,28 @@ permalink: /contact/
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          dispatch-message/
+          {{ contact.form.title or "dispatch-message/" }}
         </h2>
       </div>
       <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
-      >interactive form</span>
+      >{{ contact.form.subtitle or "interactive form" }}</span>
     </div>
 
     <div class="p-6 sm:p-8 bg-white dark:bg-neutral-950">
-      <form id="contact-form" class="space-y-5 max-w-xl">
+      <form id="contact-form" class="space-y-5 max-w-xl" {% if contact.form and contact.form.action %}action="{{ contact.form.action }}" method="POST"{% endif %}>
         <div class="space-y-1.5">
           <label
             for="name"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            name/
+            {{ contact.form.nameLabel or "name/" }}
           </label>
           <input
             type="text"
             id="name"
             name="name"
             required
-            placeholder="Jane Doe"
+            placeholder="{{ contact.form.namePlaceholder or 'Jane Doe' }}"
             class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors"
           >
         </div>
@@ -111,14 +111,14 @@ permalink: /contact/
             for="email"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            email/
+            {{ contact.form.emailLabel or "email-address/" }}
           </label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            placeholder="jane@example.com"
+            placeholder="{{ contact.form.emailPlaceholder or 'jane@example.com' }}"
             class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors"
           >
         </div>
@@ -128,14 +128,14 @@ permalink: /contact/
             for="message"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            message/
+            {{ contact.form.messageLabel or "message-payload/" }}
           </label>
           <textarea
             id="message"
             name="message"
             rows="4"
             required
-            placeholder="Your message..."
+            placeholder="{{ contact.form.messagePlaceholder or 'Your message...' }}"
             class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors resize-y"
           ></textarea>
         </div>
@@ -146,7 +146,7 @@ permalink: /contact/
           type="submit"
           class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-2 group"
         >
-          <span>Send message</span>
+          <span>{{ contact.form.submitButtonText or "Send message" }}</span>
           <span class="group-hover:translate-x-1 transition-transform flex items-center">{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
         </button>
       </form>
