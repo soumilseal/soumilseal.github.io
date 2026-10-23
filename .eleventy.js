@@ -140,5 +140,3 @@ module.exports = function (eleventyConfig) {
     },
   };
 };
-// Dev server trigger reload
-

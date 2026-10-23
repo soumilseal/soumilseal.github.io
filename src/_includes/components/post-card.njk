@@ -1,46 +1,31 @@
 {% import "components/icons.njk" as icons %}
 
-<article class="group relative flex flex-col p-6 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs hover:shadow-md hover:border-neutral-300 dark:bg-neutral-900/60 dark:border-neutral-800 dark:hover:border-neutral-700 transition-all duration-200">
-  <div class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400 mb-2.5 font-mono">
-    <span class="flex items-center gap-1.5">
-      {{ icons.icon("calendar", "w-3.5 h-3.5 text-neutral-400") }}
-      <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-    </span>
-    <span>•</span>
-    <span class="flex items-center gap-1">
-      {{ icons.icon("clock", "w-3.5 h-3.5 text-neutral-400") }}
-      <span>{{ post.templateContent | readingTime }}</span>
-    </span>
+<article class="group relative flex flex-col py-6 border-b border-neutral-200/60 dark:border-neutral-800/60 last:border-b-0 transition-colors">
+  <div class="flex items-center gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono mb-2">
+    <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    <span>&bull;</span>
+    <span>{{ post.templateContent | readingTime }}</span>
     {% if post.data.featured %}
-      <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-accent-50 text-accent-700 border border-accent-200 dark:bg-accent-950/60 dark:text-accent-300 dark:border-accent-800">
-        Featured
-      </span>
+      <span class="text-accent-600 dark:text-accent-400 font-medium ml-auto">Featured</span>
     {% endif %}
   </div>
 
-  <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors mb-2 tracking-tight">
+  <h3 class="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors tracking-tight mb-2">
     <a href="{{ post.url }}" class="focus:outline-none">
       <span class="absolute inset-0" aria-hidden="true"></span>
       {{ post.data.title }}
     </a>
   </h3>
 
-  <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed mb-4 flex-grow">
+  <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
     {{ post.data.description }}
   </p>
 
-  <div class="flex items-center justify-between pt-3 border-t border-neutral-100 dark:border-neutral-800/80 mt-auto">
-    <div class="flex flex-wrap gap-1.5 z-10">
-      {% for tag in post.data.tags | filterTagList %}
-        <a href="/tags/{{ tag | slugify }}/" class="inline-flex items-center text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-colors">
-          #{{ tag }}
-        </a>
-      {% endfor %}
-    </div>
-
-    <span class="inline-flex items-center gap-1 text-xs font-medium text-accent-600 dark:text-accent-400 group-hover:translate-x-1 transition-transform font-mono">
-      <span>Read</span>
-      {{ icons.icon("arrow-right", "w-3 h-3") }}
-    </span>
+  <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500 z-10">
+    {% for tag in post.data.tags | filterTagList %}
+      <a href="/tags/{{ tag | slugify }}/" class="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">
+        #{{ tag }}
+      </a>
+    {% endfor %}
   </div>
 </article>

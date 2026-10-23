@@ -2,8 +2,21 @@
 layout: layouts/base.njk
 ---
 
-{% include "components/profile-header.njk" %}
+<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24">
+  {% if title %}
+    <header class="mb-14 sm:mb-16 space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        {{ title }}
+      </h1>
+      {% if description %}
+        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl">
+          {{ description }}
+        </p>
+      {% endif %}
+    </header>
+  {% endif %}
 
-<div class="page-content">
-  {{ content | safe }}
+  <div class="page-content">
+    {{ content | safe }}
+  </div>
 </div>

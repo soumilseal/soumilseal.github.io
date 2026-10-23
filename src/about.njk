@@ -1,141 +1,95 @@
 ---
-layout: layouts/base.njk
-title: Information — Soumil Seal
+layout: layouts/page.njk
+title: About
 description: Developer, BCA student, and systems enthusiast building software across web architecture, cloud pipelines, and distributed backends.
 permalink: /about/
 ---
-{% import "components/icons.njk" as icons %}
 
-{% include "components/profile-header.njk" %}
+<div class="space-y-16 sm:space-y-20">
 
-<div class="divide-y divide-neutral-200/80 dark:divide-neutral-800/80" data-pagefind-body>
-
-  <!-- Bio Section -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 first:pt-0">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-        Bio
-      </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Background
-      </p>
-    </div>
-
-    <div class="sm:col-span-9 sm:pl-2 space-y-3.5 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      <p>
-        I'm <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Soumil Seal</strong>, an undergraduate software developer based in India studying for a <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Bachelor of Computer Applications (BCA)</strong>.
-      </p>
-      <p>
-        My interests center on software engineering, cloud architecture, and understanding the runtime internals of modern computing systems. Rather than viewing frameworks as black boxes, I enjoy exploring how memory allocators operate, how event loops schedule tasks, and how background jobs recover gracefully from transient disruptions.
-      </p>
-      <p>
-        I spend my time building open-source developer utilities, experimenting with container pipelines on AWS and Linux, and writing detailed engineering notes to document what I learn.
-      </p>
-    </div>
+  <!-- Narrative Section -->
+  <section class="space-y-6 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
+    <p>
+      I'm <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Soumil Seal</strong>, a software developer and Bachelor of Computer Applications (BCA) undergraduate student based in India.
+    </p>
+    <p>
+      My interest in software engineering began with curiosity about how large distributed web services remain fast and dependable under heavy concurrency. That curiosity led me from basic algorithmic scripts in C and Python to designing full-stack systems, containerized cloud pipelines, and developer tooling.
+    </p>
+    <p>
+      Today, my focus centers on <span class="text-neutral-900 dark:text-neutral-100 font-medium">software engineering, backend systems, and cloud infrastructure</span>. I enjoy dissecting runtime mechanics—whether that's understanding how the V8 engine manages microtask queues, how containers coordinate through Linux cgroups, or how relational database query planners optimize multi-table joins.
+    </p>
+    <p>
+      Outside of university coursework and software development, I document my experiments on my blog, contribute to open-source software, and participate in technical communities.
+    </p>
   </section>
 
-  <!-- Stack / Tooling Section in Bordered Grid Matrix -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-        Stack
+  <!-- Technical Skills Section -->
+  <section class="space-y-8 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+    <div class="space-y-1">
+      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        Skills & Technologies
       </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Tech &amp; tooling
+      <p class="text-xs font-mono text-neutral-400">
+        Tools and runtimes I work with regularly.
       </p>
     </div>
 
-    <div class="sm:col-span-9 sm:pl-2">
-      <div class="grid grid-cols-1 sm:grid-cols-2 border border-neutral-200/80 dark:border-neutral-800/80 divide-y divide-neutral-200/80 dark:divide-neutral-800/80 rounded-lg overflow-hidden bg-neutral-50/40 dark:bg-neutral-900/40 text-xs">
-        <div class="p-3.5 space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Languages</h3>
-          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.
-          </p>
-        </div>
+    <div class="space-y-6 text-sm text-neutral-600 dark:text-neutral-400">
+      <div class="space-y-1">
+        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Languages</h3>
+        <p class="leading-relaxed">Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.</p>
+      </div>
 
-        <div class="p-3.5 space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Cloud &amp; Infrastructure</h3>
-          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Docker, Linux (Ubuntu/Debian), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.
-          </p>
-        </div>
+      <div class="space-y-1">
+        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Cloud & Infrastructure</h3>
+        <p class="leading-relaxed">Docker, Linux (Ubuntu/Debian server administration), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.</p>
+      </div>
 
-        <div class="p-3.5 space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Backend &amp; Databases</h3>
-          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Node.js, Express, PostgreSQL, SQLite, Redis, REST APIs, idempotent message queues.
-          </p>
-        </div>
+      <div class="space-y-1">
+        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Backend & Data</h3>
+        <p class="leading-relaxed">Node.js, Express, Fastify, PostgreSQL, SQLite, Redis, REST APIs, message queues.</p>
+      </div>
 
-        <div class="p-3.5 space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Web &amp; Engineering Practices</h3>
-          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Tailwind CSS, Preline UI, Eleventy, Git/GitHub, CI/CD Actions, Web Accessibility.
-          </p>
-        </div>
+      <div class="space-y-1">
+        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Frontend & Tooling</h3>
+        <p class="leading-relaxed">Tailwind CSS, Eleventy, Preline UI, HTML5/CSS3, Git, GitHub Actions, Pagefind.</p>
       </div>
     </div>
   </section>
 
   <!-- Education Section -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+  <section class="space-y-6 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+    <div class="space-y-1">
+      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Education
       </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Academic path
+      <p class="text-xs font-mono text-neutral-400">
+        Academic background & foundational studies.
       </p>
     </div>
 
-    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      <div class="flex items-center justify-between">
+    <div class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+      <div class="flex items-baseline justify-between gap-4">
         <h3 class="font-semibold text-neutral-900 dark:text-neutral-100">
           Bachelor of Computer Applications (BCA)
         </h3>
-        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500">2024–2027</span>
+        <span class="text-xs font-mono text-neutral-400">Present</span>
       </div>
-      <p class="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-        Undergraduate Degree
-      </p>
-      <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1">
-        Formal academic study covering Data Structures &amp; Algorithms, Relational Database Management Systems, Operating Systems, Computer Networks, and Object-Oriented Software Engineering.
+      <p class="text-xs font-mono text-neutral-500">Major in Computer Science & Applications</p>
+      <p class="leading-relaxed pt-1">
+        Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks.
       </p>
     </div>
   </section>
 
-  <!-- Profiles / Elsewhere Section -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 last:pb-2">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-        Profiles
-      </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Online links
-      </p>
-    </div>
-
-    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-xs font-mono">
-      <div class="flex flex-wrap gap-4">
-        <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-          {{ icons.icon("github", "w-3.5 h-3.5 text-neutral-400") }}
-          <span>GitHub</span>
-        </a>
-        <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-          {{ icons.icon("linkedin", "w-3.5 h-3.5 text-neutral-400") }}
-          <span>LinkedIn</span>
-        </a>
-        <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-          {{ icons.icon("twitter", "w-3.5 h-3.5 text-neutral-400") }}
-          <span>Twitter/X</span>
-        </a>
-        <a href="mailto:{{ site.email }}" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-          {{ icons.icon("mail", "w-3.5 h-3.5 text-neutral-400") }}
-          <span>{{ site.email }}</span>
-        </a>
-      </div>
-    </div>
+  <!-- Connect Section -->
+  <section class="space-y-3 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+    <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+      Connect
+    </h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+      You can find me on <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">GitHub</a>, <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">LinkedIn</a>, and <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">Twitter/X</a>, or reach me directly by <a href="mailto:{{ site.email }}" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">email</a>.
+    </p>
   </section>
 
 </div>

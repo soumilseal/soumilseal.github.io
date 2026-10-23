@@ -2,12 +2,8 @@
 (function () {
   let isPagefindLoaded = false;
 
-  function initPagefind(callback) {
-    if (isPagefindLoaded) {
-      if (typeof callback === 'function') callback();
-      return;
-    }
-
+  function initPagefind() {
+    if (isPagefindLoaded) return;
     const searchContainer = document.getElementById('pagefind-search');
     if (!searchContainer) return;
 
@@ -22,7 +18,7 @@
     script.src = '/pagefind/pagefind-ui.js';
     script.onload = () => {
       if (window.PagefindUI) {
-        window.pagefindInstance = new window.PagefindUI({
+        new window.PagefindUI({
           element: '#pagefind-search',
           showSubResults: true,
           showImages: false,
@@ -30,40 +26,21 @@
           autofocus: true,
         });
         isPagefindLoaded = true;
-        if (typeof callback === 'function') callback();
       }
     };
     document.body.appendChild(script);
   }
 
-  // Global helper to open search modal with optional search query
-  window.openSearchModalWithQuery = function (query) {
-    const modalTrigger = document.querySelector('[data-hs-overlay="#search-modal"]');
-    if (modalTrigger) {
-      modalTrigger.click();
-    }
-    initPagefind(() => {
-      if (query) {
-        setTimeout(() => {
-          const input = document.querySelector('#pagefind-search input');
-          if (input) {
-            input.value = query;
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-            input.focus();
-          }
-        }, 200);
-      }
-    });
-  };
-
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('search-modal');
     if (modal) {
+      // Preline overlay event
       modal.addEventListener('open.hs.overlay', () => {
         initPagefind();
       });
     }
 
+    // Direct click trigger fallback
     document.querySelectorAll('[data-hs-overlay="#search-modal"]').forEach((btn) => {
       btn.addEventListener('click', () => {
         initPagefind();

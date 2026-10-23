@@ -60,35 +60,10 @@ html.dark {
 }
 
 body {
-  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#070a13] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
+  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#0b0f19] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-/* Architectural Grid-Line Pattern */
-.bg-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
-}
-
-.dark .bg-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-}
-
-.bg-dots {
-  background-size: 20px 20px;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-}
-
-.dark .bg-dots {
-  background-size: 20px 20px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
 /* Typography Overrides */
@@ -212,44 +187,3 @@ h4:hover .header-anchor {
 .pagefind-ui .pagefind-ui__result-excerpt mark {
   @apply bg-accent-100 text-accent-900 rounded px-1 dark:bg-accent-950 dark:text-accent-200;
 }
-
-/* Print Media Styles (Optimized for PDF export & Physical Print) */
-@media print {
-  @page {
-    margin: 12mm 15mm;
-    size: letter portrait;
-  }
-
-  body {
-    background: #ffffff !important;
-    color: #111111 !important;
-  }
-
-  .no-print,
-  aside,
-  #search-modal {
-    display: none !important;
-  }
-
-  main#main-content {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .resume-sheet {
-    padding-top: 0 !important;
-  }
-
-  a {
-    text-decoration: none !important;
-    color: inherit !important;
-  }
-
-  section {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-}
-

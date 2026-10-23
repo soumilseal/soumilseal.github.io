@@ -1,92 +1,40 @@
 {% import "components/icons.njk" as icons %}
 
-<footer class="mt-auto border-t border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-100/50 dark:bg-[#070b12] py-12 transition-colors">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-neutral-200/70 dark:border-neutral-800/70">
+<footer class="mt-auto py-16 sm:py-24 border-t border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 space-y-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-sm text-neutral-500 dark:text-neutral-400">
       
-      <!-- Brand & Bio Column -->
-      <div class="md:col-span-2 space-y-3">
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded bg-neutral-900 text-white dark:bg-accent-600 dark:text-white flex items-center justify-center font-mono font-bold text-xs">
-            SS
-          </div>
-          <span class="font-semibold text-neutral-900 dark:text-neutral-100 text-sm tracking-tight">
-            Soumil Seal
-          </span>
-        </div>
-        <p class="text-xs text-neutral-600 dark:text-neutral-400 max-w-sm leading-relaxed">
-          BCA student and developer enthusiastic about cloud computing, distributed systems, and modern web engineering. Exploring architecture and writing about what I build.
-        </p>
-        <div class="flex items-center gap-3 pt-2">
-          <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" aria-label="GitHub profile">
-            {{ icons.icon("github", "w-4 h-4") }}
-          </a>
-          <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" aria-label="LinkedIn profile">
-            {{ icons.icon("linkedin", "w-4 h-4") }}
-          </a>
-          <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" aria-label="Twitter / X profile">
-            {{ icons.icon("twitter", "w-4 h-4") }}
-          </a>
-          <a href="mailto:{{ site.email }}" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" aria-label="Send email">
-            {{ icons.icon("mail", "w-4 h-4") }}
-          </a>
-          <a href="/feed.xml" class="text-neutral-500 hover:text-accent-500 dark:text-neutral-400 dark:hover:text-accent-400 transition-colors" aria-label="RSS Feed">
-            {{ icons.icon("rss", "w-4 h-4") }}
-          </a>
-        </div>
+      <!-- Brand & Description -->
+      <div class="space-y-1">
+        <p class="font-medium text-neutral-900 dark:text-neutral-200">Soumil Seal</p>
+        <p class="text-xs text-neutral-400 dark:text-neutral-500">Developer & BCA Student</p>
       </div>
 
-      <!-- Quick Links -->
-      <div class="space-y-3">
-        <h3 class="text-xs font-semibold text-neutral-900 dark:text-neutral-200 uppercase tracking-wider font-mono">Navigation</h3>
-        <ul class="space-y-2 text-xs">
-          {% for item in site.nav %}
-            <li>
-              <a href="{{ item.url }}" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-                {{ item.text }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <!-- Meta & Feeds -->
-      <div class="space-y-3">
-        <h3 class="text-xs font-semibold text-neutral-900 dark:text-neutral-200 uppercase tracking-wider font-mono">Feeds & Meta</h3>
-        <ul class="space-y-2 text-xs">
-          <li>
-            <a href="/feed.xml" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors flex items-center gap-1.5">
-              {{ icons.icon("rss", "w-3 h-3 text-amber-500") }}
-              <span>RSS / Atom Feed</span>
-            </a>
-          </li>
-          <li>
-            <a href="/sitemap.xml" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-              XML Sitemap
-            </a>
-          </li>
-          <li>
-            <a href="/robots.txt" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
-              Robots.txt
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/soumilseal" target="_blank" rel="noopener noreferrer" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors flex items-center gap-1">
-              <span>Source Repository</span>
-              {{ icons.icon("external-link", "w-2.5 h-2.5") }}
-            </a>
-          </li>
-        </ul>
+      <!-- Quick Text Links -->
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+        <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          GitHub
+        </a>
+        <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          LinkedIn
+        </a>
+        <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          Twitter/X
+        </a>
+        <a href="mailto:{{ site.email }}" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          Email
+        </a>
+        <a href="/feed.xml" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          RSS
+        </a>
       </div>
 
     </div>
 
-    <!-- Bottom Copyright & Credits -->
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 gap-3">
-      <p>© {{ "" | currentYear }} Soumil Seal. All rights reserved.</p>
-      <p class="flex items-center gap-1 font-mono text-[11px]">
-        <span>Built with Eleventy, Tailwind CSS v4 & Preline UI</span>
-      </p>
+    <!-- Bottom line -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] pt-4">
+      <p>© {{ "" | currentYear }} Soumil Seal.</p>
+      <p>Eleventy &bull; Tailwind CSS &bull; Preline</p>
     </div>
   </div>
 </footer>

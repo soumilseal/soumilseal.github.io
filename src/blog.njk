@@ -1,208 +1,52 @@
 ---
-layout: layouts/base.njk
-title: Writing & Notes — Soumil Seal
+layout: layouts/page.njk
+title: Writing
 description: Technical articles, system design explorations, and engineering notes on modern software development and cloud systems.
 permalink: /blog/
 ---
 {% import "components/icons.njk" as icons %}
 
-{% include "components/profile-header.njk" %}
+<div class="space-y-10">
 
-<div class="space-y-10 sm:space-y-12">
-
-  <!-- Interactive Search & Topic Filter Bar -->
-  <div class="space-y-3.5">
-    <!-- Live Search Input -->
-    <div class="relative w-full">
-      <input type="text" 
-             id="blog-search-input" 
-             placeholder="Search articles by title, topic, or keyword..." 
-             autocomplete="off"
-             class="w-full pl-9 pr-20 py-2 rounded-xl border border-neutral-200/90 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/60 text-xs font-mono text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white transition-all shadow-2xs">
-      <div class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">
-        {{ icons.icon("search", "w-3.5 h-3.5") }}
-      </div>
-      <button type="button" 
-              data-hs-overlay="#search-modal" 
-              class="absolute right-2.5 top-1/2 -translate-y-1/2 px-2 py-0.5 rounded text-[10px] font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-neutral-200/60 dark:bg-neutral-800 transition-colors cursor-pointer" 
-              title="Open full Pagefind search">
-        Ctrl+K
-      </button>
-    </div>
-
-    <!-- Topic Filter Pills -->
-    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs font-mono" id="blog-topic-filters">
-      <button type="button" 
-              class="blog-tag-btn px-3 py-1 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-black font-medium transition-all shrink-0 cursor-pointer" 
-              data-tag="all">
-        All (<span id="post-count">{{ collections.posts.length }}</span>)
-      </button>
+  <!-- Filter & Search Bar -->
+  <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-4 border-b border-neutral-200/60 dark:border-neutral-800/60">
+    <!-- Topic Tags -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+      <a href="/blog/" class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 transition-colors">
+        All ({{ collections.posts.length }})
+      </a>
       {% for tag in collections.tagList %}
-        <button type="button" 
-                class="blog-tag-btn px-3 py-1 rounded-full text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-all shrink-0 cursor-pointer" 
-                data-tag="{{ tag | slugify }}">
+        <a href="/tags/{{ tag | slugify }}/" class="px-2.5 py-1 rounded-full text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors shrink-0">
           {{ tag }}
-        </button>
+        </a>
       {% endfor %}
     </div>
+
+    <!-- Quick Search Trigger -->
+    <button type="button" 
+            class="inline-flex items-center gap-2 text-xs text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors focus:outline-none shrink-0" 
+            data-hs-overlay="#search-modal">
+      {{ icons.icon("search", "w-3.5 h-3.5") }}
+      <span>Search</span>
+      <kbd class="px-1 py-0.5 text-[10px] font-mono bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-400">⌘K</kbd>
+    </button>
   </div>
 
-  <!-- Articles List in Architectural Grid Layout -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-        Articles
-      </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Technical essays
-      </p>
-    </div>
-
-    <div class="sm:col-span-9 sm:pl-2 space-y-8 w-full" id="blog-posts-list">
-      {% for post in collections.posts %}
-        <article class="blog-post-card space-y-1.5 pb-7 border-b border-neutral-100 dark:border-neutral-800/80 last:border-0 group"
-                 data-title="{{ post.data.title | lower }}"
-                 data-description="{{ post.data.description | lower }}"
-                 data-tags="{{ post.data.tags | join(',') | lower }}">
-          
-          <div class="flex flex-wrap items-baseline gap-2">
-            <h3 class="text-sm sm:text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-              <a href="{{ post.url }}">
-                {{ post.data.title }}
-              </a>
-            </h3>
-            <span class="text-xs font-normal text-neutral-400 dark:text-neutral-500 font-mono">
-              {{ post.templateContent | readingTime }}
-            </span>
-          </div>
-
-          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-            {{ post.data.description }}
-          </p>
-
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
-            <div>
-              <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-              &middot;
-              <span>{{ post.data.tags | filterTagList | join(', ') }}</span>
-            </div>
-
-            <a href="{{ post.url }}" class="inline-flex items-center gap-1 text-accent-600 dark:text-accent-400 hover:underline group-hover:translate-x-0.5 transition-transform">
-              <span>Read article</span>
-              {{ icons.icon("arrow-right", "w-2.5 h-2.5") }}
-            </a>
-          </div>
-        </article>
-      {% else %}
-        <div class="py-12 text-center text-xs text-neutral-400 font-mono">
-          No articles published yet.
-        </div>
-      {% endfor %}
-
-      <!-- No Results State -->
-      <div id="no-articles-found" class="hidden py-12 text-center text-xs text-neutral-400 dark:text-neutral-500 font-mono space-y-3">
-        <p>No articles match your search criteria.</p>
-        <button type="button" data-hs-overlay="#search-modal" class="inline-flex items-center gap-1 text-accent-600 dark:text-accent-400 hover:underline cursor-pointer">
-          {{ icons.icon("search", "w-3 h-3") }}
-          <span>Search entire site with Pagefind</span>
-        </button>
+  <!-- Posts List -->
+  <div class="divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
+    {% for post in collections.posts %}
+      {% include "components/post-card.njk" %}
+    {% else %}
+      <div class="py-12 text-center text-sm font-mono text-neutral-400">
+        No posts published yet.
       </div>
-    </div>
-  </section>
+    {% endfor %}
+  </div>
 
-  <!-- Syndication / RSS Section in Architectural Grid Layout -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80 last:pb-2">
-    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-        Syndication
-      </h2>
-      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
-        Feed subscription
-      </p>
-    </div>
-
-    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-      <p>
-        Articles are syndicated via standard Atom/RSS. Add the link below to your feed reader:
-      </p>
-      <a href="/feed.xml" class="inline-flex items-center gap-1.5 font-mono text-neutral-800 dark:text-neutral-200 hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
-        {{ icons.icon("rss", "w-3.5 h-3.5 text-amber-500") }}
-        <span>https://soumilseal.dev/feed.xml</span>
-      </a>
-    </div>
-  </section>
+  <!-- Subtle RSS Link -->
+  <div class="pt-8 text-xs text-neutral-400 dark:text-neutral-500 font-mono">
+    <span>Subscribe via </span>
+    <a href="/feed.xml" class="underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-200">RSS / Atom Feed</a>
+  </div>
 
 </div>
-
-<!-- Real-time Filter Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('blog-search-input');
-    const tagBtns = document.querySelectorAll('.blog-tag-btn');
-    const postCards = document.querySelectorAll('.blog-post-card');
-    const noResults = document.getElementById('no-articles-found');
-    const postCount = document.getElementById('post-count');
-
-    let currentTag = 'all';
-    let searchQuery = '';
-
-    function filterPosts() {
-      let visibleCount = 0;
-
-      postCards.forEach(card => {
-        const title = card.getAttribute('data-title') || '';
-        const desc = card.getAttribute('data-description') || '';
-        const tags = card.getAttribute('data-tags') || '';
-
-        const matchesQuery = !searchQuery || title.includes(searchQuery) || desc.includes(searchQuery) || tags.includes(searchQuery);
-        const matchesTag = currentTag === 'all' || tags.split(',').map(t => t.trim().toLowerCase().replace(/\s+/g, '-')).includes(currentTag);
-
-        if (matchesQuery && matchesTag) {
-          card.style.display = 'block';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      if (postCount && currentTag === 'all' && !searchQuery) {
-        postCount.textContent = postCards.length;
-      }
-
-      if (noResults) {
-        noResults.classList.toggle('hidden', visibleCount > 0);
-      }
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value.trim().toLowerCase();
-        filterPosts();
-      });
-
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          if (typeof window.openSearchModalWithQuery === 'function') {
-            window.openSearchModalWithQuery(searchInput.value.trim());
-          }
-        }
-      });
-    }
-
-    tagBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentTag = btn.getAttribute('data-tag');
-
-        tagBtns.forEach(b => {
-          b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-black', 'font-medium');
-          b.classList.add('text-neutral-500', 'dark:text-neutral-400');
-        });
-
-        btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-black', 'font-medium');
-        btn.classList.remove('text-neutral-500', 'dark:text-neutral-400');
-
-        filterPosts();
-      });
-    });
-  });
-</script>
