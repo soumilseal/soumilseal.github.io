@@ -4,7 +4,7 @@ title: Projects
 description: Software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
 pagination:
   data: projects
-  size: 3
+  size: 6
   alias: pagedProjects
 permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 
@@ -19,16 +19,20 @@ permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber 
         all-projects // index ({{ projects.length }})
       </span>
       <span>
-        page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
+        {% if pagination.pages.length > 1 %}
+          page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
+        {% else %}
+          active // production-ready
+        {% endif %}
       </span>
     </div>
 
-    <!-- Projects Grid: 3 Columns on Desktop, Zero Gaps -->
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 shrink-0">
+    <!-- Projects Grid: 3 Columns on Desktop, 6 per page with 1px grid borders -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-300 dark:bg-neutral-800 border-b border-neutral-300 dark:border-neutral-800 shrink-0">
       {% for project in pagedProjects %}
         {% include "components/project-card.njk" %}
       {% else %}
-        <div class="col-span-3 p-12 text-center text-sm font-mono text-neutral-400">
+        <div class="col-span-3 p-12 text-center text-sm font-mono text-neutral-400 bg-white dark:bg-neutral-950">
           No projects listed yet.
         </div>
       {% endfor %}

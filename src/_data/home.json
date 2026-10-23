@@ -62,31 +62,101 @@
     ]
   },
   "marquee": {
-    "title": "languages-and-tooling/",
+    "title": "languages-and-tooling",
     "subtitle": "active-stack // infinite scroll",
     "speed": 32,
     "items": [
-      { "name": "Python", "category": "01/", "url": "https://www.python.org", "image": "/assets/images/icons/python.svg" },
-      { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org", "image": "/assets/images/icons/typescript.svg" },
-      { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "image": "" },
-      { "name": "Go", "category": "04/", "url": "https://go.dev", "image": "/assets/images/icons/go.svg" },
-      { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org", "image": "" },
-      { "name": "C++", "category": "06/", "url": "https://isocpp.org", "image": "" },
-      { "name": "C", "category": "07/", "url": "", "image": "" },
-      { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/", "image": "" },
-      { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org", "image": "" },
-      { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/", "image": "" },
-      { "name": "Docker", "category": "11/", "url": "https://www.docker.com", "image": "/assets/images/icons/docker.svg" },
-      { "name": "Linux", "category": "12/", "url": "https://www.kernel.org", "image": "" },
-      { "name": "Node.js", "category": "13/", "url": "https://nodejs.org", "image": "" },
-      { "name": "Redis", "category": "14/", "url": "https://redis.io", "image": "" }
+      {
+        "name": "Python",
+        "category": "01/",
+        "url": "https://www.python.org",
+        "image": "/assets/images/icons/python.svg"
+      },
+      {
+        "name": "TypeScript",
+        "category": "02/",
+        "url": "https://www.typescriptlang.org",
+        "image": "/assets/images/icons/typescript.svg"
+      },
+      {
+        "name": "JavaScript",
+        "category": "03/",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "image": ""
+      },
+      {
+        "name": "Go",
+        "category": "04/",
+        "url": "https://go.dev",
+        "image": "/assets/images/icons/go.svg"
+      },
+      {
+        "name": "Rust",
+        "category": "05/",
+        "url": "https://www.rust-lang.org",
+        "image": ""
+      },
+      {
+        "name": "C++",
+        "category": "06/",
+        "url": "https://isocpp.org",
+        "image": ""
+      },
+      {
+        "name": "C",
+        "category": "07/",
+        "url": "",
+        "image": ""
+      },
+      {
+        "name": "Java",
+        "category": "08/",
+        "url": "https://www.oracle.com/java/",
+        "image": ""
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "09/",
+        "url": "https://www.postgresql.org",
+        "image": ""
+      },
+      {
+        "name": "Bash / Shell",
+        "category": "10/",
+        "url": "https://www.gnu.org/software/bash/",
+        "image": ""
+      },
+      {
+        "name": "Docker",
+        "category": "11/",
+        "url": "https://www.docker.com",
+        "image": "/assets/images/icons/docker.svg"
+      },
+      {
+        "name": "Linux",
+        "category": "12/",
+        "url": "https://www.kernel.org",
+        "image": ""
+      },
+      {
+        "name": "Node.js",
+        "category": "13/",
+        "url": "https://nodejs.org",
+        "image": ""
+      },
+      {
+        "name": "Redis",
+        "category": "14/",
+        "url": "https://redis.io",
+        "image": ""
+      }
     ]
   },
   "sections": {
-    "featuredProjectsTitle": "featured-projects/",
-    "writingTitle": "writing-and-notes/",
-    "contactTitle": "get-in-touch/",
+    "featuredProjectsTitle": "featured-projects",
+    "writingTitle": "writing-and-notes",
+    "contactTitle": "get-in-touch",
     "contactSubtitle": "dispatch direct messages",
-    "contactText": "Interested in discussing software engineering internships, technical collaborations, or system architecture? Send an email directly or connect on social channels."
+    "contactText": "Interested in discussing software engineering internships, technical collaborations, or system architecture? Reach out via the contact form or connect on social channels."
   }
 }

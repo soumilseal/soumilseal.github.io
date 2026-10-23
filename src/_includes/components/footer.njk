@@ -13,7 +13,9 @@
           {{ site.footer.summary or (site.role + " &bull; India") | safe }}
         </p>
         <p class="text-xs text-neutral-400 dark:text-neutral-500 pt-2 font-mono">
-          {{ site.footer.description or "systems architecture, cloud pipelines & modern web engineering" }}
+          {{
+            site.footer.description or "systems architecture, cloud pipelines & modern web engineering"
+          }}
         </p>
       </div>
 
@@ -53,10 +55,10 @@
             {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
-            href="mailto:{{ site.email }}"
+            href="/contact/"
             class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            <span>Email</span>
+            <span>Contact</span>
             {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
@@ -79,8 +81,16 @@
 
     <!-- Contiguous Bottom Metadata Row -->
     <div class="px-4 sm:px-6 py-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] bg-neutral-50/50 dark:bg-neutral-900/30">
-      <p>© {{ "" | currentYear }} {{ site.footer.copyright or (site.name + ". All rights reserved.") }}</p>
-      <p>{{ site.footer.techNote or "Eleventy &bull; Tailwind CSS &bull; Pagefind" | safe }}</p>
+      <p>
+        © {{ "" | currentYear }} {{
+          site.footer.copyright or (site.name + ". All rights reserved.")
+        }}
+      </p>
+      <p>
+        {{
+          site.footer.techNote or "Eleventy &bull; Tailwind CSS &bull; Pagefind" | safe
+        }}
+      </p>
     </div>
   </div>
 </footer>

@@ -3,7 +3,7 @@
     "indexLabel": "cv-index // 2026",
     "location": "India • Remote",
     "printButtonText": "Print / Save PDF",
-    "emailButtonText": "Email Direct"
+    "contactButtonText": "Get in Touch"
   },
   "summary": {
     "label": "summary // focus-profile",
@@ -11,7 +11,7 @@
     "content": "Software developer and Bachelor of Computer Applications (BCA) undergraduate student with a focus on backend engineering, distributed cloud systems, and modern web architectures. Experienced in building telemetry daemons, offline-first developer tooling, and automated deployment pipelines in Go, TypeScript, Node.js, and Python."
   },
   "proficienciesSection": {
-    "title": "skills-and-proficiencies/",
+    "title": "skills-and-proficiencies",
     "subtitle": "technical stack",
     "categories": [
       {
@@ -37,11 +37,11 @@
     ]
   },
   "projectsSection": {
-    "title": "engineering-projects/",
+    "title": "engineering-projects",
     "subtitle": "selected software"
   },
   "educationSection": {
-    "title": "academic-credentials/",
+    "title": "academic-credentials",
     "subtitle": "education",
     "degree": "Bachelor of Computer Applications (BCA)",
     "status": "Undergraduate • Present",
@@ -49,11 +49,11 @@
     "coursework": "Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS / PostgreSQL), Operating Systems & Concurrency, Computer Networks, and System Architecture."
   },
   "writingSection": {
-    "title": "technical-writing-and-notes/",
+    "title": "technical-writing-and-notes",
     "linkText": "view blog"
   },
   "channelsSection": {
-    "title": "channels-and-verification/",
+    "title": "channels-and-verification",
     "subtitle": "direct-links"
   }
 }

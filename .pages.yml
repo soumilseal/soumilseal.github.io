@@ -243,7 +243,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "languages-and-tooling/"
+            default: "languages-and-tooling"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -278,15 +278,15 @@ content:
           - name: featuredProjectsTitle
             label: "Featured Projects Title"
             type: string
-            default: "featured-projects/"
+            default: "featured-projects"
           - name: writingTitle
             label: "Writing & Notes Title"
             type: string
-            default: "writing-and-notes/"
+            default: "writing-and-notes"
           - name: contactTitle
             label: "Contact Section Title"
             type: string
-            default: "get-in-touch/"
+            default: "get-in-touch"
           - name: contactSubtitle
             label: "Contact Section Subtitle"
             type: string
@@ -315,7 +315,7 @@ content:
           - name: section
             label: "Section Eyebrow"
             type: string
-            default: "section // about/"
+            default: "section // about"
           - name: description
             label: "Header Description"
             type: text
@@ -344,7 +344,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "skills-and-technologies/"
+            default: "skills-and-technologies"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -370,7 +370,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "academic-background/"
+            default: "academic-background"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -398,7 +398,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "network-and-channels/"
+            default: "network-and-channels"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -429,10 +429,10 @@ content:
             label: "Print Button Text"
             type: string
             default: "Print / Save PDF"
-          - name: emailButtonText
-            label: "Email Action Text"
+          - name: contactButtonText
+            label: "Contact Action Text"
             type: string
-            default: "Email Direct"
+            default: "Get in Touch"
 
       - name: summary
         label: "Executive Focus Profile Summary"
@@ -457,7 +457,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "skills-and-proficiencies/"
+            default: "skills-and-proficiencies"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -486,7 +486,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "academic-credentials/"
+            default: "academic-credentials"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -514,7 +514,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "technical-writing-and-notes/"
+            default: "technical-writing-and-notes"
           - name: linkText
             label: "Link Text"
             type: string
@@ -527,7 +527,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "channels-and-verification/"
+            default: "channels-and-verification"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -561,7 +561,7 @@ content:
           - name: title
             label: "Section Title"
             type: string
-            default: "direct-channels/"
+            default: "direct-channels"
           - name: subtitle
             label: "Section Subtitle"
             type: string
@@ -569,7 +569,7 @@ content:
           - name: prompt
             label: "Invitation Prompt"
             type: string
-            default: "The easiest way to reach me is directly by email:"
+            default: "Connect directly via my verified professional profiles below, or dispatch a message through the form:"
           - name: email
             label: "Display Email"
             type: string
@@ -585,7 +585,7 @@ content:
           - name: title
             label: "Form Section Title"
             type: string
-            default: "dispatch-message/"
+            default: "dispatch-message"
           - name: subtitle
             label: "Form Subtitle"
             type: string
@@ -596,7 +596,7 @@ content:
           - name: nameLabel
             label: "Name Field Label"
             type: string
-            default: "name/"
+            default: "name"
           - name: namePlaceholder
             label: "Name Field Placeholder"
             type: string
@@ -604,7 +604,7 @@ content:
           - name: emailLabel
             label: "Email Field Label"
             type: string
-            default: "email-address/"
+            default: "email-address"
           - name: emailPlaceholder
             label: "Email Field Placeholder"
             type: string
@@ -612,7 +612,7 @@ content:
           - name: messageLabel
             label: "Message Field Label"
             type: string
-            default: "message-payload/"
+            default: "message-payload"
           - name: messagePlaceholder
             label: "Message Field Placeholder"
             type: string

@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "About",
-    "section": "section // about/",
+    "section": "section // about",
     "description": "Developer, BCA student, and systems enthusiast building software across web architecture, cloud pipelines, and distributed backends."
   },
   "avatar": "/assets/images/me.jpg",
@@ -15,7 +15,7 @@
     ]
   },
   "skillsSection": {
-    "title": "skills-and-technologies/",
+    "title": "skills-and-technologies",
     "subtitle": "core stack",
     "categories": [
       {
@@ -37,7 +37,7 @@
     ]
   },
   "education": {
-    "title": "academic-background/",
+    "title": "academic-background",
     "subtitle": "university studies",
     "degree": "Bachelor of Computer Applications (BCA)",
     "status": "Present",
@@ -45,7 +45,7 @@
     "coursework": "Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks."
   },
   "connect": {
-    "title": "network-and-channels/",
+    "title": "network-and-channels",
     "subtitle": "connect"
   }
 }

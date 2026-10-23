@@ -8,8 +8,7 @@
     "language": "en",
     "url": "https://soumilseal.dev/",
     "author": {
-      "name": "Soumil Seal",
-      "email": "soumilseal@gmail.com"
+      "name": "Soumil Seal"
     }
   }
 }
@@ -27,7 +26,6 @@
   <id>{{ metadata.url }}</id>
   <author>
     <name>{{ metadata.author.name }}</name>
-    <email>{{ metadata.author.email }}</email>
   </author>
   {%- for post in collections.posts %}
     {%- set absolutePostUrl = post.url | absoluteUrl(metadata.url) %}

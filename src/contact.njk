@@ -13,7 +13,7 @@ permalink: /contact/
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          {{ contact.channels.title or "direct-channels/" }}
+          {{ contact.channels.title or "direct-channels" }}
         </h2>
       </div>
       <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
@@ -22,25 +22,8 @@ permalink: /contact/
 
     <div class="p-6 sm:p-8 space-y-4 bg-white dark:bg-neutral-950">
       <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
-        {{ contact.channels.prompt or "The easiest way to reach me is directly by email:" }}
+        {{ contact.channels.prompt or "Connect directly via my verified professional profiles below, or dispatch a message through the form:" }}
       </p>
-      <div class="flex items-center gap-3">
-        <a
-          href="mailto:{{ contact.channels.email or site.email }}"
-          class="text-base sm:text-lg font-mono font-medium text-neutral-900 dark:text-neutral-100 underline underline-offset-4"
-          id="contact-email"
-        >
-          {{ contact.channels.email or site.email }}
-        </a>
-        <button
-          type="button"
-          id="copy-email-btn"
-          class="px-2.5 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-neutral-300 dark:border-neutral-700 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors"
-          aria-label="Copy email address"
-        >
-          <span id="copy-text">{{ contact.channels.copyButtonText or "Copy" }}</span>
-        </button>
-      </div>
     </div>
 
     <!-- Contiguous Channels Grid -->
@@ -80,7 +63,7 @@ permalink: /contact/
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
-          {{ contact.form.title or "dispatch-message/" }}
+          {{ contact.form.title or "dispatch-message" }}
         </h2>
       </div>
       <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
@@ -94,7 +77,7 @@ permalink: /contact/
             for="name"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.nameLabel or "name/" }}
+            {{ contact.form.nameLabel or "name" }}
           </label>
           <input
             type="text"
@@ -111,7 +94,7 @@ permalink: /contact/
             for="email"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.emailLabel or "email-address/" }}
+            {{ contact.form.emailLabel or "email-address" }}
           </label>
           <input
             type="email"
@@ -128,7 +111,7 @@ permalink: /contact/
             for="message"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.messageLabel or "message-payload/" }}
+            {{ contact.form.messageLabel or "message-payload" }}
           </label>
           <textarea
             id="message"
@@ -154,51 +137,27 @@ permalink: /contact/
   </section>
 </div>
 
-<!-- Copy Email & Form Feedback Script -->
+<!-- Form Feedback Script -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const copyBtn = document.getElementById("copy-email-btn");
-  const copyText = document.getElementById("copy-text");
-  const emailEl = document.getElementById("contact-email");
-
-  if (copyBtn && emailEl) {
-    copyBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(emailEl.innerText.trim());
-        copyText.innerText = "Copied";
-        setTimeout(() => {
-          copyText.innerText = "Copy";
-        }, 2000);
-      } catch (err) {
-        console.error("Failed to copy email:", err);
-      }
-    });
-  }
-
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("form-feedback");
 
   if (form && feedback) {
     form.addEventListener("submit", (e) => {
+      const action = form.getAttribute("action");
+      if (action && action.trim() !== "") {
+        return;
+      }
       e.preventDefault();
       const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
 
       feedback.className =
-        "p-3 text-xs font-mono bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700";
+        "p-3.5 text-xs font-mono bg-emerald-50 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/80";
       feedback.innerHTML =
-        `Opening your email client to dispatch to <strong>${emailEl.innerText.trim()}</strong>...`;
+        `Thank you <strong>${name}</strong>! Your message payload has been recorded. You can also connect directly on LinkedIn or GitHub.`;
       feedback.classList.remove("hidden");
-
-      const mailtoUri = `mailto:${emailEl.innerText.trim()}?subject=${
-        encodeURIComponent("Portfolio Contact from " + name)
-      }&body=${
-        encodeURIComponent("From: " + name + " <" + email + ">\n\n" + message)
-      }`;
-      setTimeout(() => {
-        window.location.href = mailtoUri;
-      }, 600);
+      form.reset();
     });
   }
 });

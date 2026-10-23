@@ -1,22 +1,33 @@
 {% import "components/icons.njk" as icons %}
-<article class="post-item group relative bg-white dark:bg-neutral-950 hover:bg-neutral-50/90 dark:hover:bg-neutral-900/50 transition-colors cursor-pointer min-h-[160px] sm:min-h-[168px] flex flex-col justify-between before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200">
-  <div class="p-5 sm:p-6 flex flex-col justify-between h-full grow">
+<article class="post-item group relative bg-white dark:bg-neutral-950 hover:bg-neutral-50/90 dark:hover:bg-neutral-900/50 transition-colors cursor-pointer min-h-24 sm:min-h-26 flex flex-col justify-center before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200">
+  <div class="px-4 sm:px-6 py-3.5 sm:py-4 flex flex-col justify-between h-full grow">
     <div>
-      <time
-        datetime="{{ post.date | htmlDateString }}"
-        class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-1.5 block"
-      >
-        {{ post.date | readableDate }}
-      </time>
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <time
+          datetime="{{ post.date | htmlDateString }}"
+          class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 block"
+        >
+          {{ post.date | readableDate }}
+        </time>
+        <span
+          class="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors inline-flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          <span>read/</span>
+          {{ icons.icon("arrow-up-right", "w-2.5 h-2.5") }}
+        </span>
+      </div>
 
-      <h3 class="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight line-clamp-2 leading-snug">
-        <a href="{{ post.url }}" class="focus:outline-none after:absolute after:inset-0 after:z-10">
+      <h3 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight line-clamp-1 leading-snug">
+        <a
+          href="{{ post.url }}"
+          class="focus:outline-none after:absolute after:inset-0 after:z-10"
+        >
           {{ post.data.title }}
         </a>
       </h3>
     </div>
 
-    <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans line-clamp-2 mt-2">
+    <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-normal font-sans line-clamp-1 mt-1">
       {{ post.data.description }}
     </p>
   </div>

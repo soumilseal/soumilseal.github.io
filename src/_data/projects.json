@@ -6,7 +6,13 @@
     "category": "Cloud & Infrastructure",
     "featured": true,
     "image": "/assets/images/projects/cloudpulse.jpg",
-    "tags": ["Go", "Docker", "Prometheus", "Linux", "Telemetry"],
+    "tags": [
+      "Go",
+      "Docker",
+      "Prometheus",
+      "Linux",
+      "Telemetry"
+    ],
     "github": "https://github.com/soumilseal/cloudpulse",
     "demo": "https://github.com/soumilseal/cloudpulse#readme",
     "highlights": [
@@ -22,7 +28,13 @@
     "category": "Developer Tools",
     "featured": true,
     "image": "/assets/images/projects/devvault.jpg",
-    "tags": ["TypeScript", "Node.js", "SQLite", "CLI", "Cryptography"],
+    "tags": [
+      "TypeScript",
+      "Node.js",
+      "SQLite",
+      "CLI",
+      "Cryptography"
+    ],
     "github": "https://github.com/soumilseal/devvault",
     "demo": "https://github.com/soumilseal/devvault#readme",
     "highlights": [
@@ -38,7 +50,13 @@
     "category": "Web & Fullstack",
     "featured": true,
     "image": "/assets/images/projects/alumniconnect.jpg",
-    "tags": ["TypeScript", "Tailwind CSS", "PostgreSQL", "Node.js", "REST API"],
+    "tags": [
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Node.js",
+      "REST API"
+    ],
     "github": "https://github.com/soumilseal/alumniconnect",
     "demo": "https://alumniconnect-demo.soumilseal.dev",
     "highlights": [
@@ -54,7 +72,13 @@
     "category": "Cloud & Infrastructure",
     "featured": false,
     "image": "/assets/images/projects/microdeploy.jpg",
-    "tags": ["Python", "Docker", "GitHub Actions", "AWS", "Bash"],
+    "tags": [
+      "Python",
+      "Docker",
+      "GitHub Actions",
+      "AWS",
+      "Bash"
+    ],
     "github": "https://github.com/soumilseal/microdeploy",
     "demo": "https://github.com/soumilseal/microdeploy#readme",
     "highlights": [
@@ -70,7 +94,12 @@
     "category": "Systems",
     "featured": false,
     "image": "/assets/images/projects/echomq.jpg",
-    "tags": ["Java", "TCP Sockets", "Concurrency", "Data Structures"],
+    "tags": [
+      "Java",
+      "TCP Sockets",
+      "Concurrency",
+      "Data Structures"
+    ],
     "github": "https://github.com/soumilseal/echomq",
     "demo": "https://github.com/soumilseal/echomq#readme",
     "highlights": [
@@ -86,7 +115,13 @@
     "category": "Developer Tools",
     "featured": false,
     "image": "/assets/images/projects/quickquery.jpg",
-    "tags": ["JavaScript", "WebAssembly", "SQLite", "Canvas", "Tailwind CSS"],
+    "tags": [
+      "JavaScript",
+      "WebAssembly",
+      "SQLite",
+      "Canvas",
+      "Tailwind CSS"
+    ],
     "github": "https://github.com/soumilseal/quickquery",
     "demo": "https://quickquery.soumilseal.dev",
     "highlights": [

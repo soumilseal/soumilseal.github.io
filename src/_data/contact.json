@@ -4,21 +4,19 @@
     "description": "Have an internship opportunity, a project idea, or a question? Feel free to reach out."
   },
   "channels": {
-    "title": "direct-channels/",
-    "subtitle": "primary communication",
-    "prompt": "The easiest way to reach me is directly by email:",
-    "email": "soumilseal@gmail.com",
-    "copyButtonText": "Copy"
+    "title": "direct-channels",
+    "subtitle": "verified channels",
+    "prompt": "Connect directly via my verified professional profiles below, or dispatch a message through the form:"
   },
   "form": {
-    "title": "dispatch-message/",
+    "title": "dispatch-message",
     "subtitle": "interactive form",
     "action": "",
-    "nameLabel": "name/",
+    "nameLabel": "name",
     "namePlaceholder": "Jane Doe",
-    "emailLabel": "email-address/",
+    "emailLabel": "email-address",
     "emailPlaceholder": "jane@example.com",
-    "messageLabel": "message-payload/",
+    "messageLabel": "message-payload",
     "messagePlaceholder": "Your message...",
     "submitButtonText": "Send message"
   }
