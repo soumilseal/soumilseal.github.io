@@ -3,6 +3,7 @@ layout: layouts/page.njk
 title: Writing
 description: Technical articles, system design explorations, and engineering notes on modern software development and cloud systems.
 permalink: /blog/
+
 ---
 {% import "components/icons.njk" as icons %}
 
@@ -11,23 +12,33 @@ permalink: /blog/
   <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
     <!-- Topic Tags -->
     <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
-      <a href="/blog/" class="px-2.5 py-1 text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 transition-colors shrink-0">
+      <a
+        href="/blog/"
+        class="px-2.5 py-1 text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 transition-colors shrink-0"
+      >
         All ({{ collections.posts.length }})
       </a>
       {% for tag in collections.tagList %}
-        <a href="/tags/{{ tag | slugify }}/" class="px-2 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white border border-transparent hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors shrink-0">
+        <a
+          href="/tags/{{ tag | slugify }}/"
+          class="px-2 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white border border-transparent hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors shrink-0"
+        >
           #{{ tag }}
         </a>
       {% endfor %}
     </div>
 
     <!-- Quick Search Trigger -->
-    <button type="button" 
-            class="inline-flex items-center gap-2 px-3 py-1 border border-neutral-300 dark:border-neutral-700 text-xs font-mono text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white bg-white dark:bg-[#0a0a0a] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none shrink-0" 
-            data-hs-overlay="#search-modal">
+    <button
+      type="button"
+      class="inline-flex items-center gap-2 px-3 py-1 border border-neutral-300 dark:border-neutral-700 text-xs font-mono text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white bg-white dark:bg-[#0a0a0a] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none shrink-0"
+      data-hs-overlay="#search-modal"
+    >
       {{ icons.icon("search", "w-3 h-3") }}
       <span>Search</span>
-      <kbd class="px-1 py-0.5 text-[10px] font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400">⌘K</kbd>
+      <kbd
+        class="px-1 py-0.5 text-[10px] font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400"
+      >⌘K</kbd>
     </button>
   </div>
 
@@ -45,6 +56,9 @@ permalink: /blog/
   <!-- Subtle RSS Link Bar -->
   <div class="px-6 sm:px-8 py-4 text-xs text-neutral-500 dark:text-neutral-400 font-mono bg-neutral-50/50 dark:bg-neutral-900/30 flex items-center justify-between">
     <span>Subscribe to articles and technical notes</span>
-    <a href="/feed.xml" class="underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100">RSS / Atom Feed &nearr;</a>
+    <a
+      href="/feed.xml"
+      class="underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100"
+    >RSS / Atom Feed &nearr;</a>
   </div>
 </div>

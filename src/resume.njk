@@ -1,0 +1,426 @@
+---
+layout: layouts/page.njk
+title: Resume
+description: Academic background, technical proficiencies, engineering projects, and software development experience of Soumil Seal.
+permalink: /resume/
+
+---
+{% import "components/icons.njk" as icons %}
+
+<div class="resume-sheet">
+  <!-- Top Action & Print Bar: Contiguous Grid Cell -->
+  <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+    <div class="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
+      <span
+        class="text-neutral-900 dark:text-neutral-100 font-semibold uppercase"
+      >cv-index // 2026</span>
+      <span>&bull;</span>
+      <span>India &bull; Remote</span>
+    </div>
+
+    <div class="flex items-center gap-2 print:hidden shrink-0">
+      <button
+        type="button"
+        onclick="window.print()"
+        class="inline-flex items-center gap-1.5 px-3 py-1 bg-white dark:bg-[#0a0a0a] hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-mono transition-colors focus:outline-none cursor-pointer"
+        title="Print or Save PDF"
+      >
+        {{ icons.icon("external-link", "w-3 h-3") }}
+        <span>Print / Save PDF</span>
+      </button>
+      <a
+        href="mailto:{{ site.email }}"
+        class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500 hover:bg-primary-600 text-neutral-950 text-xs font-mono font-bold transition-colors"
+      >
+        <span>Email Direct</span>
+        <span>&nearr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Executive Summary Cell -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 bg-white dark:bg-[#0a0a0a]">
+    <div class="space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+        <span class="uppercase tracking-widest">summary // focus-profile</span>
+        <span>systems-engineering // cloud-infrastructure</span>
+      </div>
+      <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-200 leading-relaxed font-sans">
+        Software developer and Bachelor of Computer Applications (BCA)
+        undergraduate student with a focus on backend engineering, distributed
+        cloud systems, and modern web architectures. Experienced in building
+        telemetry daemons, offline-first developer tooling, and automated
+        deployment pipelines in Go, TypeScript, Node.js, and Python.
+      </p>
+    </div>
+  </section>
+
+  <!-- Technical Proficiencies Section: Contiguous Bento Grid -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        skills-and-proficiencies/
+      </h2>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
+      >technical stack</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-neutral-300 dark:divide-neutral-800 bg-neutral-300 dark:bg-neutral-800 gap-px">
+      <!-- Languages -->
+      <div class="bg-white dark:bg-[#0a0a0a] p-6 space-y-2">
+        <div class="flex items-center justify-between">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
+            Programming Languages
+          </h3>
+          <span class="text-[10px] font-mono text-neutral-400">core</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Python, TypeScript, JavaScript (Node.js), Go, Java, C, C++, SQL,
+          Bash/Shell.
+        </p>
+      </div>
+
+      <!-- Cloud & Infrastructure -->
+      <div class="bg-white dark:bg-[#0a0a0a] p-6 space-y-2">
+        <div class="flex items-center justify-between">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
+            Cloud & Infrastructure
+          </h3>
+          <span class="text-[10px] font-mono text-neutral-400">devops</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Docker, Linux (Ubuntu/Debian), AWS (EC2, S3, IAM, Lambda), Nginx,
+          Prometheus.
+        </p>
+      </div>
+
+      <!-- Backend & Storage -->
+      <div class="bg-white dark:bg-[#0a0a0a] p-6 space-y-2 border-t border-neutral-300 dark:border-neutral-800">
+        <div class="flex items-center justify-between">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
+            Backend & Storage
+          </h3>
+          <span class="text-[10px] font-mono text-neutral-400">systems</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Node.js, Express, Fastify, PostgreSQL, SQLite (FTS5), Redis, REST
+          APIs, Microservices.
+        </p>
+      </div>
+
+      <!-- Tools & Workflows -->
+      <div class="bg-white dark:bg-[#0a0a0a] p-6 space-y-2 border-t border-neutral-300 dark:border-neutral-800">
+        <div class="flex items-center justify-between">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
+            Tooling & Practices
+          </h3>
+          <span class="text-[10px] font-mono text-neutral-400">standards</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Git, GitHub Actions, CI/CD, Tailwind CSS, Eleventy, Preline UI,
+          Postman, Vite.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Engineering Projects: Contiguous List -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        engineering-projects/
+      </h2>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
+      >selected software</span>
+    </div>
+
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 bg-white dark:bg-[#0a0a0a]">
+      <!-- Project 1: CloudPulse -->
+      <article class="p-6 sm:p-8 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight flex items-center gap-2">
+            <span>CloudPulse — Server Telemetry Daemon</span>
+            <a
+              href="https://github.com/soumilseal/cloudpulse"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-mono font-normal text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+              title="View Source"
+            >
+              [GitHub &nearr;]
+            </a>
+          </h3>
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
+          >Go &bull; Docker &bull; Prometheus</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          A lightweight, zero-dependency background telemetry daemon monitoring
+          host CPU, memory, disk I/O, and throughput metrics with low resource
+          overhead.
+        </p>
+        <ul class="list-disc list-inside text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 space-y-1 font-sans pl-1">
+          <li>
+            Engineered a sub-15MB RAM sampling engine operating at 100ms
+            high-frequency intervals.
+          </li>
+          <li>
+            Exported native Prometheus <code
+              class="font-mono text-xs bg-neutral-100 dark:bg-neutral-800 px-1 py-0.5 border border-neutral-200 dark:border-neutral-700"
+            >/metrics</code> endpoint for cluster-wide ingestion.
+          </li>
+          <li>
+            Built threshold-based webhook dispatch delivering real-time
+            notification alerts.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Project 2: DevVault -->
+      <article class="p-6 sm:p-8 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight flex items-center gap-2">
+            <span>DevVault — Developer Snippet Vault CLI</span>
+            <a
+              href="https://github.com/soumilseal/devvault"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-mono font-normal text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+              title="View Source"
+            >
+              [GitHub &nearr;]
+            </a>
+          </h3>
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
+          >TypeScript &bull; SQLite &bull; Cryptography</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Offline-first command-line knowledge vault and code snippet manager
+          featuring local encrypted storage and instantaneous fuzzy search.
+        </p>
+        <ul class="list-disc list-inside text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 space-y-1 font-sans pl-1">
+          <li>
+            Secured developer snippet vaults using AES-256 GCM encryption and
+            Argon2id key derivation.
+          </li>
+          <li>
+            Achieved sub-10ms search response times powered by SQLite FTS5
+            full-text indexing.
+          </li>
+          <li>
+            Integrated multi-language terminal syntax formatting and instant
+            clipboard pipeline copy.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Project 3: AlumniConnect -->
+      <article class="p-6 sm:p-8 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight flex items-center gap-2">
+            <span>AlumniConnect — Mentorship Platform</span>
+            <a
+              href="https://github.com/soumilseal/alumniconnect"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-mono font-normal text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+              title="View Source"
+            >
+              [GitHub &nearr;]
+            </a>
+          </h3>
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
+          >TypeScript &bull; Node.js &bull; PostgreSQL</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Full-stack web platform connecting undergraduate students with
+          industry alumni for mock technical interviews, mentorship sessions,
+          and code reviews.
+        </p>
+        <ul class="list-disc list-inside text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 space-y-1 font-sans pl-1">
+          <li>
+            Architected role-based session authentication with university email
+            verification.
+          </li>
+          <li>
+            Designed a relational PostgreSQL schema handling timezone-aware
+            calendar booking.
+          </li>
+          <li>
+            Delivered a responsive accessibility-first UI tested across desktop
+            and mobile devices.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Project 4: MicroDeploy -->
+      <article class="p-6 sm:p-8 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+          <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight flex items-center gap-2">
+            <span>MicroDeploy — Containerized CI/CD Automation</span>
+            <a
+              href="https://github.com/soumilseal/microdeploy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-mono font-normal text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+              title="View Source"
+            >
+              [GitHub &nearr;]
+            </a>
+          </h3>
+          <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
+          >Python &bull; Docker &bull; AWS &bull; GitHub Actions</span>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          An automated container pipeline orchestrating blue-green zero-downtime
+          container cutovers, smoke tests, and automatic rollbacks.
+        </p>
+        <ul class="list-disc list-inside text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 space-y-1 font-sans pl-1">
+          <li>
+            Implemented automated container cutovers with zero-downtime reverse
+            proxy reload.
+          </li>
+          <li>
+            Constructed pre-flight automated smoke tests verifying HTTP endpoint
+            responses.
+          </li>
+          <li>
+            Automated instant rollback when 5xx response rates exceed a
+            predefined threshold.
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education & Academic Background -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        academic-credentials/
+      </h2>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
+      >education</span>
+    </div>
+
+    <div class="p-6 sm:p-8 space-y-2 bg-white dark:bg-[#0a0a0a]">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+        <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 text-base">
+          Bachelor of Computer Applications (BCA)
+        </h3>
+        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
+        >Undergraduate &bull; Present</span>
+      </div>
+      <p class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
+        Major in Computer Science & Applications &bull; India
+      </p>
+      <div class="pt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans space-y-2">
+        <p>
+          <strong class="text-neutral-900 dark:text-neutral-200 font-medium"
+          >Core Coursework:</strong>
+          Data Structures & Algorithms, Object-Oriented Software Design,
+          Relational Database Management Systems (RDBMS / PostgreSQL), Operating
+          Systems & Concurrency, Computer Networks, and System Architecture.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications & Technical Writing -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        technical-writing-and-notes/
+      </h2>
+      <a
+        href="/blog/"
+        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
+      >
+        view blog &nearr;
+      </a>
+    </div>
+
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 bg-white dark:bg-[#0a0a0a] text-xs font-mono">
+      <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <a
+            href="/posts/2026-09-02-demystifying-javascript-event-loop/"
+            class="font-semibold text-neutral-900 dark:text-neutral-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+          >
+            Demystifying the JavaScript Event Loop: Microtasks, Macrotasks, and
+            V8 Execution
+          </a>
+          <p class="text-neutral-500 dark:text-neutral-400 font-sans text-xs pt-1">
+            Deep dive into libuv event loop phases, call stack execution, and
+            asynchronous task scheduling.
+          </p>
+        </div>
+        <span class="text-neutral-400 shrink-0">Sept 2026</span>
+      </div>
+
+      <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <a
+            href="/posts/2026-08-15-building-resilient-cloud-pipelines/"
+            class="font-semibold text-neutral-900 dark:text-neutral-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+          >
+            Building Resilient Cloud Pipelines: Containerization, Testing &
+            Automated Rollbacks
+          </a>
+          <p class="text-neutral-500 dark:text-neutral-400 font-sans text-xs pt-1">
+            Patterns for fault-tolerant CI/CD workflows and zero-downtime
+            deployment strategies.
+          </p>
+        </div>
+        <span class="text-neutral-400 shrink-0">Aug 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Channels & Verification Grid -->
+  <section>
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        channels-and-verification/
+      </h2>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
+      >direct-links</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 text-xs font-mono bg-white dark:bg-[#0a0a0a]">
+      <a
+        href="mailto:{{ site.email }}"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+      >
+        <span>Email</span>
+        <span>&nearr;</span>
+      </a>
+      <a
+        href="{{ site.github }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+      >
+        <span>GitHub</span>
+        <span>&nearr;</span>
+      </a>
+      <a
+        href="{{ site.linkedin }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+      >
+        <span>LinkedIn</span>
+        <span>&nearr;</span>
+      </a>
+      <a
+        href="{{ site.twitter }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+      >
+        <span>Twitter/X</span>
+        <span>&nearr;</span>
+      </a>
+    </div>
+  </section>
+</div>

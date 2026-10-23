@@ -1,16 +1,29 @@
 {% import "components/icons.njk" as icons %}
 
-<div id="search-modal" class="hs-overlay hidden ti-modal fixed inset-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none p-4 sm:p-6 md:p-20" role="dialog" tabindex="-1" aria-labelledby="search-modal-label">
+<div
+  id="search-modal"
+  class="hs-overlay hidden ti-modal fixed inset-0 z-50 overflow-x-hidden overflow-y-auto pointer-events-none p-4 sm:p-6 md:p-20"
+  role="dialog"
+  tabindex="-1"
+  aria-labelledby="search-modal-label"
+>
   <div class="hs-overlay-open:opacity-100 hs-overlay-open:duration-200 opacity-0 transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-start">
     <div class="vercel-card group relative w-full flex flex-col bg-white dark:bg-[#0a0a0a] border border-neutral-300 dark:border-neutral-800 shadow-2xl pointer-events-auto">
-
       <!-- Modal Header -->
       <div class="flex justify-between items-center py-3.5 px-5 border-b border-neutral-300 dark:border-neutral-800">
-        <h3 id="search-modal-label" class="font-semibold text-neutral-800 dark:text-neutral-200 flex items-center gap-2 text-sm">
+        <h3
+          id="search-modal-label"
+          class="font-semibold text-neutral-800 dark:text-neutral-200 flex items-center gap-2 text-sm"
+        >
           {{ icons.icon("search", "w-4 h-4 text-primary-500") }}
           <span>Search articles & projects</span>
         </h3>
-        <button type="button" class="size-7 inline-flex justify-center items-center border border-neutral-300 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors focus:outline-none text-xs" aria-label="Close" data-hs-overlay="#search-modal">
+        <button
+          type="button"
+          class="size-7 inline-flex justify-center items-center border border-neutral-300 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors focus:outline-none text-xs"
+          aria-label="Close"
+          data-hs-overlay="#search-modal"
+        >
           <span class="sr-only">Close</span>
           {{ icons.icon("x", "w-3.5 h-3.5") }}
         </button>
@@ -25,12 +38,18 @@
       <div class="flex flex-wrap justify-between items-center gap-2 py-3 px-5 border-t border-neutral-300 dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-400 font-mono">
         <div class="flex items-center gap-3">
           <span class="flex items-center gap-1.5 text-[11px]">
-            <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300">ESC</kbd>
+            <kbd
+              class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300"
+            >ESC</kbd>
             <span>close</span>
           </span>
           <span class="flex items-center gap-1.5 text-[11px]">
-            <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300">Ctrl</kbd>
-            <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300">K</kbd>
+            <kbd
+              class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300"
+            >Ctrl</kbd>
+            <kbd
+              class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-[10px] text-neutral-700 dark:text-neutral-300"
+            >K</kbd>
             <span>shortcut</span>
           </span>
         </div>

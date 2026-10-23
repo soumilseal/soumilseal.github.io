@@ -8,6 +8,7 @@ tags:
   - architecture
   - nodejs
 featured: true
+image: "/assets/images/posts/demystifying-javascript-event-loop.jpg"
 layout: layouts/post.njk
 ---
 

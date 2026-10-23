@@ -8,6 +8,7 @@ tags:
   - eleventy
   - css
 featured: true
+image: "/assets/images/posts/why-static-sites-excel-eleventy-tailwind.jpg"
 layout: layouts/post.njk
 ---
 

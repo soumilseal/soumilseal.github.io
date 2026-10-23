@@ -1,17 +1,24 @@
 ---
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
+
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for pageItem in collections.all %}
-  {%- if pageItem.url and not pageItem.data.draft %}
-  <url>
-    <loc>{{ site.url }}{{ pageItem.url }}</loc>
-    <lastmod>{{ (pageItem.data.updated or pageItem.date) | htmlDateString }}</lastmod>
-    <changefreq>{% if pageItem.url == "/" %}daily{% elif pageItem.data.tags and "posts" in pageItem.data.tags %}monthly{% else %}weekly{% endif %}</changefreq>
-    <priority>{% if pageItem.url == "/" %}1.0{% elif pageItem.data.tags and "posts" in pageItem.data.tags %}0.8{% else %}0.6{% endif %}</priority>
-  </url>
-  {%- endif %}
-{%- endfor %}
+  {%- for pageItem in collections.all %}
+    {%- if pageItem.url and not pageItem.data.draft %}
+      <url>
+        <loc>{{ site.url }}{{ pageItem.url }}</loc>
+        <lastmod>{{
+          (pageItem.data.updated or pageItem.date) | htmlDateString
+        }}</lastmod>
+        <changefreq>{% if pageItem.url == "/" %}daily{%
+            elif pageItem.data.tags and "posts" in pageItem.data.tags
+          %}monthly{% else %}weekly{% endif %}</changefreq>
+        <priority>{% if pageItem.url == "/" %}1.0{%
+            elif pageItem.data.tags and "posts" in pageItem.data.tags
+          %}0.8{% else %}0.6{% endif %}</priority>
+      </url>
+    {%- endif %}
+  {%- endfor %}
 </urlset>

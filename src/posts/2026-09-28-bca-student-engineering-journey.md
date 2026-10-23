@@ -8,6 +8,7 @@ tags:
   - education
   - productivity
 featured: false
+image: "/assets/images/posts/bca-student-engineering-journey.jpg"
 layout: layouts/post.njk
 ---
 

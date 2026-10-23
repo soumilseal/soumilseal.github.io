@@ -5,7 +5,7 @@
 @source "../../../node_modules/preline/dist/*.js";
 @source "../../**/*.{html,njk,md,js}";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Typography */
@@ -57,7 +57,7 @@
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
 
-  /* Container Width (Targeting ~950px Blueprint Layout) */
+  /* Container Width (Spacious, prominent 950px blueprint layout) */
   --container-3xl: 950px;
   --container-site: 950px;
 }
@@ -69,6 +69,7 @@
   &:has(> head > meta[name="color-scheme"][content="dark"]) {
     color-scheme: dark;
   }
+
   &:has(> head > meta[name="color-scheme"][content="light"]) {
     color-scheme: light;
   }
@@ -85,11 +86,15 @@ html {
 
 /* Firefox custom scrollbar using standard properties */
 @supports (-moz-appearance: none) {
-  html, * {
+
+  html,
+  * {
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 #fafafa;
   }
-  html.dark, html.dark * {
+
+  html.dark,
+  html.dark * {
     scrollbar-color: #262626 #000000;
   }
 }
@@ -194,11 +199,18 @@ html.dark ::-webkit-scrollbar-corner {
 }
 
 /* Headings: BenchNine */
-h1, h2, h3, h4, h5, h6, .font-heading {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
   font-family: var(--font-heading);
 }
 
 @layer base {
+
   /* Navbar & Header links strictly use Geist Mono */
   header,
   header nav a,
@@ -231,7 +243,10 @@ body {
   --tw-prose-captions: #71717a;
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
   font-family: var(--font-heading);
 }
 
@@ -374,13 +389,13 @@ h4:hover .header-anchor {
 /* Faint ambient blueprint grid (Vercel style) */
 .vercel-grid {
   background-size: 32px 32px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
 .dark .vercel-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
@@ -388,13 +403,13 @@ h4:hover .header-anchor {
 /* Graph Paper Grid (GitHub Universe style) */
 .grid-graph {
   background-size: 20px 20px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(226, 232, 240, 0.85) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(226, 232, 240, 0.85) 1px, transparent 1px);
 }
 
 .dark .grid-graph {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
@@ -450,18 +465,49 @@ h4:hover .header-anchor {
 html.wf-loading body {
   visibility: hidden;
 }
+
 html.wf-active body {
   visibility: visible;
 }
 
-/* Full-screen Hero Section */
+/* Hero Section (Natural Content Height / Technical Blueprint Layout) */
 .hero-screen-height {
-  min-height: calc(100vh - var(--header-height, 85px));
-  min-height: calc(100svh - var(--header-height, 85px));
-  min-height: calc(100dvh - var(--header-height, 85px));
   display: flex;
   flex-direction: column;
 }
 
+/* ========================================================
+   Print Stylesheet
+   Clean output for resume and document printing
+   ======================================================== */
+@media print {
 
+  #system-ticker-banner,
+  #site-header,
+  header.site-header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
 
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .site-container,
+  main,
+  .max-w-\[950px\],
+  .resume-sheet {
+    max-width: 100% !important;
+    width: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}

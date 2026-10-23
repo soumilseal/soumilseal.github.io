@@ -9,6 +9,7 @@ tags:
   - devops
   - docker
 featured: true
+image: "/assets/images/posts/building-resilient-cloud-pipelines.jpg"
 layout: layouts/post.njk
 ---
 

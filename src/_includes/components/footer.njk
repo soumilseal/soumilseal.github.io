@@ -2,10 +2,8 @@
 
 <footer class="mt-auto border-t border-neutral-300 dark:border-neutral-800 transition-colors bg-white dark:bg-[#0a0a0a]">
   <div class="max-w-[950px] mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]">
-
     <!-- Contiguous Top Grid Row -->
     <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
-      
       <!-- Brand & Summary Cell -->
       <div class="md:col-span-6 p-6 sm:p-8 space-y-2">
         <p class="font-heading font-bold text-xl uppercase tracking-tight text-neutral-900 dark:text-neutral-100">
@@ -21,28 +19,56 @@
 
       <!-- Quick Links Cell -->
       <div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
-        <span class="font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3">
+        <span
+          class="font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3"
+        >
           index-and-links/
         </span>
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-mono">
-          <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          <a
+            href="{{ site.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
             GitHub &nearr;
           </a>
-          <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          <a
+            href="{{ site.linkedin }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
             LinkedIn &nearr;
           </a>
-          <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          <a
+            href="{{ site.twitter }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
             Twitter/X &nearr;
           </a>
-          <a href="mailto:{{ site.email }}" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          <a
+            href="mailto:{{ site.email }}"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
             Email &nearr;
           </a>
-          <a href="/feed.xml" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+          <a
+            href="/resume/"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
+            Resume &nearr;
+          </a>
+          <a
+            href="/feed.xml"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
             RSS &nearr;
           </a>
         </div>
       </div>
-
     </div>
 
     <!-- Contiguous Bottom Metadata Row -->
@@ -50,6 +76,5 @@
       <p>© {{ "" | currentYear }} Soumil Seal. All rights reserved.</p>
       <p>Eleventy &bull; Tailwind CSS &bull; Pagefind</p>
     </div>
-
   </div>
 </footer>
