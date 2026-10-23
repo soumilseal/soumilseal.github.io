@@ -1,3 +1,4 @@
+{% import "components/icons.njk" as icons %}
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
 
-  <!-- FOUC Prevention Script for Instant Dark Mode Support -->
+  <!-- FOUC Prevention Script -->
   <script>
     (function () {
       try {
@@ -45,24 +46,76 @@
   <!-- Main CSS (Tailwind v4 + Preline UI) -->
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-white text-neutral-900 antialiased dark:bg-[#0b0f19] dark:text-neutral-100 flex flex-col min-h-screen">
   <!-- Accessibility Skip Link -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-accent-600 text-white rounded-lg shadow-lg font-medium text-sm focus:outline-none">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-neutral-900 text-white rounded-lg shadow-lg font-medium text-xs focus:outline-none dark:bg-white dark:text-black">
     Skip to main content
   </a>
 
-  <!-- Global Header -->
-  {% include "components/header.njk" %}
+  <!-- Layout Wrapper: Left Rail Navigation on Desktop + Medium Width Content Column -->
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 w-full flex-grow flex justify-center">
+    
+    <!-- Left Sticky Navigation Rail (Visible on Large Screens, matching Reference Layout) -->
+    <aside class="hidden xl:block w-48 shrink-0 pt-16 pr-8 sticky top-0 self-start text-xs font-normal" aria-label="Desktop Side Navigation">
+      <nav class="space-y-2 mb-10">
+        <div>
+          <a href="/" class="flex items-center gap-1.5 transition-colors {% if page.url == '/' %}font-medium text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+            {% if page.url == '/' %}
+              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+            {% endif %}
+            <span>Home</span>
+          </a>
+        </div>
+        <div>
+          <a href="/projects/" class="flex items-center gap-1.5 transition-colors {% if '/projects/' in page.url %}font-medium text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+            {% if '/projects/' in page.url %}
+              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+            {% endif %}
+            <span>Explore</span>
+          </a>
+        </div>
+        <div>
+          <a href="/about/" class="flex items-center gap-1.5 transition-colors {% if '/about/' in page.url %}font-medium text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+            {% if '/about/' in page.url %}
+              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+            {% endif %}
+            <span>Profile</span>
+          </a>
+        </div>
+        <div>
+          <a href="/blog/" class="flex items-center gap-1.5 transition-colors {% if '/blog/' in page.url or '/posts/' in page.url %}font-medium text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+            {% if '/blog/' in page.url or '/posts/' in page.url %}
+              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+            {% endif %}
+            <span>Posts</span>
+          </a>
+        </div>
+        <div>
+          <a href="/contact/" class="flex items-center gap-1.5 transition-colors {% if '/contact/' in page.url %}font-medium text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+            {% if '/contact/' in page.url %}
+              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+            {% endif %}
+            <span>Contact</span>
+          </a>
+        </div>
+      </nav>
 
-  <!-- Main Content Container -->
-  <main id="main-content" class="flex-grow">
-    {{ content | safe }}
-  </main>
+      <!-- Side Rail Footer Note -->
+      <div class="text-[11px] text-neutral-400 dark:text-neutral-500 space-y-1 leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-4 font-mono">
+        <p>Soumil Seal</p>
+        <p>Personal engineering log.</p>
+        <p>Build {{ "" | currentYear }}.</p>
+      </div>
+    </aside>
 
-  <!-- Global Footer -->
-  {% include "components/footer.njk" %}
+    <!-- Main Content Column: Fixed Medium Width (max-w-2xl ~ 672px) -->
+    <main id="main-content" class="w-full max-w-2xl py-6 sm:py-10">
+      {{ content | safe }}
+    </main>
 
-  <!-- Search Modal (Pagefind Integration) -->
+  </div>
+
+  <!-- Search Modal -->
   {% include "components/search-modal.njk" %}
 
   <!-- Scripts -->

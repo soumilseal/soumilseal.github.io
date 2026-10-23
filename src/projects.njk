@@ -1,66 +1,132 @@
 ---
-layout: layouts/page.njk
-title: Featured Projects & Systems
-description: A curated catalog of software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
+layout: layouts/base.njk
+title: Projects & Software — Soumil Seal
+description: A curated catalog of software tools, background daemons, cloud pipelines, and web applications I've designed and built.
 permalink: /projects/
 ---
 {% import "components/icons.njk" as icons %}
 
-<!-- Interactive Category Tabs -->
-<div class="mb-10 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="project-filters" role="tablist">
-  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-accent-600 dark:text-white transition-all shadow-2xs" data-category="all" role="tab" aria-selected="true">
-    All ({{ projects.length }})
-  </button>
-  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Cloud & Infrastructure" role="tab" aria-selected="false">
-    Cloud & Infrastructure
-  </button>
-  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Developer Tools" role="tab" aria-selected="false">
-    Developer Tools
-  </button>
-  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Web & Fullstack" role="tab" aria-selected="false">
-    Web & Fullstack
-  </button>
-  <button type="button" class="project-filter-btn px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-300 transition-all shrink-0" data-category="Systems" role="tab" aria-selected="false">
-    Systems
-  </button>
-</div>
+{% include "components/profile-header.njk" %}
 
-<!-- Projects Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
-  {% for project in projects %}
-    {% include "components/project-card.njk" %}
-  {% endfor %}
-</div>
+<div class="space-y-10 sm:space-y-12">
 
-<!-- Engineering Principles Callout -->
-<div class="mt-16 p-8 rounded-2xl bg-neutral-100/70 border border-neutral-200/80 dark:bg-neutral-900/50 dark:border-neutral-800">
-  <div class="max-w-3xl">
-    <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 tracking-tight flex items-center gap-2">
-      {{ icons.icon("cpu", "w-5 h-5 text-accent-500") }}
-      <span>My Engineering Principles</span>
-    </h2>
-    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
-      Whether creating a standalone CLI utility or deploying a multi-tier cloud workflow, I adhere to a core set of technical values:
-    </p>
+  <!-- Interactive Category Filtering -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="project-filters">
+    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-white dark:text-black transition-all" data-category="all">
+      All ({{ projects.length }})
+    </button>
+    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-all shrink-0" data-category="Cloud & Infrastructure">
+      Cloud
+    </button>
+    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-all shrink-0" data-category="Developer Tools">
+      Developer Tools
+    </button>
+    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-all shrink-0" data-category="Web & Fullstack">
+      Web
+    </button>
+    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-all shrink-0" data-category="Systems">
+      Systems
+    </button>
+  </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-neutral-600 dark:text-neutral-400">
-      <div class="space-y-1.5">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">1. Dependency Restraint</h3>
-        <p class="leading-relaxed">Prioritizing standard libraries, native language primitives, and minimal runtimes over bloated dependency trees.</p>
-      </div>
-      <div class="space-y-1.5">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">2. Observable by Design</h3>
-        <p class="leading-relaxed">Embedding structured logging, health probes, and metric reporting directly into every service from day one.</p>
-      </div>
-      <div class="space-y-1.5">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[13px]">3. Failure Recovery</h3>
-        <p class="leading-relaxed">Designing idempotent consumers, graceful shutdowns, and dead-letter queues to handle transient disruptions gracefully.</p>
+  <!-- Projects List with Left-Aligned Section Header -->
+  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
+    <div class="sm:w-24 shrink-0">
+      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+        Catalog
+      </h2>
+    </div>
+
+    <div class="flex-grow space-y-8 w-full" id="projects-grid">
+      {% for project in projects %}
+        <div class="project-item space-y-2.5 pb-8 border-b border-neutral-100 dark:border-neutral-800/80 last:border-0 group" data-category="{{ project.category }}">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+              <a href="{{ project.demo or project.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-accent-600 dark:hover:text-accent-400 transition-colors inline-flex items-center gap-1.5">
+                <span>{{ project.title }}</span>
+                {{ icons.icon("external-link", "w-3 h-3 text-neutral-400 group-hover:text-accent-500 transition-colors") }}
+              </a>
+            </h3>
+            <span class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 shrink-0">
+              {{ project.category }}
+            </span>
+          </div>
+
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {{ project.description }}
+          </p>
+
+          <!-- Technical Highlights Cards -->
+          {% if project.highlights %}
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+              {% for highlight in project.highlights %}
+                <div class="p-2.5 rounded-lg border border-neutral-200/70 bg-neutral-50/60 dark:border-neutral-800 dark:bg-neutral-900/50 text-[11px] text-neutral-600 dark:text-neutral-400 leading-snug">
+                  {{ highlight }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="flex items-center justify-between gap-4 pt-1">
+            <div class="flex flex-wrap gap-1.5">
+              {% for tag in project.tags %}
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+                  {{ tag }}
+                </span>
+              {% endfor %}
+            </div>
+
+            <div class="flex items-center gap-3 text-xs font-mono shrink-0">
+              {% if project.github %}
+                <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors inline-flex items-center gap-1">
+                  {{ icons.icon("github", "w-3 h-3") }}
+                  <span>Source</span>
+                </a>
+              {% endif %}
+              {% if project.demo %}
+                <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="text-accent-600 hover:text-accent-700 dark:text-accent-400 transition-colors inline-flex items-center gap-1">
+                  <span>Demo</span>
+                  {{ icons.icon("arrow-right", "w-2.5 h-2.5") }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
+
+  <!-- Engineering Approach Section -->
+  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8 pb-10">
+    <div class="sm:w-24 shrink-0">
+      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+        Approach
+      </h2>
+    </div>
+
+    <div class="flex-grow space-y-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Minimal Footprint</h3>
+          <p>Prioritizing standard libraries, native runtime primitives, and minimal dependency overhead.</p>
+        </div>
+        <div class="space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Observability</h3>
+          <p>Embedding structured metrics, Prometheus exporters, and health checks by default.</p>
+        </div>
+        <div class="space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Fault Tolerance</h3>
+          <p>Designing idempotent message handlers, graceful termination, and safe recovery queues.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
 </div>
 
-<!-- Script for Category Filtering -->
+<!-- Filter Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.project-filter-btn');
@@ -70,20 +136,16 @@ permalink: /projects/
       btn.addEventListener('click', () => {
         const category = btn.getAttribute('data-category');
 
-        // Update active button state
         filterBtns.forEach(b => {
-          b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-accent-600', 'shadow-2xs');
-          b.classList.add('bg-neutral-100', 'text-neutral-600', 'dark:bg-neutral-800', 'dark:text-neutral-300');
-          b.setAttribute('aria-selected', 'false');
+          b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-black');
+          b.classList.add('text-neutral-500', 'dark:text-neutral-400');
         });
-        btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-accent-600', 'shadow-2xs');
-        btn.classList.remove('bg-neutral-100', 'text-neutral-600', 'dark:bg-neutral-800', 'dark:text-neutral-300');
-        btn.setAttribute('aria-selected', 'true');
+        btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-black');
+        btn.classList.remove('text-neutral-500', 'dark:text-neutral-400');
 
-        // Filter cards
         projectItems.forEach(item => {
           if (category === 'all' || item.getAttribute('data-category') === category) {
-            item.style.display = 'flex';
+            item.style.display = 'block';
           } else {
             item.style.display = 'none';
           }

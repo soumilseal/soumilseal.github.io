@@ -6,25 +6,51 @@ pagination:
 layout: layouts/page.njk
 eleventyComputed:
   title: "Articles tagged #{{ tag }}"
-  description: "Browse all articles, notes, and tutorials filed under the {{ tag }} topic."
+  description: "Browse all articles and notes filed under the {{ tag }} topic."
 permalink: /tags/{{ tag | slugify }}/
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="mb-8">
-  <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-neutral-500 hover:text-accent-600 dark:text-neutral-400 dark:hover:text-accent-400 transition-colors">
-    {{ icons.icon("arrow-left", "w-3.5 h-3.5") }}
-    <span>View all topics & articles</span>
-  </a>
-</div>
+<div class="space-y-8">
+  <div class="mb-4">
+    <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
+      {{ icons.icon("arrow-left", "w-3 h-3") }}
+      <span>View all topics &amp; articles</span>
+    </a>
+  </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {% set taglist = collections[tag] %}
-  {% for post in taglist | reverse %}
-    {% include "components/post-card.njk" %}
-  {% else %}
-    <div class="col-span-2 text-center py-16 bg-neutral-100/50 dark:bg-neutral-900/40 rounded-2xl border border-dashed border-neutral-200 dark:border-neutral-800">
-      <p class="text-neutral-500 dark:text-neutral-400 text-sm font-mono">No posts found with this tag.</p>
+  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
+    <div class="sm:w-24 shrink-0">
+      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+        #{{ tag }}
+      </h2>
     </div>
-  {% endfor %}
+
+    <div class="flex-grow space-y-6 w-full">
+      {% set taglist = collections[tag] %}
+      {% for post in taglist | reverse %}
+        <article class="space-y-1.5 pb-6 border-b border-neutral-100 dark:border-neutral-800/80 last:border-0 group">
+          <div class="flex items-center gap-2 text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+            <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+            <span>&bull;</span>
+            <span>{{ post.templateContent | readingTime }}</span>
+          </div>
+
+          <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+            <a href="{{ post.url }}">
+              {{ post.data.title }}
+            </a>
+          </h3>
+
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {{ post.data.description }}
+          </p>
+        </article>
+      {% else %}
+        <div class="py-12 text-center text-xs text-neutral-400 font-mono">
+          No posts found with this tag.
+        </div>
+      {% endfor %}
+    </div>
+  </section>
 </div>

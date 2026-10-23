@@ -1,0 +1,93 @@
+{% import "components/icons.njk" as icons %}
+
+<header class="mb-10 pt-4 sm:pt-6">
+  <!-- Profile Avatar & Identity -->
+  <div class="flex items-start justify-between gap-4 mb-5">
+    <div class="space-y-3">
+      <div class="relative inline-block">
+        <img src="/assets/images/avatar.svg" alt="Soumil Seal" class="w-16 h-16 rounded-full object-cover border border-neutral-200/80 dark:border-neutral-700/80 shadow-2xs">
+        <span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-[#0b0f19]" title="Available for opportunities"></span>
+      </div>
+
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Soumil Seal
+        </h1>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-0.5">
+          Software design &amp; cloud engineering
+        </p>
+        <a href="{{ site.url }}" class="inline-flex items-center gap-1 text-xs text-neutral-500 hover:text-accent-600 dark:text-neutral-400 dark:hover:text-accent-400 transition-colors mt-0.5">
+          {{ icons.icon("link", "w-3 h-3 text-neutral-400") }}
+          <span>soumilseal.dev</span>
+        </a>
+      </div>
+
+      <!-- Metadata Badges Row (Zero Emojis, Pure Bootstrap Icons) -->
+      <div class="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-neutral-500 dark:text-neutral-400 pt-1">
+        <span class="inline-flex items-center gap-1.5">
+          {{ icons.icon("mortarboard", "w-3.5 h-3.5 text-neutral-400") }}
+          <span>BCA Student</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          {{ icons.icon("geo-alt", "w-3.5 h-3.5 text-neutral-400") }}
+          <span>India</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Open to internships</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Quick Utilities: Theme Toggle & Search -->
+    <div class="flex items-center gap-1.5">
+      <!-- Search Button -->
+      <button type="button" 
+              class="p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-colors" 
+              aria-label="Search articles and projects" 
+              data-hs-overlay="#search-modal"
+              title="Search (Ctrl+K)">
+        {{ icons.icon("search", "w-4 h-4") }}
+      </button>
+
+      <!-- Theme Switcher -->
+      <button type="button" 
+              class="theme-toggle-btn p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-accent-500 transition-colors" 
+              aria-label="Toggle theme">
+        <span class="dark:hidden">
+          {{ icons.icon("moon", "w-4 h-4") }}
+        </span>
+        <span class="hidden dark:inline">
+          {{ icons.icon("sun", "w-4 h-4") }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Horizontal Navigation Tabs (Inspired by the Reference Design) -->
+  <nav class="flex items-center justify-between border-b border-neutral-200/90 dark:border-neutral-800/90 text-sm" aria-label="Page Sections">
+    <div class="flex items-center gap-5 sm:gap-6">
+      <a href="/" class="py-2.5 transition-colors border-b-2 -mb-px {% if page.url == '/' %}border-neutral-900 text-neutral-900 dark:border-white dark:text-white font-semibold{% else %}border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+        Overview
+      </a>
+      <a href="/blog/" class="py-2.5 transition-colors border-b-2 -mb-px {% if '/blog/' in page.url or '/posts/' in page.url or '/tags/' in page.url %}border-neutral-900 text-neutral-900 dark:border-white dark:text-white font-semibold{% else %}border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+        Posts
+      </a>
+      <a href="/projects/" class="py-2.5 transition-colors border-b-2 -mb-px {% if '/projects/' in page.url %}border-neutral-900 text-neutral-900 dark:border-white dark:text-white font-semibold{% else %}border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+        Projects
+      </a>
+      <a href="/about/" class="py-2.5 transition-colors border-b-2 -mb-px {% if '/about/' in page.url %}border-neutral-900 text-neutral-900 dark:border-white dark:text-white font-semibold{% else %}border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+        Information
+      </a>
+      <a href="/contact/" class="py-2.5 transition-colors border-b-2 -mb-px {% if '/contact/' in page.url %}border-neutral-900 text-neutral-900 dark:border-white dark:text-white font-semibold{% else %}border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+        Contact
+      </a>
+    </div>
+
+    <!-- Quick RSS Link -->
+    <a href="/feed.xml" class="text-xs text-neutral-400 hover:text-accent-600 dark:text-neutral-500 dark:hover:text-accent-400 py-2.5 hidden sm:inline-flex items-center gap-1 transition-colors" title="RSS Feed">
+      {{ icons.icon("rss", "w-3 h-3") }}
+      <span>Feed</span>
+    </a>
+  </nav>
+</header>
