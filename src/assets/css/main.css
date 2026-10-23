@@ -8,20 +8,54 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent-50: #eef2ff;
-  --color-accent-100: #e0e7ff;
-  --color-accent-200: #c7d2fe;
-  --color-accent-300: #a5b4fc;
-  --color-accent-400: #818cf8;
-  --color-accent-500: #6366f1;
-  --color-accent-600: #4f46e5;
-  --color-accent-700: #4338ca;
-  --color-accent-800: #3730a3;
-  --color-accent-900: #312e81;
-  --color-accent-950: #1e1b4b;
-
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Typography */
+  --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: 'BenchNine', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Primary: #F59E0B (Amber) */
+  --color-primary: #F59E0B;
+  --color-primary-50: #fffbeb;
+  --color-primary-100: #fef3c7;
+  --color-primary-200: #fde68a;
+  --color-primary-300: #fcd34d;
+  --color-primary-400: #fbbf24;
+  --color-primary-500: #F59E0B;
+  --color-primary-600: #d97706;
+  --color-primary-700: #b45309;
+  --color-primary-800: #92400e;
+  --color-primary-900: #78350f;
+
+  /* Accent: #722300 (Deep Rust) */
+  --color-accent: #722300;
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #722300;
+  --color-accent-600: #5c1c00;
+  --color-accent-700: #471500;
+  --color-accent-800: #340f00;
+  --color-accent-900: #250b00;
+  --color-accent-950: #170700;
+
+  /* Surface & Border */
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+
+  /* Neutrals mapped to Text #370000, Border #E2E8F0, Background #FFFFFF */
+  --color-neutral-50: #FFFFFF;
+  --color-neutral-100: #f8fafc;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #966161;
+  --color-neutral-500: #773131;
+  --color-neutral-600: #5d1919;
+  --color-neutral-700: #4c0d0d;
+  --color-neutral-800: #3f0404;
+  --color-neutral-900: #370000;
+  --color-neutral-950: #240000;
 }
 
 :root {
@@ -42,7 +76,7 @@ html {
 }
 
 html.dark {
-  scrollbar-color: #334155 transparent;
+  scrollbar-color: #3b1414 transparent;
 }
 
 @supports not (scrollbar-color: auto) {
@@ -51,16 +85,22 @@ html.dark {
     height: 8px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
+    background-color: #E2E8F0;
     border-radius: 9999px;
   }
   .dark ::-webkit-scrollbar-thumb {
-    background-color: #334155;
+    background-color: #3b1414;
   }
 }
 
+/* Headings: BenchNine */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
 body {
-  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#0b0f19] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
+  font-family: var(--font-sans);
+  @apply bg-white text-neutral-900 antialiased selection:bg-primary-100 selection:text-neutral-900 dark:bg-[#160606] dark:text-neutral-100 dark:selection:bg-accent-900 dark:selection:text-accent-100;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -69,6 +109,35 @@ body {
 /* Typography Overrides */
 .prose {
   max-width: 68ch;
+  --tw-prose-body: #370000;
+  --tw-prose-headings: #370000;
+  --tw-prose-lead: #5d1919;
+  --tw-prose-links: #722300;
+  --tw-prose-bold: #370000;
+  --tw-prose-counters: #722300;
+  --tw-prose-bullets: #F59E0B;
+  --tw-prose-hr: #E2E8F0;
+  --tw-prose-quotes: #722300;
+  --tw-prose-quote-borders: #E2E8F0;
+  --tw-prose-captions: #773131;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-heading);
+}
+
+.dark .prose {
+  --tw-prose-body: #fef2f2;
+  --tw-prose-headings: #fef2f2;
+  --tw-prose-lead: #fca5a5;
+  --tw-prose-links: #F59E0B;
+  --tw-prose-bold: #ffffff;
+  --tw-prose-counters: #F59E0B;
+  --tw-prose-bullets: #F59E0B;
+  --tw-prose-hr: #3b1414;
+  --tw-prose-quotes: #fbbf24;
+  --tw-prose-quote-borders: #3b1414;
+  --tw-prose-captions: #fca5a5;
 }
 
 .prose pre {
@@ -76,7 +145,7 @@ body {
 }
 
 .prose code:not(pre code) {
-  @apply font-mono text-[0.875em] bg-neutral-200/60 text-accent-700 px-1.5 py-0.5 rounded border border-neutral-200/80 dark:bg-neutral-800/80 dark:text-accent-300 dark:border-neutral-700/60 font-medium;
+  @apply font-mono text-[0.875em] bg-neutral-100 text-accent-500 px-1.5 py-0.5 rounded border border-neutral-200 dark:bg-neutral-800/80 dark:text-primary-400 dark:border-neutral-700/60 font-medium;
 }
 
 .prose code:not(pre code)::before,
@@ -159,31 +228,31 @@ h4:hover .header-anchor {
 /* Pagefind Custom Styling */
 .pagefind-ui {
   --pagefind-ui-scale: 0.95;
-  --pagefind-ui-primary: #6366f1;
-  --pagefind-ui-text: #171717;
+  --pagefind-ui-primary: #F59E0B;
+  --pagefind-ui-text: #370000;
   --pagefind-ui-background: #ffffff;
-  --pagefind-ui-border: #e5e5e5;
-  --pagefind-ui-tag: #f5f5f5;
+  --pagefind-ui-border: #E2E8F0;
+  --pagefind-ui-tag: #f8fafc;
   --pagefind-ui-border-radius: 0.75rem;
-  --pagefind-ui-font: 'Inter', sans-serif;
+  --pagefind-ui-font: 'Archivo', sans-serif;
 }
 
 .dark .pagefind-ui {
-  --pagefind-ui-primary: #818cf8;
-  --pagefind-ui-text: #f3f4f6;
-  --pagefind-ui-background: #111827;
-  --pagefind-ui-border: #1f2937;
-  --pagefind-ui-tag: #1f2937;
+  --pagefind-ui-primary: #F59E0B;
+  --pagefind-ui-text: #fef2f2;
+  --pagefind-ui-background: #1e0909;
+  --pagefind-ui-border: #3b1414;
+  --pagefind-ui-tag: #2a0b0b;
 }
 
 .pagefind-ui .pagefind-ui__search-input {
-  @apply focus:ring-2 focus:ring-accent-500 focus:outline-none transition-shadow duration-150;
+  @apply focus:ring-2 focus:ring-primary-500 focus:outline-none transition-shadow duration-150;
 }
 
 .pagefind-ui .pagefind-ui__result-link {
-  @apply text-accent-600 dark:text-accent-400 hover:underline font-semibold;
+  @apply text-accent-500 dark:text-primary-400 hover:underline font-semibold;
 }
 
 .pagefind-ui .pagefind-ui__result-excerpt mark {
-  @apply bg-accent-100 text-accent-900 rounded px-1 dark:bg-accent-950 dark:text-accent-200;
+  @apply bg-primary-100 text-neutral-900 rounded px-1 dark:bg-primary-900/60 dark:text-primary-100;
 }
