@@ -491,21 +491,29 @@ body {
 .prose h1 {
   font-size: var(--text-4xl);
   line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 
 .prose h2 {
   font-size: var(--text-3xl);
   line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
 }
 
 .prose h3 {
   font-size: var(--text-2xl);
   line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 0.65rem;
 }
 
 .prose h4 {
   font-size: var(--text-xl);
   line-height: 1.4;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .prose li {
@@ -518,6 +526,41 @@ body {
 .prose h3,
 .prose h4 {
   font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--tw-prose-headings, #0a0a0a);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.prose hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top-width: 1px;
+  border-color: #e4e4e7;
+}
+
+.dark .prose hr {
+  border-color: #262626;
+}
+
+.prose hr + h2,
+.prose hr + h3 {
+  margin-top: 1.25rem;
+}
+
+/* Fallback: Ensure any link wrapping heading text preserves full heading typography */
+.prose h1 > a:not(.header-anchor),
+.prose h2 > a:not(.header-anchor),
+.prose h3 > a:not(.header-anchor),
+.prose h4 > a:not(.header-anchor) {
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .dark .prose {
@@ -532,6 +575,13 @@ body {
   --tw-prose-quotes: #f4f4f5;
   --tw-prose-quote-borders: #262626;
   --tw-prose-captions: #a1a1aa;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4 {
+  color: #f4f4f5;
 }
 
 .prose pre {
@@ -553,14 +603,37 @@ body {
   scroll-margin-top: 6rem;
 }
 
+/* Subtle permalink hash symbol (#) appended after heading text */
 .header-anchor {
-  @apply text-neutral-400 no-underline opacity-0 transition-opacity hover:opacity-100 ml-2 font-normal text-sm dark:text-neutral-500;
+  display: inline-block;
+  color: #a1a1aa !important;
+  text-decoration: none !important;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
+  margin-left: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-weight: 400;
+  font-size: 0.65em;
+  vertical-align: middle;
+}
+
+.dark .header-anchor {
+  color: #71717a !important;
+}
+
+.header-anchor:hover {
+  color: #2563eb !important;
+  opacity: 1 !important;
+}
+
+.dark .header-anchor:hover {
+  color: #60a5fa !important;
 }
 
 h2:hover .header-anchor,
 h3:hover .header-anchor,
 h4:hover .header-anchor {
-  opacity: 1;
+  opacity: 0.75;
 }
 
 /* Syntax Highlighting (PrismJS Theme) */

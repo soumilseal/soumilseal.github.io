@@ -88,7 +88,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             class="inline-flex items-center gap-2 px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/60 font-mono text-xs font-medium tracking-tight transition-all group"
           >
             <span>{{ home.hero.secondaryCta.text or 'Explore Projects' }} ({{
-                projects.length
+                collections.projects.length or 0
               }})</span>
             <span
               class="group-hover:translate-x-1 transition-transform flex items-center"
@@ -135,7 +135,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <!-- Infinite Scroll Wrapper -->
     <div
       id="languages-ticker-wrapper"
-      class="overflow-hidden relative select-none w-full py-0 group cursor-grab active:cursor-grabbing"
+      class="overflow-hidden relative select-none w-full py-0 group"
     >
       <div
         id="languages-ticker-track"
@@ -146,20 +146,20 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         {% if not marqueeItems or marqueeItems.length == 0 %}
           {%
             set marqueeItems = [
-              { "name": "Python", "category": "01/", "url": "https://www.python.org" },
-              { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org" },
-              { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-              { "name": "Go", "category": "04/", "url": "https://go.dev" },
-              { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org" },
-              { "name": "C++", "category": "06/", "url": "https://isocpp.org" },
-              { "name": "C", "category": "07/", "url": "" },
-              { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/" },
-              { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org" },
-              { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/" },
-              { "name": "Docker", "category": "11/", "url": "https://www.docker.com" },
-              { "name": "Linux", "category": "12/", "url": "https://www.kernel.org" },
-              { "name": "Node.js", "category": "13/", "url": "https://nodejs.org" },
-              { "name": "Redis", "category": "14/", "url": "https://redis.io" }
+              { "name": "Python", "url": "https://www.python.org", "icon": "/assets/images/icons/python.svg" },
+              { "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "/assets/images/icons/typescript.svg" },
+              { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "icon": "/assets/images/icons/javascript.svg" },
+              { "name": "Go", "url": "https://go.dev", "icon": "/assets/images/icons/go.svg" },
+              { "name": "Rust", "url": "https://www.rust-lang.org", "icon": "/assets/images/icons/rust.svg" },
+              { "name": "C++", "url": "https://isocpp.org", "icon": "/assets/images/icons/cpp.svg" },
+              { "name": "C", "url": "https://en.cppreference.com/w/c", "icon": "/assets/images/icons/c.svg" },
+              { "name": "Java", "url": "https://www.oracle.com/java/", "icon": "/assets/images/icons/java.svg" },
+              { "name": "PostgreSQL", "url": "https://www.postgresql.org", "icon": "/assets/images/icons/postgresql.svg" },
+              { "name": "Bash / Shell", "url": "https://www.gnu.org/software/bash/", "icon": "/assets/images/icons/bash.svg" },
+              { "name": "Docker", "url": "https://www.docker.com", "icon": "/assets/images/icons/docker.svg" },
+              { "name": "Linux", "url": "https://www.kernel.org", "icon": "/assets/images/icons/linux.svg" },
+              { "name": "Node.js", "url": "https://nodejs.org", "icon": "/assets/images/icons/nodejs.svg" },
+              { "name": "Redis", "url": "https://redis.io", "icon": "/assets/images/icons/redis.svg" }
             ]
           %}
         {% endif %}
@@ -167,56 +167,28 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         <!-- Group A -->
         <div class="languages-ticker-group flex items-stretch shrink-0">
           {% for item in marqueeItems %}
-            {%
-              set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/")
-            %}
-            {% if item.url %}
-              <a
-                href="{{ item.url }}"
-                {% if item.url.startsWith('http') %}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                {% endif %}
-                class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
-              >
-                {% if item.image or item.icon %}
-                  <img
-                    src="{{ item.image or item.icon }}"
-                    alt="{{ item.name }}"
-                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
-                    loading="lazy"
-                  />
-                {% endif %}
-                <span
-                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-                >{{ itemIdx }}</span>
-                <span
-                  class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
-                >{{ item.name }}</span>
-                {% if item.url.startsWith('http') %}
-                  {{
-                    icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity")
-                  }}
-                {% endif %}
-              </a>
-            {% else %}
-              <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors shrink-0">
-                {% if item.image or item.icon %}
-                  <img
-                    src="{{ item.image or item.icon }}"
-                    alt="{{ item.name }}"
-                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
-                    loading="lazy"
-                  />
-                {% endif %}
-                <span
-                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-                >{{ itemIdx }}</span>
-                <span
-                  class="font-semibold text-neutral-900 dark:text-neutral-100"
-                >{{ item.name }}</span>
-              </div>
-            {% endif %}
+            <a
+              href="{{ item.url or '#' }}"
+              {% if item.url and item.url.startsWith('http') %}
+                target="_blank"
+                rel="noopener noreferrer"
+              {% endif %}
+              class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2.5 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none cursor-pointer"
+            >
+              {% if item.image or item.icon %}
+                <img
+                  src="{{ item.image or item.icon }}"
+                  alt=""
+                  class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                  loading="lazy"
+                  width="16"
+                  height="16"
+                />
+              {% endif %}
+              <span
+                class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
+              >{{ item.name }}</span>
+            </a>
           {% endfor %}
         </div>
 
@@ -226,57 +198,29 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
           aria-hidden="true"
         >
           {% for item in marqueeItems %}
-            {%
-              set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/")
-            %}
-            {% if item.url %}
-              <a
-                href="{{ item.url }}"
-                {% if item.url.startsWith('http') %}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                {% endif %}
-                tabindex="-1"
-                class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
-              >
-                {% if item.image or item.icon %}
-                  <img
-                    src="{{ item.image or item.icon }}"
-                    alt=""
-                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
-                    loading="lazy"
-                  />
-                {% endif %}
-                <span
-                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-                >{{ itemIdx }}</span>
-                <span
-                  class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
-                >{{ item.name }}</span>
-                {% if item.url.startsWith('http') %}
-                  {{
-                    icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity")
-                  }}
-                {% endif %}
-              </a>
-            {% else %}
-              <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors shrink-0">
-                {% if item.image or item.icon %}
-                  <img
-                    src="{{ item.image or item.icon }}"
-                    alt=""
-                    class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
-                    loading="lazy"
-                  />
-                {% endif %}
-                <span
-                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
-                >{{ itemIdx }}</span>
-                <span
-                  class="font-semibold text-neutral-900 dark:text-neutral-100"
-                >{{ item.name }}</span>
-              </div>
-            {% endif %}
+            <a
+              href="{{ item.url or '#' }}"
+              {% if item.url and item.url.startsWith('http') %}
+                target="_blank"
+                rel="noopener noreferrer"
+              {% endif %}
+              tabindex="-1"
+              class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2.5 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none cursor-pointer"
+            >
+              {% if item.image or item.icon %}
+                <img
+                  src="{{ item.image or item.icon }}"
+                  alt=""
+                  class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                  loading="lazy"
+                  width="16"
+                  height="16"
+                />
+              {% endif %}
+              <span
+                class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
+              >{{ item.name }}</span>
+            </a>
           {% endfor %}
         </div>
       </div>
@@ -296,20 +240,34 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         href="/projects/"
         class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
-        <span>view all ({{ collections.projects.length or projects.length }})</span>
+        <span>view all ({{ collections.projects.length or 0 }})</span>
         {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
     </div>
 
-    <!-- Contiguous Featured Projects Grid (3 Columns on Desktop, Zero Gaps) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-      {% set featuredList = collections.featuredProjects if (collections.featuredProjects and collections.featuredProjects.length > 0) else (collections.projects or projects) %}
-      {% for project in featuredList %}
-        {% if loop.index <= 3 %}
-          {% include "components/project-card.njk" %}
-        {% endif %}
-      {% endfor %}
-    </div>
+    <!-- Contiguous Featured Projects Grid / Empty State -->
+    {% if collections.projects.length > 0 %}
+      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
+        {% set featuredList = collections.featuredProjects if (collections.featuredProjects and collections.featuredProjects.length > 0) else collections.projects %}
+        {% for project in featuredList %}
+          {% if loop.index <= 3 %}
+            {% include "components/project-card.njk" %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-12 sm:py-16 text-center">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
+          {{ icons.icon("code-slash", "w-4 h-4") }}
+        </div>
+        <p class="font-mono text-sm sm:text-base font-semibold text-neutral-800 dark:text-neutral-200 tracking-tight">
+          No Projects Right now, Coming soon
+        </p>
+        <p class="font-mono text-xs text-neutral-400 dark:text-neutral-500 mt-1">
+          // systems, distributed daemons & tools currently in development
+        </p>
+      </div>
+    {% endif %}
   </section>
 
   <!-- Latest Writing Section (Contiguous Grid Section, Zero Outer Margins) -->
@@ -325,17 +283,31 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         href="/blog/"
         class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
-        <span>all articles ({{ collections.posts.length }})</span>
+        <span>all articles ({{ collections.posts.length or 0 }})</span>
         {{ icons.icon("arrow-right", "w-3 h-3") }}
       </a>
     </div>
 
-    <!-- Contiguous Posts List (Divide-Y, Zero Left/Right Margins) -->
-    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
-      {% for post in collections.posts | head(3) %}
-        {% include "components/post-card.njk" %}
-      {% endfor %}
-    </div>
+    <!-- Contiguous Posts List / Empty State -->
+    {% if collections.posts.length > 0 %}
+      <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
+        {% for post in collections.posts | head(3) %}
+          {% include "components/post-card.njk" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-12 sm:py-16 text-center">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
+          {{ icons.icon("journal-text", "w-4 h-4") }}
+        </div>
+        <p class="font-mono text-sm sm:text-base font-semibold text-neutral-800 dark:text-neutral-200 tracking-tight">
+          No Blogs Right now, Coming soon
+        </p>
+        <p class="font-mono text-xs text-neutral-400 dark:text-neutral-500 mt-1">
+          // technical deep dives & architecture notes queued for publishing
+        </p>
+      </div>
+    {% endif %}
   </section>
 
   <!-- Contact Section (Contiguous Grid Section, Zero Outer Margins) -->

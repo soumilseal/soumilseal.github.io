@@ -68,87 +68,73 @@
     "items": [
       {
         "name": "Python",
-        "category": "01/",
         "url": "https://www.python.org",
-        "image": "/assets/images/icons/python.svg"
+        "icon": "/assets/images/icons/python.svg"
       },
       {
         "name": "TypeScript",
-        "category": "02/",
         "url": "https://www.typescriptlang.org",
-        "image": "/assets/images/icons/typescript.svg"
+        "icon": "/assets/images/icons/typescript.svg"
       },
       {
         "name": "JavaScript",
-        "category": "03/",
         "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        "image": ""
+        "icon": "/assets/images/icons/javascript.svg"
       },
       {
         "name": "Go",
-        "category": "04/",
         "url": "https://go.dev",
-        "image": "/assets/images/icons/go.svg"
+        "icon": "/assets/images/icons/go.svg"
       },
       {
         "name": "Rust",
-        "category": "05/",
         "url": "https://www.rust-lang.org",
-        "image": ""
+        "icon": "/assets/images/icons/rust.svg"
       },
       {
         "name": "C++",
-        "category": "06/",
         "url": "https://isocpp.org",
-        "image": ""
+        "icon": "/assets/images/icons/cpp.svg"
       },
       {
         "name": "C",
-        "category": "07/",
-        "url": "",
-        "image": ""
+        "url": "https://en.cppreference.com/w/c",
+        "icon": "/assets/images/icons/c.svg"
       },
       {
         "name": "Java",
-        "category": "08/",
         "url": "https://www.oracle.com/java/",
-        "image": ""
+        "icon": "/assets/images/icons/java.svg"
       },
       {
         "name": "PostgreSQL",
-        "category": "09/",
         "url": "https://www.postgresql.org",
-        "image": ""
+        "icon": "/assets/images/icons/postgresql.svg"
       },
       {
         "name": "Bash / Shell",
-        "category": "10/",
         "url": "https://www.gnu.org/software/bash/",
-        "image": ""
+        "icon": "/assets/images/icons/bash.svg"
       },
       {
         "name": "Docker",
-        "category": "11/",
         "url": "https://www.docker.com",
-        "image": "/assets/images/icons/docker.svg"
+        "icon": "/assets/images/icons/docker.svg"
       },
       {
         "name": "Linux",
-        "category": "12/",
         "url": "https://www.kernel.org",
-        "image": ""
+        "icon": "/assets/images/icons/linux.svg"
       },
       {
         "name": "Node.js",
-        "category": "13/",
         "url": "https://nodejs.org",
-        "image": ""
+        "icon": "/assets/images/icons/nodejs.svg"
       },
       {
         "name": "Redis",
-        "category": "14/",
         "url": "https://redis.io",
-        "image": ""
+        "icon": "/assets/images/icons/redis.svg"
       }
     ]
   },

@@ -21,7 +21,7 @@
   <link href="{{ permalink | absoluteUrl(metadata.url) }}" rel="self" />
   <link href="{{ metadata.url }}" />
   <updated>{{
-    collections.posts | getNewestCollectionItemDate | dateToRfc3339
+    (collections.posts | getNewestCollectionItemDate | dateToRfc3339) if (collections.posts and collections.posts.length > 0) else (page.date | dateToRfc3339)
   }}</updated>
   <id>{{ metadata.url }}</id>
   <author>

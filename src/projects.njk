@@ -3,36 +3,47 @@ layout: layouts/page.njk
 title: Projects
 description: Software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
 pagination:
-  data: collections.projects
-  size: 6
-  alias: pagedProjects
+  data: collections.pagedProjectList
+  size: 1
+  alias: pagedBatch
 permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 
 ---
 {% import "components/icons.njk" as icons %}
+{% set pagedProjects = pagedBatch.projects or [] %}
 
 <div class="grow flex flex-col justify-between">
   <div class="grow flex flex-col">
     <!-- Header / Meta Bar: Contiguous Grid Cell -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3 font-mono text-xs text-neutral-500 dark:text-neutral-400 shrink-0">
       <span>
-        all-projects // index ({{ collections.projects.length }})
+        all-projects // index ({{ collections.projects.length or 0 }})
       </span>
       <span>
         page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length or 1 }}
       </span>
     </div>
 
-    <!-- Projects Grid: 3 Columns on Desktop, 6 per page with 1px grid borders -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-300 dark:bg-neutral-800 border-b border-neutral-300 dark:border-neutral-800 shrink-0">
-      {% for project in pagedProjects %}
-        {% include "components/project-card.njk" %}
-      {% else %}
-        <div class="col-span-3 p-12 text-center text-sm font-mono text-neutral-400 bg-white dark:bg-neutral-950">
-          No projects listed yet.
+    <!-- Projects Grid / Empty State -->
+    {% if pagedProjects.length > 0 %}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-300 dark:bg-neutral-800 border-b border-neutral-300 dark:border-neutral-800 shrink-0">
+        {% for project in pagedProjects %}
+          {% include "components/project-card.njk" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-16 sm:py-20 text-center shrink-0">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-4">
+          {{ icons.icon("code-slash", "w-5 h-5") }}
         </div>
-      {% endfor %}
-    </div>
+        <h2 class="font-mono text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
+          No Projects Right now, Coming soon
+        </h2>
+        <p class="font-mono text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-2 max-w-md mx-auto">
+          // production daemons, cloud pipelines, and open-source developer tooling are currently in progress
+        </p>
+      </div>
+    {% endif %}
 
     <!-- Background Filler: Connects seamlessly to footer -->
     <div class="grow bg-white dark:bg-neutral-950"></div>

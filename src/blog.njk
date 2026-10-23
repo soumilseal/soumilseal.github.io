@@ -3,20 +3,21 @@ layout: layouts/page.njk
 title: Writing
 description: Technical articles, system design explorations, and engineering notes on modern software development and cloud systems.
 pagination:
-  data: collections.posts
-  size: 4
-  alias: posts
+  data: collections.pagedBlogPosts
+  size: 1
+  alias: pagedBatch
 permalink: "blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 
 ---
 {% import "components/icons.njk" as icons %}
+{% set posts = pagedBatch.posts or [] %}
 
 <div class="grow flex flex-col justify-between">
   <div class="grow flex flex-col">
     <!-- Search Bar: Contiguous Grid Cell -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3 shrink-0">
       <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400">
-        articles // ({{ collections.posts.length }}) &bull; page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length or 1 }}
+        articles // ({{ collections.posts.length or 0 }}) &bull; page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length or 1 }}
       </span>
 
       <!-- Quick Search Trigger -->
@@ -36,15 +37,25 @@ permalink: "blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 
     </div>
 
     <!-- Posts List: Contiguous Divide-Y with Zero Spaces -->
-    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 shrink-0">
-      {% for post in posts %}
-        {% include "components/post-card.njk" %}
-      {% else %}
-        <div class="p-12 text-center text-sm font-mono text-neutral-400">
-          No posts published yet.
+    {% if posts.length > 0 %}
+      <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 shrink-0">
+        {% for post in posts %}
+          {% include "components/post-card.njk" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-16 sm:py-20 text-center shrink-0">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-4">
+          {{ icons.icon("journal-text", "w-5 h-5") }}
         </div>
-      {% endfor %}
-    </div>
+        <h2 class="font-mono text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">
+          No Blogs Right now, Coming soon
+        </h2>
+        <p class="font-mono text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-2 max-w-md mx-auto">
+          // technical articles, distributed systems deep dives & engineering logs are being prepared
+        </p>
+      </div>
+    {% endif %}
 
     <!-- Background Filler: Connects seamlessly to footer -->
     <div class="grow bg-white dark:bg-neutral-950"></div>

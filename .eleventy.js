@@ -43,7 +43,11 @@ module.exports = function (eleventyConfig) {
     breaks: true,
     linkify: true,
   }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.headerLink({ safariReaderFix: true }),
+    permalink: markdownItAnchor.permalink.ariaHidden({
+      symbol: '#',
+      placement: 'after',
+      class: 'header-anchor',
+    }),
     level: [2, 3, 4],
     slugify: (s) =>
       s
@@ -147,6 +151,37 @@ module.exports = function (eleventyConfig) {
       .filter((item) => (isProd ? !item.data.draft : true))
       .filter((item) => item.data.featured === true)
       .sort((a, b) => (a.data.order || 99) - (b.data.order || 99) || b.date - a.date);
+  });
+
+  // Paged collections that always guarantee at least 1 page (so /blog/ and /projects/ always generate)
+  eleventyConfig.addCollection('pagedBlogPosts', (collectionApi) => {
+    const posts = collectionApi
+      .getFilteredByGlob('./src/posts/*.md')
+      .filter((item) => (isProd ? !item.data.draft : true))
+      .sort((a, b) => b.date - a.date);
+    if (posts.length === 0) {
+      return [{ isEmpty: true, posts: [] }];
+    }
+    const chunks = [];
+    for (let i = 0; i < posts.length; i += 4) {
+      chunks.push({ isEmpty: false, posts: posts.slice(i, i + 4) });
+    }
+    return chunks;
+  });
+
+  eleventyConfig.addCollection('pagedProjectList', (collectionApi) => {
+    const list = collectionApi
+      .getFilteredByGlob('./src/projects/*.md')
+      .filter((item) => (isProd ? !item.data.draft : true))
+      .sort((a, b) => (a.data.order || 99) - (b.data.order || 99) || b.date - a.date);
+    if (list.length === 0) {
+      return [{ isEmpty: true, projects: [] }];
+    }
+    const chunks = [];
+    for (let i = 0; i < list.length; i += 6) {
+      chunks.push({ isEmpty: false, projects: list.slice(i, i + 6) });
+    }
+    return chunks;
   });
 
   eleventyConfig.addCollection('tagList', (collectionApi) => {
