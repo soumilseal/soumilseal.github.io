@@ -3,16 +3,19 @@ layout: layouts/base.njk
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 border-x border-neutral-200/80 dark:border-neutral-800/80 relative bg-white dark:bg-[#160606]">
+<div class="max-w-3xl mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]">
   {% if title %}
-    <header class="relative mb-14 sm:mb-16 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 space-y-3">
+    <header class="relative px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-3 bg-white dark:bg-[#160606]">
       {{ icons.vercel_plus("bl") }}
       {{ icons.vercel_plus("br") }}
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+      <div class="font-mono text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+        section // {{ title | lower }}/
+      </div>
+      <h1 class="font-heading font-bold text-4xl sm:text-6xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight">
         {{ title }}
       </h1>
       {% if description %}
-        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl">
+        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl font-sans">
           {{ description }}
         </p>
       {% endif %}

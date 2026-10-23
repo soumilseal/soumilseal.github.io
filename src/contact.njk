@@ -6,86 +6,106 @@ permalink: /contact/
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="space-y-10">
+<div>
   
-  <!-- Direct Channels (Vercel Card with Sharp Corners) -->
-  <div class="vercel-card group relative p-6 border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#120404] space-y-4 text-sm text-neutral-600 dark:text-neutral-400">
-    {{ icons.vercel_corners() }}
-
-    <p class="leading-relaxed">
-      The easiest way to reach me is directly by email:
-    </p>
-    <div class="flex items-center gap-3">
-      <a href="mailto:{{ site.email }}" class="text-base font-medium text-neutral-900 dark:text-neutral-100 underline underline-offset-4" id="contact-email">
-        {{ site.email }}
-      </a>
-      <button type="button" 
-              id="copy-email-btn"
-              class="px-2.5 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-              aria-label="Copy email address">
-        <span id="copy-text">Copy</span>
-      </button>
+  <!-- Direct Channels Section (Contiguous Grid Cell) -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          direct-channels/
+        </h2>
+      </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">primary communication</span>
     </div>
 
-    <div class="flex items-center gap-4 text-xs font-mono pt-2 border-t border-neutral-100 dark:border-neutral-800/60">
-      <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-        GitHub &nearr;
-      </a>
-      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-        LinkedIn &nearr;
-      </a>
-      <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-        Twitter/X &nearr;
-      </a>
-    </div>
-  </div>
-
-  <!-- Minimal Form (Vercel Card with Sharp Corners) -->
-  <div class="vercel-card group relative p-6 sm:p-8 border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#120404] space-y-6">
-    {{ icons.vercel_corners() }}
-
-    <div class="space-y-1">
-      <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Send a message
-      </h2>
-      <p class="text-xs font-mono text-neutral-400">
-        Fill out the details below to dispatch an email.
+    <div class="p-6 sm:p-8 space-y-4 bg-white dark:bg-[#160606]">
+      <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+        The easiest way to reach me is directly by email:
       </p>
+      <div class="flex items-center gap-3">
+        <a href="mailto:{{ site.email }}" class="text-base sm:text-lg font-mono font-medium text-neutral-900 dark:text-neutral-100 underline underline-offset-4" id="contact-email">
+          {{ site.email }}
+        </a>
+        <button type="button" 
+                id="copy-email-btn"
+                class="px-2.5 py-1 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-neutral-300 dark:border-neutral-700 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors"
+                aria-label="Copy email address">
+          <span id="copy-text">Copy</span>
+        </button>
+      </div>
     </div>
 
-    <form id="contact-form" class="space-y-5">
-      <div class="space-y-1.5">
-        <label for="name" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          Name
-        </label>
-        <input type="text" id="name" name="name" required placeholder="Jane Doe" 
-               class="w-full px-3.5 py-2.5 border border-neutral-200 dark:border-neutral-800 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 transition-colors">
+    <!-- Contiguous Channels Grid -->
+    <div class="grid grid-cols-3 divide-x divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono bg-white dark:bg-[#160606]">
+      <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>GitHub</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>LinkedIn</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>Twitter/X</span>
+        <span>&nearr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Message Dispatch Form Section (Contiguous Grid Cell) -->
+  <section>
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary-500"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          dispatch-message/
+        </h2>
       </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">interactive form</span>
+    </div>
 
-      <div class="space-y-1.5">
-        <label for="email" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          Email
-        </label>
-        <input type="email" id="email" name="email" required placeholder="jane@example.com" 
-               class="w-full px-3.5 py-2.5 border border-neutral-200 dark:border-neutral-800 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 transition-colors">
-      </div>
+    <div class="p-6 sm:p-8 bg-white dark:bg-[#160606]">
+      <form id="contact-form" class="space-y-5 max-w-xl">
+        <div class="space-y-1.5">
+          <label for="name" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            name/
+          </label>
+          <input type="text" id="name" name="name" required placeholder="Jane Doe" 
+                 class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors">
+        </div>
 
-      <div class="space-y-1.5">
-        <label for="message" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          Message
-        </label>
-        <textarea id="message" name="message" rows="4" required placeholder="Your message..." 
-                  class="w-full px-3.5 py-2.5 border border-neutral-200 dark:border-neutral-800 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-neutral-500 dark:focus:border-neutral-400 transition-colors resize-y"></textarea>
-      </div>
+        <div class="space-y-1.5">
+          <label for="email" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            email/
+          </label>
+          <input type="email" id="email" name="email" required placeholder="jane@example.com" 
+                 class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors">
+        </div>
 
-      <div id="form-feedback" class="hidden p-3 text-xs font-mono"></div>
+        <div class="space-y-1.5">
+          <label for="message" class="block text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            message/
+          </label>
+          <textarea id="message" name="message" rows="4" required placeholder="Your message..." 
+                    class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors resize-y"></textarea>
+        </div>
 
-      <button type="submit" 
-              class="px-5 py-2.5 border border-neutral-900 bg-neutral-900 hover:bg-neutral-800 text-white dark:border-neutral-100 dark:bg-neutral-100 dark:hover:bg-white dark:text-neutral-900 text-sm font-medium transition-colors focus:outline-none">
-        Send message &rarr;
-      </button>
-    </form>
-  </div>
+        <div id="form-feedback" class="hidden p-3 text-xs font-mono"></div>
+
+        <button type="submit" 
+                class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-1.5">
+          <span>Send message</span>
+          <span>&rarr;</span>
+        </button>
+      </form>
+    </div>
+  </section>
 
 </div>
 
@@ -120,7 +140,7 @@ permalink: /contact/
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
-        feedback.className = 'p-3 text-xs font-mono bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700';
+        feedback.className = 'p-3 text-xs font-mono bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-700';
         feedback.innerHTML = `Opening your email client to dispatch to <strong>${emailEl.innerText.trim()}</strong>...`;
         feedback.classList.remove('hidden');
 

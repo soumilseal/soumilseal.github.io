@@ -1,61 +1,78 @@
 {% import "components/icons.njk" as icons %}
 
-<header class="w-full bg-white dark:bg-[#160606] sticky top-0 z-40 transition-colors border-b border-neutral-200/80 dark:border-neutral-800/80">
-  <div class="max-w-3xl mx-auto px-6 sm:px-8 border-x border-neutral-200/80 dark:border-neutral-800/80 relative bg-white dark:bg-[#160606]">
-    <!-- Vercel Gridline Intersection Pluses -->
-    {{ icons.vercel_plus("bl") }}
-    {{ icons.vercel_plus("br") }}
+<header class="w-full bg-white dark:bg-[#160606] sticky top-0 z-40 transition-colors border-b border-neutral-300 dark:border-neutral-800">
+  <!-- Top Terminal Ticker (GitHub Universe Style) -->
+  <div class="w-full bg-neutral-950 text-emerald-400 font-mono text-[11px] border-b border-neutral-300 dark:border-neutral-800">
+    <div class="max-w-3xl mx-auto px-4 py-1.5 border-x border-neutral-300 dark:border-neutral-800 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-emerald-400"></span>
+        <span class="tracking-tight">soumilseal2026-systems-in/</span>
+      </div>
+      <div class="text-[10px] text-neutral-400 font-mono hidden sm:inline">
+        runtime: node • bca student • india
+      </div>
+    </div>
+  </div>
 
-    <div class="flex items-center justify-between h-20">
+  <!-- Contiguous Navbar Grid Row (No spaces between grid lines) -->
+  <div class="max-w-3xl mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]">
+    <div class="flex items-stretch justify-between h-14">
       
-      <!-- Brand Logo / Name -->
-      <a href="/" class="group flex items-center gap-2 font-medium text-neutral-900 dark:text-neutral-100 text-sm tracking-tight focus:outline-none" aria-label="Soumil Seal homepage">
-        <span class="font-heading font-bold tracking-tight text-xl group-hover:text-accent-500 dark:group-hover:text-primary-400 transition-colors">
+      <!-- Brand Cell -->
+      <a href="/" class="flex items-center px-4 sm:px-5 border-r border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group focus:outline-none shrink-0" aria-label="Soumil Seal homepage">
+        <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
           Soumil Seal
         </span>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-6" aria-label="Primary Navigation">
+      <!-- Desktop Nav Cells (Contiguous Grid Cells) -->
+      <nav class="hidden md:flex items-stretch flex-grow" aria-label="Primary Navigation">
         {% for item in site.nav %}
           {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
           <a href="{{ item.url }}" 
-             class="text-sm transition-colors focus:outline-none {% if isActive %}text-neutral-900 dark:text-neutral-100 font-semibold{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100{% endif %}"
+             class="flex items-center px-4 border-r border-neutral-300 dark:border-neutral-800 text-xs font-mono transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900/60 focus:outline-none {% if isActive %}text-neutral-900 dark:text-neutral-100 font-bold bg-neutral-100/70 dark:bg-neutral-900/80{% else %}text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100{% endif %}"
              {% if isActive %}aria-current="page"{% endif %}>
-            {{ item.text }}
+            {{ item.text | lower }}/
           </a>
         {% endfor %}
       </nav>
 
-      <!-- Utility Actions (Search, Theme Toggle) -->
-      <div class="flex items-center gap-2.5">
-        <!-- Search Trigger (Sharp Corners) -->
+      <!-- Utility Grid Cells (Search, Theme, Action) -->
+      <div class="flex items-stretch shrink-0">
+        <!-- Search Trigger Cell -->
         <button type="button" 
-                class="p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
+                class="flex items-center justify-center px-3.5 border-l md:border-l-0 border-r border-neutral-300 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors focus:outline-none" 
                 aria-haspopup="dialog" 
                 aria-expanded="false" 
                 aria-controls="search-modal" 
                 data-hs-overlay="#search-modal"
                 title="Search (Ctrl+K)">
-          {{ icons.icon("search", "w-4 h-4") }}
+          {{ icons.icon("search", "w-3.5 h-3.5") }}
         </button>
 
-        <!-- Theme Toggle (Sharp Corners) -->
+        <!-- Theme Toggle Cell -->
         <button type="button" 
-                class="theme-toggle-btn p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
+                class="theme-toggle-btn flex items-center justify-center px-3.5 border-r border-neutral-300 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors focus:outline-none" 
                 aria-label="Toggle theme">
           <span class="dark:hidden">
-            {{ icons.icon("moon", "w-4 h-4") }}
+            {{ icons.icon("moon", "w-3.5 h-3.5") }}
           </span>
           <span class="hidden dark:inline">
-            {{ icons.icon("sun", "w-4 h-4") }}
+            {{ icons.icon("sun", "w-3.5 h-3.5") }}
           </span>
         </button>
 
-        <!-- Mobile Menu Toggle Button (Sharp Corners) -->
-        <div class="md:hidden">
+        <!-- Accent Action Cell (like Universe 'Get passes ↗') -->
+        <a href="/contact/" 
+           class="hidden sm:flex items-center gap-1.5 px-4 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-semibold tracking-tight transition-colors">
+          <span>Get in touch</span>
+          <span class="text-xs">&nearr;</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button Cell -->
+        <div class="flex items-stretch md:hidden">
           <button type="button" 
-                  class="hs-collapse-toggle p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
+                  class="hs-collapse-toggle flex items-center justify-center px-3.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors focus:outline-none" 
                   id="hs-navbar-collapse" 
                   aria-expanded="false" 
                   aria-controls="mobile-nav" 
@@ -73,15 +90,15 @@
 
     </div>
 
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-300 md:hidden pb-4 border-t border-neutral-200/80 dark:border-neutral-800/80 mt-1" aria-labelledby="hs-navbar-collapse">
-      <nav class="flex flex-col gap-3 pt-3" aria-label="Mobile Navigation">
+    <!-- Mobile Navigation Grid List -->
+    <div id="mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-200 md:hidden border-t border-neutral-300 dark:border-neutral-800" aria-labelledby="hs-navbar-collapse">
+      <nav class="flex flex-col divide-y divide-neutral-300 dark:divide-neutral-800 font-mono text-xs" aria-label="Mobile Navigation">
         {% for item in site.nav %}
           {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
           <a href="{{ item.url }}" 
-             class="text-sm py-1 transition-colors {% if isActive %}text-neutral-900 dark:text-white font-semibold{% else %}text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white{% endif %}"
+             class="px-5 py-2.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900/60 {% if isActive %}text-neutral-900 dark:text-white font-bold bg-neutral-100/70 dark:bg-neutral-900/80{% else %}text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white{% endif %}"
              {% if isActive %}aria-current="page"{% endif %}>
-            {{ item.text }}
+            {{ item.text | lower }}/
           </a>
         {% endfor %}
       </nav>

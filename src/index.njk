@@ -5,51 +5,105 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 border-x border-neutral-200/80 dark:border-neutral-800/80 relative space-y-20 sm:space-y-28 bg-white dark:bg-[#160606]">
+<div class="max-w-3xl mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]">
   
-  <!-- Hero Section -->
-  <section class="pt-4">
-    <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8 sm:gap-10">
-      <div class="space-y-4 max-w-xl">
+  <!-- Hero Section: Giant Title Banner (GitHub Universe Style) -->
+  <section class="relative border-b border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 sm:py-12 bg-white dark:bg-[#160606]">
+    {{ icons.vercel_plus("bl") }}
+    {{ icons.vercel_plus("br") }}
+    
+    <div class="flex items-center justify-between mb-3">
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+        developer // portfolio '26
+      </span>
+      <span class="font-mono text-[11px] text-primary-600 dark:text-primary-400 flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 bg-primary-500 animate-pulse"></span>
+        <span>open for opportunities</span>
+      </span>
+    </div>
+
+    <h1 class="font-heading font-bold text-5xl sm:text-7xl md:text-8xl tracking-tight text-neutral-900 dark:text-neutral-100 uppercase leading-[0.88]">
+      SOUMIL SEAL
+    </h1>
+  </section>
+
+  <!-- Hero Section: Contiguous 2-Column Blueprint Grid (No spaces between grid lines) -->
+  <section class="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-300 dark:border-neutral-800">
+    
+    <!-- Left Column (5 Cols) -->
+    <div class="md:col-span-5 flex flex-col border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800">
+      <!-- Metadata Row (Like 'october 28-29 / san francisco, CA') -->
+      <div class="px-5 py-2.5 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-50/60 dark:bg-neutral-900/40">
+        <span>india / bca undergrad</span>
+        <span class="text-neutral-400 dark:text-neutral-500">systems & web</span>
+      </div>
+
+      <!-- Graph Paper Cell (Like Universe 'stay-tuned/' cell) -->
+      <div class="p-6 flex-grow grid-graph relative flex flex-col justify-between min-h-[160px] bg-white dark:bg-[#160606]">
         <div class="space-y-1">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-            Soumil Seal
-          </h1>
-          <p class="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 font-mono">
-            Developer & BCA Student
-          </p>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+            focus-discipline/
+          </span>
+          <h2 class="font-mono font-bold text-xl sm:text-2xl text-neutral-900 dark:text-neutral-100 tracking-tight">
+            software-engineering/
+          </h2>
         </div>
-        <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
+        <div class="pt-6 flex flex-wrap gap-1.5">
+          <span class="grid-badge">Cloud</span>
+          <span class="grid-badge">Distributed</span>
+          <span class="grid-badge">Runtimes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column (7 Cols) -->
+    <div class="md:col-span-7 flex flex-col justify-between bg-white dark:bg-[#160606]">
+      <div class="p-6 sm:p-8 space-y-4">
+        <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-200 leading-relaxed font-sans">
           I build software across backend systems, cloud infrastructure, and web applications. Passionate about understanding runtime mechanics, writing clean code, and shipping dependable tools.
         </p>
       </div>
 
-      <div class="relative shrink-0 group">
-        <img src="/assets/images/me.jpg" 
-             alt="Soumil Seal" 
-             class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 object-cover object-top border border-neutral-200 dark:border-neutral-800 shadow-xs shrink-0" 
-             width="176" 
-             height="176" 
-             loading="eager">
-        {{ icons.vercel_corners() }}
+      <!-- Bottom Contiguous Action Split (Photo + Solid CTA Cell like Universe 'Get passes ↗') -->
+      <div class="grid grid-cols-12 border-t border-neutral-300 dark:border-neutral-800">
+        <div class="col-span-4 sm:col-span-3 border-r border-neutral-300 dark:border-neutral-800 relative bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
+          <img src="/assets/images/me.jpg" 
+               alt="Soumil Seal" 
+               class="w-full h-full object-cover object-top aspect-square" 
+               width="140" 
+               height="140" 
+               loading="eager">
+        </div>
+        <a href="/contact/" 
+           class="col-span-8 sm:col-span-9 p-5 flex items-center justify-between bg-primary-500 hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-600 text-neutral-950 font-mono font-bold text-xs sm:text-sm tracking-tight transition-colors group">
+          <span>Get in touch / Collaborations</span>
+          <span class="text-base sm:text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">&nearr;</span>
+        </a>
       </div>
     </div>
+
   </section>
 
-  <!-- Featured Projects Section -->
-  <section class="space-y-6">
-    <div class="relative flex items-baseline justify-between border-b border-neutral-200/80 dark:border-neutral-800/80 pb-3">
+  <!-- Featured Projects Section (Contiguous Grid Section) -->
+  <section>
+    <!-- Section Header Bar -->
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
       {{ icons.vercel_plus("bl") }}
       {{ icons.vercel_plus("br") }}
-      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Featured Projects
-      </h2>
-      <a href="/projects/" class="text-xs font-mono text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-        View all ({{ projects.length }}) &rarr;
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          featured-projects/
+        </h2>
+      </div>
+      <a href="/projects/" class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1">
+        <span>view all ({{ projects.length }})</span>
+        <span>&nearr;</span>
       </a>
     </div>
 
-    <div class="space-y-4">
+    <!-- Contiguous Projects List (Divide-Y, Zero Gaps) -->
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
       {% for project in projects %}
         {% if project.featured %}
           {% include "components/project-card.njk" %}
@@ -58,36 +112,74 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <!-- Latest Writing Section -->
-  <section class="space-y-6">
-    <div class="relative flex items-baseline justify-between border-b border-neutral-200/80 dark:border-neutral-800/80 pb-3">
+  <!-- Latest Writing Section (Contiguous Grid Section) -->
+  <section>
+    <!-- Section Header Bar -->
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
       {{ icons.vercel_plus("bl") }}
       {{ icons.vercel_plus("br") }}
-      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Writing & Notes
-      </h2>
-      <a href="/blog/" class="text-xs font-mono text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-        All articles &rarr;
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          writing-and-notes/
+        </h2>
+      </div>
+      <a href="/blog/" class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1">
+        <span>all articles ({{ collections.posts.length }})</span>
+        <span>&rarr;</span>
       </a>
     </div>
 
-    <div class="space-y-4">
+    <!-- Contiguous Posts List (Divide-Y, Zero Gaps) -->
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
       {% for post in collections.posts | head(3) %}
         {% include "components/post-card.njk" %}
       {% endfor %}
     </div>
   </section>
 
-  <!-- Quiet Contact Note -->
-  <section class="relative space-y-3 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
-    {{ icons.vercel_plus("tl") }}
-    {{ icons.vercel_plus("tr") }}
-    <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-      Get in touch
-    </h2>
-    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl">
-      I'm currently looking for software engineering internships and open-source collaborations. Feel free to send an email at <a href="mailto:{{ site.email }}" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4 font-medium">{{ site.email }}</a> or find me on <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">GitHub</a> and <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">LinkedIn</a>.
-    </p>
+  <!-- Quiet Contact Section (Contiguous Grid Section) -->
+  <section>
+    <!-- Section Header Bar -->
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary-500"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          get-in-touch/
+        </h2>
+      </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+        dispatch direct messages
+      </span>
+    </div>
+
+    <div class="p-6 sm:p-8 space-y-4">
+      <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans max-w-xl">
+        I'm currently looking for software engineering internships and open-source collaborations. Feel free to send an email at <a href="mailto:{{ site.email }}" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4 font-medium">{{ site.email }}</a> or reach out via any channel below.
+      </p>
+    </div>
+
+    <!-- Contiguous Channels Grid (Divide-X, Zero Gaps) -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono">
+      <a href="mailto:{{ site.email }}" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>Email</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>GitHub</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>LinkedIn</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>Twitter/X</span>
+        <span>&nearr;</span>
+      </a>
+    </div>
   </section>
 
 </div>

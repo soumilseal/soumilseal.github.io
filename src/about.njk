@@ -6,16 +6,26 @@ permalink: /about/
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="space-y-16 sm:space-y-20">
+<div>
 
-  <!-- Narrative Section -->
-  <section class="space-y-6 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
-    <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-4">
-      <div class="relative shrink-0 group">
-        <img src="/assets/images/me.jpg" alt="Soumil Seal" class="w-28 h-28 sm:w-36 sm:h-36 object-cover object-top border border-neutral-200 dark:border-neutral-800 shadow-xs shrink-0" width="144" height="144" loading="eager">
-        {{ icons.vercel_corners() }}
+  <!-- Narrative Section: Contiguous Grid Split -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="grid grid-cols-1 sm:grid-cols-12">
+      <!-- Avatar Cell -->
+      <div class="sm:col-span-4 p-6 sm:p-8 border-b sm:border-b-0 sm:border-r border-neutral-300 dark:border-neutral-800 flex items-center justify-center bg-neutral-50/40 dark:bg-neutral-900/20">
+        <div class="relative w-full aspect-square max-w-[180px]">
+          <img src="/assets/images/me.jpg" 
+               alt="Soumil Seal" 
+               class="w-full h-full object-cover object-top border border-neutral-300 dark:border-neutral-800" 
+               width="180" 
+               height="180" 
+               loading="eager">
+          {{ icons.vercel_corners() }}
+        </div>
       </div>
-      <div class="space-y-4">
+
+      <!-- Narrative Text Cell -->
+      <div class="sm:col-span-8 p-6 sm:p-8 space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans bg-white dark:bg-[#160606]">
         <p>
           I'm <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Soumil Seal</strong>, a software developer and Bachelor of Computer Applications (BCA) undergraduate student based in India.
         </p>
@@ -25,33 +35,34 @@ permalink: /about/
       </div>
     </div>
 
-    <p>
-      Today, my focus centers on <span class="text-neutral-900 dark:text-neutral-100 font-medium">software engineering, backend systems, and cloud infrastructure</span>. I enjoy dissecting runtime mechanics—whether that's understanding how the V8 engine manages microtask queues, how containers coordinate through Linux cgroups, or how relational database query planners optimize multi-table joins.
-    </p>
-    <p>
-      Outside of university coursework and software development, I document my experiments on my blog, contribute to open-source software, and participate in technical communities.
-    </p>
-  </section>
-
-  <!-- Technical Skills Section (Vercel Bento Grid with Sharp Corners) -->
-  <section class="space-y-6 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 relative">
-    {{ icons.vercel_plus("tl") }}
-    {{ icons.vercel_plus("tr") }}
-
-    <div class="space-y-1">
-      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Skills & Technologies
-      </h2>
-      <p class="text-xs font-mono text-neutral-400">
-        Tools and runtimes I work with regularly.
+    <!-- Extended Story Text Cell -->
+    <div class="p-6 sm:p-8 border-t border-neutral-300 dark:border-neutral-800 space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans bg-white dark:bg-[#160606]">
+      <p>
+        Today, my focus centers on <span class="text-neutral-900 dark:text-neutral-100 font-medium">software engineering, backend systems, and cloud infrastructure</span>. I enjoy dissecting runtime mechanics—whether that's understanding how the V8 engine manages microtask queues, how containers coordinate through Linux cgroups, or how relational database query planners optimize multi-table joins.
+      </p>
+      <p>
+        Outside of university coursework and software development, I document my experiments on my blog, contribute to open-source software, and participate in technical communities.
       </p>
     </div>
+  </section>
 
-    <!-- Vercel Grid Layout with gap-px for 1px internal gridlines -->
-    <div class="relative group border border-neutral-200 dark:border-neutral-800/80 bg-neutral-200 dark:bg-neutral-800/80 grid grid-cols-1 sm:grid-cols-2 gap-px">
-      {{ icons.vercel_corners() }}
+  <!-- Technical Skills Section: Contiguous Bento Grid -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          skills-and-technologies/
+        </h2>
+      </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">core stack</span>
+    </div>
 
-      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-neutral-300 dark:divide-neutral-800 bg-neutral-300 dark:bg-neutral-800 gap-px">
+      <!-- Languages -->
+      <div class="bg-white dark:bg-[#160606] p-6 space-y-2">
         <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 bg-primary-500"></span>
           <span>Languages</span>
@@ -61,7 +72,8 @@ permalink: /about/
         </p>
       </div>
 
-      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+      <!-- Cloud & Infrastructure -->
+      <div class="bg-white dark:bg-[#160606] p-6 space-y-2">
         <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 bg-primary-500"></span>
           <span>Cloud & Infrastructure</span>
@@ -71,7 +83,8 @@ permalink: /about/
         </p>
       </div>
 
-      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+      <!-- Backend & Data -->
+      <div class="bg-white dark:bg-[#160606] p-6 space-y-2 border-t border-neutral-300 dark:border-neutral-800">
         <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 bg-primary-500"></span>
           <span>Backend & Data</span>
@@ -81,7 +94,8 @@ permalink: /about/
         </p>
       </div>
 
-      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+      <!-- Frontend & Tooling -->
+      <div class="bg-white dark:bg-[#160606] p-6 space-y-2 border-t border-neutral-300 dark:border-neutral-800">
         <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 bg-primary-500"></span>
           <span>Frontend & Tooling</span>
@@ -93,45 +107,66 @@ permalink: /about/
     </div>
   </section>
 
-  <!-- Education Section (Vercel Card) -->
-  <section class="space-y-6 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 relative">
-    {{ icons.vercel_plus("tl") }}
-    {{ icons.vercel_plus("tr") }}
-
-    <div class="space-y-1">
-      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-        Education
-      </h2>
-      <p class="text-xs font-mono text-neutral-400">
-        Academic background & foundational studies.
-      </p>
+  <!-- Education Section: Contiguous Grid Cell -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          academic-background/
+        </h2>
+      </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">university studies</span>
     </div>
 
-    <div class="vercel-card group p-6 border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#120404] relative space-y-2">
-      {{ icons.vercel_corners() }}
+    <div class="p-6 sm:p-8 space-y-2 bg-white dark:bg-[#160606]">
       <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
         <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 text-base">
           Bachelor of Computer Applications (BCA)
         </h3>
-        <span class="text-xs font-mono text-neutral-400">Present</span>
+        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500">Present</span>
       </div>
-      <p class="text-xs font-mono text-neutral-500">Major in Computer Science & Applications</p>
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-2">
+      <p class="text-xs font-mono text-neutral-500 dark:text-neutral-400">Major in Computer Science & Applications</p>
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-2 font-sans max-w-2xl">
         Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks.
       </p>
     </div>
   </section>
 
-  <!-- Connect Section -->
-  <section class="relative space-y-3 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
-    {{ icons.vercel_plus("tl") }}
-    {{ icons.vercel_plus("tr") }}
-    <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-      Connect
-    </h2>
-    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-      You can find me on <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">GitHub</a>, <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">LinkedIn</a>, and <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">Twitter/X</a>, or reach me directly by <a href="mailto:{{ site.email }}" class="text-neutral-900 dark:text-neutral-100 underline underline-offset-4">email</a>.
-    </p>
+  <!-- Connect Section: Contiguous Grid Cell -->
+  <section>
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary-500"></span>
+        <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+          network-and-channels/
+        </h2>
+      </div>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">connect</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 text-xs font-mono bg-white dark:bg-[#160606]">
+      <a href="mailto:{{ site.email }}" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>Email</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>GitHub</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>LinkedIn</span>
+        <span>&nearr;</span>
+      </a>
+      <a href="{{ site.twitter }}" target="_blank" rel="noopener noreferrer" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
+        <span>Twitter/X</span>
+        <span>&nearr;</span>
+      </a>
+    </div>
   </section>
 
 </div>

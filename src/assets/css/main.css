@@ -11,7 +11,7 @@
   /* Typography */
   --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-heading: 'BenchNine', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Primary: #F59E0B (Amber) */
   --color-primary: #F59E0B;
@@ -298,45 +298,9 @@ h4:hover .header-anchor {
   background-color: #160606;
 }
 
-/* Vercel Geometric Corner Plus Crosshairs (+) */
+/* Corner Plus Crosshairs - Disabled per user request */
 .corner-plus {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  pointer-events: none;
-  z-index: 20;
-  color: #94a3b8;
-  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dark .corner-plus {
-  color: #5c1c00;
-}
-
-.group:hover .corner-plus,
-.vercel-card:hover .corner-plus {
-  color: #F59E0B;
-  transform: scale(1.15);
-}
-
-.corner-plus-tl {
-  top: -7.5px;
-  left: -7.5px;
-}
-
-.corner-plus-tr {
-  top: -7.5px;
-  right: -7.5px;
-}
-
-.corner-plus-bl {
-  bottom: -7.5px;
-  left: -7.5px;
-}
-
-.corner-plus-br {
-  bottom: -7.5px;
-  right: -7.5px;
+  display: none !important;
 }
 
 /* Vercel Card Component (Strictly Sharp Corners) */
