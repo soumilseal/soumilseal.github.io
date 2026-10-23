@@ -256,3 +256,93 @@ h4:hover .header-anchor {
 .pagefind-ui .pagefind-ui__result-excerpt mark {
   @apply bg-primary-100 text-neutral-900 rounded px-1 dark:bg-primary-900/60 dark:text-primary-100;
 }
+
+/* ==========================================================================
+   Gridlines Design System
+   ========================================================================== */
+
+/* Subtle background gridline patterns */
+.bg-gridlines {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+}
+
+.dark .bg-gridlines {
+  background-image: 
+    linear-gradient(to right, rgba(71, 21, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 21, 0, 0.3) 1px, transparent 1px);
+}
+
+.bg-gridlines-dense {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+}
+
+.dark .bg-gridlines-dense {
+  background-image: 
+    linear-gradient(to right, rgba(71, 21, 0, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 21, 0, 0.22) 1px, transparent 1px);
+}
+
+/* Technical Corner Crosshairs (+) */
+.grid-cross {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+  color: #94a3b8;
+  user-select: none;
+  pointer-events: none;
+  z-index: 20;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .grid-cross {
+  color: #5c1c00;
+}
+
+.grid-card:hover .grid-cross,
+.group:hover .grid-cross {
+  color: #F59E0B;
+  transform: scale(1.3);
+}
+
+/* Gridline Card Component */
+.grid-card {
+  position: relative;
+  border-radius: 0.75rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-card:hover {
+  box-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.08);
+}
+
+.dark .grid-card:hover {
+  box-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.06);
+}
+
+/* Technical Blueprint Coordinates / Index Badges */
+.grid-badge {
+  @apply inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/80 text-neutral-500 dark:text-neutral-400;
+}
+
+/* Ruled Gridline Section Header */
+.grid-section-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  padding-bottom: 0.875rem;
+}
+
+.dark .grid-section-header {
+  border-bottom-color: rgba(71, 21, 0, 0.6);
+}
+
