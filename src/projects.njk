@@ -4,65 +4,9 @@ title: Projects
 description: Software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
 permalink: /projects/
 ---
-{% import "components/icons.njk" as icons %}
 
-<div class="space-y-12">
-
-  <!-- Category Filter Pills -->
-  <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="project-filters" role="tablist">
-    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 transition-colors" data-category="all" role="tab" aria-selected="true">
-      All ({{ projects.length }})
-    </button>
-    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" data-category="Cloud & Infrastructure" role="tab" aria-selected="false">
-      Cloud & Infrastructure
-    </button>
-    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" data-category="Developer Tools" role="tab" aria-selected="false">
-      Developer Tools
-    </button>
-    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" data-category="Web & Fullstack" role="tab" aria-selected="false">
-      Web & Fullstack
-    </button>
-    <button type="button" class="project-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors" data-category="Systems" role="tab" aria-selected="false">
-      Systems
-    </button>
-  </div>
-
-  <!-- Projects List -->
-  <div class="space-y-4" id="projects-grid">
-    {% for project in projects %}
-      {% include "components/project-card.njk" %}
-    {% endfor %}
-  </div>
-
+<div class="space-y-4">
+  {% for project in projects %}
+    {% include "components/project-card.njk" %}
+  {% endfor %}
 </div>
-
-<!-- Script for Category Filtering -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterBtns = document.querySelectorAll('.project-filter-btn');
-    const projectItems = document.querySelectorAll('.project-item');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const category = btn.getAttribute('data-category');
-
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-neutral-100', 'dark:text-neutral-900');
-          b.classList.add('text-neutral-500', 'dark:text-neutral-400');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-neutral-100', 'dark:text-neutral-900');
-        btn.classList.remove('text-neutral-500', 'dark:text-neutral-400');
-        btn.setAttribute('aria-selected', 'true');
-
-        projectItems.forEach(item => {
-          if (category === 'all' || item.getAttribute('data-category') === category) {
-            item.style.display = 'flex';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-  });
-</script>
