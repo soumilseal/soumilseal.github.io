@@ -1,0 +1,174 @@
+# Pages CMS configuration (https://pagescms.org)
+
+media:
+  input: "src/assets/images"
+  output: "/assets/images"
+
+content:
+  # ---------------------------------------------------------------------------
+  # COLLECTION: Blog Posts (Markdown files with frontmatter)
+  # ---------------------------------------------------------------------------
+  - name: posts
+    label: "Blog Posts"
+    type: collection
+    path: "src/posts"
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{slug}.md"
+    view:
+      primary: title
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: "Title"
+        type: string
+        required: true
+      - name: description
+        label: "Short Description / Excerpt"
+        type: text
+        required: true
+      - name: date
+        label: "Publication Date"
+        type: date
+        required: true
+      - name: updated
+        label: "Last Updated Date"
+        type: date
+      - name: tags
+        label: "Tags & Categories"
+        type: string
+        list: true
+      - name: image
+        label: "Cover / Preview Image"
+        type: image
+      - name: featured
+        label: "Featured on Homepage"
+        type: boolean
+        default: false
+      - name: draft
+        label: "Draft (Hide from production)"
+        type: boolean
+        default: false
+      - name: layout
+        label: "Template Layout"
+        type: string
+        default: "layouts/post.njk"
+        hidden: true
+      - name: body
+        label: "Article Body Content"
+        type: rich-text
+
+  # ---------------------------------------------------------------------------
+  # FILE: Featured Projects (JSON array data file)
+  # ---------------------------------------------------------------------------
+  - name: projects
+    label: "Projects Showcase"
+    type: file
+    path: "src/_data/projects.json"
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: "Project Identifier / Slug"
+        type: string
+        required: true
+      - name: title
+        label: "Project Title"
+        type: string
+        required: true
+      - name: description
+        label: "Short Description"
+        type: text
+        required: true
+      - name: category
+        label: "Category"
+        type: select
+        options:
+          values:
+            - "Cloud & Infrastructure"
+            - "Developer Tools"
+            - "Web & Fullstack"
+            - "Systems"
+      - name: featured
+        label: "Showcase on Homepage"
+        type: boolean
+        default: false
+      - name: tags
+        label: "Technology Badges"
+        type: string
+        list: true
+      - name: github
+        label: "GitHub Repository URL"
+        type: string
+      - name: demo
+        label: "Live Demo / Project URL"
+        type: string
+      - name: highlights
+        label: "Key Architectural Highlights"
+        type: string
+        list: true
+
+  # ---------------------------------------------------------------------------
+  # FILE: Global Site Settings & Navigation (JSON object data file)
+  # ---------------------------------------------------------------------------
+  - name: site
+    label: "Site Settings & Navigation"
+    type: file
+    path: "src/_data/site.json"
+    format: json
+    fields:
+      - name: title
+        label: "Site Title"
+        type: string
+        required: true
+      - name: name
+        label: "Author Name"
+        type: string
+        required: true
+      - name: role
+        label: "Professional Role"
+        type: string
+      - name: bio
+        label: "Short Bio"
+        type: text
+      - name: description
+        label: "SEO Meta Description"
+        type: text
+      - name: url
+        label: "Canonical Website URL"
+        type: string
+      - name: email
+        label: "Contact Email"
+        type: string
+      - name: github
+        label: "GitHub Profile URL"
+        type: string
+      - name: linkedin
+        label: "LinkedIn Profile URL"
+        type: string
+      - name: twitter
+        label: "Twitter / X Profile URL"
+        type: string
+      - name: nav
+        label: "Navigation Links"
+        type: object
+        list: true
+        fields:
+          - name: text
+            label: "Link Text"
+            type: string
+            required: true
+          - name: url
+            label: "Target URL"
+            type: string
+            required: true
+
+settings:
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "content: create {path} (via Pages CMS)"
+      update: "content: update {path} (via Pages CMS)"
+      delete: "content: delete {path} (via Pages CMS)"
