@@ -71,7 +71,7 @@ permalink: /contact/
     </div>
 
     <div class="p-6 sm:p-8 bg-white dark:bg-neutral-950">
-      <form id="contact-form" class="space-y-5 max-w-xl" {% if contact.form and contact.form.action %}action="{{ contact.form.action }}" method="POST"{% endif %}>
+      <form id="contact-form" class="contact-dispatch-form space-y-5 max-w-xl" {% if contact.form and contact.form.action %}action="{{ contact.form.action }}" method="POST"{% endif %}>
         <div class="space-y-1.5">
           <label
             for="name"
@@ -123,11 +123,11 @@ permalink: /contact/
           ></textarea>
         </div>
 
-        <div id="form-feedback" class="hidden p-3 text-xs font-mono"></div>
+        <div class="form-feedback hidden p-3.5 text-xs font-mono"></div>
 
         <button
           type="submit"
-          class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-2 group"
+          class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-2 group cursor-pointer"
         >
           <span>{{ contact.form.submitButtonText or "Send message" }}</span>
           <span class="group-hover:translate-x-1 transition-transform flex items-center">{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
@@ -136,29 +136,3 @@ permalink: /contact/
     </div>
   </section>
 </div>
-
-<!-- Form Feedback Script -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const feedback = document.getElementById("form-feedback");
-
-  if (form && feedback) {
-    form.addEventListener("submit", (e) => {
-      const action = form.getAttribute("action");
-      if (action && action.trim() !== "") {
-        return;
-      }
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-
-      feedback.className =
-        "p-3.5 text-xs font-mono bg-emerald-50 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/80";
-      feedback.innerHTML =
-        `Thank you <strong>${name}</strong>! Your message payload has been recorded. You can also connect directly on LinkedIn or GitHub.`;
-      feedback.classList.remove("hidden");
-      form.reset();
-    });
-  }
-});
-</script>

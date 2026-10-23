@@ -1,0 +1,223 @@
+---
+layout: layouts/base.njk
+
+---
+{% import "components/icons.njk" as icons %}
+
+<article
+  class="max-w-[950px] w-full mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950 grow flex flex-col"
+  data-pagefind-body
+>
+  <!-- Back Navigation Bar: Contiguous Grid Row -->
+  <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between font-mono text-xs text-neutral-500 dark:text-neutral-400">
+    <a
+      href="/projects/"
+      class="inline-flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+    >
+      {{ icons.icon("arrow-left", "w-3 h-3") }}
+      <span>back to projects</span>
+    </a>
+    <div class="flex items-center gap-3">
+      {% if category %}
+        <span class="uppercase tracking-wider text-[11px] text-neutral-400 dark:text-neutral-500 hidden sm:inline">{{ category }}</span>
+        <span class="text-neutral-300 dark:text-neutral-700 hidden sm:inline">&bull;</span>
+      {% endif %}
+      <span>{{ content | readingTime }}</span>
+    </div>
+  </div>
+
+  <!-- Project Header: Contiguous Grid Row -->
+  <header class="px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-4 bg-white dark:bg-neutral-950 relative">
+    <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+      <span class="text-primary-600 dark:text-primary-400 font-medium uppercase tracking-wider">
+        project-specification // {{ id or (title | slugify) }}
+      </span>
+      {% if date %}
+        <span>&bull;</span>
+        <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+      {% endif %}
+    </div>
+
+    <h1 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight leading-tight">
+      {{ title }}
+    </h1>
+
+    {% if description %}
+      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl font-sans">
+        {{ description }}
+      </p>
+    {% endif %}
+
+    <!-- Technology Tags -->
+    {% if tags %}
+      <div class="flex flex-wrap gap-1.5 pt-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+        {% for tag in tags | filterTagList %}
+          <span class="grid-badge">
+            #{{ tag }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Action Links & Live Endpoints Bar -->
+    <div class="pt-4 flex flex-wrap items-center gap-3 text-xs font-mono">
+      {% if github %}
+        <a
+          href="{{ github }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white transition-colors font-medium shadow-2xs"
+        >
+          <span>View Source Repository</span>
+          {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+        </a>
+      {% endif %}
+      {% if demo %}
+        <a
+          href="{{ demo }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-neutral-950 transition-colors font-bold shadow-2xs"
+        >
+          <span>Live Demo / Documentation</span>
+          {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+        </a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Key Specs & Telemetry Grid (If provided) -->
+  {% if stats and stats.length > 0 %}
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/20 text-xs font-mono">
+      {% for stat in stats %}
+        <div class="p-4 sm:p-5 flex flex-col justify-between">
+          <span class="text-[10px] uppercase text-neutral-400 dark:text-neutral-500 tracking-wider mb-1">
+            {{ stat.label }}
+          </span>
+          <span class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100">
+            {{ stat.value }}
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Primary Cover Exhibit: Contiguous Grid Row -->
+  {% if image %}
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-950 overflow-hidden relative">
+      <div class="px-4 sm:px-6 py-2 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-between text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>schematic // primary_architecture_exhibit</span>
+        </span>
+        <span class="text-neutral-400 dark:text-neutral-500">fig.01</span>
+      </div>
+      <div class="max-h-125 overflow-hidden flex items-center justify-center bg-neutral-950">
+        <img
+          src="{{ image | webp }}"
+          alt="{{ title }}"
+          class="w-full h-auto object-cover max-h-125"
+          loading="eager"
+        />
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Architectural Highlights Section (If provided) -->
+  {% if highlights and highlights.length > 0 %}
+    <section class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30">
+      <div class="px-4 sm:px-6 py-2 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between text-xs font-mono">
+        <span class="uppercase tracking-wider font-semibold text-neutral-900 dark:text-neutral-100">
+          architectural-highlights
+        </span>
+        <span class="text-neutral-400 dark:text-neutral-500">core engineering traits</span>
+      </div>
+      <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% for highlight in highlights %}
+          <div class="border border-neutral-300 dark:border-neutral-800 p-4 bg-white dark:bg-neutral-950 space-y-1">
+            <div class="flex items-center gap-1.5 text-primary-600 dark:text-primary-400 font-mono text-[11px]">
+              {{ icons.icon("check", "w-3 h-3") }}
+              <span>spec.0{{ loop.index }}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans">
+              {{ highlight }}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Visual Telemetry & Multi-Picture Screenshot Gallery -->
+  {% if gallery and gallery.length > 0 %}
+    <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
+      <div class="px-4 sm:px-6 py-2 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-xs font-mono">
+        <span class="uppercase tracking-wider font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+          <span>project-exhibits // visual-telemetry & screenshots</span>
+        </span>
+        <span class="text-neutral-400 dark:text-neutral-500">{{ gallery.length }} exhibit{% if gallery.length > 1 %}s{% endif %}</span>
+      </div>
+
+      <div class="divide-y divide-neutral-300 dark:divide-neutral-800">
+        {% for item in gallery %}
+          <figure class="overflow-hidden bg-neutral-950/20 dark:bg-neutral-950">
+            <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900/80 flex items-center justify-between text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
+              <span class="font-medium text-neutral-900 dark:text-neutral-200">
+                exhibit // [fig.0{{ loop.index + 1 }}]
+              </span>
+              {% if item.caption %}
+                <span class="text-neutral-500 dark:text-neutral-400 truncate max-w-xs sm:max-w-md">{{ item.caption }}</span>
+              {% endif %}
+            </div>
+            <div class="relative group overflow-hidden bg-neutral-950 flex items-center justify-center">
+              <img
+                src="{{ item.image | webp }}"
+                alt="{{ item.caption or title }}"
+                class="w-full h-auto object-cover max-h-140 transition-transform duration-500 group-hover:scale-[1.01]"
+                loading="lazy"
+              />
+            </div>
+            {% if item.caption %}
+              <figcaption class="px-4 sm:px-6 py-2.5 text-xs font-mono text-neutral-600 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/60 dark:bg-neutral-900/40">
+                <span class="text-neutral-400 dark:text-neutral-500">Caption:</span> {{ item.caption }}
+              </figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Article Prose Content: In-Depth Engineering Write-Up -->
+  <div class="px-6 sm:px-8 py-10 sm:py-14 bg-white dark:bg-neutral-950">
+    <div class="prose prose-neutral dark:prose-invert max-w-none text-[16px] sm:text-[17px] leading-relaxed">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <!-- Project Footer Navigation: Contiguous Grid Row -->
+  <footer class="border-t border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 space-y-4 bg-neutral-50/50 dark:bg-neutral-900/30">
+    <div class="text-xs text-neutral-500 dark:text-neutral-400 space-y-2 font-mono">
+      <p>
+        Project Engineered & Documented by <strong class="text-neutral-900 dark:text-neutral-100">Soumil Seal</strong> &bull; Systems & Cloud Developer
+      </p>
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-1.5 underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100"
+        >
+          <span>Explore all projects</span>
+          {{ icons.icon("arrow-right", "w-3 h-3") }}
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">&bull;</span>
+        <a
+          href="/contact/"
+          class="inline-flex items-center gap-1.5 underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100"
+        >
+          <span>Discuss this project or collaborate</span>
+          {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+        </a>
+      </div>
+    </div>
+  </footer>
+</article>

@@ -16,7 +16,7 @@ permalink: "blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 
     <!-- Search Bar: Contiguous Grid Cell -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3 shrink-0">
       <span class="font-mono text-xs text-neutral-500 dark:text-neutral-400">
-        articles // ({{ collections.posts.length }})
+        articles // ({{ collections.posts.length }}) &bull; page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length or 1 }}
       </span>
 
       <!-- Quick Search Trigger -->

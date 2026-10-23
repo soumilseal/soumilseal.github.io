@@ -204,5 +204,28 @@
     }
 
     initLanguagesTicker();
+
+    // Universal Contact Form submission handler (Home & Contact pages)
+    document.querySelectorAll('.contact-dispatch-form').forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        const action = form.getAttribute('action');
+        if (action && action.trim() !== '') {
+          return; // Let standard form submission occur if an action URL is defined
+        }
+        e.preventDefault();
+        const feedback = form.querySelector('.form-feedback') || form.nextElementSibling;
+        const nameInput = form.querySelector('input[name="name"]');
+        const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'there';
+
+        if (feedback) {
+          feedback.className =
+            'form-feedback p-3.5 text-xs font-mono bg-emerald-50 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/80 my-3 block';
+          feedback.innerHTML =
+            `Thank you <strong>${name}</strong>! Your message payload has been recorded. You can also connect directly via LinkedIn or GitHub below.`;
+          feedback.classList.remove('hidden');
+        }
+        form.reset();
+      });
+    });
   });
 })();

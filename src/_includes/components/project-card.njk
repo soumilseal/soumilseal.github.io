@@ -1,9 +1,11 @@
 {% import "components/icons.njk" as icons %}
+{% set p = project.data if project.data else project %}
+{% set pUrl = project.url or p.url or ('/projects/' + (p.id or (p.title | slugify)) + '/') %}
 <article
   class="project-item group relative overflow-hidden bg-white dark:bg-neutral-950 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200 before:z-30"
-  data-category="{{ project.category }}"
+  data-category="{{ p.category }}"
 >
-  {% if project.image %}
+  {% if p.image %}
     <!-- Frosted Glass Background Image Layer (revealed only on hover) -->
     <div
       class="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out overflow-hidden"
@@ -11,7 +13,7 @@
     >
       <!-- Background Project Image -->
       <img
-        src="{{ project.image }}"
+        src="{{ p.image | webp }}"
         alt=""
         class="w-full h-full object-cover object-top filter brightness-[0.95] dark:brightness-[0.72] contrast-[1.05] scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
         loading="lazy"
@@ -25,27 +27,25 @@
   <div class="p-4 sm:p-5 flex flex-col justify-between h-full relative z-10">
     <div>
       <div class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-2">
-        <span class="uppercase tracking-wider">{{ project.category }}</span>
+        <span class="uppercase tracking-wider">{{ p.category }}</span>
       </div>
 
       <h3 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight mb-2 line-clamp-2 min-h-10 sm:min-h-11 flex items-center">
         <a
-          href="{{ project.demo or project.github }}"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="{{ pUrl }}"
           class="focus:outline-none after:absolute after:inset-0 after:z-10"
         >
-          {{ project.title }}
+          {{ p.title }}
         </a>
       </h3>
 
       <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 leading-relaxed font-sans line-clamp-3 min-h-15 mb-4 transition-colors">
-        {{ project.description }}
+        {{ p.description }}
       </p>
 
-      {% if project.tags %}
+      {% if p.tags %}
         <div class="flex flex-wrap gap-1.5 mb-4 text-[10px] font-mono text-neutral-400 dark:text-neutral-500">
-          {% for tag in project.tags | head(3) %}
+          {% for tag in p.tags | head(3) %}
             <span
               class="px-1.5 py-0.5 bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-xs border border-neutral-200/80 dark:border-neutral-800/80 transition-colors"
             >#{{ tag }}</span>
@@ -57,9 +57,9 @@
     <!-- Minimal Action Links (relative z-20 so specific clicks work directly) -->
     <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between gap-2 text-xs font-mono relative z-20 mt-auto">
       <div class="flex items-center gap-3">
-        {% if project.github %}
+        {% if p.github %}
           <a
-            href="{{ project.github }}"
+            href="{{ p.github }}"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors py-0.5"
@@ -68,18 +68,25 @@
             {{ icons.icon("arrow-right", "w-3 h-3") }}
           </a>
         {% endif %}
-        {% if project.demo %}
+        {% if p.demo %}
           <a
-            href="{{ project.demo }}"
+            href="{{ p.demo }}"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:underline transition-colors py-0.5 font-medium"
+            class="inline-flex items-center gap-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors py-0.5"
           >
-            <span>live demo</span>
+            <span>demo</span>
             {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
         {% endif %}
       </div>
+      <a
+        href="{{ pUrl }}"
+        class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:underline transition-colors py-0.5 font-medium"
+      >
+        <span>case study</span>
+        {{ icons.icon("arrow-right", "w-3 h-3") }}
+      </a>
     </div>
   </div>
 </article>

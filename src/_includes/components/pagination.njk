@@ -1,9 +1,11 @@
 {% import "components/icons.njk" as icons %}
 
-{% if pagination.pages.length > 1 %}
+{% if pagination %}
+  {% set totalPages = pagination.pages.length if (pagination.pages and pagination.pages.length) else 1 %}
+  {% set currentPage = (pagination.pageNumber or 0) + 1 %}
   <nav
     aria-label="Pagination Navigation"
-    class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between text-xs font-mono"
+    class="border-t border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between text-xs font-mono"
   >
     <!-- Previous Link -->
     <div>
@@ -14,7 +16,7 @@
           aria-label="Previous Page"
         >
           {{ icons.icon("arrow-left", "w-3 h-3") }}
-          <span>prev/</span>
+          <span>prev</span>
         </a>
       {% else %}
         <span
@@ -22,7 +24,7 @@
           aria-disabled="true"
         >
           {{ icons.icon("arrow-left", "w-3 h-3") }}
-          <span>prev/</span>
+          <span>prev</span>
         </span>
       {% endif %}
     </div>
@@ -32,26 +34,35 @@
       <span
         class="text-neutral-400 dark:text-neutral-500 mr-2 hidden sm:inline"
       >
-        page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
+        page {{ currentPage }} of {{ totalPages }}
       </span>
 
-      {% for pageHref in pagination.hrefs %}
-        {% if loop.index0 == pagination.pageNumber %}
-          <span
-            aria-current="page"
-            class="size-7 inline-flex items-center justify-center bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 font-bold"
-          >
-            {{ loop.index }}
-          </span>
-        {% else %}
-          <a
-            href="{{ pageHref }}"
-            class="size-7 inline-flex items-center justify-center border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors"
-          >
-            {{ loop.index }}
-          </a>
-        {% endif %}
-      {% endfor %}
+      {% if pagination.hrefs and pagination.hrefs.length > 0 %}
+        {% for pageHref in pagination.hrefs %}
+          {% if loop.index0 == (pagination.pageNumber or 0) %}
+            <span
+              aria-current="page"
+              class="size-7 inline-flex items-center justify-center bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 font-bold"
+            >
+              {{ loop.index }}
+            </span>
+          {% else %}
+            <a
+              href="{{ pageHref }}"
+              class="size-7 inline-flex items-center justify-center border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors"
+            >
+              {{ loop.index }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <span
+          aria-current="page"
+          class="size-7 inline-flex items-center justify-center bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 font-bold"
+        >
+          1
+        </span>
+      {% endif %}
     </div>
 
     <!-- Next Link -->
@@ -62,7 +73,7 @@
           class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200 transition-colors"
           aria-label="Next Page"
         >
-          <span>next/</span>
+          <span>next</span>
           {{ icons.icon("arrow-right", "w-3 h-3") }}
         </a>
       {% else %}
@@ -70,7 +81,7 @@
           class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-neutral-200 dark:border-neutral-800/60 bg-neutral-100/50 dark:bg-neutral-900/30 text-neutral-400 dark:text-neutral-600 cursor-not-allowed select-none"
           aria-disabled="true"
         >
-          <span>next/</span>
+          <span>next</span>
           {{ icons.icon("arrow-right", "w-3 h-3") }}
         </span>
       {% endif %}

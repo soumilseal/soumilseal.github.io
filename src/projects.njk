@@ -3,7 +3,7 @@ layout: layouts/page.njk
 title: Projects
 description: Software tools, distributed background workers, cloud pipelines, and web applications I've designed and built.
 pagination:
-  data: projects
+  data: collections.projects
   size: 6
   alias: pagedProjects
 permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
@@ -16,14 +16,10 @@ permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber 
     <!-- Header / Meta Bar: Contiguous Grid Cell -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3 font-mono text-xs text-neutral-500 dark:text-neutral-400 shrink-0">
       <span>
-        all-projects // index ({{ projects.length }})
+        all-projects // index ({{ collections.projects.length }})
       </span>
       <span>
-        {% if pagination.pages.length > 1 %}
-          page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
-        {% else %}
-          active // production-ready
-        {% endif %}
+        page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length or 1 }}
       </span>
     </div>
 

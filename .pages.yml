@@ -61,25 +61,30 @@ content:
         type: rich-text
 
   # ---------------------------------------------------------------------------
-  # FILE: Featured Projects (JSON Array)
+  # COLLECTION: Projects & Case Studies
   # ---------------------------------------------------------------------------
   - name: projects
-    label: "Projects Showcase"
-    type: file
-    path: "src/_data/projects.json"
-    format: json
-    list: true
+    label: "Projects & Case Studies"
+    type: collection
+    path: "src/projects"
+    format: yaml-frontmatter
+    filename: "{slug}.md"
+    view:
+      primary: title
+      default:
+        sort: order
+        order: asc
     fields:
-      - name: id
-        label: "Project Identifier / Slug"
-        type: string
-        required: true
       - name: title
         label: "Project Title"
         type: string
         required: true
+      - name: id
+        label: "Project Identifier / Slug"
+        type: string
+        required: true
       - name: description
-        label: "Short Description"
+        label: "Short Description / Abstract"
         type: text
         required: true
       - name: category
@@ -91,12 +96,19 @@ content:
             - "Developer Tools"
             - "Web & Fullstack"
             - "Systems"
+      - name: date
+        label: "Creation / Release Date"
+        type: date
+      - name: order
+        label: "Sort Order (1, 2, 3...)"
+        type: number
+        default: 1
       - name: featured
-        label: "Showcase on Homepage"
+        label: "Feature on Homepage"
         type: boolean
         default: false
       - name: image
-        label: "Project Card Preview Image"
+        label: "Primary Cover / Architecture Image"
         type: image
       - name: tags
         label: "Technology Badges"
@@ -112,6 +124,34 @@ content:
         label: "Key Architectural Highlights"
         type: string
         list: true
+      - name: stats
+        label: "Key Specifications & Telemetry"
+        type: list
+        fields:
+          - name: label
+            label: "Spec / Metric Label (e.g. Memory, Throughput)"
+            type: string
+          - name: value
+            label: "Value (e.g. 14.2 MB, 85k msgs/s)"
+            type: string
+      - name: gallery
+        label: "Visual Telemetry & Screenshots Gallery"
+        type: list
+        fields:
+          - name: image
+            label: "Screenshot Image"
+            type: image
+          - name: caption
+            label: "Caption / Technical Note"
+            type: string
+      - name: layout
+        label: "Template Layout"
+        type: string
+        default: "layouts/project.njk"
+        hidden: true
+      - name: body
+        label: "Project Deep Dive & Case Study (Markdown)"
+        type: rich-text
 
   # ---------------------------------------------------------------------------
   # FILE: Home Page Content & Bento Cells

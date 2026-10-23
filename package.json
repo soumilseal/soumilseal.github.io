@@ -7,10 +7,11 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "concurrently -n \"11ty,tailwind\" -c \"cyan,magenta\" \"eleventy --serve\" \"tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch\"",
+    "images:optimize": "node ./scripts/optimize-images.js",
     "build:eleventy": "eleventy",
     "build:css": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --minify",
     "build:pagefind": "pagefind --site _site",
-    "build": "npm run build:eleventy && npm run build:css && npm run build:pagefind"
+    "build": "npm run images:optimize && npm run build:eleventy && npm run build:css && npm run build:pagefind"
   },
   "keywords": [
     "eleventy",
@@ -37,6 +38,7 @@
     "postcss": "^8.4.49",
     "preline": "^5.0.0",
     "prismjs": "^1.29.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   },
   "dependencies": {

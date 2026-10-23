@@ -12,22 +12,26 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <!-- Micro Header Bar (Status & Metadata) -->
     <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400">
       <div class="flex items-center gap-2 shrink-0">
-        <span class="whitespace-nowrap">{{ home.status.portfolioTag or "soumilseal // portfolio '26" }}</span>
+        <span class="whitespace-nowrap">{{
+          home.status.portfolioTag or "soumilseal // portfolio '26"
+        }}</span>
       </div>
       {% if home.status.available != false %}
-      <div class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-medium shrink-0">
-        <span
-          class="w-2 h-2 rounded-full bg-blue-500 inline-block animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-        ></span>
-        <span class="whitespace-nowrap">{{ home.status.availabilityText or "open for opportunities" }}</span>
-      </div>
+        <div class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-medium shrink-0">
+          <span
+            class="w-2 h-2 rounded-full bg-blue-500 inline-block animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+          ></span>
+          <span class="whitespace-nowrap">{{
+            home.status.availabilityText or "open for opportunities"
+          }}</span>
+        </div>
       {% endif %}
     </div>
 
     <!-- 3-Cell Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-12">
       <!-- CELL 1: Primary Profile & Bio Anchor Cell (7 Columns on MD) -->
-      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 lg:p-10 bg-white dark:bg-neutral-950">
+      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 px-4 sm:px-6 py-6 sm:py-8 lg:py-10 bg-white dark:bg-neutral-950">
         <div>
           <!-- Name + Subtitle Row -->
           <div>
@@ -45,16 +49,23 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
               ></span>
             </h1>
             <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-3 sm:mt-4 text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400 tracking-wide">
-              <span>{{ home.hero.location or "India // remote-friendly" }}</span>
+              <span>{{
+                home.hero.location or "India // remote-friendly"
+              }}</span>
               <span class="text-neutral-300 dark:text-neutral-700">&bull;</span>
-              <span class="text-primary-600 dark:text-primary-400 font-medium"
-              >{{ home.hero.role or "BCA Undergraduate • Developer • Systems Builder" }}</span>
+              <span
+                class="text-primary-600 dark:text-primary-400 font-medium"
+              >{{
+                home.hero.role or "BCA Undergraduate • Developer • Systems Builder"
+              }}</span>
             </div>
           </div>
 
           <!-- Editorial Bio -->
           <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed sm:leading-[1.8] font-sans mt-6 sm:mt-8 max-w-xl">
-            {{ home.hero.bio or "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools." }}
+            {{
+              home.hero.bio or "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools."
+            }}
           </p>
         </div>
 
@@ -64,7 +75,9 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             href="{{ home.hero.primaryCta.url or '/resume/' }}"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:hover:bg-white dark:text-neutral-900 font-mono text-xs font-semibold tracking-tight transition-all shadow-sm group"
           >
-            <span>{{ home.hero.primaryCta.text or 'View Resume & Credentials' }}</span>
+            <span>{{
+              home.hero.primaryCta.text or 'View Resume & Credentials'
+            }}</span>
             <span
               class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex items-center"
             >{{ icons.icon("arrow-up-right", "w-3.5 h-3.5") }}</span>
@@ -74,7 +87,9 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             href="{{ home.hero.secondaryCta.url or '/projects/' }}"
             class="inline-flex items-center gap-2 px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/60 font-mono text-xs font-medium tracking-tight transition-all group"
           >
-            <span>{{ home.hero.secondaryCta.text or 'Explore Projects' }} ({{ projects.length }})</span>
+            <span>{{ home.hero.secondaryCta.text or 'Explore Projects' }} ({{
+                projects.length
+              }})</span>
             <span
               class="group-hover:translate-x-1 transition-transform flex items-center"
             >{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
@@ -129,32 +144,39 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       >
         {% set marqueeItems = home.marquee.items %}
         {% if not marqueeItems or marqueeItems.length == 0 %}
-          {% set marqueeItems = [
-            { "name": "Python", "category": "01/", "url": "https://www.python.org" },
-            { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org" },
-            { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-            { "name": "Go", "category": "04/", "url": "https://go.dev" },
-            { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org" },
-            { "name": "C++", "category": "06/", "url": "https://isocpp.org" },
-            { "name": "C", "category": "07/", "url": "" },
-            { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/" },
-            { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org" },
-            { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/" },
-            { "name": "Docker", "category": "11/", "url": "https://www.docker.com" },
-            { "name": "Linux", "category": "12/", "url": "https://www.kernel.org" },
-            { "name": "Node.js", "category": "13/", "url": "https://nodejs.org" },
-            { "name": "Redis", "category": "14/", "url": "https://redis.io" }
-          ] %}
+          {%
+            set marqueeItems = [
+              { "name": "Python", "category": "01/", "url": "https://www.python.org" },
+              { "name": "TypeScript", "category": "02/", "url": "https://www.typescriptlang.org" },
+              { "name": "JavaScript", "category": "03/", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+              { "name": "Go", "category": "04/", "url": "https://go.dev" },
+              { "name": "Rust", "category": "05/", "url": "https://www.rust-lang.org" },
+              { "name": "C++", "category": "06/", "url": "https://isocpp.org" },
+              { "name": "C", "category": "07/", "url": "" },
+              { "name": "Java", "category": "08/", "url": "https://www.oracle.com/java/" },
+              { "name": "PostgreSQL", "category": "09/", "url": "https://www.postgresql.org" },
+              { "name": "Bash / Shell", "category": "10/", "url": "https://www.gnu.org/software/bash/" },
+              { "name": "Docker", "category": "11/", "url": "https://www.docker.com" },
+              { "name": "Linux", "category": "12/", "url": "https://www.kernel.org" },
+              { "name": "Node.js", "category": "13/", "url": "https://nodejs.org" },
+              { "name": "Redis", "category": "14/", "url": "https://redis.io" }
+            ]
+          %}
         {% endif %}
 
         <!-- Group A -->
         <div class="languages-ticker-group flex items-stretch shrink-0">
           {% for item in marqueeItems %}
-            {% set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/") %}
+            {%
+              set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/")
+            %}
             {% if item.url %}
               <a
                 href="{{ item.url }}"
-                {% if item.url.startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+                {% if item.url.startsWith('http') %}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                {% endif %}
                 class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
               >
                 {% if item.image or item.icon %}
@@ -165,10 +187,16 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
                     loading="lazy"
                   />
                 {% endif %}
-                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
-                <span class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">{{ item.name }}</span>
+                <span
+                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
+                >{{ itemIdx }}</span>
+                <span
+                  class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
+                >{{ item.name }}</span>
                 {% if item.url.startsWith('http') %}
-                  {{ icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity") }}
+                  {{
+                    icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity")
+                  }}
                 {% endif %}
               </a>
             {% else %}
@@ -181,8 +209,12 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
                     loading="lazy"
                   />
                 {% endif %}
-                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
-                <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.name }}</span>
+                <span
+                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
+                >{{ itemIdx }}</span>
+                <span
+                  class="font-semibold text-neutral-900 dark:text-neutral-100"
+                >{{ item.name }}</span>
               </div>
             {% endif %}
           {% endfor %}
@@ -194,11 +226,16 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
           aria-hidden="true"
         >
           {% for item in marqueeItems %}
-            {% set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/") %}
+            {%
+              set itemIdx = item.category or (("0" + loop.index).slice(-2) + "/")
+            %}
             {% if item.url %}
               <a
                 href="{{ item.url }}"
-                {% if item.url.startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+                {% if item.url.startsWith('http') %}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                {% endif %}
                 tabindex="-1"
                 class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none"
               >
@@ -210,10 +247,16 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
                     loading="lazy"
                   />
                 {% endif %}
-                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
-                <span class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">{{ item.name }}</span>
+                <span
+                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
+                >{{ itemIdx }}</span>
+                <span
+                  class="font-semibold text-neutral-900 dark:text-neutral-100 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors"
+                >{{ item.name }}</span>
                 {% if item.url.startsWith('http') %}
-                  {{ icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity") }}
+                  {{
+                    icons.icon("arrow-up-right", "w-2.5 h-2.5 text-neutral-400 dark:text-neutral-500 opacity-60 group-hover/item:opacity-100 group-hover/item:text-primary-600 transition-opacity")
+                  }}
                 {% endif %}
               </a>
             {% else %}
@@ -226,8 +269,12 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
                     loading="lazy"
                   />
                 {% endif %}
-                <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">{{ itemIdx }}</span>
-                <span class="font-semibold text-neutral-900 dark:text-neutral-100">{{ item.name }}</span>
+                <span
+                  class="text-neutral-400 dark:text-neutral-500 text-[10px]"
+                >{{ itemIdx }}</span>
+                <span
+                  class="font-semibold text-neutral-900 dark:text-neutral-100"
+                >{{ item.name }}</span>
               </div>
             {% endif %}
           {% endfor %}
@@ -249,15 +296,16 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         href="/projects/"
         class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
-        <span>view all ({{ projects.length }})</span>
+        <span>view all ({{ collections.projects.length or projects.length }})</span>
         {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
     </div>
 
     <!-- Contiguous Featured Projects Grid (3 Columns on Desktop, Zero Gaps) -->
     <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-      {% for project in projects %}
-        {% if project.featured %}
+      {% set featuredList = collections.featuredProjects if (collections.featuredProjects and collections.featuredProjects.length > 0) else (collections.projects or projects) %}
+      {% for project in featuredList %}
+        {% if loop.index <= 3 %}
           {% include "components/project-card.njk" %}
         {% endif %}
       {% endfor %}
@@ -290,7 +338,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <!-- Quiet Contact Section (Contiguous Grid Section, Zero Outer Margins) -->
+  <!-- Contact Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
@@ -299,21 +347,107 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
           {{ home.sections.contactTitle or "get-in-touch" }}
         </h2>
       </div>
-      <span
-        class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
+      <a
+        href="/contact/"
+        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
-        {{ home.sections.contactSubtitle or "dispatch direct messages" }}
-      </span>
+        <span>contact page</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+      </a>
     </div>
 
-    <div class="p-6 sm:p-8 space-y-4">
+    <div class="px-4 sm:px-6 py-6 sm:py-8 space-y-6 bg-white dark:bg-neutral-950">
       <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans max-w-xl">
-        {{ home.sections.contactText or "I'm currently looking for software engineering internships and open-source collaborations. Feel free to connect via any channel below or submit a message through the contact form." }}
+        {{
+          home.sections.contactText or "I'm currently looking for software engineering internships and open-source collaborations. Feel free to connect via any channel below or submit a message through the contact form."
+        }}
       </p>
+
+      <form
+        id="home-contact-form"
+        class="contact-dispatch-form space-y-5 max-w-xl"
+        {% if contact.form and contact.form.action %}
+          action="{{ contact.form.action }}"
+          method="POST"
+        {% endif %}
+      >
+        <div class="space-y-1.5">
+          <label
+            for="home-name"
+            class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
+          >
+            {{ contact.form.nameLabel or "name" }}
+          </label>
+          <input
+            type="text"
+            id="home-name"
+            name="name"
+            required
+            placeholder="{{ contact.form.namePlaceholder or 'Jane Doe' }}"
+            class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors"
+          >
+        </div>
+
+        <div class="space-y-1.5">
+          <label
+            for="home-email"
+            class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
+          >
+            {{ contact.form.emailLabel or "email-address" }}
+          </label>
+          <input
+            type="email"
+            id="home-email"
+            name="email"
+            required
+            placeholder="{{ contact.form.emailPlaceholder or 'jane@example.com' }}"
+            class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors"
+          >
+        </div>
+
+        <div class="space-y-1.5">
+          <label
+            for="home-message"
+            class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
+          >
+            {{ contact.form.messageLabel or "message-payload" }}
+          </label>
+          <textarea
+            id="home-message"
+            name="message"
+            rows="4"
+            required
+            placeholder="{{ contact.form.messagePlaceholder or 'Your message...' }}"
+            class="w-full px-3.5 py-2.5 border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white text-sm focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 transition-colors resize-y"
+          ></textarea>
+        </div>
+
+        <div class="form-feedback hidden p-3.5 text-xs font-mono"></div>
+
+        <div class="flex items-center gap-4 pt-1">
+          <button
+            type="submit"
+            class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-2 group cursor-pointer"
+          >
+            <span>{{ contact.form.submitButtonText or "Send message" }}</span>
+            <span
+              class="group-hover:translate-x-1 transition-transform flex items-center"
+            >{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
+          </button>
+
+          <a
+            href="/contact/"
+            class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1"
+          >
+            <span>open full contact page</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+          </a>
+        </div>
+      </form>
     </div>
 
     <!-- Contiguous Channels Grid (Divide-X, Zero Outer Margins) -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono">
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono bg-white dark:bg-neutral-950">
       <a
         href="/contact/"
         class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1.5 font-medium text-neutral-900 dark:text-neutral-100"

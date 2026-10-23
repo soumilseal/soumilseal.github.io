@@ -92,6 +92,30 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  // WebP Image Path Resolver Filter
+  eleventyConfig.addFilter('webp', (imgSrc) => {
+    if (!imgSrc || typeof imgSrc !== 'string') return imgSrc;
+    const ext = path.extname(imgSrc).toLowerCase();
+    if (['.jpg', '.jpeg', '.png'].includes(ext)) {
+      const webpCandidate = imgSrc.slice(0, -ext.length) + '.webp';
+      const diskPath = path.join(__dirname, 'src', webpCandidate);
+      if (fs.existsSync(diskPath)) {
+        return webpCandidate;
+      }
+    }
+    return imgSrc;
+  });
+
+  // Automatically optimize and convert uploaded images to WebP before building
+  eleventyConfig.on('eleventy.before', async () => {
+    try {
+      const { optimizeImages } = require('./scripts/optimize-images');
+      await optimizeImages();
+    } catch (err) {
+      console.warn('[eleventy.before] Image optimization notice:', err.message);
+    }
+  });
+
   // Collections
   const isProd = process.env.NODE_ENV === 'production';
 
@@ -108,6 +132,21 @@ module.exports = function (eleventyConfig) {
       .filter((item) => (isProd ? !item.data.draft : true))
       .filter((item) => item.data.featured === true)
       .sort((a, b) => b.date - a.date);
+  });
+
+  eleventyConfig.addCollection('projects', (collectionApi) => {
+    return collectionApi
+      .getFilteredByGlob('./src/projects/*.md')
+      .filter((item) => (isProd ? !item.data.draft : true))
+      .sort((a, b) => (a.data.order || 99) - (b.data.order || 99) || b.date - a.date);
+  });
+
+  eleventyConfig.addCollection('featuredProjects', (collectionApi) => {
+    return collectionApi
+      .getFilteredByGlob('./src/projects/*.md')
+      .filter((item) => (isProd ? !item.data.draft : true))
+      .filter((item) => item.data.featured === true)
+      .sort((a, b) => (a.data.order || 99) - (b.data.order || 99) || b.date - a.date);
   });
 
   eleventyConfig.addCollection('tagList', (collectionApi) => {
