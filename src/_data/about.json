@@ -1,0 +1,51 @@
+{
+  "header": {
+    "title": "About",
+    "section": "section // about/",
+    "description": "Developer, BCA student, and systems enthusiast building software across web architecture, cloud pipelines, and distributed backends."
+  },
+  "avatar": "/assets/images/me.jpg",
+  "narrative": {
+    "heading": "developer-profile // narrative",
+    "paragraphs": [
+      "I'm <strong class=\"text-neutral-900 dark:text-neutral-100 font-semibold\">Soumil Seal</strong>, a software developer and Bachelor of Computer Applications (BCA) undergraduate student based in India.",
+      "My interest in software engineering began with curiosity about how large distributed web services remain fast and dependable under heavy concurrency. That curiosity led me from basic algorithmic scripts in C and Python to designing full-stack systems, containerized cloud pipelines, and developer tooling.",
+      "Today, my focus centers on <span class=\"text-neutral-900 dark:text-neutral-100 font-medium\">software engineering, backend systems, and cloud infrastructure</span>. I enjoy dissecting runtime mechanics—whether that's understanding how the V8 engine manages microtask queues, how containers coordinate through Linux cgroups, or how relational database query planners optimize multi-table joins.",
+      "Outside of university coursework and software development, I document my experiments on my blog, contribute to open-source software, and participate in technical communities."
+    ]
+  },
+  "skillsSection": {
+    "title": "skills-and-technologies/",
+    "subtitle": "core stack",
+    "categories": [
+      {
+        "name": "Languages",
+        "description": "Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash."
+      },
+      {
+        "name": "Cloud & Infrastructure",
+        "description": "Docker, Linux (Ubuntu/Debian), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus."
+      },
+      {
+        "name": "Backend & Data",
+        "description": "Node.js, Express, Fastify, PostgreSQL, SQLite, Redis, REST APIs, message queues."
+      },
+      {
+        "name": "Frontend & Tooling",
+        "description": "Tailwind CSS, Eleventy, Preline UI, HTML5/CSS3, Git, GitHub Actions, Pagefind."
+      }
+    ]
+  },
+  "education": {
+    "title": "academic-background/",
+    "subtitle": "university studies",
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "status": "Present",
+    "major": "Major in Computer Science & Applications",
+    "coursework": "Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks."
+  },
+  "connect": {
+    "title": "network-and-channels/",
+    "subtitle": "connect"
+  }
+}

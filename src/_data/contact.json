@@ -1,0 +1,25 @@
+{
+  "header": {
+    "title": "Contact",
+    "description": "Have an internship opportunity, a project idea, or a question? Feel free to reach out."
+  },
+  "channels": {
+    "title": "direct-channels/",
+    "subtitle": "primary communication",
+    "prompt": "The easiest way to reach me is directly by email:",
+    "email": "soumilseal@gmail.com",
+    "copyButtonText": "Copy"
+  },
+  "form": {
+    "title": "dispatch-message/",
+    "subtitle": "interactive form",
+    "action": "",
+    "nameLabel": "name/",
+    "namePlaceholder": "Jane Doe",
+    "emailLabel": "email-address/",
+    "emailPlaceholder": "jane@example.com",
+    "messageLabel": "message-payload/",
+    "messagePlaceholder": "Your message...",
+    "submitButtonText": "Send message"
+  }
+}

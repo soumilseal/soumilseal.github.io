@@ -1,0 +1,89 @@
+{
+  "status": {
+    "portfolioTag": "soumilseal // portfolio '26",
+    "availabilityText": "open for opportunities",
+    "available": true
+  },
+  "hero": {
+    "eyebrow": "developer & systems builder",
+    "name": "SOUMIL SEAL",
+    "role": "BCA Undergraduate • Developer • Systems Builder",
+    "bio": "Building robust backend services, telemetry daemons, and modern web architectures with Go, TypeScript, Node.js, and Python. Undergraduate BCA student focused on scalable cloud infrastructure and clean systems engineering.",
+    "primaryCta": {
+      "text": "view projects",
+      "url": "/projects/"
+    },
+    "secondaryCta": {
+      "text": "resume",
+      "url": "/resume/"
+    },
+    "terminalBadge": "terminal // ready",
+    "location": "India // remote-friendly"
+  },
+  "stats": [
+    {
+      "value": "4+",
+      "label": "production projects",
+      "detail": "distributed daemons, cli tools & web apps"
+    },
+    {
+      "value": "100%",
+      "label": "test coverage",
+      "detail": "unit & integration tested critical paths"
+    },
+    {
+      "value": "24/7",
+      "label": "telemetry daemon",
+      "detail": "monitoring server health & container metrics"
+    },
+    {
+      "value": "<100ms",
+      "label": "p99 latency target",
+      "detail": "optimized query execution & io bounds"
+    }
+  ],
+  "architecture": {
+    "title": "systems-architecture // core principles",
+    "subtitle": "engineering-standard",
+    "principles": [
+      {
+        "title": "Minimal Footprints",
+        "description": "Lightweight binaries, low memory overhead, deterministic execution."
+      },
+      {
+        "title": "Telemetry-Driven",
+        "description": "Instrumenting every critical path with Prometheus and structured logs."
+      },
+      {
+        "title": "Resilient CI/CD",
+        "description": "Automated regression testing, linting, and automated zero-downtime rollouts."
+      }
+    ]
+  },
+  "marquee": {
+    "title": "languages-and-tooling/",
+    "subtitle": "active-stack // infinite scroll",
+    "items": [
+      { "name": "Go (Golang)", "category": "systems" },
+      { "name": "Python 3", "category": "backend/automation" },
+      { "name": "TypeScript", "category": "fullstack" },
+      { "name": "Node.js", "category": "runtime" },
+      { "name": "Docker", "category": "containers" },
+      { "name": "Linux / Bash", "category": "operating-systems" },
+      { "name": "PostgreSQL", "category": "relational-db" },
+      { "name": "SQLite", "category": "embedded-db" },
+      { "name": "Redis", "category": "cache/queue" },
+      { "name": "AWS Cloud", "category": "infrastructure" },
+      { "name": "Tailwind CSS", "category": "design-system" },
+      { "name": "Eleventy", "category": "ssg" },
+      { "name": "Git / GitHub", "category": "vcs/ci-cd" }
+    ]
+  },
+  "sections": {
+    "featuredProjectsTitle": "featured-projects/",
+    "writingTitle": "writing-and-notes/",
+    "contactTitle": "get-in-touch/",
+    "contactSubtitle": "dispatch direct messages",
+    "contactText": "Interested in discussing software engineering internships, technical collaborations, or system architecture? Send an email directly or connect on social channels."
+  }
+}

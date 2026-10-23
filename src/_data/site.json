@@ -9,6 +9,17 @@
   "github": "https://github.com/soumilseal",
   "linkedin": "https://linkedin.com/in/soumilseal",
   "twitter": "https://x.com/soumilseal",
+  "ticker": {
+    "enabled": true,
+    "text": "soumilseal2026-systems-in/",
+    "runtime": "runtime: node • bca student • india"
+  },
+  "footer": {
+    "summary": "Developer & BCA Student • India",
+    "description": "systems architecture, cloud pipelines & modern web engineering",
+    "copyright": "Soumil Seal. All rights reserved.",
+    "techNote": "Eleventy • Tailwind CSS • Pagefind"
+  },
   "nav": [
     {
       "text": "Home",

@@ -1,0 +1,59 @@
+{
+  "topBar": {
+    "indexLabel": "cv-index // 2026",
+    "location": "India • Remote",
+    "printButtonText": "Print / Save PDF",
+    "emailButtonText": "Email Direct"
+  },
+  "summary": {
+    "label": "summary // focus-profile",
+    "focus": "systems-engineering // cloud-infrastructure",
+    "content": "Software developer and Bachelor of Computer Applications (BCA) undergraduate student with a focus on backend engineering, distributed cloud systems, and modern web architectures. Experienced in building telemetry daemons, offline-first developer tooling, and automated deployment pipelines in Go, TypeScript, Node.js, and Python."
+  },
+  "proficienciesSection": {
+    "title": "skills-and-proficiencies/",
+    "subtitle": "technical stack",
+    "categories": [
+      {
+        "title": "Programming Languages",
+        "badge": "core",
+        "skills": "Go (Golang), TypeScript, JavaScript (Node.js), Python 3, Java, C/C++, SQL (PostgreSQL, SQLite), Bash."
+      },
+      {
+        "title": "Cloud & DevOps",
+        "badge": "infrastructure",
+        "skills": "Docker, Linux (Debian/Ubuntu), AWS (EC2, S3, IAM, Lambda basics), Nginx, Prometheus, GitHub Actions CI/CD."
+      },
+      {
+        "title": "Databases & Storage",
+        "badge": "persistence",
+        "skills": "PostgreSQL, SQLite (FTS5 full-text indexing), Redis (caching & pub/sub), relational schema design, connection pooling."
+      },
+      {
+        "title": "Developer Tooling",
+        "badge": "workflows",
+        "skills": "Git, GitHub Actions, CI/CD, Tailwind CSS, Eleventy, Preline UI, Postman, Vite."
+      }
+    ]
+  },
+  "projectsSection": {
+    "title": "engineering-projects/",
+    "subtitle": "selected software"
+  },
+  "educationSection": {
+    "title": "academic-credentials/",
+    "subtitle": "education",
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "status": "Undergraduate • Present",
+    "institution": "Major in Computer Science & Applications • India",
+    "coursework": "Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS / PostgreSQL), Operating Systems & Concurrency, Computer Networks, and System Architecture."
+  },
+  "writingSection": {
+    "title": "technical-writing-and-notes/",
+    "linkText": "view blog"
+  },
+  "channelsSection": {
+    "title": "channels-and-verification/",
+    "subtitle": "direct-links"
+  }
+}

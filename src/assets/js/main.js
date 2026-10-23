@@ -7,7 +7,35 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
+  function disableTransitionsTemporarily() {
+    const css = document.createElement('style');
+    css.id = 'theme-transition-disable';
+    css.textContent = `
+      *, *::before, *::after {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        -ms-transition: none !important;
+        transition: none !important;
+      }
+    `;
+    document.head.appendChild(css);
+
+    return function restore() {
+      // Force a synchronous reflow so all DOM elements commit the new theme colors simultaneously
+      void document.documentElement.offsetHeight;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById('theme-transition-disable');
+          if (el) el.remove();
+        });
+      });
+    };
+  }
+
   function applyTheme(theme, persist = false) {
+    const restoreTransitions = disableTransitionsTemporarily();
+
     const html = document.documentElement;
     const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
     const isDark = theme === 'dark' || (theme === 'auto' && getSystemTheme() === 'dark');
@@ -43,6 +71,8 @@
     simpleToggles.forEach((btn) => {
       btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     });
+
+    restoreTransitions();
   }
 
   window.toggleTheme = function () {
@@ -134,7 +164,7 @@
     // Global keyboard shortcut: Ctrl+K or / to open search modal
     document.addEventListener('keydown', (e) => {
       if (
-        (e.key === 'k' && (e.metaKey || e.ctrlKey)) ||
+        (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey)) ||
         (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName))
       ) {
         e.preventDefault();

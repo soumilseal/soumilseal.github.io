@@ -95,7 +95,9 @@
     <!-- Main CSS (Tailwind v4 + Preline UI) -->
     <link rel="stylesheet" href="/assets/css/main.css">
   </head>
-  <body class="flex flex-col min-h-screen vercel-grid">
+  <body class="flex flex-col min-h-screen vercel-grid relative overflow-x-hidden">
+    <!-- Ambient Blue Aura Beam -->
+    <div class="site-aura" aria-hidden="true"></div>
     <!-- Accessibility Skip Link -->
     <a
       href="#main-content"
@@ -108,7 +110,7 @@
     {% include "components/header.njk" %}
 
     <!-- Main Content Container -->
-    <main id="main-content" class="flex-grow">
+    <main id="main-content" class="grow">
       {{ content | safe }}
     </main>
 

@@ -6,58 +6,58 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]">
+<div class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950">
   <!-- Hero Section: Compact Minimalist Bento Grid -->
-  <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a]">
+  <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
     <!-- Micro Header Bar (Status & Metadata) -->
-    <div class="px-6 sm:px-8 py-2.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-      <div class="flex items-center gap-2">
-        <span>soumilseal // portfolio '26</span>
+    <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-[11px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="whitespace-nowrap">soumilseal // portfolio '26</span>
       </div>
-      <div class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-        <span>open for opportunities</span>
+      <div class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-medium shrink-0">
+        <span
+          class="w-2 h-2 rounded-full bg-blue-500 inline-block animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+        ></span>
+        <span class="whitespace-nowrap">open for opportunities</span>
       </div>
     </div>
 
     <!-- 3-Cell Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-12">
       <!-- CELL 1: Primary Profile & Bio Anchor Cell (7 Columns on MD) -->
-      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 bg-white dark:bg-[#0a0a0a]">
+      <div class="md:col-span-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800 p-6 sm:p-8 bg-white dark:bg-neutral-950">
         <div>
-          <!-- Avatar + Name + Subtitle Row -->
-          <div class="flex items-start gap-4 sm:gap-5">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 overflow-hidden shadow-sm">
-              <img
-                src="/assets/images/me.jpg"
-                alt="Soumil Seal"
-                class="w-full h-full object-cover object-top"
-                width="80"
-                height="80"
-                loading="eager"
-              />
-            </div>
-
-            <div class="min-w-0">
-              <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest block mb-1">
-                developer & systems builder
-              </span>
-              <h1 class="font-heading font-bold text-3xl sm:text-4xl text-neutral-900 dark:text-neutral-100 tracking-tight uppercase leading-[0.95]">
-                SOUMIL SEAL
-              </h1>
-              <div class="flex flex-wrap items-center gap-2 mt-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400">
-                <span>india</span>
-                <span>&bull;</span>
-                <span>bca undergrad</span>
-                <span>&bull;</span>
-                <span class="text-primary-600 dark:text-primary-400 font-medium">systems & web</span>
-              </div>
+          <!-- Name + Subtitle Row -->
+          <div>
+            <span
+              class="font-mono text-[25px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest block mb-1"
+            >
+              developer & systems builder
+            </span>
+            <h1 class="font-heading font-bold text-[clamp(2.75rem,18.5vw,4.75rem)] md:text-7xl lg:text-[7rem] xl:text-[7.75rem] tracking-tight uppercase leading-none md:leading-[0.82] select-none my-2 whitespace-nowrap md:whitespace-normal">
+              <span
+                class="inline md:block text-neutral-900 dark:text-neutral-100"
+              >SOUMIL SEAL</span>
+              <span
+                class="inline md:block text-primary-600 dark:text-primary-400 ml-2 md:ml-0"
+              ></span>
+            </h1>
+            <div class="flex text-[22px] flex-wrap items-center gap-2 mt-2 text-xs font-mono text-neutral-500 dark:text-neutral-400">
+              <span>india</span>
+              <span>&bull;</span>
+              <span>bca undergrad</span>
+              <span>&bull;</span>
+              <span class="text-primary-600 dark:text-primary-400 font-medium"
+              >systems & web</span>
             </div>
           </div>
 
           <!-- Editorial Bio -->
-          <p class="text-sm sm:text-[15px] text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans mt-5">
-            I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools.
+          <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans mt-4">
+            I engineer software across distributed backend systems, cloud
+            infrastructure, and modern web applications. Passionate about
+            runtime internals, concurrency mechanics, clean architectural
+            boundaries, and delivering reliable developer tools.
           </p>
         </div>
 
@@ -68,7 +68,9 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-neutral-100 dark:hover:bg-white dark:text-neutral-900 font-mono text-xs font-semibold tracking-tight transition-all shadow-sm group"
           >
             <span>View Resume & Credentials</span>
-            <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">&nearr;</span>
+            <span
+              class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex items-center"
+            >{{ icons.icon("arrow-up-right", "w-3.5 h-3.5") }}</span>
           </a>
 
           <a
@@ -76,82 +78,25 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             class="inline-flex items-center gap-2 px-4 py-2.5 border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/60 font-mono text-xs font-medium tracking-tight transition-all group"
           >
             <span>Explore Projects ({{ projects.length }})</span>
-            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+            <span
+              class="group-hover:translate-x-1 transition-transform flex items-center"
+            >{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
           </a>
         </div>
       </div>
 
-      <!-- RIGHT SIDE: 2 Stacked Bento Cells (5 Columns on MD) -->
-      <div class="md:col-span-5 flex flex-col">
-        <!-- CELL 2: Active Stack & Systems Discipline Cell -->
-        <div class="p-6 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a] flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono text-neutral-400 dark:text-neutral-500 mb-2.5">
-              <span class="uppercase tracking-wider">focus-discipline/</span>
-              <span>spec: 01</span>
-            </div>
-            <h2 class="font-mono font-bold text-lg sm:text-xl text-neutral-900 dark:text-neutral-100 tracking-tight mb-2">
-              software-engineering/
-            </h2>
-            <p class="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-              Designing distributed telemetry daemons, lock-free ring buffers, container pipelines, and client-side WebAssembly tools.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-1">
-            <span class="grid-badge">Cloud</span>
-            <span class="grid-badge">Distributed</span>
-            <span class="grid-badge">Runtimes</span>
-            <span class="grid-badge">Go</span>
-            <span class="grid-badge">Docker</span>
-            <span class="grid-badge">TypeScript</span>
-          </div>
-        </div>
-
-        <!-- CELL 3: Direct Routes & Connections Cell -->
-        <div class="p-6 bg-neutral-50/50 dark:bg-neutral-900/30 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono text-neutral-400 dark:text-neutral-500 mb-3">
-              <span class="uppercase tracking-wider">dispatch-routes/</span>
-              <span>index</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-xs font-mono">
-              <a
-                href="/projects/"
-                class="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 bg-white dark:bg-[#0a0a0a] flex items-center justify-between transition-colors group"
-              >
-                <span class="text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">projects/</span>
-                <span class="text-neutral-400 group-hover:translate-x-0.5 transition-transform">&nearr;</span>
-              </a>
-              <a
-                href="/blog/"
-                class="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 bg-white dark:bg-[#0a0a0a] flex items-center justify-between transition-colors group"
-              >
-                <span class="text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">writing/</span>
-                <span class="text-neutral-400 group-hover:translate-x-0.5 transition-transform">&nearr;</span>
-              </a>
-              <a
-                href="/about/"
-                class="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 bg-white dark:bg-[#0a0a0a] flex items-center justify-between transition-colors group"
-              >
-                <span class="text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">about/</span>
-                <span class="text-neutral-400 group-hover:translate-x-0.5 transition-transform">&nearr;</span>
-              </a>
-              <a
-                href="/contact/"
-                class="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 bg-white dark:bg-[#0a0a0a] flex items-center justify-between transition-colors group"
-              >
-                <span class="text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">contact/</span>
-                <span class="text-neutral-400 group-hover:translate-x-0.5 transition-transform">&nearr;</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between pt-3 mt-4 border-t border-neutral-200 dark:border-neutral-800 text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-            <span>github: <a href="https://github.com/soumilseal" target="_blank" rel="noopener noreferrer" class="text-neutral-800 dark:text-neutral-200 underline hover:text-primary-600 transition-colors">@soumilseal</a></span>
-            <span class="flex items-center gap-1">
-              <span class="text-neutral-400">active</span>
-              <span>// 2026</span>
-            </span>
+      <!-- RIGHT SIDE: Full-Area Hero Portrait Image (replaces the 2 stacked text blocks) -->
+      <div class="md:col-span-5 relative bg-neutral-950 overflow-hidden flex items-stretch border-t md:border-t-0 min-h-85 sm:min-h-100 md:min-h-full">
+        <div class="relative w-full h-full flex-1 overflow-hidden group">
+          <img
+            src="/assets/images/me.jpg"
+            alt="Soumil Seal"
+            class="w-full h-full object-cover object-top filter brightness-[0.98] contrast-[1.02]"
+            loading="eager"
+            width="800"
+            height="1000"
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-neutral-950/70 via-transparent to-transparent pointer-events-none md:hidden">
           </div>
         </div>
       </div>
@@ -160,11 +105,11 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 
   <!-- Programming Languages Infinite GSAP Scroll (Contiguous Grid Section) -->
   <section
-    class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a] relative"
+    class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 relative"
     id="languages-marquee-section"
   >
     <!-- Section Header Bar -->
-    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-2.5 flex items-center justify-between relative">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
         languages-and-tooling/
       </h2>
@@ -369,7 +314,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
   <!-- Featured Projects Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
-    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           featured-projects/
@@ -377,15 +322,15 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </div>
       <a
         href="/projects/"
-        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1"
+        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
         <span>view all ({{ projects.length }})</span>
-        <span>&nearr;</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
     </div>
 
-    <!-- Contiguous Projects List (Divide-Y, Zero Left/Right Margins) -->
-    <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
+    <!-- Contiguous Featured Projects Grid (3 Columns on Desktop, Zero Gaps) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
       {% for project in projects %}
         {% if project.featured %}
           {% include "components/project-card.njk" %}
@@ -397,7 +342,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
   <!-- Latest Writing Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
-    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           writing-and-notes/
@@ -405,10 +350,10 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </div>
       <a
         href="/blog/"
-        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1"
+        class="font-mono text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
       >
         <span>all articles ({{ collections.posts.length }})</span>
-        <span>&rarr;</span>
+        {{ icons.icon("arrow-right", "w-3 h-3") }}
       </a>
     </div>
 
@@ -423,7 +368,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
   <!-- Quiet Contact Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
-    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           get-in-touch/
@@ -450,37 +395,37 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono">
       <a
         href="mailto:{{ site.email }}"
-        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1.5 font-medium text-neutral-900 dark:text-neutral-100"
       >
         <span>Email</span>
-        <span>&nearr;</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
       <a
         href="{{ site.github }}"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1.5 font-medium text-neutral-900 dark:text-neutral-100"
       >
         <span>GitHub</span>
-        <span>&nearr;</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
       <a
         href="{{ site.linkedin }}"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1.5 font-medium text-neutral-900 dark:text-neutral-100"
       >
         <span>LinkedIn</span>
-        <span>&nearr;</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
       <a
         href="{{ site.twitter }}"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100"
+        class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1.5 font-medium text-neutral-900 dark:text-neutral-100"
       >
         <span>Twitter/X</span>
-        <span>&nearr;</span>
+        {{ icons.icon("arrow-up-right", "w-3 h-3") }}
       </a>
     </div>
   </section>

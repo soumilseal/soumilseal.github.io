@@ -1,139 +1,64 @@
 {% import "components/icons.njk" as icons %}
-
 <article
-  class="project-item group relative p-6 sm:p-8 bg-white dark:bg-[#0a0a0a] hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors"
+  class="project-item group relative bg-white dark:bg-neutral-950 hover:bg-neutral-50/90 dark:hover:bg-neutral-900/50 transition-colors cursor-pointer flex flex-col justify-between h-full before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-primary-600 dark:before:bg-primary-500 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-200"
   data-category="{{ project.category }}"
 >
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-    <!-- Left Column: Details -->
-    <div class="md:col-span-7 flex flex-col justify-between h-full">
-      <div>
-        <div class="flex items-center justify-between gap-3 mb-2.5">
-          <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
-            {{ project.category }}
-          </span>
-          <div class="flex items-center gap-3 md:hidden">
-            {% if project.github %}
-              <a
-                href="{{ project.github }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors p-1"
-                aria-label="GitHub for {{ project.title }}"
-                title="GitHub"
-              >
-                {{ icons.icon("github", "w-3.5 h-3.5") }}
-              </a>
-            {% endif %}
-            {% if project.demo %}
-              <a
-                href="{{ project.demo }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors p-1"
-                aria-label="Demo for {{ project.title }}"
-                title="Live Demo"
-              >
-                {{ icons.icon("external-link", "w-3.5 h-3.5") }}
-              </a>
-            {% endif %}
-          </div>
-        </div>
-
-        <h3 class="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2.5 tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-          <a
-            href="{{ project.demo or project.github }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="focus:outline-none flex items-center justify-between gap-2"
-          >
-            <span>{{ project.title }}</span>
-            <span
-              class="text-neutral-400 group-hover:text-primary-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-sm font-mono"
-            >&nearr;</span>
-          </a>
-        </h3>
-
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 font-sans">
-          {{ project.description }}
-        </p>
-
-        {% if project.highlights %}
-          <ul class="mb-4 space-y-1.5 text-xs text-neutral-500 dark:text-neutral-400 font-mono hidden sm:block">
-            {% for highlight in project.highlights %}
-              <li class="flex items-start gap-2">
-                <span class="text-primary-500 mt-0.5">&rsaquo;</span>
-                <span>{{ highlight }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+  <div class="p-4 sm:p-5 flex flex-col justify-between h-full">
+    <div>
+      <div class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mb-2">
+        <span class="uppercase tracking-wider">{{ project.category }}</span>
       </div>
 
-      <div class="flex items-center justify-between gap-3 pt-2">
-        <div class="flex flex-wrap gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-          {% for tag in project.tags %}
-            <span class="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">#{{ tag }}</span>
-          {% endfor %}
-        </div>
-
-        <div class="hidden md:flex items-center gap-3 shrink-0">
-          {% if project.github %}
-            <a
-              href="{{ project.github }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors p-1"
-              aria-label="GitHub for {{ project.title }}"
-              title="GitHub"
-            >
-              {{ icons.icon("github", "w-3.5 h-3.5") }}
-            </a>
-          {% endif %}
-          {% if project.demo %}
-            <a
-              href="{{ project.demo }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors p-1"
-              aria-label="Demo for {{ project.title }}"
-              title="Live Demo"
-            >
-              {{ icons.icon("external-link", "w-3.5 h-3.5") }}
-            </a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Column: Project Preview Graphic / Architecture Frame -->
-    {% if project.image %}
-      <div class="md:col-span-5 w-full mt-3 md:mt-0">
+      <h3 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors tracking-tight mb-2">
         <a
           href="{{ project.demo or project.github }}"
           target="_blank"
           rel="noopener noreferrer"
-          class="block border border-neutral-300 dark:border-neutral-800 bg-neutral-950 overflow-hidden relative group/img transition-all hover:border-neutral-400 dark:hover:border-neutral-700 shadow-sm"
+          class="focus:outline-none after:absolute after:inset-0 after:z-10"
         >
-          <!-- Terminal Tab Bar -->
-          <div class="px-3 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-between text-[10px] font-mono text-neutral-600 dark:text-neutral-400">
-            <span class="truncate">fig: {{ project.id }}.sys</span>
-            <span class="text-emerald-600 dark:text-emerald-400 flex items-center gap-1 shrink-0">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-              live
-            </span>
-          </div>
-          <!-- Image -->
-          <div class="aspect-[16/10] overflow-hidden bg-neutral-950 flex items-center justify-center">
-            <img
-              src="{{ project.image }}"
-              alt="{{ project.title }}"
-              loading="lazy"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
+          {{ project.title }}
         </a>
+      </h3>
+
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans line-clamp-3 mb-4">
+        {{ project.description }}
+      </p>
+
+      {% if project.tags %}
+        <div class="flex flex-wrap gap-1.5 mb-4 text-[10px] font-mono text-neutral-400 dark:text-neutral-500">
+          {% for tag in project.tags | head(3) %}
+            <span class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Minimal Action Links (relative z-20 so specific clicks work directly) -->
+    <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between gap-2 text-xs font-mono relative z-20 mt-auto">
+      <div class="flex items-center gap-3">
+        {% if project.github %}
+          <a
+            href="{{ project.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors py-0.5"
+          >
+            <span>source</span>
+            {{ icons.icon("arrow-right", "w-3 h-3") }}
+          </a>
+        {% endif %}
+        {% if project.demo %}
+          <a
+            href="{{ project.demo }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:underline transition-colors py-0.5 font-medium"
+          >
+            <span>live demo</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+          </a>
+        {% endif %}
       </div>
-    {% endif %}
+    </div>
   </div>
 </article>

@@ -1,19 +1,19 @@
 {% import "components/icons.njk" as icons %}
 
-<footer class="mt-auto border-t border-neutral-300 dark:border-neutral-800 transition-colors bg-white dark:bg-[#0a0a0a]">
-  <div class="max-w-[950px] mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]">
+<footer class="mt-auto border-t border-neutral-300 dark:border-neutral-800 transition-colors bg-white dark:bg-neutral-950">
+  <div class="max-w-[950px] mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-neutral-950">
     <!-- Contiguous Top Grid Row -->
     <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
       <!-- Brand & Summary Cell -->
       <div class="md:col-span-6 p-6 sm:p-8 space-y-2">
         <p class="font-heading font-bold text-xl uppercase tracking-tight text-neutral-900 dark:text-neutral-100">
-          Soumil Seal
+          {{ site.name or "Soumil Seal" }}
         </p>
         <p class="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-          Developer & BCA Student &bull; India
+          {{ site.footer.summary or (site.role + " &bull; India") | safe }}
         </p>
         <p class="text-xs text-neutral-400 dark:text-neutral-500 pt-2 font-mono">
-          systems architecture, cloud pipelines & modern web engineering
+          {{ site.footer.description or "systems architecture, cloud pipelines & modern web engineering" }}
         </p>
       </div>
 
@@ -29,52 +29,58 @@
             href="{{ site.github }}"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            GitHub &nearr;
+            <span>GitHub</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
             href="{{ site.linkedin }}"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            LinkedIn &nearr;
+            <span>LinkedIn</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
             href="{{ site.twitter }}"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            Twitter/X &nearr;
+            <span>Twitter/X</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
             href="mailto:{{ site.email }}"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            Email &nearr;
+            <span>Email</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
             href="/resume/"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            Resume &nearr;
+            <span>Resume</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
           <a
             href="/feed.xml"
-            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
           >
-            RSS &nearr;
+            <span>RSS</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
           </a>
         </div>
       </div>
     </div>
 
     <!-- Contiguous Bottom Metadata Row -->
-    <div class="px-6 sm:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] bg-neutral-50/50 dark:bg-neutral-900/30">
-      <p>© {{ "" | currentYear }} Soumil Seal. All rights reserved.</p>
-      <p>Eleventy &bull; Tailwind CSS &bull; Pagefind</p>
+    <div class="px-4 sm:px-6 py-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] bg-neutral-50/50 dark:bg-neutral-900/30">
+      <p>© {{ "" | currentYear }} {{ site.footer.copyright or (site.name + ". All rights reserved.") }}</p>
+      <p>{{ site.footer.techNote or "Eleventy &bull; Tailwind CSS &bull; Pagefind" | safe }}</p>
     </div>
   </div>
 </footer>

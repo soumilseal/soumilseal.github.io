@@ -12,33 +12,61 @@
   --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-heading: 'BenchNine', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* Scaled-up Font Size Hierarchy (Enlarged across every scale step) */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: calc(1.15 / 0.8125);
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: calc(1.35 / 0.9375);
+  --text-base: 1.0625rem;
+  --text-base--line-height: calc(1.6 / 1.0625);
+  --text-lg: 1.25rem;
+  --text-lg--line-height: calc(1.75 / 1.25);
+  --text-xl: 1.4375rem;
+  --text-xl--line-height: calc(1.85 / 1.4375);
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: calc(2.15 / 1.75);
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: calc(2.5 / 2.25);
+  --text-4xl: 2.75rem;
+  --text-4xl--line-height: calc(3 / 2.75);
+  --text-5xl: 3.5rem;
+  --text-5xl--line-height: 1.05;
+  --text-6xl: 4.5rem;
+  --text-6xl--line-height: 1.02;
+  --text-7xl: 5.5rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 7rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 9rem;
+  --text-9xl--line-height: 1;
 
-  /* Primary: #F59E0B (Amber) */
-  --color-primary: #F59E0B;
-  --color-primary-50: #fffbeb;
-  --color-primary-100: #fef3c7;
-  --color-primary-200: #fde68a;
-  --color-primary-300: #fcd34d;
-  --color-primary-400: #fbbf24;
-  --color-primary-500: #F59E0B;
-  --color-primary-600: #d97706;
-  --color-primary-700: #b45309;
-  --color-primary-800: #92400e;
-  --color-primary-900: #78350f;
+  /* Primary: #2563EB (Electric Royal Blue - Soumil's Signature Aura) */
+  --color-primary: #2563EB;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
 
-  /* Accent: #722300 (Deep Rust) */
-  --color-accent: #722300;
-  --color-accent-50: #fff7ed;
-  --color-accent-100: #ffedd5;
-  --color-accent-200: #fed7aa;
-  --color-accent-300: #fdba74;
-  --color-accent-400: #fb923c;
-  --color-accent-500: #722300;
-  --color-accent-600: #5c1c00;
-  --color-accent-700: #471500;
-  --color-accent-800: #340f00;
-  --color-accent-900: #250b00;
-  --color-accent-950: #170700;
+  /* Accent: #0284C7 (Cyber Sky Blue) */
+  --color-accent: #0284C7;
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe;
+  --color-accent-200: #bae6fd;
+  --color-accent-300: #7dd3fc;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0284c7;
+  --color-accent-600: #0369a1;
+  --color-accent-700: #075985;
+  --color-accent-800: #0c4a6e;
+  --color-accent-900: #082f49;
+  --color-accent-950: #041926;
 
   /* Surface & Border */
   --color-surface: #FFFFFF;
@@ -89,7 +117,7 @@ html {
 
   html,
   * {
-    scrollbar-width: thin;
+    scrollbar-width: auto;
     scrollbar-color: #cbd5e1 #fafafa;
   }
 
@@ -105,8 +133,8 @@ html {
    matching monochrome light and dark modes
    ======================================================== */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -145,8 +173,8 @@ html.dark ::-webkit-scrollbar-track:horizontal {
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background-color: #71717a;
-  border-color: #52525b;
+  background-color: #2563eb;
+  border-color: #1d4ed8;
 }
 
 .dark ::-webkit-scrollbar-thumb,
@@ -167,8 +195,8 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 .dark ::-webkit-scrollbar-thumb:active,
 html.dark::-webkit-scrollbar-thumb:active,
 html.dark ::-webkit-scrollbar-thumb:active {
-  background-color: #3f3f46;
-  border-color: #52525b;
+  background-color: #2563eb;
+  border-color: #3b82f6;
 }
 
 ::-webkit-scrollbar-corner {
@@ -185,14 +213,199 @@ html.dark ::-webkit-scrollbar-corner {
   border-top: 1px solid #262626;
 }
 
+/* ========================================================
+   Scrollbar Stepper Arrow Buttons
+   ======================================================== */
 ::-webkit-scrollbar-button {
+  display: block;
+  width: 12px;
+  height: 14px;
+  background-color: #f4f4f5;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7px 7px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-button:horizontal {
+  width: 14px;
+  height: 12px;
+}
+
+/* Vertical Up Arrow (Decrement) */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-left: 1px solid #e4e4e7;
+  border-bottom: 1px solid #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%2352525b'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  background-color: #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%232563eb'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Vertical Down Arrow (Increment) */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-left: 1px solid #e4e4e7;
+  border-top: 1px solid #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%2352525b'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  background-color: #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%232563eb'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Horizontal Left Arrow (Decrement) */
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  border-top: 1px solid #e4e4e7;
+  border-right: 1px solid #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%2352525b'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+  background-color: #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%232563eb'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Horizontal Right Arrow (Increment) */
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+  border-top: 1px solid #e4e4e7;
+  border-left: 1px solid #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%2352525b'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+  background-color: #e4e4e7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%232563eb'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Dark Mode Scrollbar Buttons */
+.dark ::-webkit-scrollbar-button,
+html.dark::-webkit-scrollbar-button,
+html.dark ::-webkit-scrollbar-button {
+  background-color: #0a0a0a;
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:decrement,
+html.dark::-webkit-scrollbar-button:single-button:vertical:decrement,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-left: 1px solid #262626;
+  border-bottom: 1px solid #262626;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%23a1a1aa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
+html.dark::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  background-color: #171717;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%2360a5fa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:decrement:active,
+html.dark::-webkit-scrollbar-button:single-button:vertical:decrement:active,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,4 3,11 13,11' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:increment,
+html.dark::-webkit-scrollbar-button:single-button:vertical:increment,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-left: 1px solid #262626;
+  border-top: 1px solid #262626;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%23a1a1aa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:increment:hover,
+html.dark::-webkit-scrollbar-button:single-button:vertical:increment:hover,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  background-color: #171717;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%2360a5fa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:vertical:increment:active,
+html.dark::-webkit-scrollbar-button:single-button:vertical:increment:active,
+html.dark ::-webkit-scrollbar-button:single-button:vertical:increment:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='8,12 3,5 13,5' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:decrement,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  border-top: 1px solid #262626;
+  border-right: 1px solid #262626;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%23a1a1aa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement:hover,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:decrement:hover,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+  background-color: #171717;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%2360a5fa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement:active,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:decrement:active,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='4,8 11,3 11,13' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:increment,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:increment,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:increment {
+  border-top: 1px solid #262626;
+  border-left: 1px solid #262626;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%23a1a1aa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:increment:hover,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:increment:hover,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+  background-color: #171717;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%2360a5fa'/%3E%3C/svg%3E");
+}
+
+.dark ::-webkit-scrollbar-button:single-button:horizontal:increment:active,
+html.dark::-webkit-scrollbar-button:single-button:horizontal:increment:active,
+html.dark ::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpolygon points='12,8 5,3 5,13' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Hide extra/double buttons */
+::-webkit-scrollbar-button:double-button,
+::-webkit-scrollbar-button:no-button {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
 }
 
-/* Ensure scrollbar-none cleanly suppresses WebKit scrollbars */
-.scrollbar-none::-webkit-scrollbar {
+/* Ensure scrollbar-none cleanly suppresses WebKit scrollbars and buttons */
+.scrollbar-none::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar-button {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -221,26 +434,83 @@ h6,
 
 body {
   font-family: var(--font-sans);
-  @apply bg-white text-neutral-900 antialiased selection:bg-primary-100 selection:text-neutral-900 dark:bg-black dark:text-neutral-100 dark:selection:bg-neutral-800 dark:selection:text-neutral-100;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  @apply bg-white text-neutral-900 antialiased selection:bg-blue-100 selection:text-blue-900 dark:bg-black dark:text-neutral-100 dark:selection:bg-blue-950 dark:selection:text-blue-200;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* ========================================================
+   Scaled Micro-Text & Small Utility Classes
+   Ensures badges, timestamps, tags, and tickers are larger
+   ======================================================== */
+.text-\[10px\] {
+  font-size: 11.5px !important;
+  line-height: 1.35 !important;
+}
+
+.text-\[11px\] {
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+}
+
+.text-\[13\.5px\] {
+  font-size: 14.5px !important;
+}
+
+.text-\[15px\] {
+  font-size: 16.5px !important;
+  line-height: 1.65 !important;
+}
+
 /* Typography Overrides */
 .prose {
+  font-size: var(--text-base);
+  line-height: 1.75;
   max-width: 68ch;
   --tw-prose-body: #262626;
   --tw-prose-headings: #0a0a0a;
   --tw-prose-lead: #52525b;
-  --tw-prose-links: #d97706;
+  --tw-prose-links: #2563eb;
   --tw-prose-bold: #0a0a0a;
-  --tw-prose-counters: #d97706;
-  --tw-prose-bullets: #F59E0B;
+  --tw-prose-counters: #2563eb;
+  --tw-prose-bullets: #3b82f6;
   --tw-prose-hr: #e4e4e7;
   --tw-prose-quotes: #0a0a0a;
   --tw-prose-quote-borders: #e4e4e7;
   --tw-prose-captions: #71717a;
+}
+
+.prose p {
+  font-size: var(--text-base);
+  line-height: 1.75;
+}
+
+.prose h1 {
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+}
+
+.prose h2 {
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+}
+
+.prose h3 {
+  font-size: var(--text-2xl);
+  line-height: 1.3;
+}
+
+.prose h4 {
+  font-size: var(--text-xl);
+  line-height: 1.4;
+}
+
+.prose li {
+  font-size: var(--text-base);
+  line-height: 1.7;
 }
 
 .prose h1,
@@ -254,10 +524,10 @@ body {
   --tw-prose-body: #d4d4d8;
   --tw-prose-headings: #f4f4f5;
   --tw-prose-lead: #a1a1aa;
-  --tw-prose-links: #F59E0B;
+  --tw-prose-links: #60a5fa;
   --tw-prose-bold: #ffffff;
-  --tw-prose-counters: #F59E0B;
-  --tw-prose-bullets: #F59E0B;
+  --tw-prose-counters: #60a5fa;
+  --tw-prose-bullets: #60a5fa;
   --tw-prose-hr: #262626;
   --tw-prose-quotes: #f4f4f5;
   --tw-prose-quote-borders: #262626;
@@ -265,11 +535,11 @@ body {
 }
 
 .prose pre {
-  @apply bg-neutral-900 text-neutral-100 border border-neutral-800 overflow-x-auto shadow-sm my-6 p-4 text-[13.5px] leading-relaxed dark:bg-[#0a0a0a] dark:border-neutral-800;
+  @apply bg-neutral-900 text-neutral-100 border border-neutral-800 overflow-x-auto shadow-sm my-6 p-4 text-[14.5px] leading-relaxed dark:bg-neutral-950;
 }
 
 .prose code:not(pre code) {
-  @apply font-mono text-[0.875em] bg-neutral-100 text-accent-500 px-1.5 py-0.5 border border-neutral-200 dark:bg-neutral-800/80 dark:text-primary-400 dark:border-neutral-700/60 font-medium;
+  @apply font-mono text-[0.9em] bg-neutral-100 text-accent-500 px-1.5 py-0.5 border border-neutral-200 dark:bg-neutral-800/80 dark:text-primary-400 dark:border-neutral-700/60 font-medium;
 }
 
 .prose code:not(pre code)::before,
@@ -352,7 +622,7 @@ h4:hover .header-anchor {
 /* Pagefind Custom Styling */
 .pagefind-ui {
   --pagefind-ui-scale: 0.95;
-  --pagefind-ui-primary: #F59E0B;
+  --pagefind-ui-primary: #3b82f6;
   --pagefind-ui-text: #171717;
   --pagefind-ui-background: #ffffff;
   --pagefind-ui-border: #e4e4e7;
@@ -362,7 +632,7 @@ h4:hover .header-anchor {
 }
 
 .dark .pagefind-ui {
-  --pagefind-ui-primary: #F59E0B;
+  --pagefind-ui-primary: #3b82f6;
   --pagefind-ui-text: #f4f4f5;
   --pagefind-ui-background: #0a0a0a;
   --pagefind-ui-border: #262626;
@@ -398,6 +668,24 @@ h4:hover .header-anchor {
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Ambient Blue Aura Glow Behind Hero & Header */
+.site-aura {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 520px;
+  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(59, 130, 246, 0.14), rgba(14, 165, 233, 0.05) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .site-aura {
+  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(59, 130, 246, 0.18), rgba(37, 99, 235, 0.09) 40%, rgba(14, 165, 233, 0.04) 65%, transparent 80%);
 }
 
 /* Graph Paper Grid (GitHub Universe style) */
@@ -443,11 +731,11 @@ h4:hover .header-anchor {
 }
 
 .vercel-card:hover {
-  border-color: rgba(245, 158, 11, 0.5);
+  border-color: rgba(59, 130, 246, 0.45);
 }
 
 .dark .vercel-card:hover {
-  border-color: rgba(245, 158, 11, 0.5);
+  border-color: rgba(59, 130, 246, 0.45);
 }
 
 /* Technical Blueprint Coordinates / Index Badges */
