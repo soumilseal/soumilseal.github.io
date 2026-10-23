@@ -60,10 +60,35 @@ html.dark {
 }
 
 body {
-  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#0b0f19] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
+  @apply bg-neutral-50 text-neutral-900 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-[#070a13] dark:text-neutral-100 dark:selection:bg-accent-900/60 dark:selection:text-accent-200;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Architectural Grid-Line Pattern */
+.bg-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+}
+
+.dark .bg-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-dots {
+  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+}
+
+.dark .bg-dots {
+  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
 /* Typography Overrides */

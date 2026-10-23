@@ -7,19 +7,22 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 
 {% include "components/profile-header.njk" %}
 
-<div class="space-y-10 sm:space-y-12">
+<div class="divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
 
   <!-- Section: Projects -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 first:pt-0">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Projects
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Featured work
+      </p>
     </div>
 
-    <div class="flex-grow space-y-8 w-full">
+    <div class="sm:col-span-9 sm:pl-2 space-y-7 w-full">
       {% for project in projects | head(3) %}
-        <div class="space-y-2 group">
+        <div class="space-y-2.5 group">
           <div class="flex items-center justify-between gap-2">
             <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">
               <a href="{{ project.demo or project.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-accent-600 dark:hover:text-accent-400 transition-colors inline-flex items-center gap-1.5">
@@ -32,18 +35,20 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             </span>
           </div>
 
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
             {{ project.description }}
           </p>
 
-          <!-- Visual Mini Previews / Highlights -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-            {% for highlight in project.highlights %}
-              <div class="p-2.5 rounded-lg border border-neutral-200/70 bg-neutral-50/60 dark:border-neutral-800 dark:bg-neutral-900/50 text-[11px] text-neutral-600 dark:text-neutral-400 leading-snug">
-                {{ highlight }}
-              </div>
-            {% endfor %}
-          </div>
+          <!-- Interconnected Architectural Grid Cells for Highlights -->
+          {% if project.highlights %}
+            <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/80 dark:divide-neutral-800/80 border border-neutral-200/80 dark:border-neutral-800/80 rounded-lg overflow-hidden bg-neutral-50/50 dark:bg-neutral-900/40 text-[11px] text-neutral-600 dark:text-neutral-400 leading-snug">
+              {% for highlight in project.highlights %}
+                <div class="p-2.5 flex items-center">
+                  {{ highlight }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
 
           <div class="flex flex-wrap gap-1.5 pt-1">
             {% for tag in project.tags %}
@@ -64,58 +69,67 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
   <!-- Section: Now -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Now
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Current focus
+      </p>
     </div>
 
-    <div class="flex-grow space-y-3 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+    <div class="sm:col-span-9 sm:pl-2 space-y-3 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
       <p>
         I am currently completing my undergraduate degree in <strong class="text-neutral-900 dark:text-white font-medium">Computer Applications (BCA)</strong>, focusing on systems architecture, cloud infrastructure, and modern web application development.
       </p>
-      <p class="text-neutral-600 dark:text-neutral-400">
+      <p class="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm">
         In my spare time, I build lightweight developer tools, experiment with containerization patterns on AWS, and write technical articles dissecting runtime mechanics and distributed queueing.
       </p>
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
-  <!-- Section: Previously / Education -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <!-- Section: Education -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Education
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Academic path
+      </p>
     </div>
 
-    <div class="flex-grow space-y-3 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-      <p>
-        Undergraduate studies in <strong class="text-neutral-900 dark:text-white font-medium">Computer Applications</strong> covering relational database design, operating system fundamentals, data structures, and computer networks. 
+    <div class="sm:col-span-9 sm:pl-2 space-y-3 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          Bachelor of Computer Applications (BCA)
+        </h3>
+        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500">2024–2027</span>
+      </div>
+      <p class="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm">
+        Undergraduate studies covering relational database design, operating system fundamentals, data structures, and computer networks. 
       </p>
-      <p class="text-neutral-600 dark:text-neutral-400">
+      <p class="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm">
         Previously explored low-level programming in C and systems scripting in Python before focusing on modern TypeScript, Go, and cloud-native architecture.
       </p>
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
   <!-- Section: Writing / Posts -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Writing
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Technical notes
+      </p>
     </div>
 
-    <div class="flex-grow space-y-4 w-full">
-      <div class="space-y-4">
+    <div class="sm:col-span-9 sm:pl-2 space-y-4 w-full">
+      <div class="space-y-3">
         {% for post in collections.posts | head(3) %}
           <div class="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3 border-b border-neutral-100 dark:border-neutral-800/60 last:border-0">
             <div class="space-y-1">
@@ -142,17 +156,18 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
   <!-- Section: Connect -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8 pb-10">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 last:pb-0">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Connect
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Get in touch
+      </p>
     </div>
 
-    <div class="flex-grow space-y-3 text-sm">
+    <div class="sm:col-span-9 sm:pl-2 space-y-3 text-sm">
       <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed text-xs">
         I am always open to engineering discussions, internships, and open-source collaborations.
       </p>

@@ -47,18 +47,18 @@ permalink: /blog/
     </div>
   </div>
 
-  <!-- Articles List in Two-Column Reference Layout -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start">
-    <div class="sm:col-span-3">
-      <h2 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+  <!-- Articles List in Architectural Grid Layout -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Articles
       </h2>
-      <p class="text-xs text-neutral-400 dark:text-neutral-500 font-mono mt-1 hidden sm:block">
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
         Technical essays
       </p>
     </div>
 
-    <div class="sm:col-span-9 space-y-8 w-full" id="blog-posts-list">
+    <div class="sm:col-span-9 sm:pl-2 space-y-8 w-full" id="blog-posts-list">
       {% for post in collections.posts %}
         <article class="blog-post-card space-y-1.5 pb-7 border-b border-neutral-100 dark:border-neutral-800/80 last:border-0 group"
                  data-title="{{ post.data.title | lower }}"
@@ -110,17 +110,18 @@ permalink: /blog/
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
-  <!-- Syndication / RSS Section -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start pb-8">
-    <div class="sm:col-span-3">
-      <h2 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+  <!-- Syndication / RSS Section in Architectural Grid Layout -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80 last:pb-2">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Syndication
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Feed subscription
+      </p>
     </div>
 
-    <div class="sm:col-span-9 space-y-2 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
       <p>
         Articles are syndicated via standard Atom/RSS. Add the link below to your feed reader:
       </p>

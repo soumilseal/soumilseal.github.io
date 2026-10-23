@@ -46,14 +46,14 @@
   <!-- Main CSS (Tailwind v4 + Preline UI) -->
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body class="bg-white text-neutral-900 antialiased dark:bg-[#0b0f19] dark:text-neutral-100 flex flex-col min-h-screen">
+<body class="bg-neutral-50/80 text-neutral-900 antialiased dark:bg-[#070a13] dark:text-neutral-100 flex flex-col min-h-screen bg-grid">
   <!-- Accessibility Skip Link -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-neutral-900 text-white rounded-lg shadow-lg font-medium text-xs focus:outline-none dark:bg-white dark:text-black">
     Skip to main content
   </a>
 
   <!-- Mobile Top Bar with Side Navigation Trigger (Hidden on Desktop) -->
-  <header class="md:hidden sticky top-0 z-40 w-full bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur border-b border-neutral-200/80 dark:border-neutral-800/80 px-4 py-2.5 flex items-center justify-between no-print">
+  <header class="md:hidden sticky top-0 z-40 w-full bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur border-b border-neutral-200/90 dark:border-neutral-800/90 px-4 py-2.5 flex items-center justify-between no-print">
     <a href="/" class="flex items-center gap-2 font-bold text-sm text-neutral-900 dark:text-white">
       <img src="/assets/images/me.jpg" alt="Soumil Seal" class="w-6 h-6 rounded-full object-cover border border-neutral-200 dark:border-neutral-700">
       <span>Soumil Seal</span>
@@ -125,7 +125,7 @@
           </a>
         </div>
         <div>
-          <a href="/resume/" class="flex items-center gap-2 transition-colors {% if '/resume/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+          <a href="/resume/" class="flex items-center gap-2 transition-colors {% if '/resume/' in page.url %}font-semibold text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
             {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white " + ("" if '/resume/' in page.url else "opacity-0")) }}
             <span>Resume</span>
           </a>
@@ -163,91 +163,131 @@
     </div>
   </div>
 
-  <!-- Layout Wrapper: Persistent Side Navigation on Desktop + Centered Medium Width Column -->
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 w-full flex-grow flex justify-center">
+  <!-- Architectural Grid-Line Frame Container -->
+  <div class="relative max-w-4xl lg:max-w-5xl mx-auto w-full flex-grow flex flex-col md:flex-row border-x border-neutral-200/90 dark:border-neutral-800/90 bg-white dark:bg-[#0b0f19] shadow-xs">
     
+    <!-- Architectural Corner Crosshairs (+) -->
+    <div class="hidden sm:flex absolute -top-2.5 -left-2.5 w-5 h-5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+    <div class="hidden sm:flex absolute -top-2.5 -right-2.5 w-5 h-5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+    <div class="hidden sm:flex absolute -bottom-2.5 -left-2.5 w-5 h-5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+    <div class="hidden sm:flex absolute -bottom-2.5 -right-2.5 w-5 h-5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+    
+    <!-- Intersecting Rail Crosshairs at Desktop Split -->
+    <div class="hidden md:flex absolute -top-2.5 left-48 lg:left-52 w-5 h-5 -ml-2.5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+    <div class="hidden md:flex absolute -bottom-2.5 left-48 lg:left-52 w-5 h-5 -ml-2.5 items-center justify-center font-mono text-[11px] text-neutral-400 dark:text-neutral-600 select-none pointer-events-none" aria-hidden="true">+</div>
+
     <!-- Primary Side Navigation Rail (Desktop & Tablet) -->
-    <aside class="hidden md:block w-44 lg:w-48 shrink-0 pt-10 sm:pt-16 pr-6 lg:pr-8 sticky top-0 self-start text-xs font-normal no-print" aria-label="Primary Side Navigation">
-      <nav class="space-y-2 mb-10">
-        <div>
-          <a href="/" class="flex items-center gap-1.5 transition-colors {% if page.url == '/' %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if page.url == '/' %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>Home</span>
-          </a>
-        </div>
-        <div>
-          <a href="/projects/" class="flex items-center gap-1.5 transition-colors {% if '/projects/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if '/projects/' in page.url %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>Projects</span>
-          </a>
-        </div>
-        <div>
-          <a href="/blog/" class="flex items-center gap-1.5 transition-colors {% if '/blog/' in page.url or '/posts/' in page.url or '/tags/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if '/blog/' in page.url or '/posts/' in page.url or '/tags/' in page.url %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>Blog</span>
-          </a>
-        </div>
-        <div>
-          <a href="/resume/" class="flex items-center gap-1.5 transition-colors {% if '/resume/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if '/resume/' in page.url %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>Resume</span>
-          </a>
-        </div>
-        <div>
-          <a href="/about/" class="flex items-center gap-1.5 transition-colors {% if '/about/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if '/about/' in page.url %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>About</span>
-          </a>
-        </div>
-        <div>
-          <a href="/contact/" class="flex items-center gap-1.5 transition-colors {% if '/contact/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
-            {% if '/contact/' in page.url %}
-              {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
-            {% endif %}
-            <span>Contact</span>
-          </a>
+    <aside class="hidden md:flex flex-col justify-between w-48 lg:w-52 shrink-0 border-r border-neutral-200/90 dark:border-neutral-800/90 sticky top-0 h-screen p-6 lg:p-7 text-xs font-normal no-print bg-neutral-50/30 dark:bg-neutral-900/10" aria-label="Primary Side Navigation">
+      <div class="space-y-6">
+        <!-- Site Brand / Profile Mark in Rail -->
+        <div class="flex items-center gap-2.5 pb-4 border-b border-neutral-200/70 dark:border-neutral-800/70">
+          <img src="/assets/images/me.jpg" alt="Soumil Seal" class="w-7 h-7 rounded-full object-cover border border-neutral-200 dark:border-neutral-700">
+          <div class="min-w-0">
+            <div class="font-bold text-xs text-neutral-900 dark:text-white truncate">Soumil Seal</div>
+            <div class="text-[10px] text-neutral-400 dark:text-neutral-500 font-mono truncate">Developer &amp; Student</div>
+          </div>
         </div>
 
-        <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800/80 space-y-2">
-          <!-- Search in Side Navigation -->
-          <button type="button" 
-                  data-hs-overlay="#search-modal"
-                  class="flex items-center gap-1.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer w-full text-left"
-                  title="Search articles and projects (Ctrl+K)">
-            {{ icons.icon("search", "w-3 h-3 text-neutral-400") }}
-            <span>Search</span>
-            <kbd class="ml-auto font-mono text-[9px] px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-400">Ctrl+K</kbd>
-          </button>
+        <nav class="space-y-2">
+          <div>
+            <a href="/" class="flex items-center gap-1.5 transition-colors {% if page.url == '/' %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if page.url == '/' %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>Home</span>
+            </a>
+          </div>
+          <div>
+            <a href="/projects/" class="flex items-center gap-1.5 transition-colors {% if '/projects/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if '/projects/' in page.url %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>Projects</span>
+            </a>
+          </div>
+          <div>
+            <a href="/blog/" class="flex items-center gap-1.5 transition-colors {% if '/blog/' in page.url or '/posts/' in page.url or '/tags/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if '/blog/' in page.url or '/posts/' in page.url or '/tags/' in page.url %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>Blog</span>
+            </a>
+          </div>
+          <div>
+            <a href="/resume/" class="flex items-center gap-1.5 transition-colors {% if '/resume/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if '/resume/' in page.url %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>Resume</span>
+            </a>
+          </div>
+          <div>
+            <a href="/about/" class="flex items-center gap-1.5 transition-colors {% if '/about/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if '/about/' in page.url %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>About</span>
+            </a>
+          </div>
+          <div>
+            <a href="/contact/" class="flex items-center gap-1.5 transition-colors {% if '/contact/' in page.url %}font-semibold text-neutral-900 dark:text-white{% else %}text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white{% endif %}">
+              {% if '/contact/' in page.url %}
+                {{ icons.icon("caret-right-fill", "w-2.5 h-2.5 text-neutral-900 dark:text-white -ml-3") }}
+              {% endif %}
+              <span>Contact</span>
+            </a>
+          </div>
 
-          <!-- RSS Feed in Side Navigation -->
-          <a href="/feed.xml" class="flex items-center gap-1.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors text-xs" title="RSS / Atom Feed">
-            {{ icons.icon("rss", "w-3 h-3 text-neutral-400") }}
-            <span>Feed</span>
-          </a>
-        </div>
-      </nav>
+          <div class="pt-3 border-t border-neutral-200/70 dark:border-neutral-800/70 space-y-2">
+            <!-- Search in Side Navigation -->
+            <button type="button" 
+                    data-hs-overlay="#search-modal"
+                    class="flex items-center gap-1.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer w-full text-left"
+                    title="Search articles and projects (Ctrl+K)">
+              {{ icons.icon("search", "w-3 h-3 text-neutral-400") }}
+              <span>Search</span>
+              <kbd class="ml-auto font-mono text-[9px] px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-400">Ctrl+K</kbd>
+            </button>
+
+            <!-- RSS Feed in Side Navigation -->
+            <a href="/feed.xml" class="flex items-center gap-1.5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors text-xs" title="RSS / Atom Feed">
+              {{ icons.icon("rss", "w-3 h-3 text-neutral-400") }}
+              <span>Feed</span>
+            </a>
+          </div>
+        </nav>
+      </div>
 
       <!-- Side Rail Footer Note -->
-      <div class="text-[11px] text-neutral-400 dark:text-neutral-500 space-y-1 leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-4 font-mono">
+      <div class="text-[11px] text-neutral-400 dark:text-neutral-500 space-y-1 leading-relaxed border-t border-neutral-200/70 dark:border-neutral-800/70 pt-4 font-mono">
         <p>Soumil Seal</p>
-        <p>Personal engineering log.</p>
+        <p>Engineering log.</p>
         <p>Build {{ "" | currentYear }}.</p>
       </div>
     </aside>
 
     <!-- Main Content Column: Uniform Medium Width (max-w-2xl ~ 672px) -->
-    <main id="main-content" class="w-full max-w-2xl py-6 sm:py-10">
-      {{ content | safe }}
+    <main id="main-content" class="flex-1 min-w-0 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+      <div class="w-full max-w-2xl mx-auto">
+        {{ content | safe }}
+      </div>
+
+      <!-- Architectural Grid Line Footer -->
+      <footer class="w-full max-w-2xl mx-auto mt-16 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-neutral-400 dark:text-neutral-500 no-print">
+        <div class="flex items-center gap-2">
+          <span>Soumil Seal &middot; {{ "" | currentYear }}</span>
+          <span>&middot;</span>
+          <span class="inline-flex items-center gap-1 text-[11px]">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Online</span>
+          </span>
+        </div>
+        <div class="flex items-center gap-4 text-[11px]">
+          <a href="/feed.xml" class="hover:text-neutral-800 dark:hover:text-white transition-colors">Atom Feed</a>
+          <a href="/sitemap.xml" class="hover:text-neutral-800 dark:hover:text-white transition-colors">Sitemap</a>
+          <a href="#top" class="hover:text-neutral-800 dark:hover:text-white transition-colors">Top &uarr;</a>
+        </div>
+      </footer>
     </main>
 
   </div>

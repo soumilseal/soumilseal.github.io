@@ -71,35 +71,38 @@ layout: layouts/base.njk
       </a>
     </div>
 
-    <!-- Prev / Next Post Links -->
     {% set previousPost = collections.posts | getPreviousCollectionItem %}
     {% set nextPost = collections.posts | getNextCollectionItem %}
     {% if previousPost or nextPost %}
-      <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs font-mono" aria-label="Adjacent Articles">
-        <div>
+      <nav class="grid grid-cols-1 sm:grid-cols-2 border border-neutral-200/80 dark:border-neutral-800/80 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/80 dark:divide-neutral-800/80 rounded-lg overflow-hidden text-xs font-mono" aria-label="Adjacent Articles">
+        <div class="p-3.5 bg-neutral-50/30 dark:bg-neutral-900/20">
           {% if previousPost %}
-            <a href="{{ previousPost.url }}" class="group block p-3 rounded-lg border border-neutral-200/70 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
-              <span class="text-neutral-400 dark:text-neutral-500 flex items-center gap-1 mb-1">
+            <a href="{{ previousPost.url }}" class="group block">
+              <span class="text-neutral-400 dark:text-neutral-500 flex items-center gap-1 mb-1 text-[11px]">
                 {{ icons.icon("arrow-left", "w-2.5 h-2.5") }}
-                <span>Previous</span>
+                <span>Previous Article</span>
               </span>
               <span class="font-medium text-neutral-800 dark:text-neutral-200 line-clamp-1 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
                 {{ previousPost.data.title }}
               </span>
             </a>
+          {% else %}
+            <span class="text-neutral-400 dark:text-neutral-600 text-[11px]">First article</span>
           {% endif %}
         </div>
-        <div>
+        <div class="p-3.5 bg-neutral-50/30 dark:bg-neutral-900/20 sm:text-right">
           {% if nextPost %}
-            <a href="{{ nextPost.url }}" class="group block p-3 rounded-lg border border-neutral-200/70 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors text-right">
-              <span class="text-neutral-400 dark:text-neutral-500 flex items-center justify-end gap-1 mb-1">
-                <span>Next</span>
+            <a href="{{ nextPost.url }}" class="group block">
+              <span class="text-neutral-400 dark:text-neutral-500 flex items-center sm:justify-end gap-1 mb-1 text-[11px]">
+                <span>Next Article</span>
                 {{ icons.icon("arrow-right", "w-2.5 h-2.5") }}
               </span>
               <span class="font-medium text-neutral-800 dark:text-neutral-200 line-clamp-1 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
                 {{ nextPost.data.title }}
               </span>
             </a>
+          {% else %}
+            <span class="text-neutral-400 dark:text-neutral-600 text-[11px]">Latest article</span>
           {% endif %}
         </div>
       </nav>

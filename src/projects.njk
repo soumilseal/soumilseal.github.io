@@ -60,18 +60,18 @@ permalink: /projects/
     </div>
   </div>
 
-  <!-- Projects List in Two-Column Reference Layout -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start">
-    <div class="sm:col-span-3">
-      <h2 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+  <!-- Projects List in Architectural Grid Layout -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Catalog
       </h2>
-      <p class="text-xs text-neutral-400 dark:text-neutral-500 font-mono mt-1 hidden sm:block">
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
         Software &amp; tooling
       </p>
     </div>
 
-    <div class="sm:col-span-9 space-y-8 w-full" id="projects-grid">
+    <div class="sm:col-span-9 sm:pl-2 space-y-8 w-full" id="projects-grid">
       {% for project in projects %}
         <div class="project-card space-y-2.5 pb-8 border-b border-neutral-100 dark:border-neutral-800/80 last:border-0 group" 
              data-title="{{ project.title | lower }}"
@@ -95,11 +95,11 @@ permalink: /projects/
             {{ project.description }}
           </p>
 
-          <!-- Technical Highlights Cards -->
+          <!-- Technical Highlights Connected Grid Cells -->
           {% if project.highlights %}
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+            <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/80 dark:divide-neutral-800/80 border border-neutral-200/80 dark:border-neutral-800/80 rounded-lg overflow-hidden bg-neutral-50/50 dark:bg-neutral-900/40 text-[11px] text-neutral-600 dark:text-neutral-400 leading-snug">
               {% for highlight in project.highlights %}
-                <div class="p-2.5 rounded-lg border border-neutral-200/70 bg-neutral-50/60 dark:border-neutral-800 dark:bg-neutral-900/50 text-[11px] text-neutral-600 dark:text-neutral-400 leading-snug">
+                <div class="p-2.5 flex items-center">
                   {{ highlight }}
                 </div>
               {% endfor %}
@@ -144,29 +144,30 @@ permalink: /projects/
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
-  <!-- Engineering Approach Section in Two-Column Reference Layout -->
-  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start pb-8">
-    <div class="sm:col-span-3">
-      <h2 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
+  <!-- Engineering Approach Section in Architectural Grid Layout -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 items-start py-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Approach
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Design principles
+      </p>
     </div>
 
-    <div class="sm:col-span-9 space-y-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Minimal Footprint</h3>
-          <p>Prioritizing standard libraries, native runtime primitives, and minimal dependency overhead.</p>
+    <div class="sm:col-span-9 sm:pl-2 space-y-4 text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+      <div class="grid grid-cols-1 sm:grid-cols-3 border border-neutral-200/80 dark:border-neutral-800/80 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200/80 dark:divide-neutral-800/80 rounded-lg overflow-hidden bg-neutral-50/40 dark:bg-neutral-900/40">
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-xs">Minimal Footprint</h3>
+          <p class="text-[11px] leading-relaxed">Prioritizing standard libraries, native runtime primitives, and minimal dependency overhead.</p>
         </div>
-        <div class="space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Observability</h3>
-          <p>Embedding structured metrics, Prometheus exporters, and health checks by default.</p>
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-xs">Observability</h3>
+          <p class="text-[11px] leading-relaxed">Embedding structured metrics, Prometheus exporters, and health checks by default.</p>
         </div>
-        <div class="space-y-1">
-          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono">Fault Tolerance</h3>
-          <p>Designing idempotent message handlers, graceful termination, and safe recovery queues.</p>
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-xs">Fault Tolerance</h3>
+          <p class="text-[11px] leading-relaxed">Designing idempotent message handlers, graceful termination, and safe recovery queues.</p>
         </div>
       </div>
     </div>

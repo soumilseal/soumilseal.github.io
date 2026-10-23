@@ -8,17 +8,20 @@ permalink: /about/
 
 {% include "components/profile-header.njk" %}
 
-<div class="space-y-10 sm:space-y-12" data-pagefind-body>
+<div class="divide-y divide-neutral-200/80 dark:divide-neutral-800/80" data-pagefind-body>
 
   <!-- Bio Section -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 first:pt-0">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Bio
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Background
+      </p>
     </div>
 
-    <div class="flex-grow space-y-3.5 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+    <div class="sm:col-span-9 sm:pl-2 space-y-3.5 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
       <p>
         I'm <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Soumil Seal</strong>, an undergraduate software developer based in India studying for a <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Bachelor of Computer Applications (BCA)</strong>.
       </p>
@@ -31,58 +34,62 @@ permalink: /about/
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
-  <!-- Stack / Tooling Section -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <!-- Stack / Tooling Section in Bordered Grid Matrix -->
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Stack
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Tech &amp; tooling
+      </p>
     </div>
 
-    <div class="flex-grow space-y-4 text-xs">
-      <div class="space-y-1">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Languages</h3>
-        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.
-        </p>
-      </div>
+    <div class="sm:col-span-9 sm:pl-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 border border-neutral-200/80 dark:border-neutral-800/80 divide-y divide-neutral-200/80 dark:divide-neutral-800/80 rounded-lg overflow-hidden bg-neutral-50/40 dark:bg-neutral-900/40 text-xs">
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Languages</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.
+          </p>
+        </div>
 
-      <div class="space-y-1">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Cloud & Infrastructure</h3>
-        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Docker, Linux (Ubuntu/Debian systems), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.
-        </p>
-      </div>
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Cloud &amp; Infrastructure</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Docker, Linux (Ubuntu/Debian), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.
+          </p>
+        </div>
 
-      <div class="space-y-1">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Backend & Databases</h3>
-        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Node.js, Express, PostgreSQL, SQLite, Redis, REST APIs, idempotent message queues.
-        </p>
-      </div>
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Backend &amp; Databases</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Node.js, Express, PostgreSQL, SQLite, Redis, REST APIs, idempotent message queues.
+          </p>
+        </div>
 
-      <div class="space-y-1">
-        <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Web & Engineering Practices</h3>
-        <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Tailwind CSS, Preline UI, Eleventy, Git/GitHub, CI/CD Actions, Web Accessibility.
-        </p>
+        <div class="p-3.5 space-y-1">
+          <h3 class="font-bold text-neutral-900 dark:text-neutral-200 font-mono text-[12px]">Web &amp; Engineering Practices</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Tailwind CSS, Preline UI, Eleventy, Git/GitHub, CI/CD Actions, Web Accessibility.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
   <!-- Education Section -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Education
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Academic path
+      </p>
     </div>
 
-    <div class="flex-grow space-y-2 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
       <div class="flex items-center justify-between">
         <h3 class="font-semibold text-neutral-900 dark:text-neutral-100">
           Bachelor of Computer Applications (BCA)
@@ -98,17 +105,18 @@ permalink: /about/
     </div>
   </section>
 
-  <hr class="border-t border-neutral-200/70 dark:border-neutral-800/70 my-8">
-
   <!-- Profiles / Elsewhere Section -->
-  <section class="flex flex-col sm:flex-row items-start gap-4 sm:gap-8 pb-10">
-    <div class="sm:w-24 shrink-0">
-      <h2 class="text-xs sm:text-sm font-normal text-neutral-400 dark:text-neutral-500 font-mono">
+  <section class="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6 py-8 last:pb-2">
+    <div class="sm:col-span-3 sm:border-r border-neutral-200/80 dark:border-neutral-800/80 sm:pr-4">
+      <h2 class="text-xs font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
         Profiles
       </h2>
+      <p class="text-[11px] font-mono text-neutral-400 dark:text-neutral-600 mt-1 hidden sm:block">
+        Online links
+      </p>
     </div>
 
-    <div class="flex-grow space-y-2 text-xs font-mono">
+    <div class="sm:col-span-9 sm:pl-2 space-y-2 text-xs font-mono">
       <div class="flex flex-wrap gap-4">
         <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors">
           {{ icons.icon("github", "w-3.5 h-3.5 text-neutral-400") }}
