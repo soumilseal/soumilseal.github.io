@@ -144,5 +144,34 @@
         }
       }
     });
+
+    // Initialize Programming Languages GSAP Infinite Scroll Ticker
+    function initLanguagesTicker() {
+      const tickerTrack = document.getElementById('languages-ticker-track');
+      const tickerWrapper = document.getElementById('languages-ticker-wrapper');
+
+      if (!tickerTrack || !tickerWrapper) return;
+      if (typeof window.gsap === 'undefined') {
+        setTimeout(initLanguagesTicker, 50);
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const loopTween = window.gsap.to(tickerTrack, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 32,
+        ease: 'none',
+      });
+
+      tickerWrapper.addEventListener('mouseenter', () => loopTween.pause());
+      tickerWrapper.addEventListener('mouseleave', () => loopTween.play());
+      tickerWrapper.addEventListener('touchstart', () => loopTween.pause(), { passive: true });
+      tickerWrapper.addEventListener('touchend', () => loopTween.play(), { passive: true });
+    }
+
+    initLanguagesTicker();
   });
 })();

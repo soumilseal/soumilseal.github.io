@@ -3,7 +3,7 @@ layout: layouts/base.njk
 ---
 {% import "components/icons.njk" as icons %}
 
-<article class="max-w-3xl mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]" data-pagefind-body>
+<article class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]" data-pagefind-body>
   <!-- Back Navigation Bar: Contiguous Grid Row -->
   <div class="px-6 sm:px-8 py-3 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between">
     <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
@@ -14,10 +14,7 @@ layout: layouts/base.njk
   </div>
 
   <!-- Article Header: Contiguous Grid Row -->
-  <header class="px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-4 bg-white dark:bg-[#160606] relative">
-    {{ icons.vercel_plus("bl") }}
-    {{ icons.vercel_plus("br") }}
-
+  <header class="px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-4 bg-white dark:bg-[#0a0a0a] relative">
     <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
       <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
       <span>&bull;</span>
@@ -46,7 +43,7 @@ layout: layouts/base.njk
   </header>
 
   <!-- Article Prose Content -->
-  <div class="px-6 sm:px-8 py-10 sm:py-14 bg-white dark:bg-[#160606]">
+  <div class="px-6 sm:px-8 py-10 sm:py-14 bg-white dark:bg-[#0a0a0a]">
     <div class="prose prose-neutral dark:prose-invert max-w-none text-[16px] sm:text-[17px] leading-relaxed">
       {{ content | safe }}
     </div>

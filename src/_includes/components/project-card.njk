@@ -1,9 +1,8 @@
 {% import "components/icons.njk" as icons %}
 
-<article class="project-item group relative flex flex-col p-6 sm:p-8 bg-white dark:bg-[#160606] hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors" data-category="{{ project.category }}">
+<article class="project-item group relative flex flex-col p-6 sm:p-8 bg-white dark:bg-[#0a0a0a] hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors" data-category="{{ project.category }}">
   <div class="flex items-center justify-between gap-3 mb-3">
     <div class="flex items-center gap-2">
-      <span class="w-1.5 h-1.5 bg-primary-500"></span>
       <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
         {{ project.category }}
       </span>
@@ -33,7 +32,7 @@
     {{ project.description }}
   </p>
 
-  <div class="flex flex-wrap gap-2 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+  <div class="flex flex-wrap gap-2 pt-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
     {% for tag in project.tags %}
       <span class="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">#{{ tag }}</span>
     {% endfor %}

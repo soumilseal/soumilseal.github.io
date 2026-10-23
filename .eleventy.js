@@ -28,6 +28,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/preline/dist/preline.js': 'assets/js/preline.js',
   });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/gsap/dist/gsap.min.js': 'assets/js/gsap.min.js',
+  });
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': 'robots.txt' });
 
   // Watch targets

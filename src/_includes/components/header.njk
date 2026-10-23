@@ -1,32 +1,22 @@
 {% import "components/icons.njk" as icons %}
 
-<header class="w-full bg-white dark:bg-[#160606] sticky top-0 z-40 transition-colors border-b border-neutral-300 dark:border-neutral-800">
-  <!-- Top Terminal Ticker (GitHub Universe Style) -->
-  <div class="w-full bg-neutral-950 text-emerald-400 font-mono text-[11px] border-b border-neutral-300 dark:border-neutral-800">
-    <div class="max-w-3xl mx-auto px-4 py-1.5 border-x border-neutral-300 dark:border-neutral-800 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-emerald-400"></span>
-        <span class="tracking-tight">soumilseal2026-systems-in/</span>
-      </div>
-      <div class="text-[10px] text-neutral-400 font-mono hidden sm:inline">
-        runtime: node • bca student • india
-      </div>
-    </div>
-  </div>
+<header class="w-full bg-white dark:bg-[#0a0a0a] sticky top-0 z-40 transition-colors border-b border-neutral-300 dark:border-neutral-800 font-mono">
+  <!-- Top Terminal Ticker Banner Component (Dismissible) -->
+  {% include "components/ticker-banner.njk" %}
 
-  <!-- Contiguous Navbar Grid Row (No spaces between grid lines) -->
-  <div class="max-w-3xl mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]">
+  <!-- Contiguous Navbar Grid Row (Contained in max-w-[950px] space) -->
+  <div class="max-w-[950px] mx-auto border-x border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]">
     <div class="flex items-stretch justify-between h-14">
       
       <!-- Brand Cell -->
       <a href="/" class="flex items-center px-4 sm:px-5 border-r border-neutral-300 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group focus:outline-none shrink-0" aria-label="Soumil Seal homepage">
-        <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+        <span class="font-mono font-bold text-sm sm:text-base tracking-tight text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
           Soumil Seal
         </span>
       </a>
 
       <!-- Desktop Nav Cells (Contiguous Grid Cells) -->
-      <nav class="hidden md:flex items-stretch flex-grow" aria-label="Primary Navigation">
+      <nav class="hidden md:flex items-stretch flex-grow font-mono" aria-label="Primary Navigation">
         {% for item in site.nav %}
           {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
           <a href="{{ item.url }}" 

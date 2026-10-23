@@ -1,13 +1,12 @@
 {% import "components/icons.njk" as icons %}
 
-<article class="post-item group relative flex flex-col p-6 sm:p-8 bg-white dark:bg-[#160606] hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors">
+<article class="post-item group relative flex flex-col p-6 sm:p-8 bg-white dark:bg-[#0a0a0a] hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors">
   <div class="flex items-center gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono mb-2.5">
     <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
     <span>&bull;</span>
     <span>{{ post.templateContent | readingTime }}</span>
     {% if post.data.featured %}
       <span class="text-primary-600 dark:text-primary-400 font-medium ml-auto flex items-center gap-1">
-        <span class="w-1 h-1 bg-primary-500"></span>
         <span>Featured</span>
       </span>
     {% endif %}
@@ -24,7 +23,7 @@
     {{ post.data.description }}
   </p>
 
-  <div class="flex items-center gap-2 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+  <div class="flex items-center gap-2 pt-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
     {% for tag in post.data.tags | filterTagList %}
       <a href="/tags/{{ tag | slugify }}/" class="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">
         #{{ tag }}

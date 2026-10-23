@@ -5,93 +5,227 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-3xl mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#160606]">
+<div class="max-w-[950px] mx-auto border-x border-b border-neutral-300 dark:border-neutral-800 relative bg-white dark:bg-[#0a0a0a]">
   
-  <!-- Hero Section: Giant Title Banner (GitHub Universe Style) -->
-  <section class="relative border-b border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 sm:py-12 bg-white dark:bg-[#160606]">
-    {{ icons.vercel_plus("bl") }}
-    {{ icons.vercel_plus("br") }}
-    
-    <div class="flex items-center justify-between mb-3">
-      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
-        developer // portfolio '26
-      </span>
-      <span class="font-mono text-[11px] text-primary-600 dark:text-primary-400 flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 bg-primary-500 animate-pulse"></span>
-        <span>open for opportunities</span>
-      </span>
+  <!-- Hero Section: Full Screen Height Blueprint Unit -->
+  <section class="hero-screen-height border-b border-neutral-300 dark:border-neutral-800">
+    <!-- Top Part: Giant Title Banner (GitHub Universe Style) -->
+    <div class="relative border-b border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 sm:py-10 md:py-12 bg-white dark:bg-[#0a0a0a] flex flex-col justify-center">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">
+          developer // portfolio '26
+        </span>
+        <span class="font-mono text-[11px] text-primary-600 dark:text-primary-400 flex items-center gap-1.5">
+          <span>open for opportunities</span>
+        </span>
+      </div>
+
+      <h1 class="font-heading font-bold text-5xl sm:text-7xl md:text-8xl tracking-tight text-neutral-900 dark:text-neutral-100 uppercase leading-[0.88]">
+        SOUMIL SEAL
+      </h1>
     </div>
 
-    <h1 class="font-heading font-bold text-5xl sm:text-7xl md:text-8xl tracking-tight text-neutral-900 dark:text-neutral-100 uppercase leading-[0.88]">
-      SOUMIL SEAL
-    </h1>
+    <!-- Bottom Part: Contiguous 2-Column Blueprint Grid (No spaces between lines) -->
+    <div class="grid grid-cols-1 md:grid-cols-12 flex-grow">
+      
+      <!-- Left Column (5 Cols) -->
+      <div class="md:col-span-5 flex flex-col border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800">
+        <!-- Metadata Row (Like 'october 28-29 / san francisco, CA') -->
+        <div class="px-5 py-2.5 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-50/60 dark:bg-neutral-900/40 shrink-0">
+          <span>india / bca undergrad</span>
+          <span class="text-neutral-400 dark:text-neutral-500">systems & web</span>
+        </div>
+
+        <!-- Graph Paper Cell (Like Universe 'stay-tuned/' cell) -->
+        <div class="p-6 sm:p-8 flex-grow grid-graph relative flex flex-col justify-between min-h-[160px] bg-white dark:bg-[#0a0a0a]">
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+              focus-discipline/
+            </span>
+            <h2 class="font-mono font-bold text-xl sm:text-2xl text-neutral-900 dark:text-neutral-100 tracking-tight">
+              software-engineering/
+            </h2>
+          </div>
+          <div class="pt-6 flex flex-wrap gap-1.5">
+            <span class="grid-badge">Cloud</span>
+            <span class="grid-badge">Distributed</span>
+            <span class="grid-badge">Runtimes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (7 Cols) -->
+      <div class="md:col-span-7 flex flex-col justify-between bg-white dark:bg-[#0a0a0a]">
+        <div class="p-6 sm:p-8 space-y-4 flex-grow flex flex-col justify-center">
+          <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-200 leading-relaxed font-sans">
+            I build software across backend systems, cloud infrastructure, and web applications. Passionate about understanding runtime mechanics, writing clean code, and shipping dependable tools.
+          </p>
+        </div>
+
+        <!-- Bottom Contiguous Action Split (Photo + Solid CTA Cell like Universe 'Get passes ↗') -->
+        <div class="grid grid-cols-12 border-t border-neutral-300 dark:border-neutral-800 shrink-0">
+          <div class="col-span-4 sm:col-span-3 border-r border-neutral-300 dark:border-neutral-800 relative bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
+            <img src="/assets/images/me.jpg" 
+                 alt="Soumil Seal" 
+                 class="w-full h-full object-cover object-top aspect-square" 
+                 width="140" 
+                 height="140" 
+                 loading="eager">
+          </div>
+          <a href="/contact/" 
+             class="col-span-8 sm:col-span-9 p-5 flex items-center justify-between bg-primary-500 hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-600 text-neutral-950 font-mono font-bold text-xs sm:text-sm tracking-tight transition-colors group">
+            <span>Get in touch / Collaborations</span>
+            <span class="text-base sm:text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">&nearr;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-  <!-- Hero Section: Contiguous 2-Column Blueprint Grid (No spaces between grid lines) -->
-  <section class="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-300 dark:border-neutral-800">
-    
-    <!-- Left Column (5 Cols) -->
-    <div class="md:col-span-5 flex flex-col border-b md:border-b-0 md:border-r border-neutral-300 dark:border-neutral-800">
-      <!-- Metadata Row (Like 'october 28-29 / san francisco, CA') -->
-      <div class="px-5 py-2.5 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-50/60 dark:bg-neutral-900/40">
-        <span>india / bca undergrad</span>
-        <span class="text-neutral-400 dark:text-neutral-500">systems & web</span>
-      </div>
+  <!-- Programming Languages Infinite GSAP Scroll (Contiguous Grid Section) -->
+  <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a] relative" id="languages-marquee-section">
+    <!-- Section Header Bar -->
+    <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-2.5 flex items-center justify-between relative">
+      <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
+        languages-and-tooling/
+      </h2>
+      <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+        active-stack // infinite scroll
+      </span>
+    </div>
 
-      <!-- Graph Paper Cell (Like Universe 'stay-tuned/' cell) -->
-      <div class="p-6 flex-grow grid-graph relative flex flex-col justify-between min-h-[160px] bg-white dark:bg-[#160606]">
-        <div class="space-y-1">
-          <span class="font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-            focus-discipline/
-          </span>
-          <h2 class="font-mono font-bold text-xl sm:text-2xl text-neutral-900 dark:text-neutral-100 tracking-tight">
-            software-engineering/
-          </h2>
+    <!-- Infinite Scroll Wrapper -->
+    <div id="languages-ticker-wrapper" class="overflow-hidden relative select-none w-full py-0 group cursor-grab active:cursor-grabbing">
+      <div id="languages-ticker-track" class="flex items-stretch whitespace-nowrap w-max will-change-transform">
+        <!-- Group A -->
+        <div class="languages-ticker-group flex items-stretch shrink-0">
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">01/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Python</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">02/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">TypeScript</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">03/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">JavaScript</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">04/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Go</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">05/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Rust</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">06/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">C++</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">07/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">C</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">08/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Java</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">09/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">PostgreSQL</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">10/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Bash / Shell</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">11/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Docker</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">12/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Linux</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">13/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Node.js</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">14/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Redis</span>
+          </div>
         </div>
-        <div class="pt-6 flex flex-wrap gap-1.5">
-          <span class="grid-badge">Cloud</span>
-          <span class="grid-badge">Distributed</span>
-          <span class="grid-badge">Runtimes</span>
+
+        <!-- Group B (Identical Clone for Seamless Infinite Loop) -->
+        <div class="languages-ticker-group flex items-stretch shrink-0" aria-hidden="true">
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">01/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Python</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">02/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">TypeScript</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">03/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">JavaScript</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">04/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Go</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">05/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Rust</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">06/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">C++</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">07/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">C</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">08/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Java</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">09/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">PostgreSQL</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">10/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Bash / Shell</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">11/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Docker</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">12/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Linux</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">13/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Node.js</span>
+          </div>
+          <div class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors">
+            <span class="text-neutral-400 dark:text-neutral-500 text-[10px]">14/</span>
+            <span class="font-semibold text-neutral-900 dark:text-neutral-100">Redis</span>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Right Column (7 Cols) -->
-    <div class="md:col-span-7 flex flex-col justify-between bg-white dark:bg-[#160606]">
-      <div class="p-6 sm:p-8 space-y-4">
-        <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-200 leading-relaxed font-sans">
-          I build software across backend systems, cloud infrastructure, and web applications. Passionate about understanding runtime mechanics, writing clean code, and shipping dependable tools.
-        </p>
-      </div>
-
-      <!-- Bottom Contiguous Action Split (Photo + Solid CTA Cell like Universe 'Get passes ↗') -->
-      <div class="grid grid-cols-12 border-t border-neutral-300 dark:border-neutral-800">
-        <div class="col-span-4 sm:col-span-3 border-r border-neutral-300 dark:border-neutral-800 relative bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
-          <img src="/assets/images/me.jpg" 
-               alt="Soumil Seal" 
-               class="w-full h-full object-cover object-top aspect-square" 
-               width="140" 
-               height="140" 
-               loading="eager">
-        </div>
-        <a href="/contact/" 
-           class="col-span-8 sm:col-span-9 p-5 flex items-center justify-between bg-primary-500 hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-600 text-neutral-950 font-mono font-bold text-xs sm:text-sm tracking-tight transition-colors group">
-          <span>Get in touch / Collaborations</span>
-          <span class="text-base sm:text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">&nearr;</span>
-        </a>
-      </div>
-    </div>
-
   </section>
 
-  <!-- Featured Projects Section (Contiguous Grid Section) -->
+  <!-- Featured Projects Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
-      {{ icons.vercel_plus("bl") }}
-      {{ icons.vercel_plus("br") }}
       <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           featured-projects/
         </h2>
@@ -102,7 +236,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </a>
     </div>
 
-    <!-- Contiguous Projects List (Divide-Y, Zero Gaps) -->
+    <!-- Contiguous Projects List (Divide-Y, Zero Left/Right Margins) -->
     <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
       {% for project in projects %}
         {% if project.featured %}
@@ -112,14 +246,11 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <!-- Latest Writing Section (Contiguous Grid Section) -->
+  <!-- Latest Writing Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
-      {{ icons.vercel_plus("bl") }}
-      {{ icons.vercel_plus("br") }}
       <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           writing-and-notes/
         </h2>
@@ -130,7 +261,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </a>
     </div>
 
-    <!-- Contiguous Posts List (Divide-Y, Zero Gaps) -->
+    <!-- Contiguous Posts List (Divide-Y, Zero Left/Right Margins) -->
     <div class="divide-y divide-neutral-300 dark:divide-neutral-800 border-b border-neutral-300 dark:border-neutral-800">
       {% for post in collections.posts | head(3) %}
         {% include "components/post-card.njk" %}
@@ -138,14 +269,11 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
   </section>
 
-  <!-- Quiet Contact Section (Contiguous Grid Section) -->
+  <!-- Quiet Contact Section (Contiguous Grid Section, Zero Outer Margins) -->
   <section>
     <!-- Section Header Bar -->
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-6 sm:px-8 py-3 flex items-center justify-between relative">
-      {{ icons.vercel_plus("bl") }}
-      {{ icons.vercel_plus("br") }}
       <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-primary-500"></span>
         <h2 class="font-mono text-xs sm:text-sm font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 uppercase">
           get-in-touch/
         </h2>
@@ -161,7 +289,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </p>
     </div>
 
-    <!-- Contiguous Channels Grid (Divide-X, Zero Gaps) -->
+    <!-- Contiguous Channels Grid (Divide-X, Zero Outer Margins) -->
     <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-neutral-300 dark:divide-neutral-800 border-t border-neutral-300 dark:border-neutral-800 text-xs font-mono">
       <a href="mailto:{{ site.email }}" class="p-4 text-center hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors flex items-center justify-center gap-1 font-medium text-neutral-900 dark:text-neutral-100">
         <span>Email</span>
