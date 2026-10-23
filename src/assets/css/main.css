@@ -86,7 +86,6 @@ html.dark {
   }
   ::-webkit-scrollbar-thumb {
     background-color: #E2E8F0;
-    border-radius: 9999px;
   }
   .dark ::-webkit-scrollbar-thumb {
     background-color: #3b1414;
@@ -141,11 +140,11 @@ body {
 }
 
 .prose pre {
-  @apply bg-neutral-900 text-neutral-100 border border-neutral-800 rounded-xl overflow-x-auto shadow-sm my-6 p-4 text-[13.5px] leading-relaxed dark:bg-[#0e1424] dark:border-neutral-800/80;
+  @apply bg-neutral-900 text-neutral-100 border border-neutral-800 overflow-x-auto shadow-sm my-6 p-4 text-[13.5px] leading-relaxed dark:bg-[#0e1424] dark:border-neutral-800/80;
 }
 
 .prose code:not(pre code) {
-  @apply font-mono text-[0.875em] bg-neutral-100 text-accent-500 px-1.5 py-0.5 rounded border border-neutral-200 dark:bg-neutral-800/80 dark:text-primary-400 dark:border-neutral-700/60 font-medium;
+  @apply font-mono text-[0.875em] bg-neutral-100 text-accent-500 px-1.5 py-0.5 border border-neutral-200 dark:bg-neutral-800/80 dark:text-primary-400 dark:border-neutral-700/60 font-medium;
 }
 
 .prose code:not(pre code)::before,
@@ -233,7 +232,7 @@ h4:hover .header-anchor {
   --pagefind-ui-background: #ffffff;
   --pagefind-ui-border: #E2E8F0;
   --pagefind-ui-tag: #f8fafc;
-  --pagefind-ui-border-radius: 0.75rem;
+  --pagefind-ui-border-radius: 0px;
   --pagefind-ui-font: 'Archivo', sans-serif;
 }
 
@@ -247,6 +246,7 @@ h4:hover .header-anchor {
 
 .pagefind-ui .pagefind-ui__search-input {
   @apply focus:ring-2 focus:ring-primary-500 focus:outline-none transition-shadow duration-150;
+  border-radius: 0px !important;
 }
 
 .pagefind-ui .pagefind-ui__result-link {
@@ -254,95 +254,118 @@ h4:hover .header-anchor {
 }
 
 .pagefind-ui .pagefind-ui__result-excerpt mark {
-  @apply bg-primary-100 text-neutral-900 rounded px-1 dark:bg-primary-900/60 dark:text-primary-100;
+  @apply bg-primary-100 text-neutral-900 px-1 dark:bg-primary-900/60 dark:text-primary-100;
 }
 
 /* ==========================================================================
-   Gridlines Design System
+   Vercel-Style Gridlines Design System
    ========================================================================== */
 
-/* Subtle background gridline patterns */
-.bg-gridlines {
+/* Faint ambient blueprint grid (Vercel style) */
+.vercel-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
-.dark .bg-gridlines {
+.dark .vercel-grid {
   background-image: 
-    linear-gradient(to right, rgba(71, 21, 0, 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(71, 21, 0, 0.3) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-.bg-gridlines-dense {
-  background-size: 16px 16px;
+/* Graph Paper Grid (GitHub Universe style) */
+.grid-graph {
+  background-size: 20px 20px;
   background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 232, 240, 0.85) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.85) 1px, transparent 1px);
 }
 
-.dark .bg-gridlines-dense {
+.dark .grid-graph {
   background-image: 
-    linear-gradient(to right, rgba(71, 21, 0, 0.22) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(71, 21, 0, 0.22) 1px, transparent 1px);
+    linear-gradient(to right, rgba(71, 21, 0, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 21, 0, 0.4) 1px, transparent 1px);
 }
 
-/* Technical Corner Crosshairs (+) */
-.grid-cross {
+/* Solid Content Area */
+.content-solid {
+  background-color: #ffffff;
+}
+
+.dark .content-solid {
+  background-color: #160606;
+}
+
+/* Vercel Geometric Corner Plus Crosshairs (+) */
+.corner-plus {
   position: absolute;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 500;
-  color: #94a3b8;
-  user-select: none;
+  width: 15px;
+  height: 15px;
   pointer-events: none;
   z-index: 20;
+  color: #94a3b8;
   transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dark .grid-cross {
+.dark .corner-plus {
   color: #5c1c00;
 }
 
-.grid-card:hover .grid-cross,
-.group:hover .grid-cross {
+.group:hover .corner-plus,
+.vercel-card:hover .corner-plus {
   color: #F59E0B;
-  transform: scale(1.3);
+  transform: scale(1.15);
 }
 
-/* Gridline Card Component */
-.grid-card {
+.corner-plus-tl {
+  top: -7.5px;
+  left: -7.5px;
+}
+
+.corner-plus-tr {
+  top: -7.5px;
+  right: -7.5px;
+}
+
+.corner-plus-bl {
+  bottom: -7.5px;
+  left: -7.5px;
+}
+
+.corner-plus-br {
+  bottom: -7.5px;
+  right: -7.5px;
+}
+
+/* Vercel Card Component (Strictly Sharp Corners) */
+.vercel-card {
   position: relative;
-  border-radius: 0.75rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 0px !important;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.grid-card:hover {
-  box-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.08);
+.dark .vercel-card {
+  background-color: #120404;
+  border-color: rgba(71, 21, 0, 0.5);
 }
 
-.dark .grid-card:hover {
-  box-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.06);
+.vercel-card:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.dark .vercel-card:hover {
+  border-color: rgba(245, 158, 11, 0.5);
 }
 
 /* Technical Blueprint Coordinates / Index Badges */
 .grid-badge {
-  @apply inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/80 text-neutral-500 dark:text-neutral-400;
+  @apply inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/80 text-neutral-500 dark:text-neutral-400;
+  border-radius: 0px !important;
 }
 
-/* Ruled Gridline Section Header */
-.grid-section-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  padding-bottom: 0.875rem;
-}
 
-.dark .grid-section-header {
-  border-bottom-color: rgba(71, 21, 0, 0.6);
-}
 

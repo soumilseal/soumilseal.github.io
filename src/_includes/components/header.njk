@@ -1,7 +1,11 @@
 {% import "components/icons.njk" as icons %}
 
-<header class="w-full bg-white/85 dark:bg-[#160606]/85 backdrop-blur-md sticky top-0 z-40 transition-colors border-b border-neutral-200/60 dark:border-neutral-800/60">
-  <div class="max-w-3xl mx-auto px-6 sm:px-8">
+<header class="w-full bg-white dark:bg-[#160606] sticky top-0 z-40 transition-colors border-b border-neutral-200/80 dark:border-neutral-800/80">
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 border-x border-neutral-200/80 dark:border-neutral-800/80 relative bg-white dark:bg-[#160606]">
+    <!-- Vercel Gridline Intersection Pluses -->
+    {{ icons.vercel_plus("bl") }}
+    {{ icons.vercel_plus("br") }}
+
     <div class="flex items-center justify-between h-20">
       
       <!-- Brand Logo / Name -->
@@ -24,10 +28,10 @@
       </nav>
 
       <!-- Utility Actions (Search, Theme Toggle) -->
-      <div class="flex items-center gap-3">
-        <!-- Search Trigger -->
+      <div class="flex items-center gap-2.5">
+        <!-- Search Trigger (Sharp Corners) -->
         <button type="button" 
-                class="p-2 rounded-lg text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 transition-colors focus:outline-none" 
+                class="p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
                 aria-haspopup="dialog" 
                 aria-expanded="false" 
                 aria-controls="search-modal" 
@@ -36,9 +40,9 @@
           {{ icons.icon("search", "w-4 h-4") }}
         </button>
 
-        <!-- Theme Toggle -->
+        <!-- Theme Toggle (Sharp Corners) -->
         <button type="button" 
-                class="theme-toggle-btn p-2 rounded-lg text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 transition-colors focus:outline-none" 
+                class="theme-toggle-btn p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
                 aria-label="Toggle theme">
           <span class="dark:hidden">
             {{ icons.icon("moon", "w-4 h-4") }}
@@ -48,20 +52,20 @@
           </span>
         </button>
 
-        <!-- Mobile Menu Toggle Button -->
+        <!-- Mobile Menu Toggle Button (Sharp Corners) -->
         <div class="md:hidden">
           <button type="button" 
-                  class="hs-collapse-toggle p-2 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors focus:outline-none" 
+                  class="hs-collapse-toggle p-2 border border-neutral-200/80 dark:border-neutral-800/80 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors focus:outline-none" 
                   id="hs-navbar-collapse" 
                   aria-expanded="false" 
                   aria-controls="mobile-nav" 
                   aria-label="Toggle mobile menu" 
                   data-hs-collapse="#mobile-nav">
             <span class="hs-collapse-open:hidden">
-              {{ icons.icon("menu", "w-5 h-5") }}
+              {{ icons.icon("menu", "w-4 h-4") }}
             </span>
             <span class="hs-collapse-open:block hidden">
-              {{ icons.icon("x", "w-5 h-5") }}
+              {{ icons.icon("x", "w-4 h-4") }}
             </span>
           </button>
         </div>
@@ -70,8 +74,8 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-300 md:hidden pb-4" aria-labelledby="hs-navbar-collapse">
-      <nav class="flex flex-col gap-3 pt-2" aria-label="Mobile Navigation">
+    <div id="mobile-nav" class="hs-collapse hidden overflow-hidden transition-all duration-300 md:hidden pb-4 border-t border-neutral-200/80 dark:border-neutral-800/80 mt-1" aria-labelledby="hs-navbar-collapse">
+      <nav class="flex flex-col gap-3 pt-3" aria-label="Mobile Navigation">
         {% for item in site.nav %}
           {% set isActive = (page.url == item.url) or (item.url != "/" and item.url in page.url) %}
           <a href="{{ item.url }}" 

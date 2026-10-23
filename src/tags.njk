@@ -19,7 +19,7 @@ permalink: /tags/{{ tag | slugify }}/
     </a>
   </div>
 
-  <div class="divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
+  <div class="space-y-4">
     {% set taglist = collections[tag] %}
     {% for post in taglist | reverse %}
       {% include "components/post-card.njk" %}

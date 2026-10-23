@@ -1,27 +1,31 @@
 {% import "components/icons.njk" as icons %}
 
-<article class="project-item group flex flex-col p-6 rounded-2xl border border-neutral-200/60 dark:border-neutral-800/60 hover:border-neutral-300 dark:hover:border-neutral-700 bg-white/40 dark:bg-neutral-900/20 hover:bg-white dark:hover:bg-neutral-900/60 transition-all duration-200" data-category="{{ project.category }}">
-  <div class="flex items-center justify-between gap-3 mb-2.5">
-    <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500">
+<article class="project-item vercel-card group relative flex flex-col p-6 border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#120404] hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200" data-category="{{ project.category }}">
+  <!-- Vercel Corner Crosshairs -->
+  {{ icons.vercel_corners() }}
+
+  <div class="flex items-center justify-between gap-3 mb-3">
+    <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
       {{ project.category }}
     </span>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2.5">
       {% if project.github %}
-        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors" aria-label="GitHub for {{ project.title }}">
+        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors" aria-label="GitHub for {{ project.title }}" title="GitHub">
           {{ icons.icon("github", "w-3.5 h-3.5") }}
         </a>
       {% endif %}
       {% if project.demo %}
-        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-accent-500 dark:hover:text-accent-400 transition-colors" aria-label="Demo for {{ project.title }}">
+        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-accent-500 dark:hover:text-primary-400 transition-colors" aria-label="Demo for {{ project.title }}" title="Live Demo">
           {{ icons.icon("external-link", "w-3.5 h-3.5") }}
         </a>
       {% endif %}
     </div>
   </div>
 
-  <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2 tracking-tight group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-    <a href="{{ project.demo or project.github }}" target="_blank" rel="noopener noreferrer" class="focus:outline-none">
-      {{ project.title }}
+  <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2 tracking-tight group-hover:text-accent-600 dark:group-hover:text-primary-400 transition-colors">
+    <a href="{{ project.demo or project.github }}" target="_blank" rel="noopener noreferrer" class="focus:outline-none flex items-center justify-between gap-2">
+      <span>{{ project.title }}</span>
+      <span class="text-neutral-400 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all text-sm font-mono">&nearr;</span>
     </a>
   </h3>
 
@@ -29,9 +33,9 @@
     {{ project.description }}
   </p>
 
-  <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+  <div class="flex flex-wrap gap-2 pt-3 border-t border-neutral-100 dark:border-neutral-800/60 text-xs font-mono text-neutral-400 dark:text-neutral-500">
     {% for tag in project.tags %}
-      <span>#{{ tag }}</span>
+      <span class="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">#{{ tag }}</span>
     {% endfor %}
   </div>
 </article>

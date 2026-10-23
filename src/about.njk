@@ -4,13 +4,17 @@ title: About
 description: Developer, BCA student, and systems enthusiast building software across web architecture, cloud pipelines, and distributed backends.
 permalink: /about/
 ---
+{% import "components/icons.njk" as icons %}
 
 <div class="space-y-16 sm:space-y-20">
 
   <!-- Narrative Section -->
   <section class="space-y-6 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
     <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-4">
-      <img src="/assets/images/me.jpg" alt="Soumil Seal" class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover object-top border border-neutral-200/80 dark:border-neutral-800 shadow-2xs shrink-0" width="144" height="144" loading="eager">
+      <div class="relative shrink-0 group">
+        <img src="/assets/images/me.jpg" alt="Soumil Seal" class="w-28 h-28 sm:w-36 sm:h-36 object-cover object-top border border-neutral-200 dark:border-neutral-800 shadow-xs shrink-0" width="144" height="144" loading="eager">
+        {{ icons.vercel_corners() }}
+      </div>
       <div class="space-y-4">
         <p>
           I'm <strong class="text-neutral-900 dark:text-neutral-100 font-semibold">Soumil Seal</strong>, a software developer and Bachelor of Computer Applications (BCA) undergraduate student based in India.
@@ -29,8 +33,11 @@ permalink: /about/
     </p>
   </section>
 
-  <!-- Technical Skills Section -->
-  <section class="space-y-8 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+  <!-- Technical Skills Section (Vercel Bento Grid with Sharp Corners) -->
+  <section class="space-y-6 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 relative">
+    {{ icons.vercel_plus("tl") }}
+    {{ icons.vercel_plus("tr") }}
+
     <div class="space-y-1">
       <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Skills & Technologies
@@ -40,31 +47,57 @@ permalink: /about/
       </p>
     </div>
 
-    <div class="space-y-6 text-sm text-neutral-600 dark:text-neutral-400">
-      <div class="space-y-1">
-        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Languages</h3>
-        <p class="leading-relaxed">Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.</p>
+    <!-- Vercel Grid Layout with gap-px for 1px internal gridlines -->
+    <div class="relative group border border-neutral-200 dark:border-neutral-800/80 bg-neutral-200 dark:bg-neutral-800/80 grid grid-cols-1 sm:grid-cols-2 gap-px">
+      {{ icons.vercel_corners() }}
+
+      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-500"></span>
+          <span>Languages</span>
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Python, TypeScript, JavaScript (ESNext), Go, Java, C/C++, SQL, Bash.
+        </p>
       </div>
 
-      <div class="space-y-1">
-        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Cloud & Infrastructure</h3>
-        <p class="leading-relaxed">Docker, Linux (Ubuntu/Debian server administration), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.</p>
+      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-500"></span>
+          <span>Cloud & Infrastructure</span>
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Docker, Linux (Ubuntu/Debian), AWS (EC2, S3, IAM, Lambda), Nginx, Prometheus.
+        </p>
       </div>
 
-      <div class="space-y-1">
-        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Backend & Data</h3>
-        <p class="leading-relaxed">Node.js, Express, Fastify, PostgreSQL, SQLite, Redis, REST APIs, message queues.</p>
+      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-500"></span>
+          <span>Backend & Data</span>
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Node.js, Express, Fastify, PostgreSQL, SQLite, Redis, REST APIs, message queues.
+        </p>
       </div>
 
-      <div class="space-y-1">
-        <h3 class="font-medium text-neutral-900 dark:text-neutral-100">Frontend & Tooling</h3>
-        <p class="leading-relaxed">Tailwind CSS, Eleventy, Preline UI, HTML5/CSS3, Git, GitHub Actions, Pagefind.</p>
+      <div class="bg-white dark:bg-[#120404] p-5 space-y-2">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-500"></span>
+          <span>Frontend & Tooling</span>
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
+          Tailwind CSS, Eleventy, Preline UI, HTML5/CSS3, Git, GitHub Actions, Pagefind.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Education Section -->
-  <section class="space-y-6 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+  <!-- Education Section (Vercel Card) -->
+  <section class="space-y-6 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80 relative">
+    {{ icons.vercel_plus("tl") }}
+    {{ icons.vercel_plus("tr") }}
+
     <div class="space-y-1">
       <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Education
@@ -74,22 +107,25 @@ permalink: /about/
       </p>
     </div>
 
-    <div class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-      <div class="flex items-baseline justify-between gap-4">
-        <h3 class="font-semibold text-neutral-900 dark:text-neutral-100">
+    <div class="vercel-card group p-6 border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#120404] relative space-y-2">
+      {{ icons.vercel_corners() }}
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+        <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 text-base">
           Bachelor of Computer Applications (BCA)
         </h3>
         <span class="text-xs font-mono text-neutral-400">Present</span>
       </div>
       <p class="text-xs font-mono text-neutral-500">Major in Computer Science & Applications</p>
-      <p class="leading-relaxed pt-1">
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-2">
         Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks.
       </p>
     </div>
   </section>
 
   <!-- Connect Section -->
-  <section class="space-y-3 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+  <section class="relative space-y-3 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+    {{ icons.vercel_plus("tl") }}
+    {{ icons.vercel_plus("tr") }}
     <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
       Connect
     </h2>

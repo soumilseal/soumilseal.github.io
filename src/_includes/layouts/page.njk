@@ -1,10 +1,13 @@
 ---
 layout: layouts/base.njk
 ---
+{% import "components/icons.njk" as icons %}
 
-<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24">
+<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 border-x border-neutral-200/80 dark:border-neutral-800/80 relative bg-white dark:bg-[#160606]">
   {% if title %}
-    <header class="mb-14 sm:mb-16 space-y-3">
+    <header class="relative mb-14 sm:mb-16 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 space-y-3">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         {{ title }}
       </h1>

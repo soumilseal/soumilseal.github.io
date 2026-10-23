@@ -97,7 +97,7 @@
 
       const copyBtn = document.createElement('button');
       copyBtn.className =
-        'code-copy-btn absolute top-3 right-3 px-2 py-1 text-xs rounded-md bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity border border-neutral-700 flex items-center gap-1';
+        'code-copy-btn absolute top-3 right-3 px-2 py-1 text-xs bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity border border-neutral-700 flex items-center gap-1';
       copyBtn.innerHTML = `
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>

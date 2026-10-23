@@ -5,7 +5,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 ---
 {% import "components/icons.njk" as icons %}
 
-<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 space-y-20 sm:space-y-28">
+<div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24 border-x border-neutral-200/80 dark:border-neutral-800/80 relative space-y-20 sm:space-y-28 bg-white dark:bg-[#160606]">
   
   <!-- Hero Section -->
   <section class="pt-4">
@@ -24,18 +24,23 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         </p>
       </div>
 
-      <img src="/assets/images/me.jpg" 
-           alt="Soumil Seal" 
-           class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-2xl object-cover object-top border border-neutral-200/80 dark:border-neutral-800 shadow-sm shrink-0" 
-           width="176" 
-           height="176" 
-           loading="eager">
+      <div class="relative shrink-0 group">
+        <img src="/assets/images/me.jpg" 
+             alt="Soumil Seal" 
+             class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 object-cover object-top border border-neutral-200 dark:border-neutral-800 shadow-xs shrink-0" 
+             width="176" 
+             height="176" 
+             loading="eager">
+        {{ icons.vercel_corners() }}
+      </div>
     </div>
   </section>
 
   <!-- Featured Projects Section -->
-  <section class="space-y-8">
-    <div class="flex items-baseline justify-between border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
+  <section class="space-y-6">
+    <div class="relative flex items-baseline justify-between border-b border-neutral-200/80 dark:border-neutral-800/80 pb-3">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
       <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Featured Projects
       </h2>
@@ -54,8 +59,10 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
   </section>
 
   <!-- Latest Writing Section -->
-  <section class="space-y-8">
-    <div class="flex items-baseline justify-between border-b border-neutral-200/60 dark:border-neutral-800/60 pb-3">
+  <section class="space-y-6">
+    <div class="relative flex items-baseline justify-between border-b border-neutral-200/80 dark:border-neutral-800/80 pb-3">
+      {{ icons.vercel_plus("bl") }}
+      {{ icons.vercel_plus("br") }}
       <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
         Writing & Notes
       </h2>
@@ -64,7 +71,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </a>
     </div>
 
-    <div class="divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
+    <div class="space-y-4">
       {% for post in collections.posts | head(3) %}
         {% include "components/post-card.njk" %}
       {% endfor %}
@@ -72,7 +79,9 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
   </section>
 
   <!-- Quiet Contact Note -->
-  <section class="space-y-3 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60">
+  <section class="relative space-y-3 pt-8 border-t border-neutral-200/80 dark:border-neutral-800/80">
+    {{ icons.vercel_plus("tl") }}
+    {{ icons.vercel_plus("tr") }}
     <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
       Get in touch
     </h2>

@@ -48,3 +48,16 @@
     <svg class="{{ class }}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7"/></svg>
   {% endif %}
 {% endmacro %}
+
+{# Vercel-style Corner Plus Intersections #}
+{% macro vercel_corners(class="") %}
+  <svg class="corner-plus corner-plus-tl {{ class }}" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1"/></svg>
+  <svg class="corner-plus corner-plus-tr {{ class }}" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1"/></svg>
+  <svg class="corner-plus corner-plus-bl {{ class }}" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1"/></svg>
+  <svg class="corner-plus corner-plus-br {{ class }}" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1"/></svg>
+{% endmacro %}
+
+{% macro vercel_plus(pos="tl", class="") %}
+  <svg class="corner-plus corner-plus-{{ pos }} {{ class }}" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 0v15M0 7.5h15" stroke="currentColor" stroke-width="1"/></svg>
+{% endmacro %}
+

@@ -1,17 +1,23 @@
 {% import "components/icons.njk" as icons %}
 
-<footer class="mt-auto py-16 sm:py-24 border-t border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
-  <div class="max-w-3xl mx-auto px-6 sm:px-8 space-y-8">
+<footer class="mt-auto border-t border-neutral-200/80 dark:border-neutral-800/80 transition-colors bg-white dark:bg-[#160606]">
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-20 border-x border-neutral-200/80 dark:border-neutral-800/80 relative space-y-8 bg-white dark:bg-[#160606]">
+    <!-- Vercel Gridline Intersection Pluses -->
+    {{ icons.vercel_plus("tl") }}
+    {{ icons.vercel_plus("tr") }}
+    {{ icons.vercel_plus("bl") }}
+    {{ icons.vercel_plus("br") }}
+
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-sm text-neutral-500 dark:text-neutral-400">
       
       <!-- Brand & Description -->
       <div class="space-y-1">
-        <p class="font-medium text-neutral-900 dark:text-neutral-200">Soumil Seal</p>
-        <p class="text-xs text-neutral-400 dark:text-neutral-500">Developer & BCA Student</p>
+        <p class="font-medium text-neutral-900 dark:text-neutral-100">Soumil Seal</p>
+        <p class="text-xs text-neutral-400 dark:text-neutral-500 font-mono">Developer & BCA Student</p>
       </div>
 
       <!-- Quick Text Links -->
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-mono">
         <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
           GitHub
         </a>
@@ -31,10 +37,10 @@
 
     </div>
 
-    <!-- Bottom line -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] pt-4">
-      <p>© {{ "" | currentYear }} Soumil Seal.</p>
-      <p>Eleventy &bull; Tailwind CSS &bull; Preline</p>
+    <!-- Bottom line with Gridline divider -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 dark:text-neutral-500 font-mono text-[11px] pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80">
+      <p>© {{ "" | currentYear }} Soumil Seal. All rights reserved.</p>
+      <p>Eleventy &bull; Tailwind CSS &bull; Pagefind</p>
     </div>
   </div>
 </footer>
