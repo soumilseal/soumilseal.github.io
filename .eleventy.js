@@ -326,6 +326,16 @@ module.exports = function (eleventyConfig) {
     return [...tagSet].sort();
   });
 
+  // Build Pagefind search index automatically after Eleventy finishes writing output
+  eleventyConfig.on('eleventy.after', async () => {
+    try {
+      const { execSync } = require('child_process');
+      execSync('npx pagefind --site _site', { stdio: 'inherit' });
+    } catch (err) {
+      console.warn('[Pagefind] Search index generation error:', err.message);
+    }
+  });
+
   let pathPrefix = process.env.ELEVENTY_PATH_PREFIX || '/';
   if (pathPrefix && pathPrefix !== '/') {
     if (!pathPrefix.startsWith('/')) pathPrefix = '/' + pathPrefix;

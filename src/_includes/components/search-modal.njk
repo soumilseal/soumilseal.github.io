@@ -31,7 +31,13 @@
 
       <!-- Modal Body (Pagefind UI mount point) -->
       <div class="p-5 overflow-y-auto max-h-[65vh]">
-        <div id="pagefind-search"></div>
+        <div id="pagefind-search" class="min-h-[60px]">
+          <!-- Loading placeholder while Pagefind initializes -->
+          <div class="pagefind-loading-skeleton flex items-center gap-3 p-3.5 border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 font-mono text-xs">
+            <span class="inline-block size-3.5 border-2 border-primary-500 border-t-transparent rounded-full animate-spin"></span>
+            <span class="text-neutral-500 dark:text-neutral-400">Loading search index...</span>
+          </div>
+        </div>
       </div>
 
       <!-- Modal Footer -->
