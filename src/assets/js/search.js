@@ -60,7 +60,13 @@
       shouldFocusOnLoad = true;
     }
 
-    if (isPagefindLoaded) {
+    const searchContainer = document.getElementById('pagefind-search');
+    if (!searchContainer) return;
+
+    // Check if Pagefind is already loaded or input already exists in the container
+    if (isPagefindLoaded || searchContainer.querySelector('.pagefind-ui') || searchContainer.querySelector('.pagefind-ui__search-input')) {
+      isPagefindLoaded = true;
+      isPagefindLoading = false;
       if (focusAfterLoad) {
         requestAnimationFrame(() => focusSearchInput());
       }
@@ -70,9 +76,6 @@
     if (isPagefindLoading) {
       return;
     }
-
-    const searchContainer = document.getElementById('pagefind-search');
-    if (!searchContainer) return;
 
     isPagefindLoading = true;
     const cleanPrefix = getCleanPrefix();
@@ -89,9 +92,19 @@
     function instantiateUI() {
       try {
         if (window.PagefindUI) {
+          // If already mounted, avoid duplicate mounting
+          if (searchContainer.querySelector('.pagefind-ui') || searchContainer.querySelector('.pagefind-ui__search-input')) {
+            isPagefindLoaded = true;
+            isPagefindLoading = false;
+            if (shouldFocusOnLoad) {
+              setTimeout(focusSearchInput, 50);
+            }
+            return;
+          }
+
           // Clear any skeleton before mount
           searchContainer.innerHTML = '';
-          new window.PagefindUI({
+          window.__pagefindUIInstance = new window.PagefindUI({
             element: '#pagefind-search',
             bundlePath: `${cleanPrefix}/pagefind/`,
             showSubResults: true,

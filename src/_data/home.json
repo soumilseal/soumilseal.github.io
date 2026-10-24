@@ -6,6 +6,12 @@
   },
   "hero": {
     "eyebrow": "developer & systems builder",
+    "eyebrowWords": [
+      "developer & systems builder",
+      "distributed systems enthusiast",
+      "cloud infrastructure builder",
+      "bca student & software engineer"
+    ],
     "name": "SOUMIL SEAL",
     "role": "BCA Undergraduate // Developer // Systems Builder",
     "bio": "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools.",

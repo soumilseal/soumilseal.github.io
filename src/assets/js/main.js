@@ -206,7 +206,83 @@
 
     // Initialize code blocks
     initCodeBlocks();
+
+    // Initialize Hero Typewriter
+    initHeroTypewriter();
   };
+
+  // High-Speed Terminal Typewriter with Block Cursor
+  function initHeroTypewriter() {
+    const container = document.getElementById('hero-typewriter');
+    const textEl = document.getElementById('hero-typewriter-text');
+    if (!container || !textEl) return;
+
+    const cursorEl = container.querySelector('.typewriter-block-cursor');
+
+    let words = ['developer & systems builder'];
+    try {
+      const rawWords = container.getAttribute('data-words');
+      if (rawWords) {
+        const parsed = JSON.parse(rawWords);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          words = parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('[Typewriter] Could not parse data-words:', e);
+    }
+
+    // Check user preference for reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let wordIdx = 0;
+    let charIdx = words[0].length;
+    let isDeleting = false;
+
+    // Fast typing parameters
+    const TYPE_SPEED = 45;       // Fast keystroke speed (ms)
+    const DELETE_SPEED = 22;     // High-speed backspace (ms)
+    const PAUSE_END = 2200;      // Hold complete word so it's readable
+    const PAUSE_START = 350;     // Pause before typing next word
+
+    function tick() {
+      const currentWord = words[wordIdx];
+
+      if (isDeleting) {
+        charIdx--;
+        textEl.textContent = currentWord.slice(0, charIdx);
+        if (cursorEl) cursorEl.classList.add('typing');
+
+        if (charIdx <= 0) {
+          isDeleting = false;
+          wordIdx = (wordIdx + 1) % words.length;
+          if (cursorEl) cursorEl.classList.remove('typing');
+          setTimeout(tick, PAUSE_START);
+          return;
+        }
+        setTimeout(tick, DELETE_SPEED);
+      } else {
+        charIdx++;
+        textEl.textContent = currentWord.slice(0, charIdx);
+        if (cursorEl) cursorEl.classList.add('typing');
+
+        if (charIdx >= currentWord.length) {
+          isDeleting = true;
+          if (cursorEl) cursorEl.classList.remove('typing');
+          setTimeout(tick, PAUSE_END);
+          return;
+        }
+        setTimeout(tick, TYPE_SPEED);
+      }
+    }
+
+    // Start with a brief initial reading pause on the first pre-rendered word
+    setTimeout(() => {
+      isDeleting = true;
+      tick();
+    }, PAUSE_END);
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', onReady);
@@ -281,11 +357,13 @@
     });
   });
 
-  // Interactive Background Grid Cursor Trail (Starts strictly below the navbar)
+  // Interactive Background Grid Cursor Trail (Strictly in left and right margins, NEVER under the main content)
   function initBackgroundGridTrail() {
     const container = document.getElementById('bg-grid-container');
     const canvas = document.getElementById('bg-grid-canvas');
     const header = document.getElementById('site-header');
+    const mainContent = document.getElementById('main-content');
+    const footer = document.querySelector('footer');
 
     if (!container || !canvas || !header) return;
 
@@ -298,12 +376,15 @@
     let width = 0;
     let height = 0;
     let dpr = 1;
-    let offsetX = 0;
     let animId = null;
     let isRunning = false;
     let lastPos = null;
 
-    // Active illuminated cells map: key = `${col},${row}`
+    let containerLeft = 0;
+    let containerRight = 0;
+    let gridBottom = 0;
+
+    // Active illuminated cells map: key = `${cellX},${cellY}`
     const activeCells = new Map();
 
     function getHeaderBottom() {
@@ -311,6 +392,29 @@
       const bottom = Math.max(0, Math.round(rect.bottom));
       container.style.setProperty('--header-bottom', `${bottom}px`);
       return bottom;
+    }
+
+    function updateBounds() {
+      const headerBottom = getHeaderBottom();
+      const contentEl = (mainContent && mainContent.firstElementChild) ||
+                        document.querySelector('.max-w-\\[950px\\]');
+      if (contentEl) {
+        const cRect = contentEl.getBoundingClientRect();
+        containerLeft = Math.max(0, Math.round(cRect.left));
+        containerRight = Math.min(width, Math.round(cRect.right));
+      } else {
+        const cWidth = Math.min(950, width);
+        containerLeft = Math.max(0, Math.round((width - cWidth) / 2));
+        containerRight = Math.min(width, containerLeft + cWidth);
+      }
+
+      if (footer) {
+        const fRect = footer.getBoundingClientRect();
+        // footer top relative to canvas top (which is headerBottom)
+        gridBottom = Math.max(0, Math.min(height, Math.round(fRect.top - headerBottom)));
+      } else {
+        gridBottom = height;
+      }
     }
 
     function resize() {
@@ -323,47 +427,65 @@
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
 
-      // Align vertical grid lines with the central 950px bento container
-      const containerWidth = Math.min(950, width);
-      const containerLeft = Math.max(0, (width - containerWidth) / 2);
-      offsetX = Math.round(containerLeft % CELL_SIZE);
-      container.style.setProperty('--grid-offset-x', `${offsetX}px`);
+      updateBounds();
 
-      // Clear the CSS static background image now that the canvas handles synced rendering
+      // Clear the CSS static background image if any
       container.style.backgroundImage = 'none';
 
       render(true);
     }
 
     function addCell(canvasX, canvasY, baseIntensity = 1.0) {
-      if (canvasY < 0 || canvasY >= height || canvasX < 0 || canvasX >= width) return;
-      const col = Math.floor((canvasX - offsetX) / CELL_SIZE);
-      const row = Math.floor(canvasY / CELL_SIZE);
-      const key = `${col},${row}`;
+      if (canvasY < 0 || canvasY >= gridBottom) return;
+      // Strictly ignore coordinates over the central content column
+      if (canvasX >= containerLeft && canvasX <= containerRight) return;
+      if (canvasX < 0 || canvasX >= width) return;
 
+      let cellX = 0;
+      if (canvasX < containerLeft) {
+        const k = Math.floor((containerLeft - canvasX) / CELL_SIZE);
+        cellX = containerLeft - (k + 1) * CELL_SIZE;
+        if (cellX + CELL_SIZE > containerLeft) return;
+      } else if (canvasX > containerRight) {
+        const k = Math.floor((canvasX - containerRight) / CELL_SIZE);
+        cellX = containerRight + k * CELL_SIZE;
+        if (cellX < containerRight) return;
+      } else {
+        return;
+      }
+
+      const row = Math.floor(canvasY / CELL_SIZE);
+      const cellY = row * CELL_SIZE;
+      if (cellY < 0 || cellY + CELL_SIZE > gridBottom) return;
+
+      const key = `${cellX},${cellY}`;
       activeCells.set(key, {
-        x: offsetX + col * CELL_SIZE,
-        y: row * CELL_SIZE,
+        x: cellX,
+        y: cellY,
         born: performance.now(),
         intensity: baseIntensity,
         life: TRAIL_DURATION,
       });
 
-      // Subtle ambient glow on 4 orthogonal neighbor cells
+      // Subtle ambient glow on 4 orthogonal neighbor cells (strictly outside content)
       if (baseIntensity >= 0.8) {
         const neighbors = [
-          { c: col + 1, r: row },
-          { c: col - 1, r: row },
-          { c: col, r: row + 1 },
-          { c: col, r: row - 1 },
+          { x: cellX + CELL_SIZE, y: cellY },
+          { x: cellX - CELL_SIZE, y: cellY },
+          { x: cellX, y: cellY + CELL_SIZE },
+          { x: cellX, y: cellY - CELL_SIZE },
         ];
         neighbors.forEach((n) => {
-          if (n.r >= 0) {
-            const nKey = `${n.c},${n.r}`;
+          const inLeftMargin = (n.x + CELL_SIZE <= containerLeft && n.x >= -CELL_SIZE);
+          const inRightMargin = (n.x >= containerRight && n.x < width);
+          const inYRange = (n.y >= 0 && n.y + CELL_SIZE <= gridBottom);
+
+          if ((inLeftMargin || inRightMargin) && inYRange) {
+            const nKey = `${n.x},${n.y}`;
             if (!activeCells.has(nKey)) {
               activeCells.set(nKey, {
-                x: offsetX + n.c * CELL_SIZE,
-                y: n.r * CELL_SIZE,
+                x: n.x,
+                y: n.y,
                 born: performance.now(),
                 intensity: 0.35,
                 life: TRAIL_DURATION * 0.8,
@@ -379,84 +501,123 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
 
-      const isDark = document.documentElement.classList.contains('dark');
+      const hasLeftMargin = containerLeft > 0;
+      const hasRightMargin = containerRight < width;
 
-      // 1. Draw static grid lines (starting from y = 0, flush below the navbar)
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
+      // Only draw if there are side margins!
+      if ((hasLeftMargin || hasRightMargin) && gridBottom > 0) {
+        const isDark = document.documentElement.classList.contains('dark');
 
-      ctx.beginPath();
-      // Vertical grid lines
-      for (let x = offsetX; x <= width; x += CELL_SIZE) {
-        ctx.moveTo(x + 0.5, 0);
-        ctx.lineTo(x + 0.5, height);
-      }
-      // Horizontal grid lines (row 0 starts flush at y=0 below the navbar)
-      for (let y = 0; y <= height; y += CELL_SIZE) {
-        ctx.moveTo(0, y + 0.5);
-        ctx.lineTo(width, y + 0.5);
-      }
-      ctx.stroke();
+        // 1. Draw static grid lines (strictly in left and right margins, never under content or footer)
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
 
-      // 2. Draw active glowing grid trail boxes
-      const now = performance.now();
-      let hasActive = false;
+        ctx.beginPath();
+        // Vertical grid lines on the left margin
+        if (hasLeftMargin) {
+          for (let x = containerLeft; x >= 0; x -= CELL_SIZE) {
+            ctx.moveTo(x + 0.5, 0);
+            ctx.lineTo(x + 0.5, gridBottom);
+          }
+        }
+        // Vertical grid lines on the right margin
+        if (hasRightMargin) {
+          for (let x = containerRight; x <= width; x += CELL_SIZE) {
+            ctx.moveTo(x + 0.5, 0);
+            ctx.lineTo(x + 0.5, gridBottom);
+          }
+        }
+        // Horizontal grid lines (drawn ONLY in left margin and right margin)
+        for (let y = 0; y <= gridBottom; y += CELL_SIZE) {
+          if (hasLeftMargin) {
+            ctx.moveTo(0, y + 0.5);
+            ctx.lineTo(containerLeft, y + 0.5);
+          }
+          if (hasRightMargin) {
+            ctx.moveTo(containerRight, y + 0.5);
+            ctx.lineTo(width, y + 0.5);
+          }
+        }
+        ctx.stroke();
 
-      for (const [key, cell] of activeCells.entries()) {
-        const elapsed = now - cell.born;
-        if (elapsed >= cell.life) {
-          activeCells.delete(key);
-          continue;
+        // 2. Draw active glowing grid trail boxes
+        const now = performance.now();
+        let hasActive = false;
+
+        for (const [key, cell] of activeCells.entries()) {
+          const isLeft = (cell.x + CELL_SIZE <= containerLeft);
+          const isRight = (cell.x >= containerRight);
+          if ((!isLeft && !isRight) || cell.y + CELL_SIZE > gridBottom) {
+            activeCells.delete(key);
+            continue;
+          }
+
+          const elapsed = now - cell.born;
+          if (elapsed >= cell.life) {
+            activeCells.delete(key);
+            continue;
+          }
+
+          hasActive = true;
+          const progress = elapsed / cell.life;
+          const alpha = Math.max(0, 1 - Math.pow(progress, 0.75)) * cell.intensity;
+
+          if (isDark) {
+            // Dark Mode: Electric Cyan/Blue Cyber Grid Highlight
+            ctx.fillStyle = `rgba(59, 130, 246, ${alpha * 0.22})`;
+            ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
+
+            ctx.strokeStyle = `rgba(96, 165, 250, ${alpha * 0.7})`;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
+
+            // Technical Corner Squares (strictly square, NO circular dots)
+            const cSize = 3;
+            ctx.fillStyle = `rgba(147, 197, 253, ${alpha * 0.95})`;
+            ctx.fillRect(cell.x, cell.y, cSize, cSize);
+            ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
+            ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
+            ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+          } else {
+            // Light Mode: Technical Blueprint Cobalt Highlight
+            ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.12})`;
+            ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
+
+            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha * 0.5})`;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
+
+            // Technical Corner Squares
+            const cSize = 3;
+            ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.85})`;
+            ctx.fillRect(cell.x, cell.y, cSize, cSize);
+            ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
+            ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
+            ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+          }
         }
 
-        hasActive = true;
-        const progress = elapsed / cell.life;
-        const alpha = Math.max(0, 1 - Math.pow(progress, 0.75)) * cell.intensity;
+        // 3. Absolute safety: clear central content column & below footer
+        if (containerRight > containerLeft) {
+          ctx.clearRect(containerLeft, 0, containerRight - containerLeft, height);
+        }
+        if (gridBottom < height) {
+          ctx.clearRect(0, gridBottom, width, height - gridBottom);
+        }
 
-        if (isDark) {
-          // Dark Mode: Electric Cyan/Blue Cyber Grid Highlight
-          ctx.fillStyle = `rgba(59, 130, 246, ${alpha * 0.22})`;
-          ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
-
-          ctx.strokeStyle = `rgba(96, 165, 250, ${alpha * 0.7})`;
-          ctx.lineWidth = 1;
-          ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
-
-          // Technical Corner Squares (strictly square, NO circular dots)
-          const cSize = 3;
-          ctx.fillStyle = `rgba(147, 197, 253, ${alpha * 0.95})`;
-          ctx.fillRect(cell.x, cell.y, cSize, cSize);
-          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
-          ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
-          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+        if (hasActive) {
+          animId = requestAnimationFrame(() => render());
+          isRunning = true;
         } else {
-          // Light Mode: Technical Blueprint Cobalt Highlight
-          ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.12})`;
-          ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
-
-          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha * 0.5})`;
-          ctx.lineWidth = 1;
-          ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
-
-          // Technical Corner Squares
-          const cSize = 3;
-          ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.85})`;
-          ctx.fillRect(cell.x, cell.y, cSize, cSize);
-          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
-          ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
-          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+          isRunning = false;
+          animId = null;
         }
-      }
-
-      ctx.restore();
-
-      if (hasActive) {
-        animId = requestAnimationFrame(() => render());
-        isRunning = true;
       } else {
         isRunning = false;
         animId = null;
       }
+
+      ctx.restore();
     }
 
     function startLoop() {
@@ -471,8 +632,14 @@
       const canvasY = e.clientY - headerBottom;
       const canvasX = e.clientX;
 
-      // Only interact with grid boxes that are below the navbar
-      if (canvasY < 0) {
+      // Only interact with grid boxes below the navbar and above the footer
+      if (canvasY < 0 || canvasY >= gridBottom) {
+        lastPos = null;
+        return;
+      }
+
+      // Never interact under the main content
+      if (canvasX >= containerLeft && canvasX <= containerRight) {
         lastPos = null;
         return;
       }
@@ -497,16 +664,27 @@
       lastPos = null;
     }
 
+    function onScroll() {
+      updateBounds();
+      render(true);
+    }
+
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     document.addEventListener('mouseleave', onMouseLeave);
     window.addEventListener('resize', resize, { passive: true });
-    window.addEventListener('scroll', getHeaderBottom, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Dynamic header height tracking via ResizeObserver
+    // Dynamic header and content height tracking via ResizeObserver
     const observer = new ResizeObserver(() => {
       resize();
     });
     observer.observe(header);
+
+    const contentEl = (mainContent && mainContent.firstElementChild) ||
+                      document.querySelector('.max-w-\\[950px\\]');
+    if (contentEl) {
+      observer.observe(contentEl);
+    }
 
     // Watch dark/light theme switch to redraw grid colors instantly
     const themeObserver = new MutationObserver(() => {

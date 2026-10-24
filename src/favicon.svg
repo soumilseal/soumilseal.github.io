@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .bg { fill: #09090b; stroke: #27272a; stroke-width: 1.5; }
+    .glyph { fill: none; stroke: #f4f4f5; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; stroke: #e4e4e7; }
+      .glyph { stroke: #09090b; }
+    }
+  </style>
+  <rect class="bg" x="1" y="1" width="30" height="30" rx="7"/>
+  <path class="glyph" d="M 20.5 11.5 C 20.5 9.2 18.5 8 16 8 C 13.5 8 11.5 9.2 11.5 12 C 11.5 14.2 13 15.2 16 16 C 19 16.8 20.5 17.8 20.5 20 C 20.5 22.8 18.5 24 16 24 C 13.5 24 11.5 22.8 11.5 20.5"/>
+</svg>

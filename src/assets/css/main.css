@@ -825,20 +825,9 @@ code[class*="language-"] {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-/* Background Grid Container & Trail (Positioned strictly below the navbar) */
+/* Background Grid Container & Trail (Positioned strictly below navbar, canvas renders strictly in side margins) */
 #bg-grid-container {
   top: var(--header-bottom, 56px);
-  background-size: 32px 32px;
-  background-position: var(--grid-offset-x, 0px) 0px;
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-}
-
-.dark #bg-grid-container {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
 /* Ambient Blue Aura Glow Behind Hero & Header */
@@ -1566,4 +1555,35 @@ html.wf-active body {
   font-family: var(--font-mono, 'Geist Mono', monospace);
   font-size: 0.75rem;
   color: #737373;
+}
+
+/* ========================================================
+   Terminal Typewriter Block Cursor
+   ======================================================== */
+@keyframes terminalCursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-block-cursor {
+  display: inline-block;
+  width: 0.52em;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  margin-left: 0.25em;
+  background-color: #0284c7;
+  animation: terminalCursorBlink 0.85s infinite steps(1);
+}
+
+.dark .typewriter-block-cursor {
+  background-color: #38bdf8;
+}
+
+.typewriter-block-cursor.typing {
+  animation: none !important;
+  opacity: 1 !important;
 }

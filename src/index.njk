@@ -32,11 +32,14 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         <div>
           <!-- Name + Subtitle Row -->
           <div>
-            <span
-              class="font-mono text-xs sm:text-sm text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.2em] block mb-3 sm:mb-4"
+            <div
+              id="hero-typewriter"
+              class="font-mono text-xs sm:text-sm text-neutral-400 dark:text-neutral-500 uppercase tracking-[0.2em] flex items-center min-h-6 mb-3 sm:mb-4 select-none"
+              data-words='{{ (home.hero.eyebrowWords or ["developer & systems builder", "distributed systems enthusiast", "cloud infrastructure builder", "bca student & software engineer"]) | dump | escape }}'
+              aria-label="developer & systems builder"
             >
-              {{ home.hero.eyebrow or "developer & systems builder" }}
-            </span>
+              <span id="hero-typewriter-text">{{ home.hero.eyebrow or "developer & systems builder" }}</span><span class="typewriter-block-cursor" aria-hidden="true"></span>
+            </div>
             <h1 class="font-heading font-bold text-[clamp(2.75rem,18.5vw,4.75rem)] md:text-7xl lg:text-[6.5rem] xl:text-[7.25rem] tracking-tight uppercase leading-none md:leading-[0.88] select-none my-3 sm:my-4 whitespace-nowrap md:whitespace-normal">
               <span
                 class="inline md:block text-neutral-900 dark:text-neutral-100"
