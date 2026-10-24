@@ -95,7 +95,7 @@
     <!-- Main CSS (Tailwind v4 + Preline UI) -->
     <link rel="stylesheet" href="/assets/css/main.css">
   </head>
-  <body class="flex flex-col min-h-screen vercel-grid relative overflow-x-hidden">
+  <body class="flex flex-col min-h-screen relative overflow-x-hidden bg-white dark:bg-neutral-950">
     <!-- Ambient Blue Aura Beam -->
     <div class="site-aura" aria-hidden="true"></div>
     <!-- Accessibility Skip Link -->
@@ -109,8 +109,18 @@
     <!-- Global Header -->
     {% include "components/header.njk" %}
 
+    <!-- Background Grid & Interactive Cursor Trail (Starts strictly below the navbar) -->
+    <div
+      id="bg-grid-container"
+      class="fixed inset-x-0 bottom-0 pointer-events-none z-0 overflow-hidden"
+      style="top: var(--header-bottom, 56px);"
+      aria-hidden="true"
+    >
+      <canvas id="bg-grid-canvas" class="w-full h-full block"></canvas>
+    </div>
+
     <!-- Main Content Container -->
-    <main id="main-content" class="grow flex flex-col">
+    <main id="main-content" class="grow flex flex-col relative z-10">
       {{ content | safe }}
     </main>
 

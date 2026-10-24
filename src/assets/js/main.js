@@ -280,4 +280,243 @@
       form.reset();
     });
   });
+
+  // Interactive Background Grid Cursor Trail (Starts strictly below the navbar)
+  function initBackgroundGridTrail() {
+    const container = document.getElementById('bg-grid-container');
+    const canvas = document.getElementById('bg-grid-canvas');
+    const header = document.getElementById('site-header');
+
+    if (!container || !canvas || !header) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const CELL_SIZE = 32;
+    const TRAIL_DURATION = 750; // ms
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let offsetX = 0;
+    let animId = null;
+    let isRunning = false;
+    let lastPos = null;
+
+    // Active illuminated cells map: key = `${col},${row}`
+    const activeCells = new Map();
+
+    function getHeaderBottom() {
+      const rect = header.getBoundingClientRect();
+      const bottom = Math.max(0, Math.round(rect.bottom));
+      container.style.setProperty('--header-bottom', `${bottom}px`);
+      return bottom;
+    }
+
+    function resize() {
+      const headerBottom = getHeaderBottom();
+      const rect = container.getBoundingClientRect();
+      dpr = window.devicePixelRatio || 1;
+      width = rect.width;
+      height = rect.height;
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+
+      // Align vertical grid lines with the central 950px bento container
+      const containerWidth = Math.min(950, width);
+      const containerLeft = Math.max(0, (width - containerWidth) / 2);
+      offsetX = Math.round(containerLeft % CELL_SIZE);
+      container.style.setProperty('--grid-offset-x', `${offsetX}px`);
+
+      // Clear the CSS static background image now that the canvas handles synced rendering
+      container.style.backgroundImage = 'none';
+
+      render(true);
+    }
+
+    function addCell(canvasX, canvasY, baseIntensity = 1.0) {
+      if (canvasY < 0 || canvasY >= height || canvasX < 0 || canvasX >= width) return;
+      const col = Math.floor((canvasX - offsetX) / CELL_SIZE);
+      const row = Math.floor(canvasY / CELL_SIZE);
+      const key = `${col},${row}`;
+
+      activeCells.set(key, {
+        x: offsetX + col * CELL_SIZE,
+        y: row * CELL_SIZE,
+        born: performance.now(),
+        intensity: baseIntensity,
+        life: TRAIL_DURATION,
+      });
+
+      // Subtle ambient glow on 4 orthogonal neighbor cells
+      if (baseIntensity >= 0.8) {
+        const neighbors = [
+          { c: col + 1, r: row },
+          { c: col - 1, r: row },
+          { c: col, r: row + 1 },
+          { c: col, r: row - 1 },
+        ];
+        neighbors.forEach((n) => {
+          if (n.r >= 0) {
+            const nKey = `${n.c},${n.r}`;
+            if (!activeCells.has(nKey)) {
+              activeCells.set(nKey, {
+                x: offsetX + n.c * CELL_SIZE,
+                y: n.r * CELL_SIZE,
+                born: performance.now(),
+                intensity: 0.35,
+                life: TRAIL_DURATION * 0.8,
+              });
+            }
+          }
+        });
+      }
+    }
+
+    function render(forceRedraw = false) {
+      ctx.save();
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+
+      const isDark = document.documentElement.classList.contains('dark');
+
+      // 1. Draw static grid lines (starting from y = 0, flush below the navbar)
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
+
+      ctx.beginPath();
+      // Vertical grid lines
+      for (let x = offsetX; x <= width; x += CELL_SIZE) {
+        ctx.moveTo(x + 0.5, 0);
+        ctx.lineTo(x + 0.5, height);
+      }
+      // Horizontal grid lines (row 0 starts flush at y=0 below the navbar)
+      for (let y = 0; y <= height; y += CELL_SIZE) {
+        ctx.moveTo(0, y + 0.5);
+        ctx.lineTo(width, y + 0.5);
+      }
+      ctx.stroke();
+
+      // 2. Draw active glowing grid trail boxes
+      const now = performance.now();
+      let hasActive = false;
+
+      for (const [key, cell] of activeCells.entries()) {
+        const elapsed = now - cell.born;
+        if (elapsed >= cell.life) {
+          activeCells.delete(key);
+          continue;
+        }
+
+        hasActive = true;
+        const progress = elapsed / cell.life;
+        const alpha = Math.max(0, 1 - Math.pow(progress, 0.75)) * cell.intensity;
+
+        if (isDark) {
+          // Dark Mode: Electric Cyan/Blue Cyber Grid Highlight
+          ctx.fillStyle = `rgba(59, 130, 246, ${alpha * 0.22})`;
+          ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
+
+          ctx.strokeStyle = `rgba(96, 165, 250, ${alpha * 0.7})`;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
+
+          // Technical Corner Squares (strictly square, NO circular dots)
+          const cSize = 3;
+          ctx.fillStyle = `rgba(147, 197, 253, ${alpha * 0.95})`;
+          ctx.fillRect(cell.x, cell.y, cSize, cSize);
+          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
+          ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
+          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+        } else {
+          // Light Mode: Technical Blueprint Cobalt Highlight
+          ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.12})`;
+          ctx.fillRect(cell.x + 1, cell.y + 1, CELL_SIZE - 1, CELL_SIZE - 1);
+
+          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha * 0.5})`;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(cell.x + 0.5, cell.y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
+
+          // Technical Corner Squares
+          const cSize = 3;
+          ctx.fillStyle = `rgba(37, 99, 235, ${alpha * 0.85})`;
+          ctx.fillRect(cell.x, cell.y, cSize, cSize);
+          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y, cSize, cSize);
+          ctx.fillRect(cell.x, cell.y + CELL_SIZE - cSize, cSize, cSize);
+          ctx.fillRect(cell.x + CELL_SIZE - cSize, cell.y + CELL_SIZE - cSize, cSize, cSize);
+        }
+      }
+
+      ctx.restore();
+
+      if (hasActive) {
+        animId = requestAnimationFrame(() => render());
+        isRunning = true;
+      } else {
+        isRunning = false;
+        animId = null;
+      }
+    }
+
+    function startLoop() {
+      if (!isRunning) {
+        isRunning = true;
+        animId = requestAnimationFrame(() => render());
+      }
+    }
+
+    function onMouseMove(e) {
+      const headerBottom = getHeaderBottom();
+      const canvasY = e.clientY - headerBottom;
+      const canvasX = e.clientX;
+
+      // Only interact with grid boxes that are below the navbar
+      if (canvasY < 0) {
+        lastPos = null;
+        return;
+      }
+
+      if (lastPos) {
+        // Interpolate points between rapid mouse moves so fast sweeps don't skip grid boxes
+        const dist = Math.hypot(canvasX - lastPos.x, canvasY - lastPos.y);
+        const steps = Math.max(1, Math.min(10, Math.floor(dist / (CELL_SIZE / 2))));
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          addCell(lastPos.x + (canvasX - lastPos.x) * t, lastPos.y + (canvasY - lastPos.y) * t, 1.0);
+        }
+      } else {
+        addCell(canvasX, canvasY, 1.0);
+      }
+
+      lastPos = { x: canvasX, y: canvasY };
+      startLoop();
+    }
+
+    function onMouseLeave() {
+      lastPos = null;
+    }
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('mouseleave', onMouseLeave);
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('scroll', getHeaderBottom, { passive: true });
+
+    // Dynamic header height tracking via ResizeObserver
+    const observer = new ResizeObserver(() => {
+      resize();
+    });
+    observer.observe(header);
+
+    // Watch dark/light theme switch to redraw grid colors instantly
+    const themeObserver = new MutationObserver(() => {
+      render(true);
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    // Initial setup
+    resize();
+  }
+
+  initBackgroundGridTrail();
 })();

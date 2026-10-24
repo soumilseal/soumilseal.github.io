@@ -825,6 +825,22 @@ code[class*="language-"] {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
+/* Background Grid Container & Trail (Positioned strictly below the navbar) */
+#bg-grid-container {
+  top: var(--header-bottom, 56px);
+  background-size: 32px 32px;
+  background-position: var(--grid-offset-x, 0px) 0px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.dark #bg-grid-container {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
 /* Ambient Blue Aura Glow Behind Hero & Header */
 .site-aura {
   position: absolute;
