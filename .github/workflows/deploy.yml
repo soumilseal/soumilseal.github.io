@@ -37,13 +37,13 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --no-audit
 
       - name: Build site (Images + Eleventy + Tailwind + Pagefind)
         run: npm run build
         env:
           NODE_ENV: production
-          ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path || '/' }}
+          ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path || '/soumilseal/' }}
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'

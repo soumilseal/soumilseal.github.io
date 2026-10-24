@@ -7,19 +7,23 @@
     const searchContainer = document.getElementById('pagefind-search');
     if (!searchContainer) return;
 
+    const metaPrefix = document.querySelector('meta[name="site-path-prefix"]')?.getAttribute('content') || '/';
+    const cleanPrefix = metaPrefix.replace(/\/$/, '');
+
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/pagefind/pagefind-ui.css';
+    link.href = `${cleanPrefix}/pagefind/pagefind-ui.css`;
     document.head.appendChild(link);
 
     // Load JS
     const script = document.createElement('script');
-    script.src = '/pagefind/pagefind-ui.js';
+    script.src = `${cleanPrefix}/pagefind/pagefind-ui.js`;
     script.onload = () => {
       if (window.PagefindUI) {
         new window.PagefindUI({
           element: '#pagefind-search',
+          bundlePath: `${cleanPrefix}/pagefind/`,
           showSubResults: true,
           showImages: false,
           resetStyles: false,

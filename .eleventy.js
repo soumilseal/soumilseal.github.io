@@ -8,9 +8,11 @@ const pluginTOC = require('eleventy-plugin-toc');
 const Image = require('@11ty/eleventy-img');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
+const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 
 module.exports = function (eleventyConfig) {
   // Plugins
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -324,12 +326,18 @@ module.exports = function (eleventyConfig) {
     return [...tagSet].sort();
   });
 
+  let pathPrefix = process.env.ELEVENTY_PATH_PREFIX || '/';
+  if (pathPrefix && pathPrefix !== '/') {
+    if (!pathPrefix.startsWith('/')) pathPrefix = '/' + pathPrefix;
+    if (!pathPrefix.endsWith('/')) pathPrefix = pathPrefix + '/';
+  }
+
   return {
     templateFormats: ['md', 'njk', 'html'],
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
-    pathPrefix: process.env.ELEVENTY_PATH_PREFIX || '/',
+    pathPrefix,
     dir: {
       input: 'src',
       includes: '_includes',
