@@ -14,8 +14,8 @@ permalink: /resume/
       <span
         class="text-neutral-900 dark:text-neutral-100 font-semibold uppercase"
       >{{ resume.topBar.indexLabel or "cv-index // 2026" }}</span>
-      <span>&bull;</span>
-      <span>{{ resume.topBar.location or "India • Remote" }}</span>
+      <span class="opacity-40 font-mono">/</span>
+      <span>{{ resume.topBar.location or "India / Remote" }}</span>
     </div>
 
     <div class="flex items-center gap-2 print:hidden shrink-0">
@@ -121,7 +121,7 @@ permalink: /resume/
             </a>
           </h3>
           <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-          >Go &bull; Docker &bull; Prometheus</span>
+          >Go / Docker / Prometheus</span>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
           A lightweight, zero-dependency background telemetry daemon monitoring
@@ -162,7 +162,7 @@ permalink: /resume/
             </a>
           </h3>
           <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-          >TypeScript &bull; SQLite &bull; Cryptography</span>
+          >TypeScript / SQLite / Cryptography</span>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
           Offline-first command-line knowledge vault and code snippet manager
@@ -201,7 +201,7 @@ permalink: /resume/
             </a>
           </h3>
           <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-          >TypeScript &bull; Node.js &bull; PostgreSQL</span>
+          >TypeScript / Node.js / PostgreSQL</span>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
           Full-stack web platform connecting undergraduate students with
@@ -241,7 +241,7 @@ permalink: /resume/
             </a>
           </h3>
           <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-          >Python &bull; Docker &bull; AWS &bull; GitHub Actions</span>
+          >Python / Docker / AWS / GitHub Actions</span>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
           An automated container pipeline orchestrating blue-green zero-downtime
@@ -281,10 +281,10 @@ permalink: /resume/
           {{ resume.educationSection.degree or "Bachelor of Computer Applications (BCA)" }}
         </h3>
         <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-        >{{ resume.educationSection.status or "Undergraduate &bull; Present" | safe }}</span>
+        >{{ resume.educationSection.status or "Undergraduate / Present" | safe }}</span>
       </div>
       <p class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
-        {{ resume.educationSection.institution or "Major in Computer Science & Applications &bull; India" | safe }}
+        {{ resume.educationSection.institution or "Major in Computer Science & Applications / India" | safe }}
       </p>
       <div class="pt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans space-y-2">
         <p>

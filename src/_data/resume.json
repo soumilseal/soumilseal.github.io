@@ -1,7 +1,7 @@
 {
   "topBar": {
     "indexLabel": "cv-index // 2026",
-    "location": "India • Remote",
+    "location": "India // Remote",
     "printButtonText": "Print / Save PDF",
     "contactButtonText": "Get in Touch"
   },
@@ -44,8 +44,8 @@
     "title": "academic-credentials",
     "subtitle": "education",
     "degree": "Bachelor of Computer Applications (BCA)",
-    "status": "Undergraduate • Present",
-    "institution": "Major in Computer Science & Applications • India",
+    "status": "Undergraduate / Present",
+    "institution": "Major in Computer Science & Applications / India",
     "coursework": "Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS / PostgreSQL), Operating Systems & Concurrency, Computer Networks, and System Architecture."
   },
   "writingSection": {

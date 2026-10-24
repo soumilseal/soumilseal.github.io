@@ -469,7 +469,8 @@ body {
 .prose {
   font-size: var(--text-base);
   line-height: 1.75;
-  max-width: 68ch;
+  max-width: 100%;
+  width: 100%;
   --tw-prose-body: #262626;
   --tw-prose-headings: #0a0a0a;
   --tw-prose-lead: #52525b;
@@ -481,6 +482,13 @@ body {
   --tw-prose-quotes: #0a0a0a;
   --tw-prose-quote-borders: #e4e4e7;
   --tw-prose-captions: #71717a;
+}
+
+.prose.max-w-none,
+article .prose,
+.prose-full {
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 .prose p {
@@ -636,16 +644,43 @@ h4:hover .header-anchor {
   opacity: 0.75;
 }
 
-/* Syntax Highlighting (PrismJS Theme) */
+/* Syntax Highlighting (Modern Engineering Theme) */
+.prose pre,
+pre[class*="language-"] {
+  background-color: #0a0a0a !important;
+  color: #e2e8f0;
+}
+
+.prose pre code,
+pre[class*="language-"] code,
+code[class*="language-"] {
+  color: #e2e8f0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9125rem;
+  line-height: 1.7;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  @apply text-neutral-500 italic;
+  color: #94a3b8 !important;
+  font-style: italic;
 }
 
 .token.punctuation {
-  @apply text-neutral-400;
+  color: #cbd5e1 !important;
+}
+
+.token.namespace {
+  opacity: 0.75;
 }
 
 .token.property,
@@ -655,7 +690,7 @@ h4:hover .header-anchor {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  @apply text-amber-500 dark:text-amber-400;
+  color: #fb923c !important;
 }
 
 .token.selector,
@@ -664,7 +699,7 @@ h4:hover .header-anchor {
 .token.char,
 .token.builtin,
 .token.inserted {
-  @apply text-emerald-600 dark:text-emerald-400;
+  color: #4ade80 !important;
 }
 
 .token.operator,
@@ -672,24 +707,71 @@ h4:hover .header-anchor {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  @apply text-accent-500 dark:text-accent-400;
+  color: #38bdf8 !important;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  @apply text-indigo-500 dark:text-indigo-400 font-semibold;
+  color: #c084fc !important;
+  font-weight: 600;
 }
 
 .token.function,
 .token.class-name {
-  @apply text-sky-500 dark:text-sky-400;
+  color: #60a5fa !important;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  @apply text-rose-500 dark:text-rose-400;
+  color: #f472b6 !important;
+}
+
+.token.parameter {
+  color: #fdba74 !important;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+/* Code Block Wrapper & Header */
+.code-block-wrapper {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d4d8;
+  background-color: #0a0a0a;
+}
+
+:is(.dark .code-block-wrapper) {
+  border-color: #262626;
+}
+
+.code-block-header {
+  padding: 0.5rem 1rem;
+  background-color: #171717;
+  border-bottom: 1px solid #262626;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.code-block-wrapper pre {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: #0a0a0a !important;
+  padding: 1.25rem 1.25rem !important;
+  overflow-x: auto;
 }
 
 /* Pagefind Custom Styling */
@@ -908,6 +990,441 @@ html.wf-active body {
 .nav-link-glow:hover::after,
 .nav-link-glow:hover::before {
   opacity: 1;
+}
+
+/* ========================================================
+   Page Header Aurora Wave Animation
+   Light, organic, undulating aurora borealis waves radiating
+   down from the top edge with section-specific color palettes,
+   heavily blurred wave bands (zero hard cuts), glowing bloom,
+   and subtle tactile film noise overlay.
+   ======================================================== */
+:root {
+  --aurora-c1: #06b6d4; /* Vibrant Cyan */
+  --aurora-c2: #10b981; /* Emerald Green */
+  --aurora-c3: #8b5cf6; /* Electric Violet */
+  --aurora-c4: #3b82f6; /* Azure Blue */
+  --aurora-beam: linear-gradient(90deg, #06b6d4, #10b981, #8b5cf6, #3b82f6, #06b6d4);
+  --aurora-glow: rgba(6, 182, 212, 0.75);
+  --aurora-glow-soft: rgba(16, 185, 129, 0.5);
+  --aurora-glow-ambient: rgba(59, 130, 246, 0.35);
+}
+
+/* 1. WRITING (Northern Lights Emerald & Cyan/Teal) */
+[data-aurora="writing"],
+[data-aurora="blog"] {
+  --aurora-c1: #10b981;
+  --aurora-c2: #06b6d4;
+  --aurora-c3: #3b82f6;
+  --aurora-c4: #14b8a6;
+  --aurora-beam: linear-gradient(90deg, #10b981, #06b6d4, #3b82f6, #14b8a6, #10b981);
+  --aurora-glow: rgba(16, 185, 129, 0.85);
+  --aurora-glow-soft: rgba(6, 182, 212, 0.6);
+  --aurora-glow-ambient: rgba(16, 185, 129, 0.4);
+}
+
+/* 2. PROJECTS (Cyber Cyan, Indigo & Royal Blue) */
+[data-aurora="projects"] {
+  --aurora-c1: #0ea5e9;
+  --aurora-c2: #6366f1;
+  --aurora-c3: #06b6d4;
+  --aurora-c4: #3b82f6;
+  --aurora-beam: linear-gradient(90deg, #0ea5e9, #6366f1, #06b6d4, #3b82f6, #0ea5e9);
+  --aurora-glow: rgba(14, 165, 233, 0.85);
+  --aurora-glow-soft: rgba(99, 102, 241, 0.6);
+  --aurora-glow-ambient: rgba(14, 165, 233, 0.4);
+}
+
+/* 3. ABOUT (Cosmic Violet, Magenta & Radiant Rose) */
+[data-aurora="about"] {
+  --aurora-c1: #8b5cf6;
+  --aurora-c2: #ec4899;
+  --aurora-c3: #a855f7;
+  --aurora-c4: #6366f1;
+  --aurora-beam: linear-gradient(90deg, #8b5cf6, #ec4899, #a855f7, #6366f1, #8b5cf6);
+  --aurora-glow: rgba(139, 92, 246, 0.85);
+  --aurora-glow-soft: rgba(236, 72, 153, 0.6);
+  --aurora-glow-ambient: rgba(139, 92, 246, 0.4);
+}
+
+/* 4. RESUME (Sapphire Blue, Ice Sky & Deep Azure) */
+[data-aurora="resume"] {
+  --aurora-c1: #2563eb;
+  --aurora-c2: #38bdf8;
+  --aurora-c3: #4f46e5;
+  --aurora-c4: #0284c7;
+  --aurora-beam: linear-gradient(90deg, #2563eb, #38bdf8, #4f46e5, #0284c7, #2563eb);
+  --aurora-glow: rgba(37, 99, 235, 0.85);
+  --aurora-glow-soft: rgba(56, 189, 248, 0.6);
+  --aurora-glow-ambient: rgba(37, 99, 235, 0.4);
+}
+
+/* 5. CONTACT (Pure Radiant Sunset Orange / Amber Alone - Zero Green) */
+[data-aurora="contact"] {
+  --aurora-c1: #f97316; /* Electric Orange */
+  --aurora-c2: #f59e0b; /* Warm Golden Amber */
+  --aurora-c3: #fb923c; /* Bright Tangerine */
+  --aurora-c4: #ea580c; /* Deep Sunset Orange */
+  --aurora-beam: linear-gradient(90deg, #f97316, #f59e0b, #fb923c, #ea580c, #f97316);
+  --aurora-glow: rgba(249, 115, 22, 0.85);
+  --aurora-glow-soft: rgba(245, 158, 11, 0.6);
+  --aurora-glow-ambient: rgba(249, 115, 22, 0.4);
+}
+
+/* 6. TECHNICAL NOTE / POST (Cosmic Violet & Cyan Aurora) */
+[data-aurora="post"] {
+  --aurora-c1: #06b6d4;
+  --aurora-c2: #8b5cf6;
+  --aurora-c3: #10b981;
+  --aurora-c4: #3b82f6;
+  --aurora-beam: linear-gradient(90deg, #06b6d4, #8b5cf6, #10b981, #3b82f6, #06b6d4);
+  --aurora-glow: rgba(6, 182, 212, 0.85);
+  --aurora-glow-soft: rgba(139, 92, 246, 0.6);
+  --aurora-glow-ambient: rgba(6, 182, 212, 0.4);
+}
+
+/* 7. PROJECT SPECIFICATION (Electric Ice & Teal) */
+[data-aurora="project"] {
+  --aurora-c1: #0284c7;
+  --aurora-c2: #14b8a6;
+  --aurora-c3: #6366f1;
+  --aurora-c4: #38bdf8;
+  --aurora-beam: linear-gradient(90deg, #0284c7, #14b8a6, #6366f1, #38bdf8, #0284c7);
+  --aurora-glow: rgba(2, 132, 199, 0.85);
+  --aurora-glow-soft: rgba(20, 184, 166, 0.6);
+  --aurora-glow-ambient: rgba(2, 132, 199, 0.4);
+}
+
+/* 8. TOPIC TAGS (Magenta, Violet & Azure) */
+[data-aurora="topic"] {
+  --aurora-c1: #ec4899;
+  --aurora-c2: #8b5cf6;
+  --aurora-c3: #3b82f6;
+  --aurora-c4: #06b6d4;
+  --aurora-beam: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #06b6d4, #ec4899);
+  --aurora-glow: rgba(236, 72, 153, 0.85);
+  --aurora-glow-soft: rgba(139, 92, 246, 0.6);
+  --aurora-glow-ambient: rgba(236, 72, 153, 0.4);
+}
+
+/* Page Aurora Wrapper */
+.page-aurora-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  /* Smooth feathered mask fade - absolutely no hard bottom cut */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 25%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.18) 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 25%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.18) 82%,
+    transparent 100%
+  );
+}
+
+/* 1. Luminous Top Border Beam (Glowing Line matching navbar hover) */
+.page-aurora-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  pointer-events: none;
+  background: var(--aurora-beam);
+  background-size: 250% 100%;
+  animation: aurora-beam-flow 8s linear infinite;
+  box-shadow: 0 0 10px 2px var(--aurora-glow),
+              0 0 24px 4px var(--aurora-glow-soft),
+              0 0 48px 8px var(--aurora-glow-ambient);
+  z-index: 6;
+  opacity: 0.95;
+}
+
+:is(.dark .page-aurora-beam) {
+  opacity: 1;
+  box-shadow: 0 0 14px 2.5px var(--aurora-glow),
+              0 0 35px 6px var(--aurora-glow-soft),
+              0 0 70px 12px var(--aurora-glow-ambient);
+}
+
+@keyframes aurora-beam-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 2. Ambient Top Radiant Bloom (Glowing halo radiating downwards) */
+.page-aurora-bloom {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 130px;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    var(--aurora-glow) 0%,
+    var(--aurora-glow-soft) 40%,
+    var(--aurora-glow-ambient) 70%,
+    transparent 100%
+  );
+  filter: blur(28px);
+  opacity: 0.38;
+  mix-blend-mode: multiply;
+  z-index: 2;
+  pointer-events: none;
+}
+
+:is(.dark .page-aurora-bloom) {
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+/* 3. Blurred Undulating Aurora Wave Canvas (NO HARD CUTS, pure smooth diffused light) */
+.page-aurora-canvas {
+  position: absolute;
+  top: -30px;
+  left: -10%;
+  width: 120%;
+  height: 200px;
+  filter: blur(52px); /* HEAVY BLUR: Dissolves all vector lines and hard cuts into pure soft light */
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+}
+
+:is(.dark .page-aurora-canvas) {
+  opacity: 0.62;
+  mix-blend-mode: screen;
+}
+
+/* Wave Band 1 (Deep Primary Harmonic Wave) */
+.aurora-wave-band-1 {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 90%;
+  height: 150px;
+  border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+  background: linear-gradient(
+    135deg,
+    var(--aurora-c1) 0%,
+    var(--aurora-c2) 50%,
+    var(--aurora-c3) 85%,
+    transparent 100%
+  );
+  animation: aurora-wave-flow-1 12s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
+}
+
+/* Wave Band 2 (Mid Counter-Wave) */
+.aurora-wave-band-2 {
+  position: absolute;
+  top: -10px;
+  right: -5%;
+  width: 85%;
+  height: 140px;
+  border-radius: 55% 45% 38% 62% / 50% 60% 40% 50%;
+  background: linear-gradient(
+    225deg,
+    var(--aurora-c2) 0%,
+    var(--aurora-c4) 45%,
+    var(--aurora-c1) 80%,
+    transparent 100%
+  );
+  animation: aurora-wave-flow-2 15s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
+}
+
+/* Wave Band 3 (Shimmer Crest Ripple) */
+.aurora-wave-band-3 {
+  position: absolute;
+  top: -25px;
+  left: 20%;
+  width: 75%;
+  height: 120px;
+  border-radius: 48% 52% 58% 42% / 40% 55% 45% 60%;
+  background: linear-gradient(
+    180deg,
+    var(--aurora-c3) 0%,
+    var(--aurora-c1) 55%,
+    transparent 100%
+  );
+  animation: aurora-wave-flow-3 18s ease-in-out infinite alternate;
+  will-change: transform, border-radius;
+}
+
+/* Organic Light Curtains (Drifting blurred pools of color) */
+.aurora-curtain-1 {
+  position: absolute;
+  top: -20px;
+  left: 5%;
+  width: 50%;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 30%, var(--aurora-c1) 0%, var(--aurora-c2) 55%, transparent 80%);
+  animation: aurora-curtain-drift-1 14s ease-in-out infinite alternate;
+}
+
+.aurora-curtain-2 {
+  position: absolute;
+  top: -20px;
+  right: 5%;
+  width: 55%;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 30%, var(--aurora-c2) 0%, var(--aurora-c3) 60%, transparent 80%);
+  animation: aurora-curtain-drift-2 17s ease-in-out infinite alternate;
+}
+
+.aurora-curtain-3 {
+  position: absolute;
+  top: -15px;
+  left: 28%;
+  width: 58%;
+  height: 135px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 25%, var(--aurora-c4) 0%, var(--aurora-c1) 65%, transparent 80%);
+  animation: aurora-curtain-drift-3 21s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-wave-flow-1 {
+  0% {
+    transform: translate3d(-30px, 0, 0) scale(0.95, 0.9);
+    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+  }
+  50% {
+    transform: translate3d(25px, 12px, 0) scale(1.08, 1.15);
+    border-radius: 58% 42% 48% 52% / 55% 58% 42% 45%;
+  }
+  100% {
+    transform: translate3d(50px, -5px, 0) scale(1.02, 0.98);
+    border-radius: 50% 50% 60% 40% / 48% 52% 48% 52%;
+  }
+}
+
+@keyframes aurora-wave-flow-2 {
+  0% {
+    transform: translate3d(40px, 5px, 0) scale(1.05, 1.1);
+    border-radius: 55% 45% 38% 62% / 50% 60% 40% 50%;
+  }
+  50% {
+    transform: translate3d(-30px, -8px, 0) scale(0.94, 0.88);
+    border-radius: 45% 55% 58% 42% / 60% 45% 55% 40%;
+  }
+  100% {
+    transform: translate3d(-55px, 8px, 0) scale(1.02, 1.05);
+    border-radius: 60% 40% 45% 55% / 52% 55% 45% 48%;
+  }
+}
+
+@keyframes aurora-wave-flow-3 {
+  0% {
+    transform: translate3d(-20px, -4px, 0) scale(0.96, 0.9);
+    border-radius: 48% 52% 58% 42% / 40% 55% 45% 60%;
+  }
+  50% {
+    transform: translate3d(35px, 10px, 0) scale(1.12, 1.18);
+    border-radius: 56% 44% 46% 54% / 55% 42% 58% 45%;
+  }
+  100% {
+    transform: translate3d(-15px, 2px, 0) scale(1, 0.95);
+    border-radius: 50% 50% 52% 48% / 45% 50% 50% 55%;
+  }
+}
+
+@keyframes aurora-curtain-drift-1 {
+  0% {
+    transform: translate3d(-25px, 0, 0) scale(0.9, 0.85);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate3d(30px, 8px, 0) scale(1.15, 1.2);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(55px, -4px, 0) scale(1, 0.95);
+    opacity: 0.65;
+  }
+}
+
+@keyframes aurora-curtain-drift-2 {
+  0% {
+    transform: translate3d(40px, 4px, 0) scale(1.1, 1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(-30px, -6px, 0) scale(0.9, 0.82);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-60px, 2px, 0) scale(1.05, 1.05);
+    opacity: 0.85;
+  }
+}
+
+@keyframes aurora-curtain-drift-3 {
+  0% {
+    transform: translate3d(-40px, -2px, 0) scale(0.95, 0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(25px, 6px, 0) scale(1.2, 1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(60px, -1px, 0) scale(1, 1);
+    opacity: 0.6;
+  }
+}
+
+/* 4. Tactile Film Noise Texture Overlay (Generates organic analog grain) */
+.page-aurora-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.7'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 130px 130px;
+}
+
+:is(.dark .page-aurora-noise) {
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .page-aurora-beam,
+  .page-aurora-canvas,
+  .page-aurora-wave-band,
+  .page-aurora-curtain {
+    animation: none !important;
+  }
 }
 
 /* ========================================================

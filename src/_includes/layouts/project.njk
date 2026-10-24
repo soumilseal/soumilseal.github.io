@@ -20,69 +20,73 @@ layout: layouts/base.njk
     <div class="flex items-center gap-3">
       {% if category %}
         <span class="uppercase tracking-wider text-[11px] text-neutral-400 dark:text-neutral-500 hidden sm:inline">{{ category }}</span>
-        <span class="text-neutral-300 dark:text-neutral-700 hidden sm:inline">&bull;</span>
+        <span class="text-neutral-300 dark:text-neutral-700 hidden sm:inline">/</span>
       {% endif %}
       <span>{{ content | readingTime }}</span>
     </div>
   </div>
 
   <!-- Project Header: Contiguous Grid Row -->
-  <header class="px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-4 bg-white dark:bg-neutral-950 relative">
-    <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-      <span class="text-primary-600 dark:text-primary-400 font-medium uppercase tracking-wider">
-        project-specification // {{ id or (title | slugify) }}
-      </span>
-      {% if date %}
-        <span>&bull;</span>
-        <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
-      {% endif %}
-    </div>
-
-    <h1 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight leading-tight">
-      {{ title }}
-    </h1>
-
-    {% if description %}
-      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl font-sans">
-        {{ description }}
-      </p>
-    {% endif %}
-
-    <!-- Technology Tags -->
-    {% if tags %}
-      <div class="flex flex-wrap gap-1.5 pt-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-        {% for tag in tags | filterTagList %}
-          <span class="grid-badge">
-            #{{ tag }}
-          </span>
-        {% endfor %}
+  {% set pageAuroraId = "project" %}
+  <header class="page-header-aurora px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 relative overflow-hidden">
+    {% include "components/page-aurora.njk" %}
+    <div class="relative z-10 space-y-4">
+      <div class="inline-flex flex-wrap items-center gap-2 font-mono text-xs font-bold text-neutral-900 dark:text-neutral-100 bg-white/75 dark:bg-neutral-900/75 backdrop-blur-md px-2.5 py-1 border border-neutral-300/80 dark:border-neutral-700/80 rounded-xs shadow-xs w-fit">
+        <span class="text-primary-600 dark:text-primary-400 font-bold uppercase tracking-wider">
+          project-specification // {{ id or (title | slugify) }}
+        </span>
+        {% if date %}
+          <span class="opacity-40 font-mono">/</span>
+          <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+        {% endif %}
       </div>
-    {% endif %}
 
-    <!-- Action Links & Live Endpoints Bar -->
-    <div class="pt-4 flex flex-wrap items-center gap-3 text-xs font-mono">
-      {% if github %}
-        <a
-          href="{{ github }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white transition-colors font-medium shadow-2xs"
-        >
-          <span>View Source Repository</span>
-          {{ icons.icon("arrow-up-right", "w-3 h-3") }}
-        </a>
+      <h1 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight leading-tight">
+        {{ title }}
+      </h1>
+
+      {% if description %}
+        <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-3xl font-sans">
+          {{ description }}
+        </p>
       {% endif %}
-      {% if demo %}
-        <a
-          href="{{ demo }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-neutral-950 transition-colors font-bold shadow-2xs"
-        >
-          <span>Live Demo / Documentation</span>
-          {{ icons.icon("arrow-up-right", "w-3 h-3") }}
-        </a>
+
+      <!-- Technology Tags -->
+      {% if tags %}
+        <div class="flex flex-wrap gap-1.5 pt-1 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+          {% for tag in tags | filterTagList %}
+            <span class="grid-badge">
+              #{{ tag }}
+            </span>
+          {% endfor %}
+        </div>
       {% endif %}
+
+      <!-- Action Links & Live Endpoints Bar -->
+      <div class="pt-4 flex flex-wrap items-center gap-3 text-xs font-mono">
+        {% if github %}
+          <a
+            href="{{ github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-900 dark:text-white transition-colors font-medium shadow-2xs"
+          >
+            <span>View Source Repository</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+          </a>
+        {% endif %}
+        {% if demo %}
+          <a
+            href="{{ demo }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-neutral-950 transition-colors font-bold shadow-2xs"
+          >
+            <span>Live Demo / Documentation</span>
+            {{ icons.icon("arrow-up-right", "w-3 h-3") }}
+          </a>
+        {% endif %}
+      </div>
     </div>
   </header>
 
@@ -102,16 +106,9 @@ layout: layouts/base.njk
     </div>
   {% endif %}
 
-  <!-- Primary Cover Exhibit: Contiguous Grid Row -->
+  <!-- Primary Cover Image: Contiguous Grid Row -->
   {% if image %}
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-950 overflow-hidden relative">
-      <div class="px-4 sm:px-6 py-2 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-between text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
-        <span class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span>schematic // primary_architecture_exhibit</span>
-        </span>
-        <span class="text-neutral-400 dark:text-neutral-500">fig.01</span>
-      </div>
       <div class="max-h-125 overflow-hidden flex items-center justify-center bg-neutral-950">
         <img
           src="{{ image | webp }}"
@@ -153,22 +150,14 @@ layout: layouts/base.njk
     <section class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950">
       <div class="px-4 sm:px-6 py-2 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 flex items-center justify-between text-xs font-mono">
         <span class="uppercase tracking-wider font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-          <span>project-exhibits // visual-telemetry & screenshots</span>
+          <span>project-gallery // visual-telemetry & screenshots</span>
         </span>
-        <span class="text-neutral-400 dark:text-neutral-500">{{ gallery.length }} exhibit{% if gallery.length > 1 %}s{% endif %}</span>
+        <span class="text-neutral-400 dark:text-neutral-500">{{ gallery.length }} image{% if gallery.length > 1 %}s{% endif %}</span>
       </div>
 
       <div class="divide-y divide-neutral-300 dark:divide-neutral-800">
         {% for item in gallery %}
           <figure class="overflow-hidden bg-neutral-950/20 dark:bg-neutral-950">
-            <div class="px-4 sm:px-6 py-1.5 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900/80 flex items-center justify-between text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
-              <span class="font-medium text-neutral-900 dark:text-neutral-200">
-                exhibit // [fig.0{{ loop.index + 1 }}]
-              </span>
-              {% if item.caption %}
-                <span class="text-neutral-500 dark:text-neutral-400 truncate max-w-xs sm:max-w-md">{{ item.caption }}</span>
-              {% endif %}
-            </div>
             <div class="relative group overflow-hidden bg-neutral-950 flex items-center justify-center">
               <img
                 src="{{ item.image | webp }}"
@@ -179,7 +168,7 @@ layout: layouts/base.njk
             </div>
             {% if item.caption %}
               <figcaption class="px-4 sm:px-6 py-2.5 text-xs font-mono text-neutral-600 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/60 dark:bg-neutral-900/40">
-                <span class="text-neutral-400 dark:text-neutral-500">Caption:</span> {{ item.caption }}
+                <span class="text-neutral-400 dark:text-neutral-500">caption //</span> {{ item.caption }}
               </figcaption>
             {% endif %}
           </figure>
@@ -190,7 +179,7 @@ layout: layouts/base.njk
 
   <!-- Article Prose Content: In-Depth Engineering Write-Up -->
   <div class="px-6 sm:px-8 py-10 sm:py-14 bg-white dark:bg-neutral-950">
-    <div class="prose prose-neutral dark:prose-invert max-w-none text-[16px] sm:text-[17px] leading-relaxed">
+    <div class="prose prose-neutral dark:prose-invert max-w-none w-full text-[16px] sm:text-[17px] leading-relaxed">
       {{ content | safe }}
     </div>
   </div>
@@ -199,7 +188,7 @@ layout: layouts/base.njk
   <footer class="border-t border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 space-y-4 bg-neutral-50/50 dark:bg-neutral-900/30">
     <div class="text-xs text-neutral-500 dark:text-neutral-400 space-y-2 font-mono">
       <p>
-        Project Engineered & Documented by <strong class="text-neutral-900 dark:text-neutral-100">Soumil Seal</strong> &bull; Systems & Cloud Developer
+        Project Engineered & Documented by <strong class="text-neutral-900 dark:text-neutral-100">Soumil Seal</strong> / Systems & Cloud Developer
       </p>
       <div class="flex flex-wrap items-center gap-4 pt-2">
         <a
@@ -209,7 +198,7 @@ layout: layouts/base.njk
           <span>Explore all projects</span>
           {{ icons.icon("arrow-right", "w-3 h-3") }}
         </a>
-        <span class="text-neutral-300 dark:text-neutral-700">&bull;</span>
+        <span class="text-neutral-300 dark:text-neutral-700">/</span>
         <a
           href="/contact/"
           class="inline-flex items-center gap-1.5 underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-100"

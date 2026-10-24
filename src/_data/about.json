@@ -38,11 +38,40 @@
   },
   "education": {
     "title": "academic-background",
-    "subtitle": "university studies",
+    "subtitle": "education-timeline",
     "degree": "Bachelor of Computer Applications (BCA)",
     "status": "Present",
     "major": "Major in Computer Science & Applications",
-    "coursework": "Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks."
+    "coursework": "Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks.",
+    "timeline": [
+      {
+        "period": "2023 — Present",
+        "status": "Undergraduate / In Progress",
+        "degree": "Bachelor of Computer Applications (BCA)",
+        "major": "Computer Science & Applications",
+        "institution": "University Studies // India",
+        "description": "Undergraduate coursework centered on foundational computing theory, systems programming, and modern software design patterns. Active participation in open-source projects and developer communities.",
+        "coursework": "Data Structures & Algorithms, Object-Oriented Software Design, Database Management Systems (RDBMS / PostgreSQL), Operating Systems & Concurrency, Computer Networks, System Architecture."
+      },
+      {
+        "period": "2021 — 2023",
+        "status": "Higher Secondary / Completed",
+        "degree": "Higher Secondary Education (Class XII)",
+        "major": "Science Stream // Physics, Chemistry, Mathematics & CS",
+        "institution": "Senior Secondary School // India",
+        "description": "Completed senior secondary schooling with a focus on advanced mathematics, Newtonian physics, analytical logic, and algorithmic programming.",
+        "coursework": "Advanced Mathematics (Calculus, Linear Algebra), Physics, Boolean Algebra, and Algorithmic Logic with C++ and Python."
+      },
+      {
+        "period": "2021",
+        "status": "Secondary / Completed",
+        "degree": "Secondary Education (Class X)",
+        "major": "General Academic Curriculum",
+        "institution": "Secondary School // India",
+        "description": "Completed foundational secondary school examinations with honors across general sciences, mathematics, and introductory computer applications.",
+        "coursework": "General Sciences, Mathematics, English, Social Sciences, Computer Applications."
+      }
+    ]
   },
   "connect": {
     "title": "network-and-channels",

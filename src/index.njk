@@ -18,9 +18,6 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </div>
       {% if home.status.available != false %}
         <div class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-medium shrink-0">
-          <span
-            class="w-2 h-2 rounded-full bg-blue-500 inline-block animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-          ></span>
           <span class="whitespace-nowrap">{{
             home.status.availabilityText or "open for opportunities"
           }}</span>
@@ -52,11 +49,11 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
               <span>{{
                 home.hero.location or "India // remote-friendly"
               }}</span>
-              <span class="text-neutral-300 dark:text-neutral-700">&bull;</span>
+              <span class="text-neutral-300 dark:text-neutral-700 font-mono">//</span>
               <span
                 class="text-primary-600 dark:text-primary-400 font-medium"
               >{{
-                home.hero.role or "BCA Undergraduate • Developer • Systems Builder"
+                home.hero.role or "BCA Undergraduate // Developer // Systems Builder"
               }}</span>
             </div>
           </div>
@@ -128,7 +125,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       <span
         class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
       >
-        {{ home.marquee.subtitle or "active-stack // infinite scroll" }}
+        {{ home.marquee.subtitle or "tech-stack // languages & tools" }}
       </span>
     </div>
 
@@ -146,20 +143,26 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
         {% if not marqueeItems or marqueeItems.length == 0 %}
           {%
             set marqueeItems = [
-              { "name": "Python", "url": "https://www.python.org", "icon": "/assets/images/icons/python.svg" },
-              { "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "/assets/images/icons/typescript.svg" },
-              { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "icon": "/assets/images/icons/javascript.svg" },
-              { "name": "Go", "url": "https://go.dev", "icon": "/assets/images/icons/go.svg" },
-              { "name": "Rust", "url": "https://www.rust-lang.org", "icon": "/assets/images/icons/rust.svg" },
-              { "name": "C++", "url": "https://isocpp.org", "icon": "/assets/images/icons/cpp.svg" },
-              { "name": "C", "url": "https://en.cppreference.com/w/c", "icon": "/assets/images/icons/c.svg" },
-              { "name": "Java", "url": "https://www.oracle.com/java/", "icon": "/assets/images/icons/java.svg" },
-              { "name": "PostgreSQL", "url": "https://www.postgresql.org", "icon": "/assets/images/icons/postgresql.svg" },
-              { "name": "Bash / Shell", "url": "https://www.gnu.org/software/bash/", "icon": "/assets/images/icons/bash.svg" },
-              { "name": "Docker", "url": "https://www.docker.com", "icon": "/assets/images/icons/docker.svg" },
-              { "name": "Linux", "url": "https://www.kernel.org", "icon": "/assets/images/icons/linux.svg" },
-              { "name": "Node.js", "url": "https://nodejs.org", "icon": "/assets/images/icons/nodejs.svg" },
-              { "name": "Redis", "url": "https://redis.io", "icon": "/assets/images/icons/redis.svg" }
+              { "name": "Python", "url": "https://www.python.org", "icon": "https://skillicons.dev/icons?i=py" },
+              { "name": "TypeScript", "url": "https://www.typescriptlang.org", "icon": "https://skillicons.dev/icons?i=ts" },
+              { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "icon": "https://skillicons.dev/icons?i=js" },
+              { "name": "Go", "url": "https://go.dev", "icon": "https://skillicons.dev/icons?i=go" },
+              { "name": "Rust", "url": "https://www.rust-lang.org", "icon": "https://skillicons.dev/icons?i=rust" },
+              { "name": "C++", "url": "https://isocpp.org", "icon": "https://skillicons.dev/icons?i=cpp" },
+              { "name": "C", "url": "https://en.cppreference.com/w/c", "icon": "https://skillicons.dev/icons?i=c" },
+              { "name": "Java", "url": "https://www.oracle.com/java/", "icon": "https://skillicons.dev/icons?i=java" },
+              { "name": "Node.js", "url": "https://nodejs.org", "icon": "https://skillicons.dev/icons?i=nodejs" },
+              { "name": "Docker", "url": "https://www.docker.com", "icon": "https://skillicons.dev/icons?i=docker" },
+              { "name": "Linux", "url": "https://www.kernel.org", "icon": "https://skillicons.dev/icons?i=linux" },
+              { "name": "AWS", "url": "https://aws.amazon.com", "icon": "https://skillicons.dev/icons?i=aws" },
+              { "name": "PostgreSQL", "url": "https://www.postgresql.org", "icon": "https://skillicons.dev/icons?i=postgres" },
+              { "name": "Redis", "url": "https://redis.io", "icon": "https://skillicons.dev/icons?i=redis" },
+              { "name": "SQLite", "url": "https://www.sqlite.org", "icon": "https://skillicons.dev/icons?i=sqlite" },
+              { "name": "Bash / Shell", "url": "https://www.gnu.org/software/bash/", "icon": "https://skillicons.dev/icons?i=bash" },
+              { "name": "Git", "url": "https://git-scm.com", "icon": "https://skillicons.dev/icons?i=git" },
+              { "name": "Tailwind CSS", "url": "https://tailwindcss.com", "icon": "https://skillicons.dev/icons?i=tailwind" },
+              { "name": "Nginx", "url": "https://nginx.org", "icon": "https://skillicons.dev/icons?i=nginx" },
+              { "name": "Prometheus", "url": "https://prometheus.io", "icon": "https://skillicons.dev/icons?i=prometheus" }
             ]
           %}
         {% endif %}
@@ -175,14 +178,18 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
               {% endif %}
               class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2.5 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none cursor-pointer"
             >
-              {% if item.image or item.icon %}
+              {% set iconSrc = item.image or item.icon %}
+              {% if iconSrc %}
+                {% if not iconSrc.startsWith('http') and not iconSrc.startsWith('/') and not iconSrc.startsWith('.') %}
+                  {% set iconSrc = 'https://skillicons.dev/icons?i=' + iconSrc %}
+                {% endif %}
                 <img
-                  src="{{ item.image or item.icon }}"
+                  src="{{ iconSrc }}"
                   alt=""
-                  class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                  class="w-5 h-5 object-contain shrink-0"
                   loading="lazy"
-                  width="16"
-                  height="16"
+                  width="20"
+                  height="20"
                 />
               {% endif %}
               <span
@@ -207,14 +214,18 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
               tabindex="-1"
               class="border-r border-neutral-300 dark:border-neutral-800 px-5 py-3 flex items-center gap-2.5 font-mono text-xs hover:bg-neutral-100 dark:hover:bg-neutral-900/60 transition-colors group/item shrink-0 text-neutral-900 dark:text-neutral-100 focus:outline-none cursor-pointer"
             >
-              {% if item.image or item.icon %}
+              {% set iconSrc = item.image or item.icon %}
+              {% if iconSrc %}
+                {% if not iconSrc.startsWith('http') and not iconSrc.startsWith('/') and not iconSrc.startsWith('.') %}
+                  {% set iconSrc = 'https://skillicons.dev/icons?i=' + iconSrc %}
+                {% endif %}
                 <img
-                  src="{{ item.image or item.icon }}"
+                  src="{{ iconSrc }}"
                   alt=""
-                  class="w-4 h-4 object-contain shrink-0 filter dark:brightness-110"
+                  class="w-5 h-5 object-contain shrink-0"
                   loading="lazy"
-                  width="16"
-                  height="16"
+                  width="20"
+                  height="20"
                 />
               {% endif %}
               <span
@@ -257,7 +268,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </div>
     {% else %}
       <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-12 sm:py-16 text-center">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-xs border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
           {{ icons.icon("code-slash", "w-4 h-4") }}
         </div>
         <p class="font-mono text-sm sm:text-base font-semibold text-neutral-800 dark:text-neutral-200 tracking-tight">
@@ -297,7 +308,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       </div>
     {% else %}
       <div class="border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 sm:px-6 py-12 sm:py-16 text-center">
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-xs border border-neutral-300 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 text-neutral-400 dark:text-neutral-500 mb-3">
           {{ icons.icon("journal-text", "w-4 h-4") }}
         </div>
         <p class="font-mono text-sm sm:text-base font-semibold text-neutral-800 dark:text-neutral-200 tracking-tight">

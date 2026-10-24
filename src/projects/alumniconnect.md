@@ -56,7 +56,7 @@ gallery:
             ▼                        ▼
   ┌──────────────────────────────────────────────┐
   │      PostgreSQL Relational Storage           │
-  │  Users  •  Bookings  •  Feedback  •  Badges  │
+  │  Users  /  Bookings  /  Feedback  /  Badges  │
   └──────────────────────────────────────────────┘
 ```
 

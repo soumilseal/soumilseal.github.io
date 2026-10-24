@@ -23,47 +23,47 @@ layout: layouts/base.njk
   </div>
 
   <!-- Article Header: Contiguous Grid Row -->
-  <header class="px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 space-y-4 bg-white dark:bg-neutral-950 relative">
-    <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-      <time datetime="{{ date | htmlDateString }}">{{
-        date | readableDate
-      }}</time>
-      <span>&bull;</span>
-      <span class="text-primary-600 dark:text-primary-400 font-medium"
-      >technical note</span>
-    </div>
-
-    <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-6xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight leading-tight">
-      {{ title }}
-    </h1>
-
-    {% if description %}
-      <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl font-sans">
-        {{ description }}
-      </p>
-    {% endif %}
-
-    {% if tags %}
-      <div class="flex flex-wrap gap-1.5 pt-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
-        {% for tag in tags | filterTagList %}
-          <a
-            href="/tags/{{ tag | slugify }}/"
-            class="grid-badge hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
-          >
-            #{{ tag }}
-          </a>
-        {% endfor %}
+  {% set pageAuroraId = "post" %}
+  <header class="page-header-aurora px-6 sm:px-8 py-8 sm:py-12 border-b border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 relative overflow-hidden">
+    {% include "components/page-aurora.njk" %}
+    <div class="relative z-10 space-y-4">
+      <div class="inline-flex items-center gap-2 font-mono text-xs font-bold text-neutral-900 dark:text-neutral-100 bg-white/75 dark:bg-neutral-900/75 backdrop-blur-md px-2.5 py-1 border border-neutral-300/80 dark:border-neutral-700/80 rounded-xs shadow-xs w-fit">
+        <time datetime="{{ date | htmlDateString }}">{{
+          date | readableDate
+        }}</time>
+        <span class="opacity-40 font-mono">/</span>
+        <span class="text-primary-600 dark:text-primary-400 font-bold uppercase tracking-wider"
+        >technical note</span>
       </div>
-    {% endif %}
+
+      <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-6xl text-neutral-900 dark:text-neutral-100 uppercase tracking-tight leading-tight">
+        {{ title }}
+      </h1>
+
+      {% if description %}
+        <p class="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed font-sans">
+          {{ description }}
+        </p>
+      {% endif %}
+
+      {% if tags %}
+        <div class="flex flex-wrap gap-1.5 pt-2 text-xs font-mono text-neutral-400 dark:text-neutral-500">
+          {% for tag in tags | filterTagList %}
+            <a
+              href="/tags/{{ tag | slugify }}/"
+              class="grid-badge hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors"
+            >
+              #{{ tag }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
   </header>
 
-  <!-- Article Cover Exhibit: Contiguous Grid Row -->
+  <!-- Article Cover Image: Contiguous Grid Row -->
   {% if image %}
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-950 overflow-hidden relative">
-      <div class="px-6 sm:px-8 py-2 border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-between text-[11px] font-mono text-neutral-600 dark:text-neutral-400">
-        <span>schematic // technical_exhibit_01</span>
-        <span class="text-neutral-400 dark:text-neutral-500">figure.arch</span>
-      </div>
       <div class="max-h-115 overflow-hidden flex items-center justify-center bg-neutral-950">
         <img
           src="{{ image }}"
@@ -76,17 +76,96 @@ layout: layouts/base.njk
 
   <!-- Article Prose Content -->
   <div class="px-6 sm:px-8 py-10 sm:py-14 bg-white dark:bg-neutral-950">
-    <div class="prose prose-neutral dark:prose-invert max-w-none text-[16px] sm:text-[17px] leading-relaxed">
+    <div class="prose prose-neutral dark:prose-invert max-w-none w-full text-[16px] sm:text-[17px] leading-relaxed">
       {{ content | safe }}
     </div>
   </div>
+
+  <!-- Article Post Navigation (Previous & Next): Contiguous Grid Row -->
+  {% set prevPost = page.url | getPrevPost(collections.posts) %}
+  {% set nextPost = page.url | getNextPost(collections.posts) %}
+  {% if prevPost or nextPost %}
+    <nav class="border-t border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950" aria-label="Post navigation">
+      <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-neutral-300 dark:divide-neutral-800">
+        <!-- Previous (Older) Article Button -->
+        {% if prevPost %}
+          <a
+            href="{{ prevPost.url }}"
+            class="p-5 sm:p-6 bg-white dark:bg-neutral-950 hover:bg-neutral-50/80 dark:hover:bg-neutral-900/60 transition-colors flex flex-col justify-between group text-left relative focus:outline-none focus:bg-neutral-50 dark:focus:bg-neutral-900/60"
+          >
+            <div class="flex items-center gap-1.5 text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+              {{ icons.icon("arrow-left", "w-3 h-3 group-hover:-translate-x-0.5 transition-transform") }}
+              <span>previous article</span>
+            </div>
+            <h4 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2 leading-snug">
+              {{ prevPost.data.title }}
+            </h4>
+            <time datetime="{{ prevPost.date | htmlDateString }}" class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mt-2 block">
+              {{ prevPost.date | readableDate }}
+            </time>
+          </a>
+        {% else %}
+          <a
+            href="/blog/"
+            class="p-5 sm:p-6 bg-neutral-50/40 dark:bg-neutral-900/20 hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors flex flex-col justify-between group text-left focus:outline-none"
+          >
+            <div class="flex items-center gap-1.5 text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+              {{ icons.icon("arrow-left", "w-3 h-3") }}
+              <span>archive index</span>
+            </div>
+            <span class="text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400 line-clamp-2 leading-snug">
+              // earliest published article
+            </span>
+            <span class="text-[11px] font-mono text-primary-600 dark:text-primary-400 mt-2 block group-hover:underline">
+              browse all articles &rarr;
+            </span>
+          </a>
+        {% endif %}
+
+        <!-- Next (Newer) Article Button -->
+        {% if nextPost %}
+          <a
+            href="{{ nextPost.url }}"
+            class="p-5 sm:p-6 bg-white dark:bg-neutral-950 hover:bg-neutral-50/80 dark:hover:bg-neutral-900/60 transition-colors flex flex-col justify-between group sm:text-right relative focus:outline-none focus:bg-neutral-50 dark:focus:bg-neutral-900/60"
+          >
+            <div class="flex items-center sm:justify-end gap-1.5 text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+              <span>next article</span>
+              {{ icons.icon("arrow-right", "w-3 h-3 group-hover:translate-x-0.5 transition-transform") }}
+            </div>
+            <h4 class="text-sm sm:text-base font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2 leading-snug">
+              {{ nextPost.data.title }}
+            </h4>
+            <time datetime="{{ nextPost.date | htmlDateString }}" class="text-[11px] font-mono text-neutral-400 dark:text-neutral-500 mt-2 block">
+              {{ nextPost.date | readableDate }}
+            </time>
+          </a>
+        {% else %}
+          <a
+            href="/blog/"
+            class="p-5 sm:p-6 bg-neutral-50/40 dark:bg-neutral-900/20 hover:bg-neutral-50/80 dark:hover:bg-neutral-900/40 transition-colors flex flex-col justify-between group sm:text-right focus:outline-none"
+          >
+            <div class="flex items-center sm:justify-end gap-1.5 text-xs font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2">
+              <span>archive index</span>
+              {{ icons.icon("arrow-right", "w-3 h-3") }}
+            </div>
+            <span class="text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400 line-clamp-2 leading-snug">
+              // latest published article
+            </span>
+            <span class="text-[11px] font-mono text-primary-600 dark:text-primary-400 mt-2 block group-hover:underline">
+              browse all articles &rarr;
+            </span>
+          </a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
 
   <!-- Article Footer: Contiguous Grid Row -->
   <footer class="border-t border-neutral-300 dark:border-neutral-800 px-6 sm:px-8 py-8 space-y-4 bg-neutral-50/50 dark:bg-neutral-900/30">
     <div class="text-xs text-neutral-500 dark:text-neutral-400 space-y-1 font-mono">
       <p>
         Written by <strong class="text-neutral-900 dark:text-neutral-100"
-        >Soumil Seal</strong> &bull; Developer & BCA Student
+        >Soumil Seal</strong> / Developer & BCA Student
       </p>
       <p>
         Questions or feedback? <a

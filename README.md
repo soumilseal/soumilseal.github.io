@@ -26,7 +26,7 @@ This portfolio is engineered like a precision technical blueprint rather than a 
 | **Motion & Animation** | [GSAP v3.15](https://gsap.com/) | Continuous marquee ticker and micro-animations |
 | **Full-Text Search** | [Pagefind v1.5](https://pagefind.app/) | Low-bandwidth static search indexing with instant modal UI |
 | **Content Management** | [Pages CMS](https://pagescms.org/) | Headless, Git-based CMS configured via `.pages.yml` |
-| **Icons & Vectors** | Inline SVG & Preline / Bootstrap | Scalable vector icons with zero render blocking |
+| **Icons & Vectors** | [Phosphor Icons](https://phosphoricons.com/) (`@phosphor-icons/core`) | Scalable, cohesive vector icons with zero render blocking |
 | **Syndication & SEO** | RSS / Atom & Sitemap XML | Automatic feed generation and canonical SEO tags |
 
 ---

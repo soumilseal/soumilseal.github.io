@@ -56,6 +56,19 @@ content:
         type: string
         default: "layouts/post.njk"
         hidden: true
+      - name: pageAuroraId
+        label: "Header Aurora Theme"
+        type: select
+        options:
+          values:
+            - ""
+            - "post"
+            - "writing"
+            - "projects"
+            - "about"
+            - "resume"
+            - "contact"
+            - "topic"
       - name: body
         label: "Article Body Content (Markdown)"
         type: rich-text
@@ -149,6 +162,19 @@ content:
         type: string
         default: "layouts/project.njk"
         hidden: true
+      - name: pageAuroraId
+        label: "Header Aurora Theme"
+        type: select
+        options:
+          values:
+            - ""
+            - "projects"
+            - "post"
+            - "writing"
+            - "about"
+            - "resume"
+            - "contact"
+            - "topic"
       - name: body
         label: "Project Deep Dive & Case Study (Markdown)"
         type: rich-text
@@ -209,11 +235,11 @@ content:
               - name: text
                 label: "Button Text"
                 type: string
-                default: "view projects"
+                default: "View Resume & Credentials"
               - name: url
                 label: "Target Link"
                 type: string
-                default: "/projects/"
+                default: "/resume/"
           - name: secondaryCta
             label: "Secondary Action Button"
             type: object
@@ -221,11 +247,11 @@ content:
               - name: text
                 label: "Button Text"
                 type: string
-                default: "resume"
+                default: "Explore Projects"
               - name: url
                 label: "Target Link"
                 type: string
-                default: "/resume/"
+                default: "/projects/"
           - name: terminalBadge
             label: "Terminal Status Badge"
             type: string
@@ -287,13 +313,13 @@ content:
           - name: subtitle
             label: "Section Subtitle"
             type: string
-            default: "active-stack // infinite scroll"
+            default: "tech-stack // languages & tools"
           - name: speed
             label: "Scroll Animation Duration in Seconds (Lower is faster, default: 32)"
             type: number
             default: 32
           - name: items
-            label: "Infinite Scroll Items (Text, Badges, Links & Images)"
+            label: "Infinite Scroll Items (Text, Badges, Links & Icons)"
             type: object
             list: true
             fields:
@@ -307,9 +333,9 @@ content:
               - name: url
                 label: "Target Link URL (External https://... or Internal /projects/..., leave blank for unlinked)"
                 type: string
-              - name: image
-                label: "Icon / Logo Image (Uploaded Image or /assets/... path)"
-                type: image
+              - name: icon
+                label: "Icon / Logo (skillicons.dev URL, skill key like 'py', or image path)"
+                type: string
 
       - name: sections
         label: "Section Header Titles & Descriptions"
@@ -414,22 +440,53 @@ content:
           - name: subtitle
             label: "Section Subtitle"
             type: string
-            default: "university studies"
+            default: "education-timeline"
           - name: degree
-            label: "Degree Name"
+            label: "Primary Degree Name"
             type: string
             default: "Bachelor of Computer Applications (BCA)"
           - name: status
-            label: "Graduation Status"
+            label: "Primary Status"
             type: string
             default: "Present"
           - name: major
-            label: "Major / Field of Study"
+            label: "Primary Major / Field of Study"
             type: string
             default: "Major in Computer Science & Applications"
           - name: coursework
-            label: "Core Coursework & Studies"
+            label: "Primary Coursework & Studies"
             type: text
+          - name: timeline
+            label: "Education Timeline"
+            type: object
+            list: true
+            fields:
+              - name: period
+                label: "Time Period (e.g. 2023 — Present)"
+                type: string
+                required: true
+              - name: status
+                label: "Status (e.g. Undergraduate / In Progress)"
+                type: string
+                required: true
+              - name: degree
+                label: "Degree / Qualification Title"
+                type: string
+                required: true
+              - name: major
+                label: "Major / Field of Study"
+                type: string
+                required: true
+              - name: institution
+                label: "Institution / Board"
+                type: string
+                required: true
+              - name: description
+                label: "Overview / Description"
+                type: text
+              - name: coursework
+                label: "Key Modules & Coursework"
+                type: text
 
       - name: connect
         label: "Network & Channels Section"
@@ -518,6 +575,19 @@ content:
                 label: "Technologies & Competencies"
                 type: text
                 required: true
+
+      - name: projectsSection
+        label: "Selected Software Projects Section"
+        type: object
+        fields:
+          - name: title
+            label: "Section Title"
+            type: string
+            default: "engineering-projects"
+          - name: subtitle
+            label: "Section Subtitle"
+            type: string
+            default: "selected software"
 
       - name: educationSection
         label: "Academic Credentials"

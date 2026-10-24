@@ -1,0 +1,44 @@
+{#
+  Page Header Ambient Aurora Component
+  Features:
+  - Luminous top glowing light line (matching navbar hover aesthetic)
+  - Ambient radiant bloom halo
+  - Blurred, undulating multi-color aurora wave mesh (no hard cuts, pure smooth diffused light)
+  - Fine-grain tactile SVG noise texture overlay
+  - Dynamic section-specific color palettes
+#}
+{% set currentSlug = (title | slugify) or "default" %}
+{% if "topic" in (title | lower) %}
+  {% set currentSlug = "topic" %}
+{% endif %}
+{% set auroraId = pageAuroraId or currentSlug %}
+
+<div
+  class="page-aurora-wrapper pointer-events-none select-none"
+  aria-hidden="true"
+  data-aurora="{{ auroraId }}"
+>
+  <!-- 1. Glowing Luminous Top Border Beam (like navbar hover) -->
+  <div class="page-aurora-beam"></div>
+
+  <!-- 2. Ambient Top Radiant Bloom -->
+  <div class="page-aurora-bloom"></div>
+
+  <!-- 3. Blurred Undulating Aurora Wave Mesh (No hard cuts, pure diffused light) -->
+  <div class="page-aurora-canvas">
+    <!-- Fluid Wave Ribbon 1 (Deep Primary Harmonic Wave) -->
+    <div class="page-aurora-wave-band aurora-wave-band-1"></div>
+    <!-- Fluid Wave Ribbon 2 (Mid Counter-Wave) -->
+    <div class="page-aurora-wave-band aurora-wave-band-2"></div>
+    <!-- Fluid Wave Ribbon 3 (Shimmer Crest Ripple) -->
+    <div class="page-aurora-wave-band aurora-wave-band-3"></div>
+
+    <!-- Drifting Organic Light Curtains -->
+    <div class="page-aurora-curtain aurora-curtain-1"></div>
+    <div class="page-aurora-curtain aurora-curtain-2"></div>
+    <div class="page-aurora-curtain aurora-curtain-3"></div>
+  </div>
+
+  <!-- 4. Tactile Film Noise Overlay -->
+  <div class="page-aurora-noise"></div>
+</div>

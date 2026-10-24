@@ -7,7 +7,7 @@
   "hero": {
     "eyebrow": "developer & systems builder",
     "name": "SOUMIL SEAL",
-    "role": "BCA Undergraduate • Developer • Systems Builder",
+    "role": "BCA Undergraduate // Developer // Systems Builder",
     "bio": "I engineer software across distributed backend systems, cloud infrastructure, and modern web applications. Passionate about runtime internals, concurrency mechanics, clean architectural boundaries, and delivering reliable developer tools.",
     "image": "/assets/images/me.jpg",
     "primaryCta": {
@@ -63,78 +63,108 @@
   },
   "marquee": {
     "title": "languages-and-tooling",
-    "subtitle": "active-stack // infinite scroll",
+    "subtitle": "tech-stack // languages & tools",
     "speed": 32,
     "items": [
       {
         "name": "Python",
         "url": "https://www.python.org",
-        "icon": "/assets/images/icons/python.svg"
+        "icon": "https://skillicons.dev/icons?i=py"
       },
       {
         "name": "TypeScript",
         "url": "https://www.typescriptlang.org",
-        "icon": "/assets/images/icons/typescript.svg"
+        "icon": "https://skillicons.dev/icons?i=ts"
       },
       {
         "name": "JavaScript",
         "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        "icon": "/assets/images/icons/javascript.svg"
+        "icon": "https://skillicons.dev/icons?i=js"
       },
       {
         "name": "Go",
         "url": "https://go.dev",
-        "icon": "/assets/images/icons/go.svg"
+        "icon": "https://skillicons.dev/icons?i=go"
       },
       {
         "name": "Rust",
         "url": "https://www.rust-lang.org",
-        "icon": "/assets/images/icons/rust.svg"
+        "icon": "https://skillicons.dev/icons?i=rust"
       },
       {
         "name": "C++",
         "url": "https://isocpp.org",
-        "icon": "/assets/images/icons/cpp.svg"
+        "icon": "https://skillicons.dev/icons?i=cpp"
       },
       {
         "name": "C",
         "url": "https://en.cppreference.com/w/c",
-        "icon": "/assets/images/icons/c.svg"
+        "icon": "https://skillicons.dev/icons?i=c"
       },
       {
         "name": "Java",
         "url": "https://www.oracle.com/java/",
-        "icon": "/assets/images/icons/java.svg"
-      },
-      {
-        "name": "PostgreSQL",
-        "url": "https://www.postgresql.org",
-        "icon": "/assets/images/icons/postgresql.svg"
-      },
-      {
-        "name": "Bash / Shell",
-        "url": "https://www.gnu.org/software/bash/",
-        "icon": "/assets/images/icons/bash.svg"
-      },
-      {
-        "name": "Docker",
-        "url": "https://www.docker.com",
-        "icon": "/assets/images/icons/docker.svg"
-      },
-      {
-        "name": "Linux",
-        "url": "https://www.kernel.org",
-        "icon": "/assets/images/icons/linux.svg"
+        "icon": "https://skillicons.dev/icons?i=java"
       },
       {
         "name": "Node.js",
         "url": "https://nodejs.org",
-        "icon": "/assets/images/icons/nodejs.svg"
+        "icon": "https://skillicons.dev/icons?i=nodejs"
+      },
+      {
+        "name": "Docker",
+        "url": "https://www.docker.com",
+        "icon": "https://skillicons.dev/icons?i=docker"
+      },
+      {
+        "name": "Linux",
+        "url": "https://www.kernel.org",
+        "icon": "https://skillicons.dev/icons?i=linux"
+      },
+      {
+        "name": "AWS",
+        "url": "https://aws.amazon.com",
+        "icon": "https://skillicons.dev/icons?i=aws"
+      },
+      {
+        "name": "PostgreSQL",
+        "url": "https://www.postgresql.org",
+        "icon": "https://skillicons.dev/icons?i=postgres"
       },
       {
         "name": "Redis",
         "url": "https://redis.io",
-        "icon": "/assets/images/icons/redis.svg"
+        "icon": "https://skillicons.dev/icons?i=redis"
+      },
+      {
+        "name": "SQLite",
+        "url": "https://www.sqlite.org",
+        "icon": "https://skillicons.dev/icons?i=sqlite"
+      },
+      {
+        "name": "Bash / Shell",
+        "url": "https://www.gnu.org/software/bash/",
+        "icon": "https://skillicons.dev/icons?i=bash"
+      },
+      {
+        "name": "Git",
+        "url": "https://git-scm.com",
+        "icon": "https://skillicons.dev/icons?i=git"
+      },
+      {
+        "name": "Tailwind CSS",
+        "url": "https://tailwindcss.com",
+        "icon": "https://skillicons.dev/icons?i=tailwind"
+      },
+      {
+        "name": "Nginx",
+        "url": "https://nginx.org",
+        "icon": "https://skillicons.dev/icons?i=nginx"
+      },
+      {
+        "name": "Prometheus",
+        "url": "https://prometheus.io",
+        "icon": "https://skillicons.dev/icons?i=prometheus"
       }
     ]
   },

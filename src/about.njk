@@ -109,7 +109,7 @@ permalink: /about/
     </div>
   </section>
 
-  <!-- Education Section: Contiguous Grid Cell -->
+  <!-- Education Section: Contiguous Grid Cell Timeline -->
   <section class="border-b border-neutral-300 dark:border-neutral-800">
     <div class="border-b border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 px-4 sm:px-6 py-1.5 flex items-center justify-between relative">
       <div class="flex items-center gap-2">
@@ -118,23 +118,111 @@ permalink: /about/
         </h2>
       </div>
       <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-500"
-      >{{ about.education.subtitle or "university studies" }}</span>
+      >{{ about.education.subtitle or "education-timeline" }}</span>
     </div>
 
-    <div class="p-6 sm:p-8 space-y-2 bg-white dark:bg-neutral-950">
-      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-        <h3 class="font-semibold text-neutral-900 dark:text-neutral-100 text-base">
-          {{ about.education.degree or "Bachelor of Computer Applications (BCA)" }}
-        </h3>
-        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500"
-        >{{ about.education.status or "Present" }}</span>
+    <div class="p-6 sm:p-8 bg-white dark:bg-neutral-950">
+      <div class="relative">
+        <!-- Technical Vertical Spine Line -->
+        <div class="absolute left-[6.5px] top-3 bottom-3 w-px bg-neutral-300 dark:bg-neutral-800" aria-hidden="true"></div>
+
+        <div class="space-y-8 sm:space-y-10">
+          {% if about.education.timeline and about.education.timeline.length > 0 %}
+            {% for item in about.education.timeline %}
+              <div class="relative pl-7 sm:pl-9 group">
+                <!-- Square Technical Node Marker (Strictly no circular dots) -->
+                <div class="absolute left-0 top-1.5 w-3.5 h-3.5 bg-white dark:bg-neutral-950 border border-neutral-400 dark:border-neutral-600 flex items-center justify-center transition-colors group-hover:border-neutral-900 dark:group-hover:border-neutral-100" aria-hidden="true">
+                  <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+                </div>
+
+                <div class="space-y-2">
+                  <!-- Milestone Period and Status Badges -->
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="font-mono text-xs font-semibold px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 tracking-wider">
+                      {{ item.period }}
+                    </span>
+                    <span class="font-mono text-[11px] text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                      / {{ item.status }}
+                    </span>
+                  </div>
+
+                  <!-- Degree Title -->
+                  <h3 class="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 font-sans tracking-tight">
+                    {{ item.degree }}
+                  </h3>
+
+                  <!-- Major & Institution -->
+                  <div class="font-mono text-xs text-neutral-500 dark:text-neutral-400 flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span class="text-neutral-700 dark:text-neutral-300 font-medium">{{ item.major }}</span>
+                    <span class="text-neutral-400 dark:text-neutral-600">//</span>
+                    <span>{{ item.institution }}</span>
+                  </div>
+
+                  <!-- Summary -->
+                  {% if item.description %}
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans pt-1 max-w-3xl">
+                      {{ item.description }}
+                    </p>
+                  {% endif %}
+
+                  <!-- Coursework / Key Modules Box -->
+                  {% if item.coursework %}
+                    <div class="pt-2">
+                      <div class="p-3 bg-neutral-50/80 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800/80 text-xs font-mono space-y-1 max-w-3xl">
+                        <div class="text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 font-semibold">
+                          key-modules // coursework
+                        </div>
+                        <div class="text-neutral-700 dark:text-neutral-300 font-sans text-xs leading-relaxed">
+                          {{ item.coursework }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <!-- Fallback single milestone -->
+            <div class="relative pl-7 sm:pl-9 group">
+              <div class="absolute left-0 top-1.5 w-3.5 h-3.5 bg-white dark:bg-neutral-950 border border-neutral-400 dark:border-neutral-600 flex items-center justify-center transition-colors group-hover:border-neutral-900 dark:group-hover:border-neutral-100" aria-hidden="true">
+                <span class="w-1.5 h-1.5 bg-neutral-900 dark:bg-neutral-100"></span>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-mono text-xs font-semibold px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 tracking-wider">
+                    {{ about.education.status or "Present" }}
+                  </span>
+                  <span class="font-mono text-[11px] text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                    / Undergraduate
+                  </span>
+                </div>
+
+                <h3 class="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 font-sans tracking-tight">
+                  {{ about.education.degree or "Bachelor of Computer Applications (BCA)" }}
+                </h3>
+
+                <p class="font-mono text-xs text-neutral-500 dark:text-neutral-400">
+                  {{ about.education.major or "Major in Computer Science & Applications" }}
+                </p>
+
+                {% if about.education.coursework %}
+                  <div class="pt-2">
+                    <div class="p-3 bg-neutral-50/80 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800/80 text-xs font-mono space-y-1 max-w-3xl">
+                      <div class="text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500 font-semibold">
+                        key-modules // coursework
+                      </div>
+                      <div class="text-neutral-700 dark:text-neutral-300 font-sans text-xs leading-relaxed">
+                        {{ about.education.coursework }}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
       </div>
-      <p class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
-        {{ about.education.major or "Major in Computer Science & Applications" }}
-      </p>
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-2 font-sans max-w-2xl">
-        {{ about.education.coursework or "Core coursework covering Data Structures & Algorithms, Object-Oriented Software Design, Relational Database Management Systems (RDBMS), Operating Systems, and Computer Networks." }}
-      </p>
     </div>
   </section>
 

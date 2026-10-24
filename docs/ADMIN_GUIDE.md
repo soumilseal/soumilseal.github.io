@@ -119,13 +119,13 @@ A repeater list of metrics. You can add, edit, or reorder stats:
 
 ### 5. Languages & Tooling Infinite Marquee (100% Admin Editable)
 The homepage features a high-performance, seamless infinite ticker scroll powered by GSAP. Everything inside this ticker is completely customizable from Pages CMS:
-- **Section Title & Subtitle**: Customize the header label (e.g. `languages-and-tooling/` and `active-stack // infinite scroll`).
+- **Section Title & Subtitle**: Customize the header label (e.g. `languages-and-tooling/` and `tech-stack // languages & tools`).
 - **Scroll Animation Duration in Seconds**: Speed control (default: `32`). Lower numbers scroll faster (e.g. `20` for quick pace, `45` for slow, subtle motion).
 - **Infinite Scroll Items**: A repeater list of technologies, tools, or badges. You can reorder, add new tools, or remove existing ones. Each item contains:
   - **Technology / Tool Name** *(Text)*: The name of the language, framework, or platform (e.g. `Python`, `Rust`, `Docker`).
   - **Category / Index Badge** *(Text)*: The numeric index or category label shown next to the name (e.g. `01/`, `12/`, or `Systems`).
   - **Target Link URL** *(Link)*: Optional link destination. If provided (e.g. `https://www.python.org` or `/projects/`), the item becomes an interactive clickable card with hover effects and an external link indicator. If left blank, it renders as a clean static badge.
-  - **Icon / Logo Image** *(Image)*: Optional image upload or asset path (e.g. `/assets/images/icons/python.svg` or any uploaded PNG/SVG/WebP logo). Renders neatly aligned beside the technology name in both light and dark mode.
+  - **Icon / Logo Image** *(Text or URL)*: Optional [Skill Icons](https://skillicons.dev/) URL (e.g. `https://skillicons.dev/icons?i=py`), skill key (e.g. `py`, `ts`, `docker`), or custom image upload / asset path. Renders as a crisp 20x20 squircle icon neatly aligned beside the technology name in both light and dark mode.
 
 ### 6. Section Header Titles & Descriptions
 - **Featured Projects Title**: Custom title for projects section (default: `featured-projects/`).

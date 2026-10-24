@@ -31,7 +31,7 @@ stats:
     value: "Docker Swarm"
 gallery:
   - image: "/assets/images/projects/microdeploy.webp"
-    caption: "MicroDeploy Continuous Delivery & Blue-Green Traffic Switch Schematic"
+    caption: "MicroDeploy Continuous Delivery & Blue-Green Traffic Switch Flow"
 ---
 
 ## Overview
