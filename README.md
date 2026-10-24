@@ -22,12 +22,14 @@ This portfolio is engineered like a precision technical blueprint rather than a 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
 | **Static Site Generator** | [Eleventy v3.1](https://www.11ty.dev/) | Ultra-fast templating with Nunjucks and Markdown parsing |
+| **Eleventy Plugins** | RSS, Syntax Highlighting, Navigation, TOC, Img, Fetch | Official 11ty ecosystem plugins for syndication, code highlighting, navigation, and assets |
 | **CSS & Design System** | [Tailwind CSS v4.3](https://tailwindcss.com/) | Cutting-edge CSS compilation, custom theme tokens, typography |
 | **Motion & Animation** | [GSAP v3.15](https://gsap.com/) | Continuous marquee ticker and micro-animations |
 | **Full-Text Search** | [Pagefind v1.5](https://pagefind.app/) | Low-bandwidth static search indexing with instant modal UI |
 | **Content Management** | [Pages CMS](https://pagescms.org/) | Headless, Git-based CMS configured via `.pages.yml` |
 | **Icons & Vectors** | [Phosphor Icons](https://phosphoricons.com/) (`@phosphor-icons/core`) | Scalable, cohesive vector icons with zero render blocking |
 | **Syndication & SEO** | RSS / Atom & Sitemap XML | Automatic feed generation and canonical SEO tags |
+
 
 ---
 
