@@ -15,9 +15,9 @@
     "accessKey": "ba639b9a-3fc5-4dfa-9576-acf24ea3f2da",
     "nameLabel": "name",
     "namePlaceholder": "Jane Doe",
-    "emailLabel": "email-address",
+    "emailLabel": "email",
     "emailPlaceholder": "jane@example.com",
-    "messageLabel": "message-payload",
+    "messageLabel": "message",
     "messagePlaceholder": "Your message...",
     "submitButtonText": "Submit"
   }

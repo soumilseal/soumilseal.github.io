@@ -343,7 +343,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
     </div>
 
     <div class="px-4 sm:px-6 py-6 sm:py-8 space-y-6 bg-white dark:bg-neutral-950">
-      <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans max-w-xl">
+      <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
         {{
           home.sections.contactText or "I'm currently looking for software engineering internships and open-source collaborations. Feel free to connect via any channel below or submit a message through the contact form."
         }}
@@ -351,7 +351,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
 
       <form
         id="home-contact-form"
-        class="contact-dispatch-form space-y-5 max-w-xl"
+        class="contact-dispatch-form space-y-5 w-full"
         action="{{ contact.form.action or 'https://api.web3forms.com/submit' }}"
         method="POST"
       >
@@ -378,7 +378,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             for="home-email"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.emailLabel or "email-address" }}
+            {{ contact.form.emailLabel or "email" }}
           </label>
           <input
             type="email"
@@ -395,7 +395,7 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
             for="home-message"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.messageLabel or "message-payload" }}
+            {{ contact.form.messageLabel or "message" }}
           </label>
           <textarea
             id="home-message"

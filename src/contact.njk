@@ -71,7 +71,7 @@ permalink: /contact/
     </div>
 
     <div class="p-6 sm:p-8 bg-white dark:bg-neutral-950">
-      <form id="contact-form" class="contact-dispatch-form space-y-5 max-w-xl" action="{{ contact.form.action or 'https://api.web3forms.com/submit' }}" method="POST">
+      <form id="form" class="contact-dispatch-form space-y-5 w-full" action="{{ contact.form.action or 'https://api.web3forms.com/submit' }}" method="POST">
         <input type="hidden" name="access_key" value="{{ contact.form.accessKey or 'ba639b9a-3fc5-4dfa-9576-acf24ea3f2da' }}">
         <div class="space-y-1.5">
           <label
@@ -95,7 +95,7 @@ permalink: /contact/
             for="email"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.emailLabel or "email-address" }}
+            {{ contact.form.emailLabel or "email" }}
           </label>
           <input
             type="email"
@@ -112,7 +112,7 @@ permalink: /contact/
             for="message"
             class="block text-xs font-mono text-neutral-500 dark:text-neutral-400"
           >
-            {{ contact.form.messageLabel or "message-payload" }}
+            {{ contact.form.messageLabel or "message" }}
           </label>
           <textarea
             id="message"
@@ -130,7 +130,7 @@ permalink: /contact/
           type="submit"
           class="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-neutral-950 font-mono text-xs font-bold tracking-tight transition-colors focus:outline-none flex items-center gap-2 group cursor-pointer"
         >
-          <span>{{ contact.form.submitButtonText or "Send message" }}</span>
+          <span>{{ contact.form.submitButtonText or "Submit" }}</span>
           <span class="group-hover:translate-x-1 transition-transform flex items-center">{{ icons.icon("arrow-right", "w-3.5 h-3.5") }}</span>
         </button>
       </form>
