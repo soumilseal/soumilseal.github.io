@@ -334,26 +334,83 @@
 
   initLanguagesTicker();
 
-  // Universal Contact Form submission handler (Home & Contact pages)
-  document.querySelectorAll('.contact-dispatch-form').forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      const action = form.getAttribute('action');
-      if (action && action.trim() !== '') {
-        return; // Let standard form submission occur if an action URL is defined
-      }
-      e.preventDefault();
-      const feedback = form.querySelector('.form-feedback') || form.nextElementSibling;
-      const nameInput = form.querySelector('input[name="name"]');
-      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'there';
+  // Universal Contact Form submission handler (Web3Forms AJAX submission)
+  const contactForms = Array.from(
+    new Set(
+      document.querySelectorAll(
+        '.contact-dispatch-form, #contact-form, #home-contact-form, #form'
+      )
+    )
+  );
 
-      if (feedback) {
-        feedback.className =
-          'form-feedback p-3.5 text-xs font-mono bg-emerald-50 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/80 my-3 block';
-        feedback.innerHTML =
-          `Thank you <strong>${name}</strong>! Your message payload has been recorded. You can also connect directly via LinkedIn or GitHub below.`;
-        feedback.classList.remove('hidden');
+  contactForms.forEach((form) => {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitSpan = submitBtn ? submitBtn.querySelector('span') : null;
+    const targetTextElem = submitSpan || submitBtn;
+    const feedback = form.querySelector('.form-feedback');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      if (!formData.get('access_key')) {
+        formData.append('access_key', 'ba639b9a-3fc5-4dfa-9576-acf24ea3f2da');
       }
-      form.reset();
+
+      const originalText = targetTextElem ? targetTextElem.textContent : 'Submit';
+
+      if (targetTextElem) {
+        targetTextElem.textContent = 'Sending...';
+      }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+      }
+
+      const actionUrl = form.getAttribute('action') || 'https://api.web3forms.com/submit';
+
+      try {
+        const response = await fetch(actionUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          if (feedback) {
+            feedback.className =
+              'form-feedback p-3.5 text-xs font-mono bg-emerald-50 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700/80 my-3 block';
+            feedback.innerHTML = 'Success! Your message has been sent.';
+            feedback.classList.remove('hidden');
+          }
+          alert('Success! Your message has been sent.');
+          form.reset();
+        } else {
+          const errMsg = data.message || 'Submission failed.';
+          if (feedback) {
+            feedback.className =
+              'form-feedback p-3.5 text-xs font-mono bg-rose-50 text-rose-900 dark:bg-rose-950/60 dark:text-rose-200 border border-rose-300 dark:border-rose-700/80 my-3 block';
+            feedback.textContent = 'Error: ' + errMsg;
+            feedback.classList.remove('hidden');
+          }
+          alert('Error: ' + errMsg);
+        }
+      } catch (error) {
+        if (feedback) {
+          feedback.className =
+            'form-feedback p-3.5 text-xs font-mono bg-rose-50 text-rose-900 dark:bg-rose-950/60 dark:text-rose-200 border border-rose-300 dark:border-rose-700/80 my-3 block';
+          feedback.textContent = 'Something went wrong. Please try again.';
+          feedback.classList.remove('hidden');
+        }
+        alert('Something went wrong. Please try again.');
+      } finally {
+        if (targetTextElem) {
+          targetTextElem.textContent = originalText;
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+        }
+      }
     });
   });
 

@@ -11,13 +11,14 @@
   "form": {
     "title": "dispatch-message",
     "subtitle": "interactive form",
-    "action": "",
+    "action": "https://api.web3forms.com/submit",
+    "accessKey": "ba639b9a-3fc5-4dfa-9576-acf24ea3f2da",
     "nameLabel": "name",
     "namePlaceholder": "Jane Doe",
     "emailLabel": "email-address",
     "emailPlaceholder": "jane@example.com",
     "messageLabel": "message-payload",
     "messagePlaceholder": "Your message...",
-    "submitButtonText": "Send message"
+    "submitButtonText": "Submit"
   }
 }

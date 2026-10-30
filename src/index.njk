@@ -352,11 +352,10 @@ description: Personal portfolio and technical blog of Soumil Seal. Focused on so
       <form
         id="home-contact-form"
         class="contact-dispatch-form space-y-5 max-w-xl"
-        {% if contact.form and contact.form.action %}
-          action="{{ contact.form.action }}"
-          method="POST"
-        {% endif %}
+        action="{{ contact.form.action or 'https://api.web3forms.com/submit' }}"
+        method="POST"
       >
+        <input type="hidden" name="access_key" value="{{ contact.form.accessKey or 'ba639b9a-3fc5-4dfa-9576-acf24ea3f2da' }}">
         <div class="space-y-1.5">
           <label
             for="home-name"

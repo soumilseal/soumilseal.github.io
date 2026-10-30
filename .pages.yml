@@ -701,8 +701,13 @@ content:
             type: string
             default: "interactive form"
           - name: action
-            label: "Form Endpoint URL (e.g. Formspree/Formspark/custom webhook)"
+            label: "Form Endpoint URL (e.g. Web3Forms/Formspree/custom webhook)"
             type: string
+            default: "https://api.web3forms.com/submit"
+          - name: accessKey
+            label: "Web3Forms Access Key"
+            type: string
+            default: "ba639b9a-3fc5-4dfa-9576-acf24ea3f2da"
           - name: nameLabel
             label: "Name Field Label"
             type: string

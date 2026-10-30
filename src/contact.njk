@@ -71,7 +71,8 @@ permalink: /contact/
     </div>
 
     <div class="p-6 sm:p-8 bg-white dark:bg-neutral-950">
-      <form id="contact-form" class="contact-dispatch-form space-y-5 max-w-xl" {% if contact.form and contact.form.action %}action="{{ contact.form.action }}" method="POST"{% endif %}>
+      <form id="contact-form" class="contact-dispatch-form space-y-5 max-w-xl" action="{{ contact.form.action or 'https://api.web3forms.com/submit' }}" method="POST">
+        <input type="hidden" name="access_key" value="{{ contact.form.accessKey or 'ba639b9a-3fc5-4dfa-9576-acf24ea3f2da' }}">
         <div class="space-y-1.5">
           <label
             for="name"
