@@ -60,7 +60,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path || '/soumilseal/' }}
+          ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
