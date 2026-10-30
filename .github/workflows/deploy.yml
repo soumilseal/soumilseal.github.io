@@ -3,28 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "**.md"
+      - ".github/ISSUE_TEMPLATE/**"
   pull_request:
     branches: ["main"]
+    paths-ignore:
+      - "**.md"
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  # Pages deploys queue; PR builds cancel superseded runs
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  # Build static assets & site
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,10 +40,21 @@ jobs:
 
       - name: Setup GitHub Pages configuration
         id: pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
+      - name: Cache Eleventy image output
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            _site/img
+          key: eleventy-img-${{ runner.os }}-${{ hashFiles('**/*.{jpg,jpeg,png,webp,avif,svg}') }}
+          restore-keys: |
+            eleventy-img-${{ runner.os }}-
+
       - name: Install dependencies
-        run: npm ci --no-audit
+        run: npm ci --no-audit --no-fund --prefer-offline
 
       - name: Build site (Images + Eleventy + Tailwind + Pagefind)
         run: npm run build
@@ -46,14 +63,13 @@ jobs:
           ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path || '/soumilseal/' }}
 
       - name: Upload artifact
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site"
 
-  # Deploy to GitHub Pages (only on main branch pushes or manual triggers)
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
