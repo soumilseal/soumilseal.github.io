@@ -40,7 +40,6 @@ jobs:
 
       - name: Setup GitHub Pages configuration
         id: pages
-        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       - name: Cache Eleventy image output
@@ -48,8 +47,8 @@ jobs:
         with:
           path: |
             .cache
-            _site/img
-          key: eleventy-img-${{ runner.os }}-${{ hashFiles('**/*.{jpg,jpeg,png,webp,avif,svg}') }}
+            _site/assets/images/optimized
+          key: eleventy-img-${{ runner.os }}-${{ hashFiles('src/assets/images/**') }}
           restore-keys: |
             eleventy-img-${{ runner.os }}-
 
@@ -61,6 +60,10 @@ jobs:
         env:
           NODE_ENV: production
           ELEVENTY_PATH_PREFIX: ${{ steps.pages.outputs.base_path }}
+
+      - name: Inspect build output
+        run: |
+          find _site -maxdepth 3 \( -name "main.css" -o -name "*.js" -o -name "favicon*" \) | sort
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
